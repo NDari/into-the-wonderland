@@ -104,13 +104,14 @@ def example_flat_vs_peaked():
     keep, z, _ = truncate_top_p(peaked, 0.9)
     print(f"  peaked (the T = 0.5 distribution): top-p 0.9 keeps {len(keep)}; top-k 3 keeps "
           f"{', '.join(TOKENS[i] for i in truncate_top_k(peaked, 3)[0])}")
-    # 20 plausible tokens with equal scores, 1,000 tail tokens 4 points lower.
-    flat_scores = [0.0] * 20 + [-4.0] * 1000
+    # 20 plausible tokens with equal scores, 1,000 tail tokens 7 points lower.
+    flat_scores = [0.0] * 20 + [-7.0] * 1000
     flat = softmax_t(flat_scores, 1.0)
     keep, z, _ = truncate_top_p(flat, 0.9)
     print(f"  flat: 20 plausible tokens each {flat[0]:.4f}, 1,000 tail tokens each {flat[-1]:.6f}, "
           f"tail total {sum(flat[20:]):.3f}")
-    print(f"  flat: top-p 0.9 keeps {len(keep)} tokens; top-k 3 keeps 3 of the 20 plausible ones")
+    print(f"  flat: top-p 0.9 keeps {len(keep)} tokens, {sum(1 for i in keep if i < 20)} of them plausible; "
+          f"top-k 3 keeps 3 of the 20 plausible ones")
     print()
 
 
@@ -134,7 +135,8 @@ def example_kv():
           f"8,192 tokens {l3 * 8192 / 2 ** 30:.0f} GiB; 131,072 tokens {l3 * 131072 / 2 ** 30:.0f} GiB ({l3 * 131072 / 1e9:.1f} GB)")
     l3full = per_token(32, 32 * 128)
     print(f"  without grouping (32 key-value heads): {l3full * 131072 / 2 ** 30:.0f} GiB at 131,072 tokens")
-    print(f"  Llama 3 8B weights in 16-bit: 8.03e9 x 2 = {8.03e9 * 2 / 1e9:.1f} GB")
+    n8b = 8_028_164_096   # code/checks/anatomy.py, Example 3 (from the Llama 3 paper's Table 3)
+    print(f"  Llama 3 8B weights in 16-bit: {n8b:,} x 2 = {n8b * 2 / 1e9:.1f} GB")
     opt = 2 * 5120 * 40 * 2
     print(f"  Kwon et al.'s OPT-13B check: {opt:,} bytes = {opt / 1024:.0f} KiB per token; x 2,048 = {opt * 2048 / 1e9:.2f} GB")
     m, n = 1000, 500

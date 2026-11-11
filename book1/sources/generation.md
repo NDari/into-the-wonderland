@@ -1,8 +1,8 @@
 # Claim ledger: generation
 
 Chapter: `generation` (Book 1, "Generating text").
-Stage: drafted, 2026-11-11 [D-005]. Research by a helper agent. Before drafting, the writer re-ran the mechanism items used in `code/checks/generation.py` (all agree; the script imports the destination chapter's scores and draw). Open questions decided by default: speculative decoding and prompt caching get one paragraph each; min-p is left out; Anthropic's removal of sampling settings gets one dated sentence. Awaiting an independent check.
-Research for this chapter was done by a helper agent. Not drafted. Every source below was fetched on 2026-11-11 and each claim was located in the fetched text (pdftotext on publisher, ACL Anthology, or arXiv PDFs; all have text layers; HTML and Markdown for vendor pages). Equations and figures whose layout did not survive extraction were checked on the page image: Ackley et al. Eqs. (5) and (6) and Fig. 1 (pp. 151-152); Holtzman et al. Figs. 4 and 5 (p. 5) and Table 1 (p. 7, in the `-layout` extraction); Leviathan et al. Eq. (1) (p. 3). Page numbers are the printed page numbers of the source as read; the offset from PDF page to printed page is given in the table. Where a source prints an en-dash or em-dash, it is written here with a hyphen, noted where it matters. Numbers marked "checked" were recomputed in this session with a throwaway standard-library script (not in the repository); they must be reproduced by `code/checks/generation.py` at drafting [D-009].
+Stage: verified, 2026-11-11 [D-005]. Research by a helper agent; drafted by the writer; independent check recorded at the end.
+Research for this chapter was done by a helper agent. (Written before drafting.) Every source below was fetched on 2026-11-11 and each claim was located in the fetched text (pdftotext on publisher, ACL Anthology, or arXiv PDFs; all have text layers; HTML and Markdown for vendor pages). Equations and figures whose layout did not survive extraction were checked on the page image: Ackley et al. Eqs. (5) and (6) and Fig. 1 (pp. 151-152); Holtzman et al. Figs. 4 and 5 (p. 5) and Table 1 (p. 7, in the `-layout` extraction); Leviathan et al. Eq. (1) (p. 3). Page numbers are the printed page numbers of the source as read; the offset from PDF page to printed page is given in the table. Where a source prints an en-dash or em-dash, it is written here with a hyphen, noted where it matters. Numbers marked "checked" were recomputed in this session with a throwaway standard-library script (not in the repository); they must be reproduced by `code/checks/generation.py` at drafting [D-009].
 
 ## Sources and how they were read
 
@@ -442,7 +442,7 @@ All computed by `code/checks/generation.py` (standard library only).
 
 - Example 1: temperature on the destination's scores: mat 0.831 / 0.571 / 0.375 at T = 0.5 / 1 / 2; entropy 0.86 / 1.70 / 2.23 bits (six-way uniform 2.58); 0.979 at T = 0.25; the 0.80 draw picks mat / sofa / roof.
 - Example 2: top-k 3 and top-p 0.9 both keep mat, floor, sofa (0.908), rescaled 0.629, 0.231, 0.140; with p = 0.9, temperature 0.5 first keeps 2 tokens, temperature 2 first keeps 4.
-- Example 3: constructed flat distribution (20 equal tokens plus 1,000 tail tokens 4 points lower): top-p 0.9 keeps 811 ("hundreds"); peaked (T = 0.5): top-p keeps 2.
+- Example 3: constructed flat distribution (20 equal tokens plus 1,000 tail tokens 7 points lower, tail total 0.044): top-p 0.9 keeps 19 tokens, all plausible; top-k 3 keeps 3; peaked (T = 0.5): top-p keeps 2. (The first draft used a tail 4 points lower, which made top-p keep 811 tokens, mostly tail; corrected after the independent check.)
 - Example 4: twenty draws all top at T = 1: 1.36e-5, about 1 in 74,000.
 - Example 5: KV cache: GPT-2 small 36,864 bytes per token, 37.7 MB at 1,024 tokens; Llama 3 8B 128 KiB per token, 17.2 GB at 131,072 tokens vs 16.1 GB of 16-bit weights; four times as much without grouping; 625,250 vs 1,500 positions for 500 tokens after a 1,000-token prompt.
 - Example 6: Shazeer 46 / 1.7 = 27.
@@ -461,3 +461,14 @@ For the glossary: prefill, decode, time to first token, memory-bound, decoding s
 
 - Removed in self-review: "at Google" for Pope et al. (not in the ledger). Added: Shazeer's batch of 1,024 (GN4 note); the derivation of Llama 3's head size of 128 (GND9-style caution, GN27 note).
 - GPT-2 is not said to have used temperature 0.7 (GND4); no KV-cache inventor is named (GND8); Pope's 3 TB is not used (GND9).
+
+## Independent check (generation chapter)
+
+2026-11-11. A separate agent re-fetched every listed source and vendor page (current as of 2026-11-11), checked every quote and page, matched every number to the script or Holtzman et al.'s Table 1, and regenerated both figures (byte-identical).
+
+- Errors found and fixed:
+  1. The made-up flat distribution had a tail holding 0.478 of the probability, so top-p 0.9 kept 791 tail tokens: the example showed top-p failing. The tail is now 7 points lower (total 0.044); top-p 0.9 keeps 19 of the 20 plausible words and none of the tail (script Example 3).
+  2. The 131,072-token window belongs to the paper's 8B model as released in Llama 3.1 (Table 1, p. 2: "Long context" for Llama 3.1 8B only); the chapter now says so and cites pp. 2-3.
+  3. "Kalai and colleagues' account concerns the model's probabilities, not the draw" was the writer's reasoning, not Kalai et al.'s. Replaced with a sourced fact: Maynez et al.'s summarizers used beam search (appendix, p. 1918), so the 70%+ rates came from decoding without randomness.
+- Warnings acted on: "used these names" / "called the store by the name now used" instead of "named"; memory traffic cites Pope p. 1 (weights and cached results), "sequences" not "sentences", grammar; GPT-3's beam search "for tasks with free-form answers"; "drew public attention" removed; Holtzman p. 6; "OpenAI's API"; llama.cpp defaults dated; the sampling-order claim cited (Holtzman p. 6, llama.cpp's sampler order); KiB replaced by bytes; the 16.1 GB weight figure now taken from the anatomy script's exact count; speculative decoding's check costs "about as much as producing a single token" (Chen p. 1) and preserves the distribution up to rounding; Maynez's reference summaries also hallucinated (p. 1911); calibration limited to multiple-choice questions; years added for GPT-4 (2023), Xu et al. (2024), Stahlberg and Byrne (2019); this ledger's header fixed.
+- Could not verify: that the GPT-2 unicorn article drew public attention (removed); "simulated annealing" as the name of Kirkpatrick et al.'s method (Ackley et al. say "annealing"); Ji et al. against the journal version; the "near tie" in the Thinking Machines example is the chapter's mechanism explanation, not the post's word.
