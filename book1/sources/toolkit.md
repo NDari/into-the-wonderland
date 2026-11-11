@@ -426,3 +426,14 @@ For the glossary: tensor, shape, activations, minibatch, batch size, stochastic 
   - Smaller wording fixes.
 - Re-checked after fixing: the writer reran the script and the figures; the new momentum numbers are its output.
 
+
+## Consistency pass (2026-11-11)
+
+Editorial pass to make the chapters agree with each other; no sourced fact, quote, number, or citation changed except where noted.
+
+- Defined $\sigma$ at line 23 as the standard deviation of a single sample, not the logistic function of `neuron` (notation item 1).
+- Bolded **RMSProp** at its definition (glossary finding (e)).
+- Un-bolded "epoch" (first bolded in `neuron`) and "reverse mode" (first bolded in `backprop`); both sentences already link back.
+- TensorFlow: added "as the 2016 arXiv version of its white paper records" so the rendered 2016 citation year does not contradict "November 2015" (timeline discrepancy 7; ledger K29 and the source table: white paper of 9 Nov 2015, arXiv v2 of 16 Mar 2016).
+- Page convention: `bergstra2010theano` stays without a page. The quoted words come from the abstract on the SciPy landing page, which has no page numbers; the full paper was not read.
+- Not changed here: "Adam (2014)" in OUTLINE.md versus "ICLR 2015" in the chapter (outline not owned by this pass; reported).

@@ -99,3 +99,9 @@ For the glossary: backpropagation, hidden unit, hidden layer, credit assignment 
 - Bridge: the delta rule for a linear unit is least-squares regression fitted by gradient descent (`rumelhart1986internal`, p. 324: "the error surface is shaped like a bowl with only one minimum"). The reader knows least squares.
 - Learning rate, epoch, loss function, forward pass, gradient: define in this chapter. Stochastic gradient descent and minibatches belong to `toolkit`.
 - Hidden units must use a smooth activation (sigmoid) for the derivatives to exist. This links back to `neuron`.
+
+## Consistency pass (2026-11-11)
+
+Editorial pass to make the chapters agree with each other; no sourced fact, quote, number, or citation changed except where noted.
+
+- No change needed. Its bold terms are first uses; `toolkit` drops its re-bold of "reverse mode". The false "multilayer perceptron of the backpropagation chapter" reference is in `anatomy` (this chapter never uses the phrase) and is fixed there.

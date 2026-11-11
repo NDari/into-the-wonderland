@@ -347,3 +347,16 @@ For the glossary: cross-attention, block, decoder-only, token table, position ta
   3. Geva et al.'s detectors are columns of W_1 under the chapter's own formula, not rows; reworded without rows or columns, with Geva's qualifier "especially in later layers".
 - Warnings acted on: learned positions cited to GPT-1 p. 5 (the GPT-2 paper does not mention positions) and the code; GPT-2's 524,288 predictions per step stated as conditional arithmetic; "counting every part the same way" for GPT-3's 175 billion; "released the models as 124M, 355M, 774M, and 1558M" (only the first two were renamed); the residual-stream term: "Kaplan and colleagues already used the term" (shared authors); "Large language models have used pre-norm" replaced by the four named models (as of 2024), Liu et al.'s study marked as translation, warm-up explained; "smooth" dropped from the GELU gloss (unsourced); Press and Wolf's basis stated as lower held-out perplexity, read as less overfitting; caption wording on the block order and post-norm; "inside the blocks the stream itself is never normalized"; Shazeer p. 2 cited for three matrices; Llama 3's RoPE cited (p. 7); "interpretability researchers" glossed; "about fourteen times as large".
 - Could not verify: whether GPT-2's batch of 512 counted full 1,024-token windows (not stated); earlier uses of "residual stream" before January 2020 (not searched).
+
+## Consistency pass (2026-11-11)
+
+Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or citation changed.
+
+- "token table" now says it is the embedding table of the destination chapter (two names for one table, glossary finding (c)).
+- **feed-forward network** bolded in the sentence; false cross-reference fixed: the backpropagation chapter never says "multilayer perceptron", so now "the multilayer perceptron: a network with one hidden layer, of the kind the backpropagation chapter trained".
+- Dot placeholder removed: "$\max(0, \cdot)$ is the ReLU" -> "$\max(0,\, x W_1 + b_1)$ applies the ReLU" (notation verifier: fourth use of the dot sign).
+- "checkpoint" glossed at first use ("the saved file of trained weights"); bolded later in `training`.
+- **causal mask** bolded at its first naming in the masking section (glossary finding (e)).
+- "context window" un-bolded (first bolded in `destination`; callback link already there).
+- "warm-up" -> "warmup".
+- Not changed: "key-value caches" (line 92) is inside a quotation and already forward-links the generation chapter.

@@ -537,3 +537,12 @@ For the glossary: transfer learning, pretrained, fine-tuning, frozen features, s
 - Warnings acted on: ALBERT pp. 4-5; caption "chooses about 15% of tokens to predict"; panel (a) of the figure now shows faint lines from every earlier word to one target ("sofa"), and the caption says so; ELMo "usually adapted"; ULMFiT "around the same time"; "ELMo improved every task it was tried on" (no implied contrast with CoVe); "closed its account of pretraining with" for `deep-turn`; "probably" for the quotation-mark inference; chip-hours labelled as derived (a Cloud TPU taken as four chips); T5's 103-token target explained against reconstructing the whole input, with p. 41's "more computationally efficient"; encoder-decoders named alongside the two families; "ablation" defined; J&M ch. 7 dated (2026-08 draft); takeaway "far fewer labeled examples"; "through its layers" for BERT's "see itself"; this ledger's header contradiction fixed.
 - Not changed: "F1" is left undefined (the reader's own metric); TPU is described only as Google's chips.
 - Could not verify: that BooksCorpus was chosen because of its long contiguous text; the chapter now says only that the authors noted it "contains long stretches of contiguous text".
+
+## Consistency pass (2026-11-11)
+
+Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or citation changed.
+
+- **fine-tuning** kept bold (different sense) with a phrase: "in a wider sense than in the chapter on the deep learning turn, where it meant adjusting all the weights together after layer-by-layer pretraining".
+- "self-supervised learning" and "contextual embedding" un-bolded (first bolded in `destination` and `attention`; callbacks already in the sentences).
+- **masked language model** bolded outside the BERT quotation (glossary finding (e)).
+- Not changed: ELMo "In early 2018" (timeline discrepancy 8); it matches the arXiv and NAACL versions the chapter cites.

@@ -472,3 +472,13 @@ For the glossary: prefill, decode, time to first token, memory-bound, decoding s
   3. "Kalai and colleagues' account concerns the model's probabilities, not the draw" was the writer's reasoning, not Kalai et al.'s. Replaced with a sourced fact: Maynez et al.'s summarizers used beam search (appendix, p. 1918), so the 70%+ rates came from decoding without randomness.
 - Warnings acted on: "used these names" / "called the store by the name now used" instead of "named"; memory traffic cites Pope p. 1 (weights and cached results), "sequences" not "sentences", grammar; GPT-3's beam search "for tasks with free-form answers"; "drew public attention" removed; Holtzman p. 6; "OpenAI's API"; llama.cpp defaults dated; the sampling-order claim cited (Holtzman p. 6, llama.cpp's sampler order); KiB replaced by bytes; the 16.1 GB weight figure now taken from the anatomy script's exact count; speculative decoding's check costs "about as much as producing a single token" (Chen p. 1) and preserves the distribution up to rounding; Maynez's reference summaries also hallucinated (p. 1911); calibration limited to multiple-choice questions; years added for GPT-4 (2023), Xu et al. (2024), Stahlberg and Byrne (2019); this ledger's header fixed.
 - Could not verify: that the GPT-2 unicorn article drew public attention (removed); "simulated annealing" as the name of Kirkpatrick et al.'s method (Ackley et al. say "annealing"); Ji et al. against the journal version; the "near tie" in the Thinking Machines example is the chapter's mechanism explanation, not the post's word.
+
+## Consistency pass (2026-11-11)
+
+Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or citation changed.
+
+- "prompt" glossed at first use ("the text the model is given"); bolded later in `prompting`.
+- **prefill** and **decode** bolded at the start of the two-phase paragraph, outside Pope et al.'s quotation; **KV cache** bolded outside the quotation (glossary finding (e)).
+- "beam search" and "context window" un-bolded (first bolded in `seq2seq` and `destination`; callbacks already there).
+- "key-value heads" at first use now points back to the anatomy chapter; the later "the grouping of the anatomy chapter" became "that grouping" to avoid a double link.
+- Link text "the chapter on instruction tuning" -> "the chapter on teaching models to follow instructions".

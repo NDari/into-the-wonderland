@@ -1,7 +1,7 @@
 # Ledger: further-reading
 
 Chapter: `further-reading` (Book 1, appendix D, "Further reading").
-Stage: drafted, 2026-11-11 [D-005]. Compiled by a drafting agent from the verified chapters and ledgers; independent check pending.
+Stage: verified, 2026-11-11 [D-005]. Compiled by a drafting agent from the verified chapters and ledgers; independent check recorded at the end.
 
 ## Method
 
@@ -85,7 +85,7 @@ Where each entry's description comes from. "Ledger" means `book1/sources/<id>.md
 | `ouyang2022training` | instructions ledger (arXiv v1, 68 pp.); destination chapter (three steps, p. 3) | |
 | `rafailov2023direct` | instructions chapter (quote, p. 1) | |
 | `casper2023open` | instructions ledger (32 authors) and chapter ("fundamental", pp. 6-7, 9) | |
-| `wei2022chain` | prompting chapter (definition; three explanations pp. 5-6; 56.9% p. 20; "state-of-the-art" p. 1) | |
+| `wei2022chain` | prompting chapter (definition; three explanations pp. 5-6; 56.9% p. 20; "state-of-the-art" p. 1) | Per the independent check: arXiv v1 (28 Jan 2022) uses only LaMDA 137B and has no PaLM results, no "state of the art", and no 56.9%; v2 (6 Apr 2022) first adds PaLM 540B (58.1%); the wording and 56.9% are from the final version, v6. The appendix says "in the paper's final version" and no longer dates the claim to January 2022. |
 | `hu2021lora` | adapting chapter | |
 | `lewis2020retrieval` | tools chapter (named RAG; closed-book/open-book p. 5) | |
 | `yao2023react` | tools chapter (quote pp. 1, 3; failure counts) | |
@@ -108,14 +108,14 @@ Where each entry's description comes from. "Ledger" means `book1/sources/<id>.md
 
 | Key | Used for | From |
 |---|---|---|
-| `keshav2007read` | the three passes | Own fetch; see below. Not in `references.bib`: BibTeX supplied separately for the author to add. |
+| `keshav2007read` | the three passes | Own fetch; see below. Now in `references.bib`. |
 | `hendrycks2021measuring` | MMLU random baseline 25% (p. 5); GPT-3 43.9% (p. 2) | evaluation ledger EV7 note; evaluation chapter |
 | `openai2023gpt4` | GSM8K 92.0% with training-set mixing (pp. 7, 29) | evaluation chapter |
 | `kingma2015adam` | nine versions; v1 and v9 headers | toolkit ledger table row |
 | `deepseekai2025r1`, `deepseekai2025r1v2` | the changed number | frontier ledger table row |
 | `radford2019language`, `openai2019gpt2code` | 117M vs 124M | anatomy chapter |
 | `russakovsky2015imagenet` | arXiv vs journal pagination | deep-turn ledger table row |
-| `wang2019glue`, `wang2019superglue` | "beyond the capabilities"; passed by July 2019 | evaluation chapter |
+| `wang2019glue`, `wang2019superglue` | "beyond the capabilities"; passed by July 2019 | evaluation chapter. Per the independent check, the GLUE sentence is in arXiv v2 (18 Sep 2018) as well as v3, so "In 2018" holds. |
 | `sajadieh2026ai` | "often remain useful for only a few years" (p. 78) | evaluation chapter |
 | `lawsen2025comment`, `shojaee2025illusion` | dispute and reply in v3 | frontier chapter and ledger FR17 |
 | `mitchell2019model` | definition (p. 1); template (p. 3), "May not be possible to provide in practice" | evaluation and local chapters |
@@ -157,5 +157,18 @@ All fetched 2026-11-11 with curl into the scratchpad; text extracted with Python
 ## Open points for the independent check
 
 - Confirm the "Free" markings against the policy in Method (Shannon's Internet Archive copy is marked free; the third-party copies are not).
-- The appendix uses `keshav2007read`, which is not yet in `references.bib`; until the author adds it, `tools/check.py` reports it as missing and the PDF prints the key in place of the citation.
+- The appendix uses `keshav2007read`, which is now in `references.bib`.
 - The appendix runs longer than the outline's "~4 pp" budget (see the build note in the drafting report).
+
+## Independent check (further-reading appendix)
+
+2026-11-11. A separate agent checked the appendix's entries and sourced claims against the verified chapters, ledgers, and sources. Its report shows it consulted the arXiv version histories of `wei2022chain` and `wang2019glue`, the pagination of Shannon's July 1948 installment, Google DeepMind's model-card listings, and `references.bib`, and checked the reading list's counts and descriptions. Its corrections were applied by a third agent.
+
+- Errors found and fixed:
+  1. Chain-of-thought was dated "January 2022" with "state-of-the-art accuracy" at 56.9%, but arXiv v1 (28 Jan 2022) has neither the phrase, PaLM, nor 56.9%; now "In 2022, chain-of-thought prompting of the 540-billion-parameter PaLM ... 56.9% in the paper's final version".
+  2. Shannon: "Part I as a whole runs to 45 pages" was wrong (the July 1948 installment, pp. 379-423, holds Part I and the start of Part II on p. 406); now "The July 1948 installment, the half this book read, runs to 45 pages".
+  3. "The prompt format alone can move a score by tens of points" overstated HELM p. 9 (format and number of examples both changed); now "How the prompt is built, its format and how many examples it shows"; the HELM entry now says "depending on how the question was put into the prompt".
+  4. "A model offered only as a service has no downloadable card" was wrong as of 2026-11 (Google DeepMind lists model cards for service-only models); now "has no repository; its maker may publish a technical report, a document it calls a model card, or a 'system card'". `openai2024o1card` confirmed in `references.bib` (title page 5 December 2024).
+- Warnings acted on: "about fifty works in some forty entries"; Deep Learning has "an introduction and nineteen chapters in three parts"; "Many papers in this field appear first on arXiv"; "some PDFs print no page numbers, and proceedings PDFs often number from 1 rather than as in the bound volume"; "As of 2026-11" in place of "As of this writing"; full titles for `devlin2019bert`, `rafailov2023direct`, `greshake2023not`, `frantar2023gptq`, and `chiang2024chatbot`, taken from `references.bib`; stale notes about `keshav2007read` updated (it is now in `references.bib`).
+- Not changed: the optional April 2022 sentence (PaLM 540B at 58.1% in v2) was not added.
+- Could not verify: the checker did not re-fetch the descriptions that rest only on ledgers (Olazaran, Griewank, Hochreiter, Schmidhuber's content, Elhage, Lewis, Yao, Frantar, Grattafiori, Ouyang, Rafailov, Casper, Sutton and Brooks content, the International AI Safety Report and Narayanan quotes, the Hugging Face docs, and the Llama, Qwen, Mistral and Kimi cards); they agree with the verified chapters and ledgers. The GPT-4 report and SuperGLUE page numbers were checked against the chapters only.

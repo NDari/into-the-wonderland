@@ -169,12 +169,13 @@ def example_flash():
     print("Example 7: the attention score matrix, one head, one layer, 16-bit")
     for n in (1024, 2048, 8192, 131072, 1048576):
         b = n * n * 2
-        unit = "MiB" if b < 2 ** 30 else ("GiB" if b < 2 ** 40 else "TiB")
-        div = {"MiB": 2 ** 20, "GiB": 2 ** 30, "TiB": 2 ** 40}[unit]
-        print(f"  {n:>9,} tokens: {n * n:>17,} scores, {b / div:g} {unit}")
+        # Decimal units (1 MB = 10^6 bytes), the book's convention; same figures as code/checks/notation.py Example 1.
+        unit = "MB" if b < 10 ** 9 else ("GB" if b < 10 ** 12 else "TB")
+        div = {"MB": 10 ** 6, "GB": 10 ** 9, "TB": 10 ** 12}[unit]
+        print(f"  {n:>9,} tokens: {n * n:>17,} scores, {b:,} bytes = {b / div:.1f} {unit}")
     out = 131072 * 128 * 2
-    print(f"  the output it is used to make, 131,072 x 128 x 2 bytes = {out / 2 ** 20:g} MiB")
-    print(f"  A100 on-chip memory: 192 KB x 108 = {192 * 108:,} KB (about {192 * 108 / 1000:.0f} MB) "
+    print(f"  the output it is used to make, 131,072 x 128 x 2 bytes = {out:,} bytes = {out / 10 ** 6:.1f} MB")
+    print(f"  A100 on-chip memory: 192 kB x 108 = {192 * 108:,} kB (about {192 * 108 / 1000:.0f} MB) "
           f"against 40-80 GB main memory")
     print()
 

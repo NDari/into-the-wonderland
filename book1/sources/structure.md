@@ -267,3 +267,12 @@ For the glossary: deep (many layers), fully connected, receptive field, filter, 
 - Re-checked after fixing: the writer located the new quotes in the fetched texts (Goodfellow et al. pp. 361-362; LeCun et al. 1998 p. 12, the "[dist]" note and the 0.1% uncertainty; Cortes and Vapnik pp. 288 and 290; Elman p. 197).
 - Not verifiable by design: Gers et al. 2000, Boser et al. 1992, Jordan 1986, Lang and Hinton 1988, and Bottou et al. 1994 are known only through the secondary sources cited.
 
+
+## Consistency pass (2026-11-11)
+
+Editorial pass to make the chapters agree with each other; no sourced fact, quote, number, or citation changed except where noted.
+
+- Un-bolded the second "convolutional network" (line 34); the term stays bold at its first use in the chapter introduction.
+- Glossed "benchmark" at its first use in the book, with a forward link to `deep-turn`, where it is bolded (glossary finding (b)).
+- Page convention: added pp. 541-542 to `lecun1989backpropagation` for the zip-code sentence (affiliation p. 541, data p. 542, both in S5). `hochreiter2001gradient` names the work only; no page added.
+- American spelling: labelled to labeled (two places), analysed to analyzed (two). "dataset" and "cheques" are inside quotations and stay.

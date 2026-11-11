@@ -362,3 +362,10 @@ full fine-tuning; catastrophic forgetting (catastrophic interference); elastic w
 - Warnings acted on: catastrophic forgetting "brought to wide attention" in 1989 (not "first described"; "independently" removed); the shared-weights cause attributed via French ("As French reports"); first names of McCloskey, Cohen and Ratcliff confirmed through Crossref (DOIs 10.1016/S0079-7421(08)60536-8 and 10.1037/0033-295X.97.2.285), since French gives initials only; "would take about 354 GB" (Hu's footnote is a hypothetical); rank 1 matches rank 64 only with queries and values both adapted, on two GPT-3 tasks; QLoRA's 567 MB and 18 MB are "input gradients", with gradient checkpointing named; vendor paragraph's inference phrased as advice to the reader; "as of 2025" for the two meanings of distillation; Llama 3 Table 3 cited for the 4,096 shape; "Its modern line goes back to 2006"; "quantized" glossed before its definition; "squared size" explained; "evals" glossed with a pointer to `evaluation`; LoRA's alpha scale mentioned in one sentence; the D-009 comment for 12 bytes per parameter points to Example 5; "in latent semantic analysis".
 - Not changed: the QLoRA quotation drops an in-text reference marker ("[58]"), the book's convention for quotations.
 - Could not verify: McCloskey and Cohen (1989) and Ratcliff (1990) themselves (read through French); forward references to chapters not yet drafted (`instructions`, `prompting`, `tools`, `local`, `evaluation`) against their final text.
+
+## Consistency pass (2026-11-11)
+
+- **closed models** bolded at its parenthetical definition (first definition in book order); `local` no longer bolds it and links back here (glossary finding (b)).
+- Not changed: "0.127 bits per weight" before `local` defines bits per weight (glossary (b)); the phrase is plain English in context and needs no gloss.
+- Not changed: `bucilua2006model` is cited without a page; the copy read is unpaginated (page convention, noted in the to-do as fine).
+- Not changed: LoRA's matrix-times-vector order (notation item 10, optional, "no change").

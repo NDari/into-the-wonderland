@@ -150,3 +150,11 @@ For the glossary: artificial neuron, weight, bias, weighted sum, activation func
 
 - Olazaran (p. 340) notes Rosenblatt's 1960 report also introduced a learning procedure. The text should credit the 1960 learning rules to both groups, not to the 1958 paper alone.
 - The "first winter" is to be told through N10 only. A broader AI-winter story (for example the UK's 1973 Lighthill report) belongs to AI in general, has not been researched, and is out of scope here.
+
+## Consistency pass (2026-11-11)
+
+Editorial pass to make the chapters agree with each other; no sourced fact, quote, number, or citation changed except where noted.
+
+- Un-bolded "weight" and "parameters": both are first bolded in `destination` with the same meaning; the parameters sentence already links back.
+- American spelling: labelled to labeled (three places), analysed to analyzed (three), colours to colors, modelled to modeled. Quotations untouched ("judgement").
+- Page convention: `mcculloch1943logical` (line 55), `rosenblatt1958perceptron` (line 93), and `minsky1969perceptrons` (line 168) are cited without a page only where the citation names the work; every specific claim from them already carries a page. No change.

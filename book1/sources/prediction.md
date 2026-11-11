@@ -387,3 +387,9 @@ For the glossary: n-gram, unigram, bigram, trigram, bit, entropy, language model
   - "Add-one smoothing" and "Kneser-Ney smoothing" bolded at first use.
 - Not changed: "language model" stays bold here, because this chapter gives its formal definition (destination introduced it informally). Pereira spells "Colourless"; the chapter quotes Chomsky's spelling via Liberman and only describes Pereira's result.
 - Could not verify: Pereira's issue number (not on the fetched pages; bib note says so); the page range of Shannon 1948 Part II (not fetched; matches the footnote in Shannon 1951).
+
+## Consistency pass (2026-11-11)
+
+Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or citation changed.
+
+- "language model" un-bolded (first bolded in `destination`, same meaning); the existing callback to the destination chapter stays. This reverses the independent check's choice to keep it bold, per the pass's one-bold-per-term rule.

@@ -62,3 +62,11 @@ For the glossary: initialization (Glorot or Xavier; He), dropout, thinned networ
 - Not changed: W11 (the Glorot paraphrase) was judged acceptable.
 - Re-checked after fixing: the writer located the new quotes in the same fetched texts (He et al. 2015 pp. 1 and 7; Ioffe and Szegedy, BN-Baseline and BN-x5; Santurkar et al. p. 2; Srivastava et al. p. 1931; Goodfellow et al. p. 420).
 
+
+## Consistency pass (2026-11-11)
+
+Editorial pass to make the chapters agree with each other; no sourced fact, quote, number, or citation changed except where noted.
+
+- Un-bolded "dropout" (first bolded in `deep-turn`) and added a callback link to that chapter.
+- Glossed "ensemble" at its first use in the book (bolded later in `seq2seq`).
+- "dataset" to "data set" in prose (line 84); the He et al. quotation keeps "dataset", and "mini-batch" stays inside the recipe quotation.

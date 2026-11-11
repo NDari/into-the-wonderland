@@ -2,7 +2,7 @@
 
 <!-- D-002: intuition only; formulas (weighted sum, sigmoid) follow worked examples. D-003: no code. D-008: first chapter of the "how networks learn" thread. D-009: numbers from code/checks/neuron.py. D-014: figures from figures/neuron.py. -->
 
-The picture in [the destination chapter](#destination) had a box labelled "Layers", where most of an LLM's computation happens. Open that box far enough and you find a very large number of small, identical computing units, each doing something simple. This chapter is about that unit: what it computes, how a single one can learn, and why the first wave of work on it ran into a wall in 1969.
+The picture in [the destination chapter](#destination) had a box labeled "Layers", where most of an LLM's computation happens. Open that box far enough and you find a very large number of small, identical computing units, each doing something simple. This chapter is about that unit: what it computes, how a single one can learn, and why the first wave of work on it ran into a wall in 1969.
 
 The story runs from 1943 to 1969, and almost all of it concerns a single unit, or a single layer of them. That restriction is the point of the chapter. A single unit can do surprisingly much, and its limits are exact and easy to see. Those limits shaped the field for the next two decades.
 
@@ -10,7 +10,7 @@ The story runs from 1943 to 1969, and almost all of it concerns a single unit, o
 
 An **artificial neuron** takes several numbers as input and produces one number as output. It works like a weighted vote.
 
-Each input has a **weight**, a number saying how much that input counts and in which direction. A positive weight means "this input argues for firing"; a negative weight means "this input argues against". The neuron multiplies each input by its weight and adds up the results. It then adds one more number, the **bias**, which sets how easily the neuron fires regardless of its inputs. The total is the **weighted sum**. Finally the neuron passes the weighted sum through an **activation function**, which decides the output. The oldest choice is the **step function**: output 1 if the weighted sum is above zero, and 0 otherwise. Put the other way round, the neuron fires when its weighted inputs, before the bias is added, come to more than minus the bias. That amount is the neuron's **threshold**: a bias of -0.1 means a threshold of 0.1.
+Each input has a weight, a number saying how much that input counts and in which direction. A positive weight means "this input argues for firing"; a negative weight means "this input argues against". The neuron multiplies each input by its weight and adds up the results. It then adds one more number, the **bias**, which sets how easily the neuron fires regardless of its inputs. The total is the **weighted sum**. Finally the neuron passes the weighted sum through an **activation function**, which decides the output. The oldest choice is the **step function**: output 1 if the weighted sum is above zero, and 0 otherwise. Put the other way round, the neuron fires when its weighted inputs, before the bias is added, come to more than minus the bias. That amount is the neuron's **threshold**: a bias of -0.1 means a threshold of 0.1.
 
 Here is one neuron with three inputs.
 
@@ -34,7 +34,7 @@ $$z = w_1 x_1 + w_2 x_2 + \dots + w_n x_n + b$$
 
 where $x_1$ to $x_n$ are the inputs, $w_1$ to $w_n$ are their weights, $b$ is the bias, and $z$ is the weighted sum. The output is the activation function applied to $z$.
 
-The weights and the bias are the neuron's **parameters**, in exactly the sense of [the destination chapter](#destination): the numbers that learning will set. Everything that follows in this book, up to models with hundreds of billions of parameters, is built from this unit or close relatives of it.
+The weights and the bias are the neuron's parameters, in exactly the sense of [the destination chapter](#destination): the numbers that learning will set. Everything that follows in this book, up to models with hundreds of billions of parameters, is built from this unit or close relatives of it.
 
 ## You have seen this before
 
@@ -52,7 +52,7 @@ The bridge also connects to the end of [the destination chapter](#destination). 
 
 ## 1943: a neuron as a piece of logic
 
-The first mathematical model of a neuron came from Warren McCulloch and Walter Pitts in 1943 [@mcculloch1943logical]. Their starting point was a fact of biology: a nerve cell either fires or does not. Their abstract opens: "Because of the "all-or-none" character of nervous activity, neural events and the relations among them can be treated by means of propositional logic" [@mcculloch1943logical, p. 99]. In other words, if a neuron is either on or off, it can be treated as a statement that is either true or false, and a network of neurons can be analysed as a piece of logic.
+The first mathematical model of a neuron came from Warren McCulloch and Walter Pitts in 1943 [@mcculloch1943logical]. Their starting point was a fact of biology: a nerve cell either fires or does not. Their abstract opens: "Because of the "all-or-none" character of nervous activity, neural events and the relations among them can be treated by means of propositional logic" [@mcculloch1943logical, p. 99]. In other words, if a neuron is either on or off, it can be treated as a statement that is either true or false, and a network of neurons can be analyzed as a piece of logic.
 
 Their model neuron fires when enough of its excitatory inputs are active at once: "a certain fixed number of synapses must be excited ... in order to excite a neuron" [@mcculloch1943logical, p. 101]. That fixed number is a threshold. With it, single neurons compute the basic operations of logic. Take a neuron with two inputs, each counting 1.
 
@@ -102,7 +102,7 @@ The gap between those two passages is the story of this chapter in miniature. Wh
 
 ## How a perceptron learns
 
-A perceptron learns from labelled examples, the same kind of training data the reader knows from classification. Start with all weights and the bias at zero. Show the perceptron one example and compare its output with the correct answer. Then:
+A perceptron learns from labeled examples, the same kind of training data the reader knows from classification. Start with all weights and the bias at zero. Show the perceptron one example and compare its output with the correct answer. Then:
 
 - If the output is right, change nothing.
 - If the output is 0 but should be 1, add each input to its weight and add 1 to the bias. Every input that was on now counts more in favor of firing.
@@ -139,13 +139,13 @@ Learning rules for single-layer networks appeared from two groups in 1960, one f
 
 At Stanford's Department of Electrical Engineering, Bernard Widrow and Marcian Hoff, then a doctoral student there, built a learning machine of their own. They called it "Adaline" (usually written **ADALINE** today), for "adaptive linear", and described it as "about the size of a lunch pail" [@widrow1960adaptive, p. 97]. Its neuron was the same weighted vote: "a linear combination of the input signals is formed. The weights are the gains a1, a2, ..., which could have both positive and negative values. The output signal is +1 if this weighted sum is greater than a certain threshold, and -1 otherwise" [@widrow1960adaptive, p. 96]. Patterns were set on a 4-by-4 grid of switches, and "the machine's total experience is stored in the values of the weights" a0 to a16: sixteen weights for the switches and one for the threshold [@widrow1960adaptive, p. 97].
 
-Training ADALINE was a manual procedure in 1960. An operator set a pattern, read the error on a meter, and turned each of the 17 weights "in the direction which will diminish the error by an amount which reduces the error magnitude by 1/17", so that after all 17 adjustments "the error for the present input pattern is zero" [@widrow1960adaptive, p. 97]. Two features set this apart from the perceptron rule. The correction is spread across all the weights according to how far off the answer was, not applied as a fixed step only when the final answer is wrong. And Widrow and Hoff analysed the procedure as a search, by "the method of steepest descent", for the weights that minimize the mean square of the error [@widrow1960adaptive, pp. 98-99]: the quantity the reader knows from least-squares regression.
+Training ADALINE was a manual procedure in 1960. An operator set a pattern, read the error on a meter, and turned each of the 17 weights "in the direction which will diminish the error by an amount which reduces the error magnitude by 1/17", so that after all 17 adjustments "the error for the present input pattern is zero" [@widrow1960adaptive, p. 97]. Two features set this apart from the perceptron rule. The correction is spread across all the weights according to how far off the answer was, not applied as a fixed step only when the final answer is wrong. And Widrow and Hoff analyzed the procedure as a search, by "the method of steepest descent", for the weights that minimize the mean square of the error [@widrow1960adaptive, pp. 98-99]: the quantity the reader knows from least-squares regression.
 
 That second feature turned out to be the more important. Goodfellow, Bengio, and Courville, in their deep learning textbook, note that "the training algorithm used to adapt the weights of the ADALINE was a special case of an algorithm called stochastic gradient descent" [@goodfellow2016deep, p. 14]. The same textbook adds that slightly modified versions of it "remain the dominant training algorithms for deep learning models today" [@goodfellow2016deep, p. 14], as of the book's 2016 publication. Stochastic gradient descent returns in [the chapter on the training loop](#toolkit).
 
 ## What a single neuron cannot do
 
-Go back to the weighted sum of a two-input neuron, $w_1 x_1 + w_2 x_2 + b$. The neuron fires on one side of the line where that sum equals zero, and stays silent on the other. That line is the neuron's **decision boundary**. With more inputs it is a flat plane or its higher-dimensional equivalent, but the idea is the same: a single neuron splits its input space with one straight cut. A task it can solve is called **linearly separable**: the examples labelled 1 and those labelled 0 can be separated by one straight cut.
+Go back to the weighted sum of a two-input neuron, $w_1 x_1 + w_2 x_2 + b$. The neuron fires on one side of the line where that sum equals zero, and stays silent on the other. That line is the neuron's **decision boundary**. With more inputs it is a flat plane or its higher-dimensional equivalent, but the idea is the same: a single neuron splits its input space with one straight cut. A task it can solve is called **linearly separable**: the examples labeled 1 and those labeled 0 can be separated by one straight cut.
 
 AND and OR are linearly separable. Now consider **XOR**, "exclusive or": the output is 1 when exactly one of the two inputs is 1, and 0 otherwise [@goodfellow2016deep, p. 167].
 
@@ -167,7 +167,7 @@ XOR is not an exotic case. It is the smallest example of a pattern that a single
 
 In 1969 Marvin Minsky and Seymour Papert published *Perceptrons: An Introduction to Computational Geometry* [@minsky1969perceptrons]. The book is still in copyright and is quoted here through Olazaran's history of the controversy. Olazaran separates "two different issues in Minsky and Papert's arguments": "One is their work on the limitations of single-layer perceptrons. The other is their "intuitive judgement" (in their own words) about the possibility of developing a learning algorithm for multilayer perceptrons" [@olazaran1993sociological, p. 358].
 
-The first issue was mathematics. Minsky and Papert analysed in depth what single-layer perceptrons can and cannot compute, including the **parity** problem (does the input contain an odd number of active points?) and the **connectedness** problem (is a figure in one piece?) [@olazaran1993sociological, pp. 359, 361]. XOR is parity with two inputs. Rosenblatt himself had listed the connectedness problem, which he called the "figure-ground" problem, among the hardest open problems for perceptrons in 1962 [@olazaran1993sociological, pp. 348-349].
+The first issue was mathematics. Minsky and Papert analyzed in depth what single-layer perceptrons can and cannot compute, including the **parity** problem (does the input contain an odd number of active points?) and the **connectedness** problem (is a figure in one piece?) [@olazaran1993sociological, pp. 359, 361]. XOR is parity with two inputs. Rosenblatt himself had listed the connectedness problem, which he called the "figure-ground" problem, among the hardest open problems for perceptrons in 1962 [@olazaran1993sociological, pp. 348-349].
 
 The second issue was a judgment. About networks with more than one layer, Minsky and Papert wrote:
 
@@ -177,7 +177,7 @@ The second issue was a judgment. About networks with more than one layer, Minsky
 
 ## What happened next: two accounts
 
-Interest in neural networks fell away in this period, in what the deep learning textbook calls "the first major dip in the popularity of neural networks" [@goodfellow2016deep, p. 14]. What role the book played in that decline is disputed, and the dispute is worth knowing because it still colours how the history is told.
+Interest in neural networks fell away in this period, in what the deep learning textbook calls "the first major dip in the popularity of neural networks" [@goodfellow2016deep, p. 14]. What role the book played in that decline is disputed, and the dispute is worth knowing because it still colors how the history is told.
 
 **The common account** treats *Perceptrons* as the cause. The deep learning textbook of Goodfellow, Bengio, and Courville puts it this way: "Critics who observed these flaws in linear models caused a backlash against biologically inspired learning in general (Minsky and Papert, 1969). This was the first major dip in the popularity of neural networks" [@goodfellow2016deep, p. 14]. Elsewhere it says that critics including Marvin Minsky "pointed out several of the flaws of the linear model family, such as its inability to learn the XOR function, which led to a backlash against the entire neural network approach" [@goodfellow2016deep, p. 221].
 
@@ -195,7 +195,7 @@ The next step needed two things that this chapter has set up. The first is the i
 
 - An artificial neuron computes a weighted sum of its inputs plus a bias, then applies an activation function. Its weights and bias are its parameters.
 - With a sigmoid activation, a neuron is logistic regression. With a step, it is a linear classifier that outputs 0 or 1.
-- McCulloch and Pitts (1943) modelled neurons as threshold logic, with fixed connections. Hebb (1949) proposed that learning changes connection strengths.
+- McCulloch and Pitts (1943) modeled neurons as threshold logic, with fixed connections. Hebb (1949) proposed that learning changes connection strengths.
 - The perceptron (Rosenblatt, 1958) learned from examples by error correction. The convergence theorem guarantees success whenever a solution exists. ADALINE (Widrow and Hoff, 1960) reduced a squared error instead, an early form of the method used to train modern networks.
 - A single neuron draws one straight boundary, so it cannot compute XOR. Layers of neurons can, but in 1969 no one knew how to train them.
 - *Perceptrons* (Minsky and Papert, 1969) proved limits of single-layer networks and judged multilayer ones "sterile". How far it caused the decline that followed is disputed.

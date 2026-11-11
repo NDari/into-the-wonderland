@@ -132,3 +132,12 @@ For the glossary, when it is drafted: large language model (LLM), token, vocabul
   - "Successors" was reworded.
   - The thread sentence was rephrased.
 - Re-checked after fixing: every new location (Table 1 p. 2, Table 3 p. 7, Table 4 p. 10, p. 16; ouyang2022training p. 3; radford2018improving pp. 3 and 5) was located again by the writer in the same fetched texts.
+
+## Consistency pass (2026-11-11)
+
+Editorial pass to make the chapters agree with each other; no sourced fact, quote, number, or citation changed except where noted.
+
+- Bolded **large language model** at its definition (glossary finding (e)).
+- Bolded **vocabulary** at its definition (glossary finding (e)); `tokens` bolds it again and should drop that bold (reported to the coordinator).
+- Glossed "prompts" at their first use in the book ("the texts given to a model as input"), matching the definition in `prompting` (glossary finding (b)).
+- No other items concern this chapter: it is the first bold for every term it shares with later chapters, and it uses no British spellings outside quotations. The "position table" cross-reference is fixed in `attention`, not here. Page convention: no uncited-page keys in this chapter.

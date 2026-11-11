@@ -1,10 +1,10 @@
 # Timeline {#timeline}
 
-<!-- D-005: compiled from the verified chapters, using their dates and citations; independent check pending. D-010: citations by bib key and page, chapters linked by ID. D-008: periods follow the book's parts. D-003: no code. -->
+<!-- D-005: compiled from the verified chapters, using their dates and citations; independent check recorded in the ledger. D-010: citations by bib key and page, chapters linked by ID. D-008: periods follow the book's parts. D-003: no code. -->
 
 This appendix lists, in order, the main dated events that the chapters describe. Each entry gives the date as the chapter gives it, one line on what happened, the source the chapter cites, and, in italics, the chapter that tells the story. Nothing here goes beyond the chapters: an event appears only if a chapter states it, with the chapter's own citation.
 
-A paper is dated as the chapter dates it, usually when it first appeared, which can be earlier than the journal or conference version the citation names. Where a chapter gives two dates, such as a preprint and a publication, both are shown. Where the chapters present a disagreement over who was first, each claimant's event is listed as the chapter gives it, and the timeline does not choose between them. The book's date is November 2026; the later entries describe a field that was still moving.
+A paper is dated as the chapter dates it, usually when it first appeared, which can be earlier than the journal or conference version the citation names. Where a chapter gives two dates, such as a preprint and a publication, both are shown. Within a year, entries dated only by the year come first, then the entries with a month, in order; the one exception is Schmidhuber's "1991 on", placed beside the 2006 entry it answers. Where the chapters present a disagreement over who was first, each claimant's event is listed as the chapter gives it, and the timeline does not choose between them. The book's date is November 2026; the later entries describe a field that was still moving.
 
 ## Before 1970: the neuron and the statistics of text
 
@@ -15,7 +15,7 @@ A paper is dated as the chapter dates it, usually when it first appeared, which 
 :   McCulloch and Pitts model the neuron as threshold logic [@mcculloch1943logical]. *[The artificial neuron](#neuron)*
 
 1948
-:   Shannon's "A Mathematical Theory of Communication" treats text as a random source [@shannon1948mathematical, p. 379]. *[Language as prediction](#prediction)*
+:   Shannon's "A Mathematical Theory of Communication" sets meaning aside and treats text as a random source [@shannon1948mathematical, pp. 379, 385]. *[Language as prediction](#prediction)*
 
 1949
 :   Hebb proposes that learning changes the strength of connections [@hebb1949organization, p. 62]. *[The artificial neuron](#neuron)*
@@ -39,13 +39,13 @@ A paper is dated as the chapter dates it, usually when it first appeared, which 
 :   The New York Times reports the Navy's "embryo of an electronic computer" [@nyt1958navy; quoted in @olazaran1993sociological, p. 341]. *[The artificial neuron](#neuron)*
 
 1960
-:   Widrow and Hoff's ADALINE reduces a squared error [@widrow1960adaptive, p. 97]. *[The artificial neuron](#neuron)*
+:   Widrow and Hoff's ADALINE reduces a squared error [@widrow1960adaptive, pp. 98-99]. *[The artificial neuron](#neuron)*
 
 1964
 :   Polyak's momentum method, as later authors credit it [@sutskever2013importance, p. 1140; @goodfellow2016deep, p. 292]. *[The training loop](#toolkit)*
 
 1969
-:   Minsky and Papert's *Perceptrons* [@minsky1969perceptrons]; the first major dip follows [@goodfellow2016deep, p. 14]. *[The artificial neuron](#neuron)*
+:   Minsky and Papert's *Perceptrons* [@minsky1969perceptrons]; interest in neural networks falls away, and the book's part in that is disputed [@goodfellow2016deep, p. 14; @olazaran1993sociological, p. 358]. *[The artificial neuron](#neuron)*
 
 ## 1970-1989: learning in layers
 
@@ -84,7 +84,7 @@ About 1978
 ## 1990-2005: structure, smoothing, and the second winter
 
 1990
-:   Elman's simple recurrent network predicts the next word [@elman1990finding, p. 183]. *[Networks with structure](#structure)*
+:   Elman's simple recurrent network predicts the next word [@elman1990finding, pp. 183, 197]. *[Networks with structure](#structure)*
 
 1990
 :   Deerwester and colleagues' latent semantic analysis [@deerwester1990indexing, p. 391]. *[Words as vectors](#embeddings)*
@@ -142,7 +142,7 @@ Two accounts of where deep learning began appear in [the turn](#deep-turn); both
 :   Hinton, Osindero, and Teh train deep networks one layer at a time [@hinton2006fast], the textbook's "breakthrough in 2006" [@goodfellow2016deep, p. 18]. *[The turn](#deep-turn)*
 
 2007
-:   "Large Language Models in Machine Translation": n-grams on 2 trillion tokens [@brants2007large, p. 858]. *[Scale](#scale)*
+:   "Large Language Models in Machine Translation": n-grams on up to 2 trillion tokens [@brants2007large, p. 858]. *[Scale](#scale)*
 
 2008
 :   Collobert and Weston train a network for its word vectors [@collobert2008unified, p. 5]. *[Words as vectors](#embeddings)*
@@ -170,6 +170,9 @@ Two accounts of where deep learning began appear in [the turn](#deep-turn); both
 
 2011
 :   GPU convolutional networks from Schmidhuber's laboratory win image contests, in his account of the credit [@schmidhuber2014deep, pp. 23-24]. *[The turn](#deep-turn)*
+
+2011
+:   Torch7, built on the Lua language [@collobert2011torch7, p. 1]. *[The training loop](#toolkit)*
 
 2012
 :   Schuster and Nakajima's WordPiece [@schuster2012japanese, pp. 5149-5150]. *[Tokens](#tokens)*
@@ -201,11 +204,8 @@ September 2014
 2015
 :   Ioffe and Szegedy's batch normalization [@ioffe2015batch, p. 448]. *[Making deep networks trainable](#depth)*
 
-May 2015
-:   Srivastava, Greff, and Schmidhuber's highway networks [@srivastava2015highway, p. 1]. *[Making deep networks trainable](#depth)*
-
-2015, 2016
-:   Sennrich, Haddow, and Birch adapt BPE to translation: posted August 2015, published 2016 [@sennrich2016neural, p. 1716]. *[Tokens](#tokens)*
+2015
+:   He and colleagues redo the starting-weight rule for rectified linear units [@he2015delving, p. 4]. *[Making deep networks trainable](#depth)*
 
 2015
 :   Hinton, Vinyals, and Dean's distillation [@hinton2015distilling, p. 1]. *[Adapting a model](#adapting)*
@@ -213,28 +213,37 @@ May 2015
 2015
 :   Dai and Le pretrain a whole recurrent network [@dai2015semi, p. 1]. *[Pretraining](#pretraining)*
 
+2015, 2016
+:   Sennrich, Haddow, and Birch adapt BPE to translation: posted August 2015, published 2016 [@sennrich2016neural, p. 1716]. *[Tokens](#tokens)*
+
+May 2015
+:   Srivastava, Greff, and Schmidhuber's highway networks [@srivastava2015highway, p. 1]. *[Making deep networks trainable](#depth)*
+
 November 2015
 :   Google open-sources TensorFlow [@abadi2015tensorflow, p. 1]. *[The training loop](#toolkit)*
 
 December 2015
-:   ResNet wins ImageNet with 3.57% top-5 error [@he2015deep, pp. 1-2]; Schmidhuber calls it a version of the highway network [@schmidhuber2022annotated, p. 12]. *[Making deep networks trainable](#depth)*
+:   ResNet wins ImageNet, and an ensemble reaches 3.57% top-5 error [@he2015deep, pp. 1-2]; Schmidhuber calls it a version of the highway network [@schmidhuber2022annotated, p. 12]. *[Making deep networks trainable](#depth)*
 
 2016
 :   Ba, Kiros, and Hinton's layer normalization [@ba2016layer, p. 1]. *[Making deep networks trainable](#depth)*
 
 2016
-:   A neural system wins almost all language pairs at the WMT shared task [@koehn2017neural, p. 6]. *[Reading and writing sequences](#seq2seq)*
+:   At WMT 2016 a pure neural system is in the top group for 8 of 12 translation directions [@bojar2016findings, p. 141]; in Koehn's summary, one "won in almost all language pairs" [@koehn2017neural, p. 6]. *[Reading and writing sequences](#seq2seq)*
 
 September 2016
 :   Google's neural translation system [@wu2016google, p. 1], all Chinese-English traffic by 27 September [@le2016neural]. *[Reading and writing sequences](#seq2seq)*
 
 ## 2017: the transformer
 
-January 2017
-:   PyTorch first released [@paszke2019pytorch, p. 9]. *[The training loop](#toolkit)*
-
 2017
 :   Shazeer and colleagues' sparsely gated mixture of experts [@shazeer2017outrageously, p. 1]. *[The transformer since 2017](#since-2017)*
+
+2017
+:   Schulman and colleagues' PPO [@schulman2017proximal, p. 1]. *[Teaching models to follow instructions](#instructions)*
+
+January 2017
+:   PyTorch first released [@paszke2019pytorch, p. 9]. *[The training loop](#toolkit)*
 
 June 2017
 :   Christiano and colleagues learn from human comparisons [@christiano2017deep, pp. 5-6]. *[Teaching models to follow instructions](#instructions)*
@@ -242,19 +251,7 @@ June 2017
 June 2017
 :   "Attention Is All You Need": the transformer [@vaswani2017attention, p. 1]. *[Attention without recurrence](#attention)*
 
-2017
-:   Schulman and colleagues' PPO [@schulman2017proximal, p. 1]. *[Teaching models to follow instructions](#instructions)*
-
 ## 2018-2022: from transformer to assistant
-
-January 2018
-:   Liu and colleagues' decoder-only transformer [@liu2018generating, pp. 1, 5]. *[Anatomy of a transformer](#anatomy)*
-
-January 2018
-:   Howard and Ruder's ULMFiT [@howard2018universal, p. 330]. *[Pretraining](#pretraining)*
-
-Early 2018
-:   Peters and colleagues' ELMo, contextual word vectors [@peters2018deep, p. 2227]. *[Pretraining](#pretraining)*
 
 2018
 :   GLUE benchmark [@wang2019glue, p. 2]. *[Measuring models](#evaluation)*
@@ -268,14 +265,20 @@ Early 2018
 2018
 :   Kudo's unigram method [@kudo2018subword, p. 68] and SentencePiece [@kudo2018sentencepiece, p. 66]. *[Tokens](#tokens)*
 
+January 2018
+:   Liu and colleagues' decoder-only transformer [@liu2018generating, pp. 1, 5]. *[Anatomy of a transformer](#anatomy)*
+
+January 2018
+:   Howard and Ruder's ULMFiT [@howard2018universal, p. 330]. *[Pretraining](#pretraining)*
+
+Early 2018
+:   Peters and colleagues' ELMo, contextual word vectors [@peters2018deep, p. 2227]. *[Pretraining](#pretraining)*
+
 June 2018
 :   Radford and colleagues' GPT [@radford2018improving, p. 1]. *[Pretraining](#pretraining)*
 
 October 2018
 :   Devlin and colleagues post BERT [@devlin2019bert, p. 4171]. *[Pretraining](#pretraining)*
-
-February 2019
-:   GPT-2, up to 1.5 billion parameters [@radford2019language, p. 4]. *[Scale](#scale)*
 
 2019
 :   Sutton's "The Bitter Lesson" [@sutton2019bitter]. *[Scale](#scale)*
@@ -292,8 +295,20 @@ February 2019
 2019
 :   Shazeer's multi-query attention [@shazeer2019fast, p. 1]. *[The transformer since 2017](#since-2017)*
 
+2019
+:   SuperGLUE, GLUE's harder successor [@wang2019superglue, p. 2]. *[Measuring models](#evaluation)*
+
+February 2019
+:   GPT-2, up to 1.5 billion parameters [@radford2019language, p. 4]. *[Scale](#scale)*
+
 November 2019
 :   Full GPT-2 released after a staged release [@openai2019sixmonth; @openai2019release]. *[Scale](#scale)*
+
+2020
+:   Karpukhin and colleagues' dense passage retrieval [@karpukhin2020dense, p. 6771]. *[Giving models knowledge and tools](#tools)*
+
+2020
+:   Hendrycks and colleagues release MMLU [@hendrycks2021measuring, pp. 1, 3]. *[Measuring models](#evaluation)*
 
 January 2020
 :   Kaplan and colleagues' scaling laws [@kaplan2020scaling, pp. 1, 7]. *[Scale](#scale)*
@@ -304,12 +319,6 @@ May 2020
 May 2020
 :   Lewis and colleagues name retrieval-augmented generation [@lewis2020retrieval, p. 1]. *[Giving models knowledge and tools](#tools)*
 
-2020
-:   Karpukhin and colleagues' dense passage retrieval [@karpukhin2020dense, p. 6771]. *[Giving models knowledge and tools](#tools)*
-
-2020
-:   Hendrycks and colleagues release MMLU [@hendrycks2021measuring, pp. 1, 3]. *[Measuring models](#evaluation)*
-
 2021
 :   Su and colleagues' rotary position embeddings [@su2021roformer, p. 4]. *[The transformer since 2017](#since-2017)*
 
@@ -319,20 +328,20 @@ May 2020
 2021
 :   Elhage and colleagues: the residual stream and induction heads [@elhage2021mathematical]. *[The frontier](#frontier)*
 
+2021
+:   Radford and colleagues' CLIP, trained on 400 million image-caption pairs [@radford2021learning, p. 1]. *[The frontier](#frontier)*
+
+2021
+:   Carlini and colleagues extract verbatim training text from GPT-2 [@carlini2021extracting, p. 2633]. *[How an LLM is trained](#training)*
+
 September 2021
 :   Wei and colleagues define instruction tuning [@wei2022finetuned, p. 1]. *[Teaching models to follow instructions](#instructions)*
 
-January 2022
-:   Wei and colleagues name chain-of-thought prompting [@wei2022chain, p. 1]. *[Prompting and context](#prompting)*
+November 2021
+:   Nye and colleagues' scratchpad for intermediate results [@nye2021show, p. 1]. *[Prompting and context](#prompting)*
 
-January 2022
-:   OpenAI announces InstructGPT [@openai2022aligning]; the paper follows in March [@ouyang2022training, p. 2]. *[Teaching models to follow instructions](#instructions)*
-
-March 2022
-:   Chinchilla: models of the time were undertrained [@hoffmann2022training, pp. 1, 11]. *[Scale](#scale)*
-
-May 2022
-:   Kojima and colleagues: "Let's think step by step" [@kojima2022large, p. 1]. *[Prompting and context](#prompting)*
+2022
+:   Chinchilla: models of the time were "significantly undertrained" [@hoffmann2022training, p. 1]. *[Scale](#scale)*
 
 2022
 :   PaLM, 540 billion parameters [@chowdhery2022palm, p. 3]. *[Scale](#scale)*
@@ -342,6 +351,15 @@ May 2022
 
 2022
 :   Dao and colleagues' FlashAttention [@dao2022flashattention, p. 2]. *[The transformer since 2017](#since-2017)*
+
+January 2022
+:   Wei and colleagues name chain-of-thought prompting [@wei2022chain, p. 1]. *[Prompting and context](#prompting)*
+
+January 2022
+:   OpenAI announces InstructGPT [@openai2022aligning]; the paper follows in March [@ouyang2022training, pp. 1-2]. *[Teaching models to follow instructions](#instructions)*
+
+May 2022
+:   Kojima and colleagues: "Let's think step by step" [@kojima2022large, p. 1]. *[Prompting and context](#prompting)*
 
 September 2022
 :   Willison writes up prompt injection [@willison2022prompt]. *[Prompting and context](#prompting)*
@@ -357,6 +375,12 @@ December 2022
 
 ## 2023-2026: the working landscape
 
+2023
+:   Dettmers and colleagues' QLoRA [@dettmers2023qlora, p. 1]. *[Adapting a model](#adapting)*
+
+2023
+:   Ainslie and colleagues' grouped-query attention [@ainslie2023gqa, p. 4896]. *[The transformer since 2017](#since-2017)*
+
 24 February 2023
 :   Meta releases LLaMA, 7 to 65 billion parameters [@meta2023llamablog]. *[Small models and local inference](#local)*
 
@@ -366,29 +390,26 @@ December 2022
 March 2023
 :   OpenAI's GPT-4 report [@openai2023gpt4, p. 7]. *[Measuring models](#evaluation)*
 
+March 2023
+:   ChatGPT gains plugins, outside tools described in the prompt [@openai2023chatgptplugins]. *[Giving models knowledge and tools](#tools)*
+
 April 2023
 :   Chatbot Arena starts [@chiang2024chatbot, p. 2]. *[Measuring models](#evaluation)*
 
 May 2023
 :   Rafailov and colleagues' DPO [@rafailov2023direct, p. 1]. *[Teaching models to follow instructions](#instructions)*
 
-30 May 2023
+By 30 May 2023
 :   The Center for AI Safety's statement on extinction risk [@cais2023statement]. *[The frontier](#frontier)*
-
-2023
-:   Dettmers and colleagues' QLoRA [@dettmers2023qlora, p. 1]. *[Adapting a model](#adapting)*
 
 June 2023
 :   OpenAI's function calling [@openai2023functioncalling]. *[Giving models knowledge and tools](#tools)*
 
 July 2023
-:   Meta's Llama 2 [@meta2023llama2news; @touvron2023llama2, pp. 10-11]. *[Small models and local inference](#local)*
+:   Meta's Llama 2 [@meta2023llama2news; @touvron2023llama2, p. 4]. *[Small models and local inference](#local)*
 
 21 August 2023
 :   GGUF, llama.cpp's file format [@llamacpp2023ggufpr]. *[Small models and local inference](#local)*
-
-2023
-:   Ainslie and colleagues' grouped-query attention [@ainslie2023gqa, p. 4896]. *[The transformer since 2017](#since-2017)*
 
 September 2023
 :   Mistral 7B [@jiang2023mistral, p. 1]. *[Small models and local inference](#local)*
@@ -406,7 +427,7 @@ April 2024
 :   Llama 3, 8 and 70 billion parameters [@grattafiori2024llama, p. 2; @huggingface2026api]. *[Small models and local inference](#local)*
 
 July 2024
-:   Llama 3.1 adds 405 billion, released 23 July [@meta2024llama31card]; the Llama 3 paper [@grattafiori2024llama, p. 2]. *[Small models and local inference](#local)*
+:   Llama 3.1 adds 405 billion [@grattafiori2024llama, p. 2; @huggingface2026api]. *[Small models and local inference](#local)*
 
 12 September 2024
 :   OpenAI announces o1, a reasoning model [@openai2024learning]. *[The frontier](#frontier)*
@@ -427,7 +448,7 @@ December 2024
 :   DeepSeek-V3, a 671-billion-parameter mixture of experts [@deepseekai2024deepseekv3, p. 1]. *[The transformer since 2017](#since-2017)*
 
 January 2025
-:   DeepSeek-R1 [@deepseekai2025r1, p. 1], revised January 2026 [@deepseekai2025r1v2]. *[The frontier](#frontier)*
+:   DeepSeek publishes its method for the reasoning model DeepSeek-R1, in a paper revised January 2026 [@deepseekai2025r1v2]. *[The frontier](#frontier)*
 
 January 2025
 :   Humanity's Last Exam [@phan2025humanity, p. 4]. *[Measuring models](#evaluation)*

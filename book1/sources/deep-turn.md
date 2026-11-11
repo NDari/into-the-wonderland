@@ -379,3 +379,13 @@ For the glossary: feature engineering, representation learning, pretraining (200
 - Open item: several sources are cited by PDF or arXiv page (`bengio2007greedy`, `raina2009large`, `deng2009imagenet`, `ciresan2010deep`, `russakovsky2015imagenet`, `nair2010rectified`, `he2015deep`), while their bibliography entries give journal pages. The bib notes explain this, but the printed citations could mislead a reader. Fix this across the book before the first PDF meant for others.
 - Re-checked after fixing: the writer located the new quotes in the same fetched texts (Hinton et al. 2012 p. 92 with layout extraction; Glorot et al. p. 318; Hinton et al. 2006 p. 1540; Krizhevsky et al. p. 8; Goodfellow et al. p. 526).
 
+
+## Consistency pass (2026-11-11)
+
+Editorial pass to make the chapters agree with each other; no sourced fact, quote, number, or citation changed except where noted.
+
+- "pretraining" keeps its bold (different sense from `destination`); the existing note now says it is not the LLM sense of the destination chapter and that the related sense returns in `pretraining`.
+- Glossed "memory bandwidth" at its first use (bolded later in `local`).
+- "dataset" to "data set" in prose (line 102); the other occurrences are inside quotations.
+- Not changed: "minibatch" first appears inside the speech-review quotation, which is followed by a forward link to `toolkit`.
+- Open item from the independent check (PDF versus printed pages): under the agreed convention (printed pages of the copy read; PDF pages only where the copy has none, noted in the bib), every listed key already has a bib note saying which pages are cited. No change. `hinton2006fast` without a page names the work only.

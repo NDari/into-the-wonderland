@@ -452,3 +452,12 @@ For the glossary: self-attention (intra-attention), contextual embedding, query,
 - "Transduction" (in the quoted first-model claim) is now glossed in a parenthesis.
 - Cohesion: `embeddings` now points to both `attention` and `anatomy` for how transformers make vectors depend on context (one clause changed in that verified chapter).
 - Could not verify: Watson (1964), known only through D2L; ESL re-fetch redirected (research copy used).
+
+## Consistency pass (2026-11-11)
+
+Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or citation changed.
+
+- "labelled" -> "labeled" (American spelling).
+- **multi-head attention** bolded at first definition ("an arrangement called").
+- False cross-reference fixed: "the position table of the destination chapter" -> "the table of position vectors of the destination chapter" (destination's own wording; "position table" is named in `anatomy`).
+- Page convention: `zhang2023dive` is an online book cited by section (sec. 11.1, 11.2); no printed pages exist for the version read. Left as is.

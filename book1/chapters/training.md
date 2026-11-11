@@ -4,7 +4,7 @@
 
 [The chapter on scale](#scale) treated a training run as three numbers: parameters, tokens, and compute. This chapter opens the run itself. It follows the process from raw web pages to a finished set of weights, as a procedure the reader could describe to someone else: collect text, clean it, remove duplicates, cut it into tokens, and then repeat one training step tens or hundreds of thousands of times on hundreds or thousands of GPUs, while things break. It ends with a real loss curve and with a question the reader will have: how much of the training text ends up inside the model.
 
-This is pretraining only. What is done to a pretrained model afterward, to make it follow instructions, is the subject of [the chapter on instruction tuning](#instructions). The optimizer, learning-rate schedules, and the training loop in general are in [the toolkit chapter](#toolkit); this chapter shows them at scale.
+This is pretraining only. What is done to a pretrained model afterward, to make it follow instructions, is the subject of [the chapter on teaching models to follow instructions](#instructions). The optimizer, learning-rate schedules, and the training loop in general are in [the toolkit chapter](#toolkit); this chapter shows them at scale.
 
 ## Collecting text
 

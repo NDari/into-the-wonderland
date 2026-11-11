@@ -322,3 +322,12 @@ For the glossary: one-hot vector, dense vector, word embedding, cosine (similari
 - Script: `load_glove()` now checks both pinned hashes on every run and parses the zip member directly (no derived cache), so "hash-checked" holds for every run [D-018].
 - Bib: `mikolov2013distributed` authors now "Greg Corrado" and "Jeffrey Dean" as printed.
 - Could not verify: the 1957 first printing of Firth (scan is 1962); proceedings page ranges from metadata (levy2014neural, bolukbasi2016man, collobert2008unified); that the Hugging Face zip is byte-identical to the Stanford-hosted file.
+
+## Consistency pass (2026-11-11)
+
+Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or citation changed.
+
+- Bengio et al. 2000: "a conference paper of 2000 (printed in the 2001 proceedings)", so the rendered year 2001 no longer contradicts the text (timeline discrepancy 7; bib note supports it).
+- Bengio's table: "m the number of entries in each vector" instead of "the length" (length is the norm elsewhere in the chapter; notation verifier note).
+- **CBOW** bolded at its definition (glossary finding (e)).
+- Page convention: `bengio2000neural` has no page locator; the citation only names the work (dating), so none added.

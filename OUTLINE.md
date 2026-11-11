@@ -99,7 +99,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 
 - **Goal:** How a modern network is trained step by step, so the reader can read the optimizer half of a training recipe. Split from a larger chapter [D-017]. (~13 pp)
 - **Concepts:** tensors and shapes; minibatches and stochastic gradient descent; momentum; RMSProp and Adam; learning-rate schedules and warmup; gradient clipping; hyperparameters and the validation set; early stopping; reading a loss curve; automatic differentiation; frameworks.
-- **History:** Robbins and Monro (1951); momentum (Polyak 1964; Rumelhart et al. 1986); RMSProp (2012) and Adam (2014); warmup (2015-2017); Theano, Torch, TensorFlow, PyTorch.
+- **History:** Robbins and Monro (1951); momentum (Polyak 1964; Rumelhart et al. 1986); RMSProp (2012) and Adam (2014 preprint, ICLR 2015); warmup (2015-2017); Theano, Torch, TensorFlow, PyTorch.
 - **Bridge:** SGD is a 1951 statistics idea run at scale; the validation set, early stopping, and weight decay are the reader's own tools.
 - **Key figure:** plain gradient descent against momentum in a narrow valley; an annotated loss curve.
 - **Candidate sources:** Robbins and Monro 1951; Bottou 2010; Sutskever et al. 2013; Kingma and Ba 2015; Goyal et al. 2017; Baydin et al. 2018.
@@ -325,13 +325,13 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 
 - **Goal:** A chronology of the events in the book, with citations. (~4 pp)
 - **Depends on:** none
-- **Status:** drafted
+- **Status:** verified
 
 #### D. Further reading {#further-reading}
 
 - **Goal:** An annotated reading list; how to read an ML paper and a model card; a pointer to Book 2. (~4 pp)
 - **Depends on:** none
-- **Status:** drafted
+- **Status:** verified
 
 ## Book 2 - Building and running
 

@@ -62,7 +62,7 @@ One sentence in the paper describes, in 1951, what an LLM is trained to do: "A m
 
 ## Counting: the n-gram language model
 
-A **language model**, in a current textbook's definition, "assigns a probability to each possible next word, or equivalently gives a probability distribution over possible next words. Language models can also assign a probability to an entire sentence" [@jurafsky2026speech, p. 1]. [The destination chapter](#destination) showed how the two are connected: the probability of a whole sentence is the product of the next-word probabilities, each given everything before it.
+A language model, in a current textbook's definition, "assigns a probability to each possible next word, or equivalently gives a probability distribution over possible next words. Language models can also assign a probability to an entire sentence" [@jurafsky2026speech, p. 1]. [The destination chapter](#destination) showed how the two are connected: the probability of a whole sentence is the product of the next-word probabilities, each given everything before it.
 
 The difficulty is "everything before it". No collection of text, however large, contains every sentence beginning a reader might write. "Language is creative and any particular context might have never occurred before!" [@jurafsky2026speech, p. 3]. The n-gram model's answer is to forget most of the past: predict each word from only the last one or two. This simplification is called the **Markov assumption** [@jurafsky2026speech, p. 3]. Then the probabilities can be estimated by counting. The probability of a word given the word before it is the number of times the pair occurs, divided by the number of times the first word occurs.
 

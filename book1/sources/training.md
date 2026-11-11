@@ -418,3 +418,9 @@ For the glossary: Common Crawl, boilerplate, quality filter (rule, classifier), 
   4. "A freshly initialized network is confidently wrong" was an unsourced generalization; now "this freshly initialized network started out confidently wrong".
 - Warnings acted on: pages for LLaMA's 1.4T (pp. 2-3), BLOOM's learning-rate peak (pp. 21-22), MinHash (Lee pp. 8424, 8426), FineWeb (pp. 1, 3-4); citations added for BLOOM's vocabulary (p. 21) and Llama 3's 15.6T (p. 3); Llama 3's memorization "which they describe as low; their table shows the rates rising with size"; restarts "after an interruption" (some look planned); the weights-vs-text comparison marked as a rough estimate (English figure, about a byte per character); loss milestones reordered ("at the end, after 366.5 billion tokens"); "tens or hundreds of thousands of times on hundreds or thousands of GPUs"; date stamps for Common Crawl (as of 2026-11) and for 16-bit practice (as of 2024; speed-up "on the GPUs of 2017-2018, two to eight times"); hedges restored (dialects "assigned" by a classifier; "most duplicates they saw"; Google's "in our experience" on its own chips); ZeRO, A100, fastText, Mixtral glossed; $3 \times 10^{38}$ as math; the loss figure now keeps every point above 2.5, so the blip at 136.7B tokens shows; the header's stray D-019 citation removed; this ledger's header and item 8 corrected.
 - Could not verify: that Megatron-DeepSpeed `main` is exactly BLOOM's code; the 28 June date of the end of the first pass (the log has no timestamps); the SC20 venue in the ZeRO bib entry.
+
+## Consistency pass (2026-11-11)
+
+Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or citation changed.
+
+- Link text "the chapter on instruction tuning" -> "the chapter on teaching models to follow instructions" (term used before its definition).

@@ -653,3 +653,11 @@ Left out (sourced but cut for length, or not sourced): LLM.int8()'s speed (sligh
 - Could not verify: the GPTQ "noted in 2022" wording in arXiv v1 (only v2 read); binary memory sizes of the graphics cards (general knowledge only, so not stated); what the GPU-layer setting of 35 means for that model; the live ai.meta.com LLaMA page; gemma.ai; "popular" for Ollama.
 
 Every license, Hub count and gating status, runtime default, and bandwidth figure must be re-fetched before any PDF build.
+
+## Consistency pass (2026-11-11)
+
+- "closed model" and "open-weight model" no longer bold (both bolded first in `adapting`); a sentence now says that the chapter on adapting introduced both terms. The D-020 marker stays on the sentence.
+- Mistral 7B (September 2023): `[@mistral2023mistral7b]` added after the date (timeline discrepancy 2; LC15: Mistral's announcement of 27 September 2023; the paper `jiang2023mistral` is October 2023).
+- "active parameters" no longer bold (bolded first in `since-2017`, which the paragraph already links).
+- **calibration data** keeps its bold with "(a different sense of calibration from the match between confidence and accuracy of the generation chapter)" (glossary finding (c)).
+- "base model" no longer bold; "as the destination chapter called it" added (bolded first in `destination`).

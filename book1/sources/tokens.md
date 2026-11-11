@@ -354,3 +354,13 @@ For the glossary: token (and the older type/token sense), tokenizer, vocabulary,
   3. Nogueira et al.'s split of "132" and "232" is their hedged explanation ("might be"), not an observation. Now quoted as "one explanation", with T5 explained and the five-digit failure and 1,000 examples per run stated (p. 4).
 - Warnings acted on: Korean has some spaces ("often written without spaces"); WordPiece "described in 2012"; character bigrams "as well or better on BLEU"; the second kind of unknown symbol (Sennrich fn. 3, "safeguar"); "in practice in the order they were learned"; "potentially translatable"; the source's gloss "sewage water treatment plant"; "the emoji 😀 takes 4"; SentencePiece restores text "after a standard normalization step"; " tokenizer" -> "␣token" | "izer" with the leading space; the type/token example lowercased; Llama 3 quote now names the Llama 2 comparison and uses single quotes inside; contractions added to the pre-split description; a third option (falling back on other spellings) added; "back-off dictionary" explained; "whose removal hurts the fit least"; Llama 3's added tokens no longer described as a response to Petrov et al.
 - Could not verify: Gage's printed journal pages (from Sennrich's reference list); the live cl100k_base and o200k_base vocabulary files were not re-downloaded (special-token IDs and patterns were checked in `openai_public.py`).
+
+## Consistency pass (2026-11-11)
+
+Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or citation changed.
+
+- "token", "tokenizer", and "token ID" un-bolded (first bolded in `destination`, same meaning); the paragraph already links to the destination chapter.
+- "vocabulary" un-bolded: `destination` now bolds it at its first definition (coordinator request).
+- **byte pair encoding** (BPE) bolded at Sennrich's adaptation, its first definition outside a quotation (glossary finding (e)).
+- T5 "a pretrained network of the kind described in later chapters" now links [the chapter on pretraining] (term used before its definition).
+- Page convention: `gage1994new` is cited without a locator for quotes and the worked example. Not changed: the only copy read is the unpaginated CD-ROM HTML, so there is no page to add; the quotes are located by section in TK1 (Introduction, Theory, Advantages of BPE).

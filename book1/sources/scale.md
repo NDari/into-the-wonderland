@@ -569,3 +569,11 @@ For the glossary: parameters, training tokens, compute, FLOP, petaflop/s-day, po
   4. Brants et al.'s 0.6 BLEU per doubling holds for the first segment; the web-scale model gained "0.15 BP per doubling" (p. 866). Both now given.
 - Warnings acted on: "had to be revised" instead of "turned out to be wrong"; "a small set of labeled examples" (matching `pretraining`); the 3.43-month doubling attributed to the post's chart, with the post's own "roughly a factor of 10 each year"; WebText's 45 million links vs the paper's preliminary 8 million documents explained; GPT-2's translation setup described as example pairs (p. 6); "quoted constantly" removed; the nat-to-bit conversion moved out of Kaplan's citation and marked as script arithmetic; "vocabulary size and the tokenizer" (Kaplan p. 5); "non-sparse", "closed-book", "compute-optimal", and "GPU-hour" glossed; "used many times"; the caption's unsourced claim about undisclosed numbers removed; "still argued" dated (years later; as of 2023 for emergence); the p^5 argument's independence assumption stated with Schaeffer et al.'s own caveat (p. 4); "16K H100 GPUs" as printed; the 88-fold revision limited to emissions for an energy-efficient data center (Patterson et al.), "widely cited" removed; the summary's Chinchilla bullet now "its table was later read as about 20 tokens per parameter"; D-009 markers added; figure labels in panel (a) moved next to their points.
 - Could not verify: Porian et al. beyond the abstract and introduction; whether Llama 3's "16K" means 16,000 or 16,384 (the chapter prints "16K").
+
+## Consistency pass (2026-11-11)
+
+Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or citation changed.
+
+- "Parameters" and "FLOPs" un-bolded (first bolded in `destination` and `attention`); FLOPs now has a callback link to the attention chapter.
+- **scaling laws** defined and bolded after Kaplan's three power laws (glossary finding (e); before, only the section heading used the term).
+- **compute-optimal** and **emergent abilities** bolded at their definitions (the latter outside Wei et al.'s quotation).
