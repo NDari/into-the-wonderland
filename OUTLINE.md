@@ -150,7 +150,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** an attention heat map between a source and target sentence.
 - **Candidate sources:** Sutskever et al. 2014; Cho et al. 2014; Bahdanau et al. 2014; Wu et al. 2016.
 - **Depends on:** `structure`, `toolkit`, `embeddings`
-- **Status:** drafted
+- **Status:** verified
 
 #### 11. Tokens: what the model actually sees (1994-2018) {#tokens}
 
