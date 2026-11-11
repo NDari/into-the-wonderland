@@ -81,6 +81,8 @@ Both books:
 
 - Verification is research, then draft, then an independent check [D-005]. See the policy below.
 - Every number in a worked example is produced by a script in `code/checks/` [D-009].
+- Every figure is drawn by a matplotlib script in `figures/` that writes an SVG next to itself [D-014].
+- PDFs are built with `python3 build/build.py` (Pandoc with Typst) into `out/` [D-015].
 - Chapters are Pandoc Markdown with `[@key]` citations and a shared `references.bib` [D-010].
 - Chapters refer to each other by ID, never by a hard-coded number. Order and numbers come from `OUTLINE.md` [D-010].
 

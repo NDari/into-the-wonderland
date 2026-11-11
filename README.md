@@ -9,7 +9,7 @@ Book 1 is the priority and stands on its own.
 
 ## Status
 
-As of 2026-11-10: design and outline only. No chapter has been researched or drafted yet. `OUTLINE.md` lists every planned chapter and its current status.
+As of 2026-11-11: `destination` (Book 1, chapter 1) is drafted and awaits its independent verification pass. No other chapter has been started. `OUTLINE.md` lists every planned chapter and its current status.
 
 ## Who made this
 
@@ -27,10 +27,17 @@ how-these-books-were-made.md   the process behind the books
 AGENTS.md                      working rules for AI agents and humans
 DECISIONS.md                   decision log and parked questions
 OUTLINE.md                     both books: chapters, IDs, order, status
+references.bib                 shared bibliography
+book1/chapters/destination.md  draft of the first Book 1 chapter
+book1/sources/destination.md   claim ledger for the destination chapter
+code/checks/destination.py     computes the numbers in that chapter's worked examples
+figures/pipeline.py            draws the pipeline figure (and figures/pipeline-destination.svg)
+build/build.py                 builds PDFs into out/ with Pandoc and Typst
+build/links.lua                Pandoc filter used by the build
 tools/check.py                 consistency checks
 ```
 
-Chapters, source ledgers, the bibliography, figures, code, and the PDF build are added as the work reaches them. The planned locations are listed in `AGENTS.md` under "Repository layout".
+Further chapters, ledgers, figures, and code are added as the work reaches them. The planned locations are listed in `AGENTS.md` under "Repository layout".
 
 ## Checking consistency
 
@@ -39,6 +46,15 @@ python3 tools/check.py
 ```
 
 Needs only Python 3 and its standard library. It exits with an error if, for example, a file still relies on a decision that has been reverted, a chapter depends on one that comes later, or a Book 1 chapter contains code. The full list of checks is in `AGENTS.md` under "Decisions and consistency".
+
+## Building a PDF
+
+```
+python3 build/build.py               # every Book 1 chapter written so far, to out/book1.pdf
+python3 build/build.py destination   # one chapter, to out/destination.pdf
+```
+
+Needs Pandoc 3.x and Typst on the PATH [D-015].
 
 ## Working on the books
 

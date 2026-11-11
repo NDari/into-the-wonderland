@@ -105,6 +105,20 @@ Entries are never rewritten or deleted. To change one, set its status and add a 
 - Why: Chosen by the author.
 - To revert: replace the title in `README.md` and `AGENTS.md`.
 
+## D-014 Figures are matplotlib scripts
+- Status: active
+- Date: 2026-11-11
+- Decision: Every figure in either book, plots and diagrams alike, is drawn by a Python script using matplotlib. The script lives in `figures/` and writes an SVG next to itself. Numbers in a figure come from the same computation as the matching `code/checks/` script [D-009]. Figures that recur across chapters, such as the pipeline diagram, come from one script with options, so every version shares one layout.
+- Why: matplotlib is already installed, needs no other tool, and produces vector output that any PDF engine can use, so the choice does not wait on Q-03. Diagrams take more code than in a dedicated tool; that is accepted.
+- To revert: choose another tool, redraw every file in `figures/`, and update the figure rule in `AGENTS.md`.
+
+## D-015 PDF build: Pandoc with Typst
+- Status: active
+- Date: 2026-11-11
+- Decision: PDFs are built by `build/build.py`, which runs Pandoc with Typst as the PDF engine, resolves citations with Pandoc's built-in citeproc, and writes to `out/`. Links to chapters that are not part of a build become plain text, so a single chapter or a partly written book can always be built. The author installed Pandoc 3.11 and Typst 0.15.1 for this.
+- Why: Typst is far smaller than a LaTeX installation and fast, and it reads the SVG figures directly [D-014]. Pandoc already handles the chapter format [D-010].
+- To revert: choose another engine, change the `--pdf-engine` line in `build/build.py`, and check that figures, tables, and formulas still render.
+
 # Open questions
 
 Parked, not blocking. Each is raised only when its trigger arrives.
@@ -115,9 +129,11 @@ Parked, not blocking. Each is raised only when its trigger arrives.
 
 ## Q-02 How figures are produced
 - Decide when: before the first Book 1 chapter is drafted. Book 1 leans on diagrams.
+- Resolved: 2026-11-11 by D-014.
 
 ## Q-03 PDF engine
 - Decide when: writing the build script. No PDF tooling is installed on the author's machine yet.
+- Resolved: 2026-11-11 by D-015.
 
 ## Q-04 Split `toolkit` into two chapters?
 - Decide when: researching `toolkit`. It carries a lot of vocabulary for its size.

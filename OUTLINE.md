@@ -45,7 +45,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Bridge:** an LLM is a (very large) classifier over a vocabulary, applied repeatedly.
 - **Key figure:** the end-to-end pipeline diagram, reused and progressively filled in across the book.
 - **Depends on:** none
-- **Status:** outlined
+- **Status:** drafted
 
 ### Part I - Neural networks before deep learning
 

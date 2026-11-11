@@ -1,10 +1,10 @@
 # How these books were made
 
-This document describes the process as it stands on 2026-11-10. At this date the process has been designed but no chapter has gone through it yet. It is updated whenever practice changes, so that it stays a true account and not a plan.
+This document describes the process as it stands on 2026-11-11. At this date one chapter (`destination`) has been researched and drafted; none has been through independent verification yet. It is updated whenever practice changes, so that it stays a true account and not a plan.
 
 ## Who does what
 
-- **Claude** (Anthropic's AI model) researches and writes the text, keeps the outline and decision log, and runs the checks. The first sessions used Claude Fable 5.2.
+- **Claude** (Anthropic's AI model) researches and writes the text, keeps the outline and decision log, and runs the checks. The first sessions used Claude Fable 5.2; research and drafting of the first chapter used Claude Opus 5.5.
 - **Naseer Dari** (the author) sets the direction, makes the decisions, reads every chapter, edits the prose, double-checks the content, and is the only one who can mark a chapter approved. The author also handles all version control.
 
 The author is the first reader and is learning parts of the field while the books are written [D-012]. If a draft confuses the author, the draft is at fault.
@@ -34,6 +34,7 @@ The rule is research first, then draft, then an independent check [D-005].
 
 - **What needs a source:** who did what and when; any number (sizes, dates, results, costs); quotes and attributions; specifics of a named paper, model, or tool.
 - **What counts as a source:** first the original paper, official documentation, or a first-hand account. Then textbooks, surveys, and established histories. Blogs, Wikipedia, and forum posts are used only as leads, never as the sole citation.
+- **How sources are read:** papers are downloaded and converted to plain text, and each claim is located by searching that text, so the ledger quotes what the source actually says. When a publisher's site refuses automated access, the page is read from an Internet Archive snapshot, and the ledger says so.
 - **What "verified" means:** the source was fetched during the working session and the specific claim was found in it. What the model remembers is not a source.
 - **Numbers in worked examples** are produced by scripts that can be re-run, not estimated [D-009].
 - **Disputed history** is presented as disputed, with each side cited.
@@ -75,6 +76,6 @@ The script cannot judge prose. Terminology, notation, and tone are kept consiste
 
 ## Tools
 
-Plain text files in a git repository. Chapters are Pandoc Markdown with a shared bibliography [D-010]. The consistency check needs only Python 3. The PDF toolchain has not been chosen yet.
+Plain text files in a git repository. Chapters are Pandoc Markdown with a shared bibliography [D-010]. The consistency check needs only Python 3. Figures are drawn by Python scripts with matplotlib, so each one can be regenerated [D-014]. PDFs are produced by Pandoc with Typst as the typesetting engine [D-015].
 
 The working rules for anyone contributing, human or AI, are in `AGENTS.md`. They do not depend on any particular tool or model.
