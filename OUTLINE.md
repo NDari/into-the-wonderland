@@ -135,11 +135,11 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Goal:** The single most important new idea for the reader: meaning as position in a learned space. (~16 pp)
 - **Concepts:** one-hot vs dense representations; the distributional hypothesis; embeddings; similarity as closeness; the neural language model; learning embeddings as a side effect of prediction; analogies and their limits; one vector per word as a weakness.
 - **History:** Harris (1954) and Firth (1957); latent semantic analysis (1990); Bengio et al.'s neural probabilistic language model (2003); Collobert and Weston (2008); word2vec (2013); GloVe (2014).
-- **Bridge:** LSA is PCA on a word-document matrix; embeddings are the learned, predictive version, which later analysis showed to be closer to counting than it looked.
+- **Bridge:** LSA applies the SVD behind PCA to a word-document matrix; embeddings are the learned, predictive version, which later analysis showed to be closer to counting than it looked.
 - **Key figure:** a 2D projection of real word vectors, with the numbers computed, not drawn by hand.
 - **Candidate sources:** Deerwester et al. 1990; Bengio et al. 2003; Mikolov et al. 2013 (both papers); Pennington et al. 2014.
 - **Depends on:** `backprop`, `prediction`
-- **Status:** drafted
+- **Status:** verified
 
 #### 10. Reading and writing sequences (2010-2016) {#seq2seq}
 
@@ -150,7 +150,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** an attention heat map between a source and target sentence.
 - **Candidate sources:** Sutskever et al. 2014; Cho et al. 2014; Bahdanau et al. 2014; Wu et al. 2016.
 - **Depends on:** `structure`, `toolkit`, `embeddings`
-- **Status:** researched
+- **Status:** drafted
 
 #### 11. Tokens: what the model actually sees (1994-2018) {#tokens}
 
@@ -160,7 +160,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** one sentence tokenized three ways; a BPE merge table built by hand on a toy corpus.
 - **Candidate sources:** Gage 1994; Sennrich et al. 2016; Kudo and Richardson 2018.
 - **Depends on:** `prediction`, `embeddings`
-- **Status:** researched
+- **Status:** drafted
 
 ### Part IV - The transformer
 

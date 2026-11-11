@@ -1,7 +1,7 @@
 # Claim ledger: seq2seq
 
 Chapter: `seq2seq` (Book 1, "Reading and writing sequences (2010-2016)").
-Stage: researched, 2026-11-11 [D-005]. Research for this chapter was done by a helper agent; the writer spot-checks the key claims in the same sources before drafting, and records that here. Research was done by a separate agent; the chapter has not been drafted.
+Stage: drafted, 2026-11-11 [D-005]. Research for this chapter was done by a helper agent. Before drafting, the writer re-ran the ledger's arithmetic in `code/checks/seq2seq.py` and re-located a few items in the fetched texts (Sutskever et al. Fig. 2's "Mary admires John" / "John admires Mary", p. 6; Papineni et al.'s IBM affiliation, p. 311; Cho et al. 2014b's 110 hours, p. 106, with no GPU count; Bahdanau et al.'s concatenated annotations, p. 4). One correction to mechanism item 6: the printed Table 10 values are not all truncations (French-English is 82.96%, printed 83%), so the script checks agreement to within one point. Awaiting an independent check.
 
 All sources were fetched on 2026-11-11 and each claim was located in the fetched text (pdftotext on publisher or arXiv PDFs; all have text layers). Tables whose layout did not survive extraction were checked on the page image (Mikolov et al. Table 2; Koehn et al. Table 1; Bahdanau et al. Figs. 2 and 3). Page numbers are the printed page numbers of the source as read; the offset from PDF page to printed page is given in the table. Where a source prints an en-dash or em-dash (for example "Encoder-Decoder" in Cho et al., page ranges, "English-French"), it is written here with a hyphen. Arrows in table headings (for example "En to Fr") are written out.
 
@@ -286,3 +286,32 @@ Suggested script: `code/checks/seq2seq.py` (standard library only), imported by 
 - **Date stamps:** Q3, Q19, Q20 (as of September 2016); Q22 statements by LeCun et al. (as of 2015) and Vaswani et al. (as of 2017); the WMT16 results (August 2016).
 - **Bridges** the reader can use: phrase tables are counted like n-gram tables (Q2); log-linear SMT is a weighted feature sum like logistic regression (Q2); the decoder "is essentially a recurrent neural network language model ... conditioned on the input sequence" (Sutskever p. 2), which links straight back to `prediction`; Sutskever et al.'s PCA plot of sentence vectors (Q9) uses a method the reader knows; soft alignment as an expected value over alignments, where SMT treated alignment as a hidden (latent) variable fitted by EM-style training (Bahdanau p. 4; the EM link is this ledger's, not Bahdanau et al.'s: Koehn et al. p. 50 name the IBM models as the source of word alignments, and name "Expectation Maximization" only for Marcu and Wong's joint phrase model, so state the EM link as background or leave it out).
 - **Out of scope:** convolutional sequence models (ByteNet, ConvS2S: only via Vaswani p. 2, not researched); speech recognition with CTC (Sutskever p. 2 mentions it); image captioning with attention (LeCun et al. p. 440 figure; belongs nowhere unless the author wants one sentence); reinforcement-learning refinement and coverage penalties in GNMT; quantization and TPUs beyond one sentence; Luong et al.'s local attention.
+
+## Worked examples used in the chapter [D-009]
+
+All computed by `code/checks/seq2seq.py` (standard library only).
+
+- Example 1: Mikolov et al. Table 2: 221 to 173 is 21.7% lower (chapter: "about 22%"); 221 to 112 is 49.3% ("nearly half"); WER 13.5 to 11.1 (17.8% fewer errors, not stated in the text). Sutskever et al.: 34.81 vs 33.30; 36.5 vs 37.0; reversal 25.9 to 30.6. Koehn et al.: 3,152k / 320k = 9.85 ("about ten per sentence pair").
+- Example 2: Bahdanau et al. keep 2,000 numbers per source word: 20,000 for 10 words, 100,000 for 50; the fixed vector is 1,000 (one layer's state).
+- Example 3: reconstruction of Sutskever et al.'s parameters, labelled as such: 8M per LSTM layer, 64M recurrent in all (matches the paper), word tables 320M, total 384M against the printed 380M; word tables 83%.
+- Example 4: reversal with n = 3: distances 4, 4, 4 normal; 2, 4, 6 reversed; average 4 both ways.
+- Example 5: made-up 4-number vectors for "the European Economic Area", dot-product scores. Before "zone": scores 0.20, 0.39, 0.39, 3.06; weights 0.05, 0.06, 0.06, 0.84. Before "économique": scores 0.20, 1.20, 3.09, 1.10; weights 0.04, 0.11, 0.74, 0.10.
+- Example 6: constructed heat-map weights for Bahdanau et al.'s Fig. 3(a) sentence (score 2.5 for the aligned word, minus 0.8 per word of distance; softmax). Not learned; the caption says so.
+- Example 7: Wu et al. Table 10 shares of the PBMT-to-human gap: 87.7, 64.4, 58.7, 63.0, 82.96, 60.4%; each within one point of the printed value.
+- Example 8: 30 words, 4 layers: 120 sequential steps, 33 pipelined, 4 fully parallel; attention scores 225, 900, 2,500 for 15, 30, 50 words.
+- Example 9: BLEU clipped precision 2/7 = 0.286 (Papineni et al.'s own example; the chapter quotes the fraction).
+
+## Figures [D-014]
+
+- `figures/seq2seq-bottleneck.svg`: (a) encoder-decoder through one vector; (b) attention, with line widths from Example 5's weights for "zone".
+- `figures/seq2seq-attention-heatmap.svg`: Example 6, labelled as constructed, modelled on Bahdanau et al. Fig. 3(a) (p. 6) without copying it.
+
+## Terms defined in the chapter
+
+For the glossary: attention, statistical machine translation, parallel corpus, phrase-based translation, phrase table, log-linear model (by description), BLEU, n-best list (re-ranking), encoder, decoder, encoder-decoder / sequence to sequence, end-of-sentence symbol, update gate, reset gate, gated recurrent unit (GRU), beam search, ensemble, bidirectional (RNN), context vector, soft alignment, WMT.
+
+## Drafting notes
+
+- The GRU's "two gates instead of the LSTM's three" is the chapter's own count (Q8 note); Cho et al.'s footnote counts four for the LSTM.
+- Removed in self-review: "on one GPU" for Cho et al. 2014b (not in the source); "the same day" for the Google blog post (the post says the paper is released "today"; the arXiv v1 is dated a day earlier, so the chapter says "announcing the paper").
+- Koehn is introduced as "first author of the 2003 phrase-based paper" rather than with an evaluative label.

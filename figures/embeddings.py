@@ -54,7 +54,7 @@ def glove_figure():
     ax.scatter(P[:, 0], P[:, 1], s=14, color=ACCENT, zorder=3)
     # Hand-placed label offsets (in points) where labels would collide.
     offset = {"king": (-26, 4), "queen": (4, 6), "princess": (4, -10), "girl": (4, 6), "cat": (-4, -13),
-              "boy": (5, -3), "woman": (-34, 6), "man": (-24, -11), "bus": (-20, -11), "car": (4, 4),
+              "boy": (5, -3), "woman": (-34, 6), "man": (-27, -3), "cow": (-22, 3), "bus": (-20, -11), "car": (4, 4),
               "france": (-14, 6), "italy": (5, 3), "paris": (5, -2), "berlin": (5, -7), "germany": (-10, -12)}
     for w, (x, y) in pos.items():
         ax.annotate(w, (x, y), xytext=offset.get(w, (4, 3)), textcoords="offset points", fontsize=8, color=INK)

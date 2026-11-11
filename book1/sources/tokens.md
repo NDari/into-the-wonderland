@@ -1,7 +1,7 @@
 # Claim ledger: tokens
 
 Chapter: `tokens` (Book 1, "Tokens: what the model actually sees (1994-2018)").
-Stage: researched, 2026-11-11 [D-005]. Research for this chapter was done by a helper agent; the writer spot-checks the key claims in the same sources before drafting, and records that here. Research was done by a separate agent; nothing in the chapter has been drafted yet.
+Stage: drafted, 2026-11-11 [D-005]. Research for this chapter was done by a helper agent. Before drafting, the writer recomputed every preliminary number in `code/checks/tokens.py` (all agreed) and re-located Edinburgh's use of BPE (`sennrich2016edinburgh` p. 371: "using BPE subword segmentation") and Nogueira et al.'s model (T5, p. 2). Awaiting an independent check.
 
 All sources were fetched on 2026-11-11 and each claim was located in the fetched text. For scanned or badly encoded sources (Schuster and Nakajima), the text is Tesseract OCR of the page images. Tables whose text layer is scrambled (Sennrich et al. Tables 1 and 2, Petrov et al. Table 1) were read on the rendered page image. Page numbers are the printed page numbers of the source as read; the offset from PDF page to printed page is given in the table. Where a source prints an en-dash or em-dash, it is written here with a hyphen or a comma, and this is said. Code and data files (GPT-2 release, tiktoken, Llama 3 tokenizer) are cited by repository path and the last commit that touched the file, as reported by the GitHub API on 2026-11-11.
 
@@ -318,4 +318,28 @@ Suggested script: `code/checks/tokens.py` (standard library only), imported by a
 
 ## Worked examples [D-009]
 
-To be computed by `code/checks/tokens.py` at drafting. Nothing here is final.
+All computed by `code/checks/tokens.py` (standard library only). Examples 4 and 5 download GPT-2's `encoder.json` and `vocab.bpe` once into `out/cache/` and stop if either SHA-256 differs from the value pinned in the script (encoder.json 196139668be6...6783, vocab.bpe 1ce1664773c5...6adc5) [D-018]. GPT-2's splitting pattern is approximated with the standard library (letters = `[^\W\d_]`, digits = `\d`, underscore counted as "other symbol"); this is exact for the ASCII, Cyrillic, and CJK inputs used.
+
+- Example 1: Gage: ABABCABCD, XXCXCD, XYYD; 1,024 bytes to 1 in 10 substitutions.
+- Example 2: the toy corpus (low 5, lower 2, newest 6, widest 3), ten merges with the tie-break "first pair met, words in corpus order, left to right": e+s 9, es+t 9, est+</w> 9, l+o 7, lo+w 7, n+e 6, ne+w 6, new+est</w> 6, low+</w> 5, w+i 3 (matches the research preview). Vocabulary 11 + 10 = 21.
+- Example 3: lowest -> low | est</w>; lower -> low | e | r | </w>; slowest -> s | low | est</w>.
+- Example 4: GPT-2: 50,257 = 256 + 50,000 + 1; <|endoftext|> 50,256. "The cat sat on the mat." 7 tokens, IDs 464, 3797, 3332, 319, 262, 2603, 13. Figure sentence "The tokenizer read Kierkegaard in 1843.": 7 words and marks, 39 characters, 11 tokens (The | ␣token | izer | ␣read | ␣Kier | ke | gaard | ␣in | ␣18 | 43 | .). 1234567 -> 123 | 45 | 67. " strawberry" one token. защо 6 tokens, 言 3 (as Petrov et al. print). " SolidGoldMagikarp" ID 43,453. 777 of "000" to "999" are single tokens.
+- Example 5: the figure sentence with GPT-2's first k merges: k = 0, 10, 100, 1,000, 10,000, 50,000 gives 39, 33, 26, 18, 14, 11 tokens (the chapter quotes 0, 100, 1,000, 10,000, 50,000).
+- Example 6: UTF-8: привет 6 characters, 12 bytes; 東京 2, 6; 😀 1, 4.
+- Example 7: Sennrich Table 1 ratios 5.5 and 1.12; Wu et al. 1.0530 / 0.2118 = 4.97 ("about five times"); Llama 3 3.17 / 3.94 = 0.805 ("about 20% fewer"); 1234567 in threes from the left 123 | 456 | 7.
+
+## Figures [D-014]
+
+- `figures/tokens-three-ways.svg`: the Example 4 sentence as words, characters, and GPT-2 tokens with IDs.
+- `figures/tokens-bpe-merges.svg`: the ten merges of Example 2 with the corpus after each, and "lowest" segmented.
+
+## Terms defined in the chapter
+
+For the glossary: token (and the older type/token sense), tokenizer, vocabulary, token ID, unknown word (UNK), subword (by description), byte pair encoding (BPE), merge, end-of-word marker, WordPiece, unigram language model method, SentencePiece, UTF-8, byte-level BPE, special token, glitch token.
+
+## Drafting notes
+
+- Followed TKD1: the merge table uses Algorithm 1's corpus only, and Figure 1 is not reproduced.
+- The destination chapter's "illustrative" token IDs are GPT-2's real ones; this chapter says so. The destination chapter (approved) was not changed; the author may want to adjust its wording.
+- The Anthropic tokenizer note (30% more tokens) is used as the one concrete case of a tokenizer change altering cost, with no performance claim.
+- Prices are not printed; only the unit (per million tokens, input and output separate), as of 2026-11-11.

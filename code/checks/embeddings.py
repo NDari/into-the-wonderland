@@ -103,17 +103,19 @@ def example_lsa():
 
 
 # ---------------------------------------------------------------------------
-# Example 4: analogy arithmetic on made-up 2-number vectors.
+# Example 4: analogy arithmetic on made-up 3-number vectors, compared by
+# cosine as in the chapter.
 def example_toy_analogy():
-    print("Example 4: analogy arithmetic on made-up vectors")
-    exact = {"man": [1.0, 1.0], "woman": [1.0, 3.0], "king": [4.0, 1.0], "queen": [4.0, 3.0]}
-    r = np.array(exact["king"]) - exact["man"] + exact["woman"]
-    print(f"  king - man + woman = {r.tolist()}, which is queen {exact['queen']}")
-    near = {"man": [1.0, 1.0], "woman": [1.0, 1.4], "king": [4.0, 1.0], "queen": [4.4, 1.5]}
-    r = np.array(near["king"]) - near["man"] + near["woman"]
-    d = {w: float(np.linalg.norm(r - np.array(v))) for w, v in near.items()}
-    order = sorted(d, key=d.get)
-    print(f"  small offset: result {r.tolist()}; distances " + ", ".join(f"{w} {d[w]:.2f}" for w in order))
+    print("Example 4: analogy arithmetic on made-up vectors (cosine)")
+    man, king = np.array([1.0, 0.0, 0.0]), np.array([0.0, 0.0, 1.0])
+    queen = np.array([0.0, 0.9, 1.0])
+    for label, woman in (("offset as large as king-to-queen", np.array([1.0, 0.9, 0.0])),
+                         ("small offset", np.array([1.0, 0.3, 0.0]))):
+        r = king - man + woman
+        sims = {w: cosine(r, v) for w, v in (("king", king), ("queen", queen), ("man", man), ("woman", woman))}
+        order = sorted(sims, key=sims.get, reverse=True)
+        print(f"  {label}: woman {woman.tolist()}, result {r.tolist()}; cosines " +
+              ", ".join(f"{w} {sims[w]:.3f}" for w in order))
     print()
 
 
@@ -163,9 +165,7 @@ def sha256_file(path):
 
 
 def load_glove():
-    vecs, vocab = CACHE / "glove.6B.50d.npy", CACHE / "glove.6B.50d.vocab"
-    if vecs.exists() and vocab.exists():
-        return vocab.read_text(encoding="utf-8").split("\n"), np.load(vecs)
+    # Checks both pinned hashes on every run, then parses the 50d member [D-018].
     if not GLOVE_ZIP.exists():
         CACHE.mkdir(parents=True, exist_ok=True)
         with urllib.request.urlopen(GLOVE_URL) as r, open(GLOVE_ZIP, "wb") as f:
@@ -180,11 +180,8 @@ def load_glove():
     for line in io.TextIOWrapper(io.BytesIO(data), encoding="utf-8"):
         parts = line.rstrip("\n").split(" ")
         words.append(parts[0])
-        rows.append(np.array(parts[1:], dtype=np.float32))
-    M = np.vstack(rows)
-    np.save(vecs, M)
-    vocab.write_text("\n".join(words), encoding="utf-8")
-    return words, M
+        rows.append(parts[1:])
+    return words, np.array(rows, dtype=np.float32)
 
 
 class Glove:
