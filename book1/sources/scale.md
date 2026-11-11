@@ -1,7 +1,7 @@
 # Claim ledger: scale
 
 Chapter: `scale` (Book 1, "Scale (2019-2022)").
-Stage: researched, 2026-11-11 [D-005]. Research for this chapter was done by a helper agent; the writer spot-checks the key claims in the same sources before drafting, and records that here. Research done by a helper agent; no chapter text has been drafted. Every claim below was located in a source fetched in this session. The ledger covers GPT-2 and its staged release, Sutton's essay and a response, GPT-3 and in-context learning, the Kaplan and Chinchilla scaling laws and the later dispute between them, emergent abilities and the dispute over them, the cost of training runs, and the data for the chapter's key figure (model size and training data by year).
+Stage: drafted, 2026-11-11 [D-005]. Research by a helper agent. Before drafting, the writer re-ran the mechanism items used in `code/checks/scale.py` (all agree). Open questions decided by default: the GPT-2 release gets a short section (one paragraph); the key figure includes BERT and T5 (marked) and runs to 2024; the Brants et al. 2007 n-gram bridge is included. Awaiting an independent check.
 
 All sources were fetched on 2026-11-11. PDFs were read with `pdftotext` and `pdftotext -layout`; every PDF here has a text layer, so no OCR was needed. Page numbers are the printed page numbers of the version named; the offset from PDF page to printed page is given in the table. Quotes are verbatim except that en-dashes and em-dashes in sources are written here as hyphens or commas (for example GPT-3's "zero-, one-, and few-shot", Hoffmann et al.'s "the drive ... is clear-so far", page ranges). Superscripts that were lost in extraction are written out (for example "10^23"). Web pages were read as HTML converted to text; where a page changed after first publication, the version read is named.
 
@@ -529,3 +529,31 @@ Optional additional rows if the author wants the Chinchilla-era contrast (all fr
 - Porian et al. and Bi et al. were found as leads in `pearce2024reconciling`; Porian et al. was then fetched (SC36), Bi et al. was not.
 - Brants et al. (2007) was found as a lead in `touvron2023llama` and then fetched (SC23).
 - Banko and Brill (2001) and Goodman (2001), as cited by Kaplan et al. p. 18: candidates for a further bridge to the reader's era if the author wants one (both are 2001 papers on n-gram-era learning curves).
+
+## Worked examples used in the chapter [D-009]
+
+All computed by `code/checks/scale.py` (standard library only; inputs are printed numbers from the sources).
+
+- Example 1: the model table (11 models, 2018-2024); GPT to Llama 3.1 405B: about 3,500 times the parameters; tokens per parameter GPT-3 1.7, Gopher 1.1, PaLM 1.4, Chinchilla 20.0, LLaMA-65B 21.5, Llama 2 70B 28.6, Llama 3.1 405B 38.5.
+- Example 2: 6 x 174.6e9 x 300e9 = 3.14e23 FLOPs, 3,637 petaflop/s-days ("about 3,640"); one petaflop/s-day = 8.64e19; Llama 3 vs Llama 2 70B: 45 ("almost 50x").
+- Example 3: Kaplan's L(N): doubling multiplies loss by 0.949, ten times by 0.839; log-log slope -0.076; one nat = 1.4427 bits.
+- Example 4: ten times the compute: Kaplan 5.4x parameters, 1.9x tokens; Chinchilla 3.2x each; a thousand times: 155x and 6.5x vs 31.6x each; Hoffmann Table 3 tokens per parameter 20.0 to 22.4; Llama 3 fit 41; LLaMA-7B 149 ("about 150").
+- Example 5: p^5 for p = 0.5, 0.8, 0.95: 0.031, 0.328, 0.774.
+- Example 6: GPT-3 Table H.1, few-shot 2-digit addition 2.0 to 11.9 for the six smaller models, 55.5 at 13B, 100.0 at 175B; 3-digit 0.15 to 0.90, 8.40, 80.4.
+- Example 7: 300,000x = 18.2 doublings; 2^(12 / 3.43) = 11.3 per year ("about 11").
+- Example 8: LLaMA-65B 449.8 MWh and 173.2 t (printed 449, 173); GPT-3 (Patterson) 1,287 MWh, 552 t.
+
+## Figures [D-014]
+
+- `figures/scale-models.svg`: Example 1 on log axes, two panels (parameters, tokens); BERT and T5 marked as other families; GPT and GPT-2 omitted from the tokens panel.
+- `figures/scale-powerlaw.svg`: Example 3 on ordinary and log-log axes; extrapolated part dashed.
+- `figures/scale-emergence.svg`: Example 6 (published) beside Example 5 (constructed).
+
+## Terms defined in the chapter
+
+For the glossary: parameters, training tokens, compute, FLOP, petaflop/s-day, power law, log-log axes, nat, scaling law, compute-optimal, undertrained (Hoffmann's sense), tokens per parameter, in-context learning, zero-shot, one-shot, few-shot, demonstration, emergent ability, GPU-hour.
+
+## Drafting notes
+
+- Removed in self-review as not in the ledger: affiliations for Kaplan et al. and Hoffmann et al., "a founder of reinforcement learning" for Sutton, "DeepMind's" and "Google's" for Gopher and PaLM, "nearly every test" for Chinchilla, and "four times cheaper to run" (the paper says only that inference cost is smaller).
+- Gopher is introduced as "a 2021 model"; Reddit as "the social media site" (the paper's wording is "a social media platform").

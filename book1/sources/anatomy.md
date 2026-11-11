@@ -1,7 +1,7 @@
 # Claim ledger: anatomy
 
 Chapter: `anatomy` (Book 1, "Anatomy of a transformer").
-Stage: drafted, 2026-11-11 [D-005]. Research by a helper agent. Before drafting, the writer re-ran mechanism items 1-9 in `code/checks/anatomy.py` (all agree). Open questions decided by default: the script hard-codes the five published hyperparameters (no checkpoint download); the running vector is called the "residual stream" (D-019, provisional). Awaiting an independent check.
+Stage: verified, 2026-11-11 [D-005]. Research by a helper agent; drafted by the writer; independent check recorded at the end.
 
 All sources below were fetched on 2026-11-11 and each claim was located in the fetched text (pdftotext, plain and `-layout`; HTML converted to text with a standard-library parser). Figures whose labels did not extract were read on the page image (Vaswani et al. Fig. 1; Radford et al. 2018 Fig. 1). Where a source prints an en-dash or em-dash it is written here with a hyphen. Unicode minus signs in exponents are written as hyphens. Multiplication signs are written "x".
 
@@ -336,3 +336,14 @@ For the glossary: cross-attention, block, decoder-only, token table, position ta
 - Bib notes for `openai2019gpt2code` and `meta2024llama3code` were extended with the files this research read (src/model.py, README, model card, checkpoint index; llama/model.py).
 - `since-2017` is referenced for the post-2017 changes; one dated list here (as of Llama 3, 2024).
 - The prefix-LM mask (T5's third) is left out.
+
+## Independent check (anatomy chapter)
+
+2026-11-11. A separate agent re-fetched the key sources, parsed GPT-2's released `hparams.json` and `model.ckpt.index` itself (148 tensors, 124,439,808 float32 values, no output-layer tensor; hashes matched the ledger), checked every quote, page, and number, and regenerated both figures (byte-identical). Nothing from "What not to say" appeared.
+
+- Errors found and fixed:
+  1. "32 query heads" belongs to Llama 3 8B only (Table 3: 32 / 64 / 128 heads, 8 key/value heads each); now "Llama 3 8B uses 32 query heads ... (the larger Llama 3 models also use 8)".
+  2. The architecture caption said "Shaded boxes hold learned parameters", but every box is filled and the grey layer-norm boxes hold parameters too; the caption now says blue boxes hold learned parameters and the grey layer norms hold 38,400 more.
+  3. Geva et al.'s detectors are columns of W_1 under the chapter's own formula, not rows; reworded without rows or columns, with Geva's qualifier "especially in later layers".
+- Warnings acted on: learned positions cited to GPT-1 p. 5 (the GPT-2 paper does not mention positions) and the code; GPT-2's 524,288 predictions per step stated as conditional arithmetic; "counting every part the same way" for GPT-3's 175 billion; "released the models as 124M, 355M, 774M, and 1558M" (only the first two were renamed); the residual-stream term: "Kaplan and colleagues already used the term" (shared authors); "Large language models have used pre-norm" replaced by the four named models (as of 2024), Liu et al.'s study marked as translation, warm-up explained; "smooth" dropped from the GELU gloss (unsourced); Press and Wolf's basis stated as lower held-out perplexity, read as less overfitting; caption wording on the block order and post-norm; "inside the blocks the stream itself is never normalized"; Shazeer p. 2 cited for three matrices; Llama 3's RoPE cited (p. 7); "interpretability researchers" glossed; "about fourteen times as large".
+- Could not verify: whether GPT-2's batch of 512 counted full 1,024-token windows (not stated); earlier uses of "residual stream" before January 2020 (not searched).

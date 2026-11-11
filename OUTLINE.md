@@ -182,7 +182,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** the full annotated architecture; a parameter-count table for a small model.
 - **Candidate sources:** Vaswani et al. 2017; Radford et al. 2018 for the decoder-only form; Elhage et al. 2021 for the residual-stream framing.
 - **Depends on:** `toolkit`, `depth`, `attention`
-- **Status:** drafted
+- **Status:** verified
 
 ### Part V - From transformer to LLM
 
@@ -205,7 +205,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** model size and training-data size by year on a log scale.
 - **Candidate sources:** Radford et al. 2019; Brown et al. 2020; Kaplan et al. 2020; Hoffmann et al. 2022; Sutton 2019.
 - **Depends on:** `pretraining`
-- **Status:** researched
+- **Status:** drafted
 
 #### 16. How an LLM is trained {#training}
 
