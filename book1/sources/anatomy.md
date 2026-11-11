@@ -1,7 +1,7 @@
 # Claim ledger: anatomy
 
 Chapter: `anatomy` (Book 1, "Anatomy of a transformer").
-Stage: researched, 2026-11-11 [D-005]. Research for this chapter was done by a helper agent; the writer spot-checks the key claims in the same sources before drafting, and records that here. Research done by a helper agent; nothing drafted. The chapter assembles the whole model (embedding table, residual stream, the block, stacking, output layer, the three architecture families, causal masking, context window, parameter counting). Self-attention itself, queries/keys/values, multi-head attention, positional encodings, and the parallelism argument belong to `attention` (researched in parallel) and are used here only as a box.
+Stage: drafted, 2026-11-11 [D-005]. Research by a helper agent. Before drafting, the writer re-ran mechanism items 1-9 in `code/checks/anatomy.py` (all agree). Open questions decided by default: the script hard-codes the five published hyperparameters (no checkpoint download); the running vector is called the "residual stream" (D-019, provisional). Awaiting an independent check.
 
 All sources below were fetched on 2026-11-11 and each claim was located in the fetched text (pdftotext, plain and `-layout`; HTML converted to text with a standard-library parser). Figures whose labels did not extract were read on the page image (Vaswani et al. Fig. 1; Radford et al. 2018 Fig. 1). Where a source prints an en-dash or em-dash it is written here with a hyphen. Unicode minus signs in exponents are written as hyphens. Multiplication signs are written "x".
 
@@ -309,3 +309,30 @@ Suggested script: `code/checks/anatomy.py` (standard library only), imported by 
 
 1. Should `code/checks/anatomy.py` download GPT-2's 5 KB checkpoint index (under D-018, hash-pinned) to verify the 124,439,808 from the file itself, or simply hard-code the five hyperparameters and the corrected total with citations? Default if not answered: hard-code, no download (nothing new to cache).
 2. Which name for the per-position vector between layers: "residual stream" (recommended, AND4) or "hidden state"? This affects later chapters (`training`, `generation`, `since-2017`).
+
+## Worked examples used in the chapter [D-009]
+
+All computed by `code/checks/anatomy.py` (standard library only).
+
+- Example 1: GPT-2 small: token table 38,597,376 (31.02%), positions 786,432 (0.63%), attention 28,348,416 (22.78%), feed-forward 56,669,184 (45.54%), layer norms 38,400 (0.03%), total 124,439,808; per block attention 2,362,368 and feed-forward 4,722,432; feed-forward 66.6% of the blocks; untied output would add 38,597,376 (31% more).
+- Example 2: 12 L d^2 = 84,934,656 vs 85,056,000 exact without tables (0.14% low).
+- Example 3: GPT-1 116,534,784; GPT-3 Small 125,226,240; GPT-3 174,604,259,328 ("about 175 billion"); Llama 3 8B blocks 6,979,584,000 vs the shortcut's 6,442,450,944; total 8,028,164,096 with the paper's 128,000 vocabulary.
+- Example 4: causal mask on five tokens: 15 of 25 cells allowed; made-up scores for "sat" give 0.20, 0.48, 0.32, 0, 0; changing the masked scores changes nothing.
+- Example 5: 1,024 predictions per 1,025-token window; 524,288 per GPT-2 step (512 x 1,024); 1,048,576 scores per head per layer at 1,024 tokens, 17,179,869,184 at 131,072; the attention-score term is 11% of 2N at 1,024 tokens and 14 times 2N at 131,072 (Kaplan Table 1).
+- Example 6: the path of ID 3797 through GPT-2 small (sizes only).
+
+## Figures [D-014]
+
+- `figures/anatomy-architecture.svg`: GPT-2 small, pre-norm, with sizes, the residual stream, one block expanded, and the tied output layer.
+- `figures/anatomy-masks.svg`: fully visible and causal masks on "The cat sat on the".
+- The parameter table is a Markdown table in the chapter (numbers from Example 1).
+
+## Terms defined in the chapter
+
+For the glossary: cross-attention, block, decoder-only, token table, position table, residual stream (hidden state as synonym), feed-forward network (position-wise), GELU (named), weight tying, causal mask, fully visible mask, encoder-only, encoder-decoder, context window (deepened), post-norm and pre-norm, RMSNorm, SwiGLU, grouped-query attention (one line each).
+
+## Drafting notes
+
+- Bib notes for `openai2019gpt2code` and `meta2024llama3code` were extended with the files this research read (src/model.py, README, model card, checkpoint index; llama/model.py).
+- `since-2017` is referenced for the post-2017 changes; one dated list here (as of Llama 3, 2024).
+- The prefix-LM mask (T5's third) is left out.

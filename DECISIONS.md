@@ -140,6 +140,13 @@ Entries are never rewritten or deleted. To change one, set its status and add a 
 - Why: The GloVe file is 171 MB (inside an 862 MB zip), far too big for the repository. Downloading with a pinned hash keeps every number reproducible [D-009] without bloating the history. The cost is that the first run needs network access and time.
 - To revert: commit small derived subsets instead (the GloVe vectors are PDDL-licensed, so this is allowed), and point the scripts at them.
 
+## D-019 "Residual stream" names the vector that runs between layers
+- Status: provisional
+- Date: 2026-11-11
+- Decision: In both books, the vector that each position carries from layer to layer of a transformer is called the **residual stream**. "Embedding" is kept for the rows of the token table (and the vectors of `embeddings`); "hidden state" is mentioned once, in `anatomy`, as a synonym the reader will meet elsewhere.
+- Why: One name for one thing across chapters (`anatomy`, `training`, `generation`, later chapters, and Book 2). Interpretability writing uses "residual stream" and explains why reusing "embedding" misleads; `depth` already promised the term.
+- To revert: choose "hidden state" instead, and replace "residual stream" in every file that cites this decision.
+
 # Open questions
 
 Parked, not blocking. Each is raised only when its trigger arrives.

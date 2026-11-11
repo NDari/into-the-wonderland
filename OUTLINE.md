@@ -182,7 +182,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** the full annotated architecture; a parameter-count table for a small model.
 - **Candidate sources:** Vaswani et al. 2017; Radford et al. 2018 for the decoder-only form; Elhage et al. 2021 for the residual-stream framing.
 - **Depends on:** `toolkit`, `depth`, `attention`
-- **Status:** researched
+- **Status:** drafted
 
 ### Part V - From transformer to LLM
 
