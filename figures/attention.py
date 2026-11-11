@@ -129,7 +129,7 @@ def cost_figure():
     ax.set_xlabel("sequence length n (tokens), with vectors of d = 512 numbers", color=MUTED)
     ax.set_ylabel("multiply-adds per layer", color=MUTED)
     ax.legend(frameon=False, fontsize=7.5, loc="upper left", bbox_to_anchor=(0.12, 0.8))
-    ax.set_ylim(1e6, 3e16)
+    ax.set_ylim(1e5, 3e16)
     quiet(ax)
     save(fig, "attention-cost")
 

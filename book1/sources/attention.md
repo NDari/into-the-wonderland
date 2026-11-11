@@ -1,8 +1,8 @@
 # Claim ledger: attention
 
 Chapter: `attention` (Book 1, "Attention without recurrence (2017)").
-Stage: drafted, 2026-11-11 [D-005]. Research by a helper agent. Before drafting, the writer re-ran every mechanism item in `code/checks/attention.py`; all agree with the research prototypes except the simulated variances (a different random draw: 64.9 at d_k = 64, 500.5 at 512), which the chapter reports from the script. Awaiting an independent check.
-Research for this chapter was done by a helper agent. The chapter is not drafted. This ledger lists the sources fetched, the claims located in them with exact locations and quotes, the disputes found, the numbers the drafter must reproduce in `code/checks/attention.py` [D-009], and a tested plan for the key figure.
+Stage: verified, 2026-11-11 [D-005]. Research by a helper agent; drafted by the writer; independent check recorded at the end.
+Research for this chapter was done by a helper agent (at research time the chapter was not yet drafted). This ledger lists the sources fetched, the claims located in them with exact locations and quotes, the disputes found, the numbers the drafter must reproduce in `code/checks/attention.py` [D-009], and a tested plan for the key figure.
 
 All sources were fetched on 2026-11-11 and each claim below was located in the fetched text (pdftotext, with `-layout` where tables needed it). Tables whose layout did not survive extraction were checked on the page image (Vaswani et al. Tables 1, 2, 3; Parikh et al. Table 1 in `-layout`). Page numbers are the printed page numbers of the copy read; the PDF-to-printed offset is in the table. Where a source prints an en-dash or em-dash (for example "Nadaraya-Watson" in Hastie et al. and Zhang et al., page ranges, "Encoder-Decoder"), it is written here with a hyphen. Mathematical symbols lost in extraction are written out (for example "sqrt(d_k)" for the paper's square root of d_k).
 
@@ -438,3 +438,17 @@ For the glossary: self-attention (intra-attention), contextual embedding, query,
 - ATD3: no single speed-up factor is given as the paper's; the blog's and the lecture's are attributed.
 - The term "contextual embedding" is defined here (Jurafsky and Martin's wording); `pretraining` can reuse it and should note that ELMo (2018) produced contextual vectors with LSTMs before transformers made them standard (pretraining ledger, open question 1).
 - English-French version note, Wired anecdotes, Lin et al. as an inspiration for heads: all avoided per the ledger.
+
+## Independent check (attention chapter)
+
+2026-11-11. A separate agent re-fetched the key sources (Vaswani et al. v7 and the NIPS PDF, slides, Sukhbaatar, Parikh, Clark, Jain and Wallace, Wiegreffe and Pinter, Shaw, Tsai, SLP3 ch. 7, the blog, D2L 11.1-11.2), checked every quote and page, re-ran the script (all numbers match, unrounded values checked), and regenerated the three figures (byte-identical). ATD1-ATD8 were judged fair.
+
+- Errors found and fixed:
+  1. Jurafsky and Martin's "the most popular such" scheme is limited to relative-position methods inside attention (p. 17); the chapter now says so, and the summary bullet no longer says "most models" (now "LLaMA, Llama 3, and many later models").
+  2. BERT's position embeddings are shown to be learned on p. 4183, not p. 4174; cited pp. 4174, 4183.
+  3. "Independently" for Nadaraya and Watson is in no fetched source; now "both in 1964".
+  4. The kernel/softmax equality holds only for a Gaussian kernel of a particular width; now "a bell-shaped (Gaussian) kernel of the right width".
+- Warnings acted on: "attention head" defined at first use; "same learned maps" instead of "same weights"; the Sukhbaatar quote paraphrased (u and m_i removed); Lin et al. described as weighting a sentence's words, not word-to-word attention; Jain and Wallace's scope widened ("mainly recurrent networks, on classification and similar tasks"); "kept most of a GPU idle" aligned with `seq2seq`; "hundreds to thousands of numbers"; "the paper's formula, written for one query"; "(as of 2026)" for long inputs; the 2019 slides credited to Vaswani with Anna Huang; nested quotes made single; masking paraphrased; the 0.06 cost ratio qualified as counting only the comparisons between tokens; "Meta's LLaMA (2023)" introduced; the cost figure's y-axis lowered so the attention curve shows at 30 tokens; `vaswani2017attention` bib note added (v7 read; footnote only in v5 onward); this ledger's header contradiction fixed.
+- "Transduction" (in the quoted first-model claim) is now glossed in a parenthesis.
+- Cohesion: `embeddings` now points to both `attention` and `anatomy` for how transformers make vectors depend on context (one clause changed in that verified chapter).
+- Could not verify: Watson (1964), known only through D2L; ESL re-fetch redirected (research copy used).

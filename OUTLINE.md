@@ -173,7 +173,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** one attention head worked through on a five-token sentence with real small numbers.
 - **Candidate sources:** Vaswani et al. 2017; first-hand accounts by the authors where available.
 - **Depends on:** `toolkit`, `embeddings`, `seq2seq`, `tokens`
-- **Status:** drafted
+- **Status:** verified
 
 #### 13. Anatomy of a transformer {#anatomy}
 

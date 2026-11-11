@@ -112,7 +112,7 @@ The same arithmetic exposed something less welcome. In 2016, Tolga Bolukbasi and
 
 The weakness Deerwester named in 1990 survived every improvement in this chapter. In the GloVe vectors, the nearest words to "bank" are banks, securities, banking, investment, exchange, and financial: the riverbank is nowhere. One word, one vector, whatever the sentence. The textbook calls these **static embeddings**: "the method learns one fixed embedding for each word in the vocabulary" [@jurafsky2026embeddings, p. 11].
 
-The fix arrives with the transformer. The embedding table of an LLM still gives each token one starting vector, but the layers above it change that vector according to the surrounding text, so that "bank" in a sentence about rivers ends up somewhere different from "bank" in a sentence about loans. [The chapter on the anatomy of a transformer](#anatomy) shows how. Two other questions are left open here. What counts as a "word" in a model's vocabulary is the subject of [the chapter on tokens](#tokens). How a sentence, rather than a word, gets a vector is the subject of [the next chapter](#seq2seq).
+The fix arrives with the transformer. The embedding table of an LLM still gives each token one starting vector, but the layers above it change that vector according to the surrounding text, so that "bank" in a sentence about rivers ends up somewhere different from "bank" in a sentence about loans. [The chapters on attention](#attention) and [the anatomy of a transformer](#anatomy) show how. Two other questions are left open here. What counts as a "word" in a model's vocabulary is the subject of [the chapter on tokens](#tokens). How a sentence, rather than a word, gets a vector is the subject of [the next chapter](#seq2seq).
 
 ## What to carry forward
 
