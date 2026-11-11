@@ -173,7 +173,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** one attention head worked through on a five-token sentence with real small numbers.
 - **Candidate sources:** Vaswani et al. 2017; first-hand accounts by the authors where available.
 - **Depends on:** `toolkit`, `embeddings`, `seq2seq`, `tokens`
-- **Status:** outlined
+- **Status:** drafted
 
 #### 13. Anatomy of a transformer {#anatomy}
 
@@ -182,7 +182,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** the full annotated architecture; a parameter-count table for a small model.
 - **Candidate sources:** Vaswani et al. 2017; Radford et al. 2018 for the decoder-only form; Elhage et al. 2021 for the residual-stream framing.
 - **Depends on:** `toolkit`, `depth`, `attention`
-- **Status:** outlined
+- **Status:** researched
 
 ### Part V - From transformer to LLM
 
@@ -195,7 +195,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** masked prediction vs next-token prediction on the same sentence.
 - **Candidate sources:** Peters et al. 2018; Howard and Ruder 2018; Radford et al. 2018; Devlin et al. 2018.
 - **Depends on:** `anatomy`
-- **Status:** outlined
+- **Status:** researched
 
 #### 15. Scale (2019-2022) {#scale}
 
@@ -205,7 +205,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** model size and training-data size by year on a log scale.
 - **Candidate sources:** Radford et al. 2019; Brown et al. 2020; Kaplan et al. 2020; Hoffmann et al. 2022; Sutton 2019.
 - **Depends on:** `pretraining`
-- **Status:** outlined
+- **Status:** researched
 
 #### 16. How an LLM is trained {#training}
 
@@ -214,7 +214,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** one training step drawn end to end; an annotated real loss curve.
 - **Candidate sources:** Brown et al. 2020 (training details); Touvron et al. 2023 (LLaMA); published model cards and data statements.
 - **Depends on:** `toolkit`, `depth`, `tokens`, `anatomy`, `scale`
-- **Status:** outlined
+- **Status:** researched
 
 #### 17. Generating text {#generation}
 
@@ -224,7 +224,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** one next-token distribution reshaped by three temperature settings, with computed numbers.
 - **Candidate sources:** Holtzman et al. 2019; Radford et al. 2019.
 - **Depends on:** `anatomy`, `training`
-- **Status:** outlined
+- **Status:** researched
 
 ### Part VI - From LLM to assistant
 
