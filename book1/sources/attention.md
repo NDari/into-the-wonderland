@@ -461,3 +461,12 @@ Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or
 - **multi-head attention** bolded at first definition ("an arrangement called").
 - False cross-reference fixed: "the position table of the destination chapter" -> "the table of position vectors of the destination chapter" (destination's own wording; "position table" is named in `anatomy`).
 - Page convention: `zhang2023dive` is an online book cited by section (sec. 11.1, 11.2); no printed pages exist for the version read. Left as is.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "By the end of this chapter the reader should be able to follow one attention head by ..." -> "This chapter follows one attention head by hand, shows why it needs extra information ..."
+- "The reader has met this pattern before, in statistics." -> "The pattern has a precedent in statistics."
+- "made up and labeled so the reader can follow them:" -> "made up and labeled so they are easy to follow:"
+- "the reader may recognize the familiar move of rescaling a quantity to unit variance." -> "it is the usual statistical move of rescaling a quantity to unit variance."

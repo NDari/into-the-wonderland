@@ -152,3 +152,9 @@ Defined in prose but never bolded; added to the glossary with the defining chapt
 ### Update after the consistency pass
 
 The links were re-derived from the chapters as they now stand: every bold span of the 25 chapters was listed again in book order, and each entry was linked to the first chapter that bolds the term (or, for the few terms bolded only in a variant form, such as "reverse mode of automatic differentiation" or "approximate nearest neighbor", or not bolded, such as pass@1, the chapter that defines it). The only change of first chapter was *closed model*, now `adapting` instead of `local`; the fifteen terms of finding (e) were already linked to the chapters that now bold them, and their definitions were rechecked against the new bold sentences (*scaling law* and *masked language model* reworded to match). *continuous bag of words (CBOW)* got its own entry, as `embeddings` now bolds it. In all, 19 entries changed (link, link text, numbered senses, wording, or spelling, including the two nearest-neighbor entries renamed to American spelling) and 4 were added (*continuous bag of words (CBOW)*, its cross-entry *CBOW*, *representation learning*, *framework*): 535 entries, 44 of them cross-entries. `python3 build/build.py glossary` still gives 28 pages.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+No changes needed.

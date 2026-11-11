@@ -13,6 +13,10 @@
 #show table: set par(justify: false)
 #show table: set text(size: 9pt)
 
+// Captions: smaller than the text, so they do not read as part of it.
+#show figure.caption: set text(size: 9pt)
+#show figure.caption: set par(leading: 0.55em)
+
 // Figures: a tall drawing is scaled down so its caption fits on the page.
 #show image: it => layout(size => {
   let natural = measure(it, width: size.width)

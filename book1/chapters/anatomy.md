@@ -4,7 +4,7 @@
 
 [The destination chapter](#destination) drew an LLM as a row of boxes and left one of them, "Layers", closed. [The previous chapter](#attention) explained the mechanism inside it. This chapter opens the box and follows one token all the way through a real model, from its ID to the scores for the next token. The model is GPT-2 small, which OpenAI released in 2019: small enough that every number can be written down, and built the same way, in all essentials, as the much larger models that followed.
 
-By the end the reader should be able to name every part of a transformer language model, say what each part does and how many parameters it holds, and tell the three main families of transformer apart.
+This chapter names every part of a transformer language model, says what each part does and how many parameters it holds, and tells the three main families of transformer apart.
 
 ## From the 2017 translator to a language model
 
@@ -26,7 +26,7 @@ Take the token " cat" in "The cat sat on the", the destination chapter's example
 
 **A block.** Each of GPT-2 small's 12 blocks does two updates to the stream. First, it takes a normalized copy of every position's vector, runs masked multi-head attention over them, with 12 heads of 64 numbers each, and adds the result back into each position's stream. This is the only step in which information moves between positions: here the stream at " cat" can take in something from "The". Second, it takes a normalized copy again, runs it through a feed-forward network, and adds the result back. In OpenAI's words, layer normalization "was moved to the input of each sub-block" [@radford2019language, p. 4], so inside the blocks the stream itself is never normalized, only the copies the sub-layers read.
 
-**The feed-forward network.** The second sub-layer, the **feed-forward network**, is the reader's old friend the multilayer perceptron: a network with one hidden layer, of the kind [the backpropagation chapter](#backprop) trained. The 2017 paper gives its standard form:
+**The feed-forward network.** The second sub-layer, the **feed-forward network**, is a plain multilayer perceptron: a network with one hidden layer, of the kind [the backpropagation chapter](#backprop) trained. The 2017 paper gives its standard form:
 
 $$\text{FFN}(x) = \max(0,\, x W_1 + b_1)\, W_2 + b_2$$
 
@@ -69,7 +69,7 @@ where $n_{\text{layer}}$ is the number of blocks and $d_{\text{model}}$ is the w
 
 ![Two attention masks for "The cat sat on the". Each row is a token doing the looking, each column a token it may look at; blue cells are allowed. Left: fully visible, every token sees every other, as in an encoder. Right: causal, each token sees only itself and earlier tokens, as in a decoder-only language model.](../../figures/anatomy-masks.svg){#fig:anatomy-masks}
 
-A language model's job at each position is to predict the next token, so no position may see the tokens after it. [The previous chapter](#attention) introduced the fix in passing, the **causal mask**; here is what it does to the model. Before the softmax, every attention score from a position to a later position is set to minus infinity, so its weight comes out exactly zero. The 2017 paper: masking "ensures that the predictions for position i can depend only on the known outputs at positions less than i" [@vaswani2017attention, p. 3]. In a five-token text, 15 of the 25 possible pairs are allowed. For example, if "sat" gives made-up scores to the five positions, the mask leaves weights of 0.20, 0.48, and 0.32 on "The", "cat", and "sat", and exactly zero on the two later positions, whatever their scores were. This is the rule against leakage that the reader knows from validating forecasts: a model must not be scored on data it could peek at.
+A language model's job at each position is to predict the next token, so no position may see the tokens after it. [The previous chapter](#attention) introduced the fix in passing, the **causal mask**; here is what it does to the model. Before the softmax, every attention score from a position to a later position is set to minus infinity, so its weight comes out exactly zero. The 2017 paper: masking "ensures that the predictions for position i can depend only on the known outputs at positions less than i" [@vaswani2017attention, p. 3]. In a five-token text, 15 of the 25 possible pairs are allowed. For example, if "sat" gives made-up scores to the five positions, the mask leaves weights of 0.20, 0.48, and 0.32 on "The", "cat", and "sat", and exactly zero on the two later positions, whatever their scores were. This is the rule against leakage from validating forecasts: a model must not be scored on data it could peek at.
 
 <!-- D-009: code/checks/anatomy.py, Example 5 -->
 
@@ -77,7 +77,7 @@ The mask has a large payoff in training. Because each position can see only its 
 
 ## Three families
 
-The mask, more than anything else, separates the three kinds of transformer the reader will meet.
+The mask, more than anything else, separates the three kinds of transformer.
 
 - **Decoder-only** models (GPT, Llama) use the causal mask in every block. They read and write left to right, which is what generating text needs.
 - **Encoder-only** models (BERT, 2018) use a fully visible mask: every token sees the whole input. BERT's authors note that such a model is "often referred to as a "Transformer encoder" while the left-context-only version is referred to as a "Transformer decoder" since it can be used for text generation" [@devlin2019bert, pp. 4173-4174]. An encoder-only model is good at understanding a text it is given but cannot continue it left to right.

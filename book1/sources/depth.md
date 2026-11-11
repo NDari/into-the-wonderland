@@ -70,3 +70,12 @@ Editorial pass to make the chapters agree with each other; no sourced fact, quot
 - Un-bolded "dropout" (first bolded in `deep-turn`) and added a callback link to that chapter.
 - Glossed "ensemble" at its first use in the book (bolded later in `seq2seq`).
 - "dataset" to "data set" in prose (line 84); the He et al. quotation keeps "dataset", and "mini-batch" stays inside the recipe quotation.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "For this book's reader, the most useful view is a third one." -> "The most useful view here is a third one, from classical statistics."
+- "A reader of the 2000s standardizes features before fitting a model" -> "Standardizing features before fitting a model is routine in statistics"
+- "A reader's instinct says a deeper network should overfit" -> "Ordinary statistical intuition says a deeper network should overfit"
+- "the reader can read both halves of a modern training recipe" -> "both halves of a modern training recipe are now covered"

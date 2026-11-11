@@ -276,3 +276,17 @@ Editorial pass to make the chapters agree with each other; no sourced fact, quot
 - Glossed "benchmark" at its first use in the book, with a forward link to `deep-turn`, where it is bolded (glossary finding (b)).
 - Page convention: added pp. 541-542 to `lecun1989backpropagation` for the zip-code sentence (affiliation p. 541, data p. 542, both in S5). `hochreiter2001gradient` names the work only; no page added.
 - American spelling: labelled to labeled (two places), analysed to analyzed (two). "dataset" and "cheques" are inside quotations and stay.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "moved to methods the reader will know well" -> "moved to other methods"
+- "This chapter ends in the reader's own era." -> "This chapter ends around the year 2000."
+- "The reader will recognize the argument" -> "This is the standard statistical argument"
+- "A reader who has built n-gram models knows this cap: an n-gram model also sees" -> "The n-gram language model has the same cap: it also sees"
+- "## The second winter, and the reader's own era" -> "## The second winter, and the decade around 2000 (no links to the old auto-ID found)"
+- "The reader knows the method at the center of it." -> "One method was at the center of it."
+- "a theory of generalization the reader learned in school" -> "a well-developed theory of generalization"
+- "the point where the reader's own knowledge of the field begins and ends" -> "where the field stood in the early 2000s"
+- "the reader's starting point for the rest of the book" -> "the starting point for the rest of the book"

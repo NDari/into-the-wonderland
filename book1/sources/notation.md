@@ -109,3 +109,12 @@ For the coordinator. Line numbers are as of 2026-11-11, before the consistency p
 - Unchanged rows whose chapter text changed: $\sigma$ (standard deviation, `toolkit`, now defined there); $\max(0, z)$ (`anatomy` now writes $\max(0,\, x W_1 + b_1)$, the same ReLU); $\times$ in `frontier`'s two formulas.
 
 The first-use script was re-run; its only mismatches are different meanings of the same letter, each a separate row, as before. Statements in the prose checked against the current chapters: the bold-vector remark (removed), the KiB/MiB/GiB paragraph (the chapters now use only decimal units and, in `local`, GiB; the appendix still defines KiB and MiB for its own Llama 3 example), the base of $\log$ in `instructions` (now stated in the chapter), and the Swish formula (now $x\,\sigma(x)$ in the chapter). The glossary's Swish entry (`glossary.md`) still writes $x \cdot \sigma(x)$, outside this pass.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "It is a refresher, not a course: the reader's undergraduate linear algebra," -> "It is a refresher, not a course: undergraduate linear algebra,"
+- "uses a familiar idea in an unfamiliar way." -> "uses an old idea in a new way."
+- "The reader's PCA rests on the same idea:" -> "PCA rests on the same idea:"
+- "the weighted sum of the reader's logistic regression" -> "the weighted sum of logistic regression"

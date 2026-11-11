@@ -1,4 +1,5 @@
 -- Book layout [D-021]: chapter numbers, part pages, title page and contents.
+-- The Typst (PDF) output gets the full layout; EPUB gets plain headings.
 -- build/build.py passes the numbers and parts from OUTLINE.md as metadata
 -- (book-chapters, book-parts, book-title, ...), so nothing is hard-coded here.
 
@@ -21,10 +22,33 @@ local function heading(body, label, supplement, ident)
   return pandoc.RawBlock("typst", raw)
 end
 
+-- EPUB and other formats: plain headings, with the number in the title and
+-- each part as its own short section. The reader's software builds the
+-- title page and contents from the metadata.
+local function plain(doc, chapters, parts)
+  local blocks = {}
+  for _, block in ipairs(doc.blocks) do
+    local id = block.t == "Header" and block.level == 1 and block.identifier
+    if id and parts[id] then
+      local part = parts[id]
+      local text = part.label and (stringify(part.label) .. ": " .. stringify(part.title))
+        or stringify(part.title)
+      table.insert(blocks, pandoc.Header(1, text, { class = "part" }))
+    end
+    if id and chapters[id] and chapters[id].label then
+      block.content:insert(1, pandoc.Str(stringify(chapters[id].label) .. ". "))
+    end
+    table.insert(blocks, block)
+  end
+  doc.blocks = blocks
+  return doc
+end
+
 function Pandoc(doc)
   local meta = doc.meta
   local chapters = meta["book-chapters"] or {}
   local parts = meta["book-parts"] or {}
+  if FORMAT ~= "typst" then return plain(doc, chapters, parts) end
   local blocks = {}
 
   if meta["book-title"] then

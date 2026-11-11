@@ -157,7 +157,7 @@ Entries are never rewritten or deleted. To change one, set its status and add a 
 ## D-021 Book layout
 - Status: provisional
 - Date: 2026-11-11
-- Decision: Every chapter, appendix and the reference list starts on a new page, under a "Chapter N" or "Appendix X" label taken from `OUTLINE.md`. Section headings have a blank line's worth of space below them and more above. A whole-book build adds a title page, a contents page (numbered i, ii, ...), a page for each part, and a running head with the chapter title. The page is 6 x 9 in (Typst's "us-trade") with 0.8 in side margins and 11 pt type, about 65 characters to a line. Tables are set ragged right in 9 pt and may continue on the next page; figures taller than 4.6 in are scaled down so their captions fit. The rules live in `build/book.typ` and `build/book.lua`.
+- Decision: Every chapter, appendix and the reference list starts on a new page, under a "Chapter N" or "Appendix X" label taken from `OUTLINE.md`. Section headings have a blank line's worth of space below them and more above. A whole-book build adds a title page, a contents page (numbered i, ii, ...), a page for each part, and a running head with the chapter title. The page is 6 x 9 in (Typst's "us-trade") with 0.8 in side margins and 11 pt type, about 65 characters to a line. Tables are set ragged right in 9 pt and may continue on the next page; figures taller than 4.6 in are scaled down so their captions fit. The rules live in `build/book.typ` and `build/book.lua`. `python3 build/build.py --epub` writes the same chapters as an EPUB for e-readers (the author reads on a 7 in Kindle Oasis, where a 6 x 9 in PDF page would shrink to about 60%): reflowing text, chapter numbers and part titles in the headings, formulas as MathML, figures as the same SVGs.
 - Why: The author asked for chapters to start on new pages and for space between headings and text before reading the full draft. The rest is ordinary book structure that helps a reader find their place. The author chose readable line length over page count: at 6 x 9 in, Book 1 runs to about 550 pages instead of about 380 on US letter.
 - To revert: remove the `--include-in-header`, `--metadata-file` and `book.lua` lines from `build/build.py`, or edit `build/book.typ` for a different look.
 
@@ -167,6 +167,13 @@ Entries are never rewritten or deleted. To change one, set its status and add a 
 - Decision: Book 1 keeps the scope of D-004: from the perceptron through the transformer and GPT-style pretraining, then instruction tuning and RLHF, inference, quantization and local models, LoRA, RAG, and one dated survey chapter on the frontier. There is no page target. Length follows content: material stays if it serves one of the reader outcomes in `AGENTS.md`, however long the book becomes. The page estimates in `OUTLINE.md` are rough guides for planning a chapter, not limits.
 - Why: The author does not mind length as long as the information is good. The old 300-400 page target was set for US letter pages; at 6 x 9 in [D-021] the same text is about 550 pages.
 - To revert: set a page target here and in `AGENTS.md` and `OUTLINE.md`, and decide which chapters to shorten.
+
+## D-023 No call-outs to the reader
+- Status: provisional
+- Date: 2026-11-11
+- Decision: The text does not point at the reader's background, era, or knowledge ("the reader knows this as", "the reader's own era", "the reader's logistic regression", "you have seen this before"). The bridge to 2000s ideas stays, stated plainly: "This is overfitting", "the same logistic regression", "the decade around 2000". A general "you" in a question or a piece of practical advice ("How do you train a network that loops back into itself?") is fine, and quotations are untouched.
+- Why: The author found the call-outs distracting when reading the full draft on an e-reader. Naming the concept carries the bridge without addressing the reader.
+- To revert: allow the phrasing again; the edits are listed in each chapter's ledger under "Style pass (2026-11-11)".
 
 # Open questions
 

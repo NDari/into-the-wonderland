@@ -48,7 +48,7 @@ A **model hub** is a website that hosts model files with their documentation. Th
 
 Each model comes with a **model card**, its documentation. Margaret Mitchell and colleagues proposed the idea in 2019: "short documents accompanying trained machine learning models that provide benchmarked evaluation in a variety of conditions", which also "disclose the context in which models are intended to be used" [@mitchell2019model, p. 1]. Their template has sections for the model's details (developer, date, version, type, license), intended use, evaluation, training data, ethical considerations, and caveats [@mitchell2019model, p. 3]. On Hugging Face, the card is the README file of the model's repository, with metadata that include the license [@huggingface2026modelcards].
 
-The original LLaMA card followed that template, down to its license ("Non-commercial bespoke license") [@meta2023llamav1]. A card is where to find a model's exact size, context length, license, and intended uses, and the makers' own benchmark scores, which [the chapter on measuring models](#evaluation) teaches the reader to read with care.
+The original LLaMA card followed that template, down to its license ("Non-commercial bespoke license") [@meta2023llamav1]. A card is where to find a model's exact size, context length, license, and intended uses, and the makers' own benchmark scores, which [the chapter on measuring models](#evaluation) shows how to read with care.
 
 ## How much memory: parameters times bits
 
@@ -64,7 +64,7 @@ One kind of model breaks the rule that the name gives the size. A mixture of exp
 
 ## Quantization: fewer bits per weight
 
-Most of the models named here are published in 16-bit numbers [@huggingface2026api], but they can be run in fewer. In the words of llama.cpp, a program described below, quantization "shrinks the model's size and can speed up inference", but "may introduce some accuracy loss" [@llamacpp2026quantize]. The reader has done something similar when binning a continuous variable, or saving a photograph as a lower-quality JPEG: fewer distinct values, a small loss.
+Most of the models named here are published in 16-bit numbers [@huggingface2026api], but they can be run in fewer. In the words of llama.cpp, a program described below, quantization "shrinks the model's size and can speed up inference", but "may introduce some accuracy loss" [@llamacpp2026quantize]. Binning a continuous variable is similar, and so is saving a photograph as a lower-quality JPEG: fewer distinct values, a small loss.
 
 The simplest scheme is **round-to-nearest** with a shared scale. Take a **group** of weights (llama.cpp calls it a block), stretch it so that the largest in absolute value lands on the largest integer allowed, round every weight to the nearest integer, and store the integers plus the stretch factor. Tim Dettmers and colleagues described this for 8 bits in 2022: it "scales inputs into the 8-bit range [-127, 127]" using "127 divided by the absolute maximum of the entire tensor" [@dettmers2022llmint8, p. 3]. In symbols:
 
@@ -76,7 +76,7 @@ Here $w_i$ is one weight in the group; $\max_j |w_j|$ is the largest absolute va
 
 The scale costs space, so the honest measure of a format is **bits per weight**: everything stored, scales included, divided by the number of weights. <!-- D-009: code/checks/local.py, Example 1 --> In the example, eight 4-bit integers and one 16-bit scale make 6 bits per weight. Real formats use larger groups: llama.cpp's simplest 4-bit format, Q4_0, stores 32 weights as 4-bit numbers with one 16-bit scale [@ggml2026quanttypes], 4.5 bits per weight; its 8-bit Q8_0 is 8.5. A "4-bit" file is not 4 bits per weight.
 
-Groups are used, rather than one scale per matrix, for the reason the reader standardized each column of a data table separately: one range fits no values well. Smaller groups fit better but need more scales; llama.cpp's later formats, the k-quants, nest groups inside super-blocks of 256 weights and store the groups' scales in fewer bits [@ggml2026quanttypes].
+Groups are used, rather than one scale per matrix, for the same reason each column of a data table is standardized separately: one range fits no values well. Smaller groups fit better but need more scales; llama.cpp's later formats, the k-quants, nest groups inside super-blocks of 256 weights and store the groups' scales in fewer bits [@ggml2026quanttypes].
 
 Most llama.cpp files also mix formats. The type Q4_K_M stores most weights in the 4-bit k-quant but keeps the output layer, and some attention and feed-forward matrices in the first and last eighths of the layers and in every third layer between, at 6 bits [@ggml2026quanttypes]. <!-- D-009: code/checks/local.py, Example 1 --> Measured on Llama 3.1 8B, Q4_K_M averages 4.89 bits per weight, Q4_K_S 4.67, Q3_K_M 4.00, and Q2_K 3.16 [@llamacpp2026quantize]. The names are labels, not bit counts.
 
@@ -123,7 +123,7 @@ Table: Memory for the weights alone, in GB (a billion bytes): parameter counts f
 
 <!-- D-009: code/checks/local.py, Example 3 --> The table agrees with llama.cpp's own figures where they overlap: 14.96 GiB in 16 bits and 4.58 GiB at Q4_K_M for Llama 3.1 8B (a GiB is $2^{30}$ bytes, about 1.074 GB), and 43.1 GB for the 70B model at Q4_K_M [@llamacpp2026quantize]. Phi-3's report gives "≈ 1.8GB" for its 4-bit model [@abdin2024phi3, p. 3], less than the table; the report does not name its format, and exactly 4 bits per weight would give 1.91 GB.
 
-![Memory needed by the models of the table. (a) The weights alone, in GB, at each llama.cpp type, shaded against memory sizes a reader may own: up to 16 GB (a 16 GB graphics card), 32 GB, 64 GB, and 128 GB (the most Apple's M4 Max offered in 2024). (b) Three models at Q4_K_M with a 16-bit KV cache at 8K and 32K tokens of context. Computed for this chapter; parameter counts as of 2026-11-11; no allowance for the runtime's own working memory.](../../figures/local-memory.svg){#fig:local-memory}
+![Memory needed by the models of the table. (a) The weights alone, in GB, at each llama.cpp type, shaded against common memory sizes: up to 16 GB (a 16 GB graphics card), 32 GB, 64 GB, and 128 GB (the most Apple's M4 Max offered in 2024). (b) Three models at Q4_K_M with a 16-bit KV cache at 8K and 32K tokens of context. Computed for this chapter; parameter counts as of 2026-11-11; no allowance for the runtime's own working memory.](../../figures/local-memory.svg){#fig:local-memory}
 
 The weights are not the whole bill. The KV cache of [the chapter on generation](#generation) grows with the context: per token, 2 (a key and a value) times the number of layers, times the number of key-value heads, times the dimension of each head, times the bytes per number.
 
@@ -153,7 +153,7 @@ Runtimes built on llama.cpp use **GGUF**, introduced on August 21, 2023 as a del
 
 ## Reading a model's name
 
-GGUF's specification proposes a naming convention: a base name, a size label, a fine-tuning label, a version, the encoding, a file type, and, for models split across files, a shard number such as part 1 of 3. It warns that the convention "is not intended to be perfectly parsable in the field" [@ggml2026gguf]. Its own example is Mixtral-8x7B-v0.1-KQ2: model name Mixtral, expert count 8, parameter count 7B, version 0.1, encoding KQ2 [@ggml2026gguf]. A typical name the reader will meet, Llama-3.1-8B-Instruct-Q4_K_M, reads as follows.
+GGUF's specification proposes a naming convention: a base name, a size label, a fine-tuning label, a version, the encoding, a file type, and, for models split across files, a shard number such as part 1 of 3. It warns that the convention "is not intended to be perfectly parsable in the field" [@ggml2026gguf]. Its own example is Mixtral-8x7B-v0.1-KQ2: model name Mixtral, expert count 8, parameter count 7B, version 0.1, encoding KQ2 [@ggml2026gguf]. A typical name, Llama-3.1-8B-Instruct-Q4_K_M, reads as follows.
 
 | Part | Example | What it says | Caution |
 |------------------|--------------|------------------------|-------------------------------------|
@@ -166,7 +166,7 @@ Table: Reading a model file name, loosely following the GGUF naming convention [
 
 **Size.** For a mixture of experts the label may give the expert count, as in 8x7B, which is not 56 billion parameters, or total and active parameters, as in Qwen3-235B-A22B, which "has a total of 235B parameters with 22B activated ones" [@yang2025qwen3, p. 3]. Labels are not always parameter counts: as of 2026-11, Google's gemma-4-E2B-it stores 5.12 billion parameters [@huggingface2026api]; what its label means is for its card to explain.
 
-**Variant.** A base model, as [the destination chapter](#destination) called it, has only been pretrained: it continues text. The LLaMA card warns that it "has not been trained with human feedback, and can thus generate toxic or offensive content, incorrect information or generally unhelpful answers" [@meta2023llamav1]. An **instruct model** (instruction-tuned model) has been further trained to follow instructions and converse, the subject of [the chapter on following instructions](#instructions). Both have the same size: Hugging Face lists Llama-3.1-8B and Llama-3.1-8B-Instruct with the same 8,030,261,248 parameters [@huggingface2026api]. For chatting, the reader wants the instruct version.
+**Variant.** A base model, as [the destination chapter](#destination) called it, has only been pretrained: it continues text. The LLaMA card warns that it "has not been trained with human feedback, and can thus generate toxic or offensive content, incorrect information or generally unhelpful answers" [@meta2023llamav1]. An **instruct model** (instruction-tuned model) has been further trained to follow instructions and converse, the subject of [the chapter on following instructions](#instructions). Both have the same size: Hugging Face lists Llama-3.1-8B and Llama-3.1-8B-Instruct with the same 8,030,261,248 parameters [@huggingface2026api]. For chatting, the instruct version is the one to use.
 
 **Context length.** Some names include it: Phi-3-mini comes in "two variants 4K and 128K which is the context length (in tokens) that it can support" [@huggingface2026api]. But the name is not the authority: Llama 3.2 1B and 3B support 128K tokens, while Meta's own quantized versions of them support 8K [@meta2024llama32card]. Read the card.
 

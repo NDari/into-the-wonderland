@@ -555,3 +555,13 @@ post-norm; pre-norm; RMSNorm; root mean square; GELU (Gaussian Error Linear Unit
 - "needle in a haystack" no longer bold; links back to `prompting`, which defines it. The false forward reference "The chapter on prompting returns to this" (prompting comes earlier) now reads "as in the studies of the chapter on prompting".
 - **dense** keeps its bold with "(dense in a different sense from the dense vectors of the embeddings chapter)" (glossary finding (c)).
 - Not changed: "token tables" at the Mixtral parameter count (glossary finding (c) notes "embedding table" and "token table" as two names for one table; D-019 uses "token table"; no fix was specified).
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "The aim is that a reader can open the architecture section of a current model's paper and recognize every part." -> "The aim is that every part of the architecture section of a current model's paper becomes recognizable."
+- "A reader from regression can see an interaction term:" -> "In regression terms it is an interaction term:"
+- "This is the regression lesson every reader knows:" -> "This is the standard regression lesson:"
+- "the multinomial logistic regression the reader knows, with one class per expert" -> "a multinomial logistic regression, with one class per expert"
+- "One consequence for the reader: a parameter count" -> "One consequence for reading model reports: a parameter count"

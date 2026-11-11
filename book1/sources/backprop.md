@@ -105,3 +105,12 @@ For the glossary: backpropagation, hidden unit, hidden layer, credit assignment 
 Editorial pass to make the chapters agree with each other; no sourced fact, quote, number, or citation changed except where noted.
 
 - No change needed. Its bold terms are first uses; `toolkit` drops its re-bold of "reverse mode". The false "multilayer perceptron of the backpropagation chapter" reference is in `anatomy` (this chapter never uses the phrase) and is fixed there.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "two things the reader already knows" -> "two older ideas"
+- "The reader has met the most common loss already" -> "The most common loss is an old one"
+- "the bridge from the reader's own toolkit" -> "the bridge to classical statistics"
+- "by the reader's own era" -> "by around 2000"

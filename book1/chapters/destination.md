@@ -8,7 +8,7 @@ The short version fits in two sentences. A **large language model** (LLM) is a p
 
 The rest of the book is detail about those two sentences: what "a piece of text" is, how the probabilities are computed, where the program's numbers come from, and how a machine that only continues text came to answer questions.
 
-## A classifier you already know
+## An old classifier, used a new way
 
 Start with something familiar. Multinomial logistic regression, also called softmax regression, takes a vector of features and outputs a probability for each of several classes. It computes one score per class, a weighted sum of the features, and then turns the scores into probabilities that are all positive and add up to one.
 
@@ -22,7 +22,7 @@ Third, do not design the features by hand. In the 2000s, much of the work of bui
 
 Finally, use the classifier repeatedly. Predict a next token, append it to the text, and predict again with the longer text as input. Writing a paragraph means running the classifier once for every token in it.
 
-That gives the bridge from what you know: **an LLM is a very large classifier over a vocabulary, with learned features, applied again and again to its own output.** The description leaves a great deal out, and later chapters fill it in, but nothing in them will contradict it.
+That gives the bridge from classical statistics: **an LLM is a very large classifier over a vocabulary, with learned features, applied again and again to its own output.** The description leaves a great deal out, and later chapters fill it in, but nothing in them will contradict it.
 
 ## A language model assigns probabilities to text
 
@@ -61,7 +61,7 @@ This figure returns throughout the book, with one box enlarged at a time. Follow
 
 **Vectors.** Each token ID selects one row of a large table, the **embedding table**. A row is a **vector**: a list of numbers, from a few hundred to more than ten thousand long. OpenAI's 2018 GPT model turned each token into 768 numbers [@radford2018improving, p. 5]; the largest GPT-2 used 1,600 [@radford2019language, p. 4]; the largest Llama 3.1 uses 16,384 [@grattafiori2024llama, p. 7]. These vectors are called **embeddings**. Each token's vector is also combined with information about its position in the text, because the layers that follow would otherwise have no sense of word order; in the 2018 GPT model this is a second table, of position vectors [@radford2018improving, p. 3]. Before training, the vectors in these tables are random. Training moves them, and [the chapter on embeddings](#embeddings) shows how tokens that are used in similar ways end up with similar vectors.
 
-Why turn an ID into a vector at all? An ID is only a name: token 3797 is no more like token 3798 than like token 7. A vector can express resemblance as closeness, so what the model learns about one token can carry over to tokens with nearby vectors. If you know latent semantic analysis, this is the same move as replacing a word by its coordinates in a reduced space, except that the coordinates are learned for the task of prediction rather than computed from a co-occurrence matrix.
+Why turn an ID into a vector at all? An ID is only a name: token 3797 is no more like token 3798 than like token 7. A vector can express resemblance as closeness, so what the model learns about one token can carry over to tokens with nearby vectors. Latent semantic analysis made the same move, replacing a word by its coordinates in a reduced space; the difference is that here the coordinates are learned for the task of prediction rather than computed from a co-occurrence matrix.
 
 **Layers.** The vectors then pass through a stack of layers, which is where most of the computation happens. In OpenAI's GPT models, and in later models such as Llama 3.1, the layers are **transformer** blocks [@radford2018improving, p. 3; @grattafiori2024llama, p. 1], a design published in 2017 that is built on a mechanism called attention [@vaswani2017attention, p. 10]. Each block does two things. First, the vector at every position gathers information from the vectors at its own position and the positions before it; this is attention, and it is how information about "cat" and "sat" can reach the position of "the". Second, each vector is processed on its own by a small network. The block's output is a new vector for every position, the same length as before, and the next block continues from there. The largest GPT-2 stacked 48 blocks [@radford2019language, p. 4]. After the last block, the vector at the final position carries what the model has computed about what should come next. [The chapter on attention](#attention) and [the chapter on the transformer's anatomy](#anatomy) open this box.
 
@@ -126,7 +126,7 @@ A model's life has two phases.
 
 **Inference** is using the trained model: running the pipeline in the figure to produce text. During inference the parameters do not change. A model does not learn from a conversation the way it learned during training. Whatever it "knows" about the conversation is the text in its context window, and nothing else. One consequence is that the parameters contain nothing from after the text the model was trained on, a limit discussed in [the chapter on knowledge and tools](#tools).
 
-If you have used the fit-then-predict workflow of a 2000s statistics package, this split is familiar: fit rarely, at great cost, and then predict many times, cheaply by comparison.
+This is the fit-then-predict split of any statistics package: fit rarely, at great cost, and then predict many times, cheaply by comparison.
 
 ## The model and the product
 

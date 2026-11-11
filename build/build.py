@@ -4,6 +4,7 @@
 Usage:
   python3 build/build.py                one PDF of every Book 1 chapter that has a file
   python3 build/build.py <id> [<id>...] one PDF of the named chapters, in outline order
+  python3 build/build.py --epub [...]   the same, as an EPUB for e-readers [D-021]
 
 Output goes to out/. Chapter order, chapter numbers and parts come from
 OUTLINE.md [D-010]. Links to chapters that are not in the build become plain
@@ -86,6 +87,8 @@ def layout_metadata(chosen, whole_book):
 
 
 def main(args):
+    epub = "--epub" in args
+    args = [a for a in args if a != "--epub"]
     order = outline_order()
     known = {cid for _, cid in order}
     unknown = [a for a in args if a not in known]
@@ -105,20 +108,35 @@ def main(args):
     if len({f.parent for f in files}) > 1:
         sys.exit("chapters from different books must be built separately")
     OUT.mkdir(exist_ok=True)
-    target = OUT / f"{name}.pdf"
+    target = OUT / f"{name}.{'epub' if epub else 'pdf'}"
+    layout = layout_metadata(chosen, not args)
+    if epub:
+        # The e-reader draws the title page from these [D-021].
+        layout.update({"title": layout.get("book-title", "Into the Wonderland"),
+                       "subtitle": layout.get("book-subtitle", book_subtitle(chosen[0][0])),
+                       "date": layout.get("book-date", ""), "lang": "en-US"})
     meta = OUT / f"{name}-layout.json"
-    meta.write_text(json.dumps(layout_metadata(chosen, not args), indent=1), encoding="utf-8")
+    meta.write_text(json.dumps(layout, indent=1), encoding="utf-8")
+    if epub:
+        # Pandoc's default style sheet, then ours on top (build/epub.css).
+        default_css = OUT / "epub-default.css"
+        default_css.write_bytes(subprocess.run(
+            ["pandoc", "--print-default-data-file", "epub.css"],
+            check=True, capture_output=True).stdout)
+        fmt = ["-t", "epub3", "--toc", "--toc-depth=2", "--math-method=mathml",
+               "--css", str(default_css), "--css", str(ROOT / "build" / "epub.css")]
+    else:
+        fmt = ["--include-in-header", str(ROOT / "build" / "book.typ"), "--pdf-engine", "typst"]
     cmd = [
         "pandoc", *map(str, files),
         "--metadata-file", str(meta),
-        "--include-in-header", str(ROOT / "build" / "book.typ"),
+        *fmt,
         "--lua-filter", str(ROOT / "build" / "links.lua"),
         "--lua-filter", str(ROOT / "build" / "book.lua"),
         "--citeproc", "--bibliography", str(ROOT / "references.bib"),
         "--resource-path", str(files[0].parent),
         "-M", "link-citations=true",
         "-M", "reference-section-title=References",
-        "--pdf-engine", "typst",
         "-o", str(target),
     ]
     subprocess.run(cmd, check=True)

@@ -158,3 +158,12 @@ Editorial pass to make the chapters agree with each other; no sourced fact, quot
 - Un-bolded "weight" and "parameters": both are first bolded in `destination` with the same meaning; the parameters sentence already links back.
 - American spelling: labelled to labeled (three places), analysed to analyzed (three), colours to colors, modelled to modeled. Quotations untouched ("judgement").
 - Page convention: `mcculloch1943logical` (line 55), `rosenblatt1958perceptron` (line 93), and `minsky1969perceptrons` (line 168) are cited without a page only where the citation names the work; every specific claim from them already carries a page. No change.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "## You have seen this before" -> "## The link to logistic regression"
+- "If the weighted sum looks familiar, it should." -> "A weighted sum plus an intercept is also the core of a standard statistical model."
+- "training data the reader knows from classification" -> "training data used in ordinary classification"
+- "the quantity the reader knows from least-squares regression" -> "the same quantity that least-squares regression minimizes"

@@ -325,3 +325,10 @@ For the glossary: attention, statistical machine translation, parallel corpus, p
   2. "Cho's models had one layer" is not in `cho2014properties`; now "1,000 hidden units, a 30,000-word vocabulary, and about 110 hours of training" (p. 106). Ledger D3 corrected.
   3. Goodfellow et al.'s quote runs from p. 390 to p. 392 (p. 391 is a full-page figure). Fixed in the chapter and in Q22 and D1.
 - Warnings acted on: log-linear quote pp. 1726-1727; Goodfellow's "state-of-the-art" flagged as generous; the summary of Sutskever et al.'s first keeps their qualifier, attributed; "need not score 100"; Kalchbrenner and Blunsom "measured it by perplexity and by re-ranking"; "attention" used in one passage (three times; Q13 corrected); hard alignments described as fixed in training, linking a word to particular words or none; "no performance deterioration" attached to the model trained on sentences up to 50 words; WMT16 "no pure neural system was in the top group" instead of "older systems still led"; weights "sum to one (up to rounding)"; "today's LLMs (as of 2026)"; SMT, MT, and transduction glossed; the reversal effect presented as the book's reading, not the paper's; the 33 pipelined steps explained; Cho et al. 2014b's finding attributed to neural translation generally (both models).
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "the form the reader knows from logistic regression." -> "the same form as logistic regression."
+- "for a set of short phrases, the method the reader knows, showed" -> "for a set of short phrases showed"

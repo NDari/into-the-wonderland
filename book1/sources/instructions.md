@@ -537,3 +537,11 @@ Choices and things left out:
 - **Kullback-Leibler divergence** bolded at its definition (glossary finding (e)).
 - "reasoning models" in the closing sentence glossed and linked to `prompting`, where the term is defined (glossary finding (b)).
 - Not changed: "SQL injections" inside the ChatML quotation is already glossed in the prose (done in the independent check).
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "something happened that the reader would flag as a mistake:" -> "something happened that standard practice would flag as a mistake:"
+- "The reader will recognize the pair: false negatives" -> "The pair is false negatives"
+- "the reader's overfitting to a validation set" -> "ordinary overfitting to a validation set"

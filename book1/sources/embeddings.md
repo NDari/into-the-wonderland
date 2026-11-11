@@ -331,3 +331,14 @@ Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or
 - Bengio's table: "m the number of entries in each vector" instead of "the length" (length is the norm elsewhere in the chapter; notation verifier note).
 - **CBOW** bolded at its definition (glossary finding (e)).
 - Page convention: `bengio2000neural` has no page locator; the citation only names the work (dating), so none added.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "the most important new idea in the book for a reader from the 2000s:" -> "the most important new idea in the book:"
+- "The other is the reader's own toolkit: the matrix factorization" -> "The other is a standard tool of statistics: the matrix factorization"
+- "The reader who has done document retrieval will know the cosine from comparing documents ..." -> "In document retrieval the cosine compares documents by their word counts,"
+- "and from a tool the reader knows. In 1990" -> "and from an older statistical tool. In 1990"
+- "One trick in the follow-up will look familiar." -> "One trick in the follow-up reuses a classic model."
+- "The reader's logistic regression, applied a few billion times," -> "Ordinary logistic regression, applied a few billion times,"

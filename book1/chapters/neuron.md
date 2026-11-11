@@ -36,9 +36,9 @@ where $x_1$ to $x_n$ are the inputs, $w_1$ to $w_n$ are their weights, $b$ is th
 
 The weights and the bias are the neuron's parameters, in exactly the sense of [the destination chapter](#destination): the numbers that learning will set. Everything that follows in this book, up to models with hundreds of billions of parameters, is built from this unit or close relatives of it.
 
-## You have seen this before
+## The link to logistic regression
 
-If the weighted sum looks familiar, it should. Replace the step function with the **sigmoid** (the logistic function), which turns any number into a value between 0 and 1:
+A weighted sum plus an intercept is also the core of a standard statistical model. Replace the step function with the **sigmoid** (the logistic function), which turns any number into a value between 0 and 1:
 
 $$\sigma(z) = \frac{1}{1 + e^{-z}}$$
 
@@ -102,7 +102,7 @@ The gap between those two passages is the story of this chapter in miniature. Wh
 
 ## How a perceptron learns
 
-A perceptron learns from labeled examples, the same kind of training data the reader knows from classification. Start with all weights and the bias at zero. Show the perceptron one example and compare its output with the correct answer. Then:
+A perceptron learns from labeled examples, the same kind of training data used in ordinary classification. Start with all weights and the bias at zero. Show the perceptron one example and compare its output with the correct answer. Then:
 
 - If the output is right, change nothing.
 - If the output is 0 but should be 1, add each input to its weight and add 1 to the bias. Every input that was on now counts more in favor of firing.
@@ -139,7 +139,7 @@ Learning rules for single-layer networks appeared from two groups in 1960, one f
 
 At Stanford's Department of Electrical Engineering, Bernard Widrow and Marcian Hoff, then a doctoral student there, built a learning machine of their own. They called it "Adaline" (usually written **ADALINE** today), for "adaptive linear", and described it as "about the size of a lunch pail" [@widrow1960adaptive, p. 97]. Its neuron was the same weighted vote: "a linear combination of the input signals is formed. The weights are the gains a1, a2, ..., which could have both positive and negative values. The output signal is +1 if this weighted sum is greater than a certain threshold, and -1 otherwise" [@widrow1960adaptive, p. 96]. Patterns were set on a 4-by-4 grid of switches, and "the machine's total experience is stored in the values of the weights" a0 to a16: sixteen weights for the switches and one for the threshold [@widrow1960adaptive, p. 97].
 
-Training ADALINE was a manual procedure in 1960. An operator set a pattern, read the error on a meter, and turned each of the 17 weights "in the direction which will diminish the error by an amount which reduces the error magnitude by 1/17", so that after all 17 adjustments "the error for the present input pattern is zero" [@widrow1960adaptive, p. 97]. Two features set this apart from the perceptron rule. The correction is spread across all the weights according to how far off the answer was, not applied as a fixed step only when the final answer is wrong. And Widrow and Hoff analyzed the procedure as a search, by "the method of steepest descent", for the weights that minimize the mean square of the error [@widrow1960adaptive, pp. 98-99]: the quantity the reader knows from least-squares regression.
+Training ADALINE was a manual procedure in 1960. An operator set a pattern, read the error on a meter, and turned each of the 17 weights "in the direction which will diminish the error by an amount which reduces the error magnitude by 1/17", so that after all 17 adjustments "the error for the present input pattern is zero" [@widrow1960adaptive, p. 97]. Two features set this apart from the perceptron rule. The correction is spread across all the weights according to how far off the answer was, not applied as a fixed step only when the final answer is wrong. And Widrow and Hoff analyzed the procedure as a search, by "the method of steepest descent", for the weights that minimize the mean square of the error [@widrow1960adaptive, pp. 98-99]: the same quantity that least-squares regression minimizes.
 
 That second feature turned out to be the more important. Goodfellow, Bengio, and Courville, in their deep learning textbook, note that "the training algorithm used to adapt the weights of the ADALINE was a special case of an algorithm called stochastic gradient descent" [@goodfellow2016deep, p. 14]. The same textbook adds that slightly modified versions of it "remain the dominant training algorithms for deep learning models today" [@goodfellow2016deep, p. 14], as of the book's 2016 publication. Stochastic gradient descent returns in [the chapter on the training loop](#toolkit).
 

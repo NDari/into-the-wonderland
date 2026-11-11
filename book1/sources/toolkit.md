@@ -437,3 +437,15 @@ Editorial pass to make the chapters agree with each other; no sourced fact, quot
 - TensorFlow: added "as the 2016 arXiv version of its white paper records" so the rendered 2016 citation year does not contradict "November 2015" (timeline discrepancy 7; ledger K29 and the source table: white paper of 9 Nov 2015, arXiv v2 of 16 Mar 2016).
 - Page convention: `bergstra2010theano` stays without a page. The quoted words come from the abstract on the SciPy landing page, which has no page numbers; the full paper was not read.
 - Not changed here: "Adam (2014)" in OUTLINE.md versus "ICLR 2015" in the chapter (outline not owned by this pass; reported).
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "A reader who stopped following the field in 2005 knows most of the words in that sentence, but perhaps not ... in this sense, and cannot yet say exactly what it describes." -> "Most of the words in that sentence come from statistics and optimization, but ... have specific senses here, and what the whole sentence describes takes some unpacking."
+- "the reader can read the training recipe of a large language model line by line" -> "the training recipe of a large language model can be read line by line"
+- "ideas from statistics the reader already knows" -> "standard ideas from statistics"
+- "the reader already knows how good such an estimate is" -> "basic statistics says how good such an estimate is"
+- "chosen the way the reader would expect" -> "chosen in the usual way"
+- "The reader's other tool carries over too." -> "Another tool from classical practice carries over too."
+- "neither of the two methods a reader might guess" -> "neither of the two obvious candidates"

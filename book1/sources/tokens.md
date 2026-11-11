@@ -364,3 +364,13 @@ Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or
 - **byte pair encoding** (BPE) bolded at Sennrich's adaptation, its first definition outside a quotation (glossary finding (e)).
 - T5 "a pretrained network of the kind described in later chapters" now links [the chapter on pretraining] (term used before its definition).
 - Page convention: `gage1994new` is cited without a locator for quotes and the worked example. Not changed: the only copy read is the unpaginated CD-ROM HTML, so there is no page to add; the quotes are located by section in TK1 (Introduction, Theory, Advantages of BPE).
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "The reader knows "token" in an older sense:" -> ""Token" also has an older sense:"
+- "The reader will have done the same thing in a bag-of-words pipeline or an n-gram model." -> "Bag-of-words pipelines and n-gram models did the same."
+- "The 2000s tools the reader may know, such as" -> "Tools of the 2000s, such as"
+- "BPE has relatives, and the reader will meet their names." -> "BPE has relatives, and their names come up often in LLM writing."
+- "in a pipeline the reader would recognize." -> "inside a classic statistical pipeline."

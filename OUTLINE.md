@@ -15,7 +15,7 @@ Two books [D-001]. Book 1 is the priority.
 
 ## Book 1 - Concepts and history
 
-Intuition only [D-002], no code [D-003]. Scope: core plus modern practice, with no page limit [D-022]. Page counts are rough planning guides, not limits.
+Intuition only [D-002], no code [D-003], no call-outs to the reader [D-023]. Scope: core plus modern practice, with no page limit [D-022]. Page counts are rough planning guides, not limits.
 
 Structure [D-008]: the destination first, then two parallel histories (how networks learn, Parts I-II; how language is modeled, Part III) that meet at the transformer in Part IV.
 

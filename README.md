@@ -32,7 +32,7 @@ book1/chapters/<id>.md         drafted Book 1 chapters, one file per chapter ID
 book1/sources/<id>.md          claim ledgers: sources, quotes, pages, checks
 code/checks/<id>.py            compute every number in a chapter's worked examples
 figures/<id>.py                draw a chapter's figures (SVGs alongside)
-build/build.py                 builds PDFs into out/ with Pandoc and Typst
+build/build.py                 builds PDFs (Pandoc and Typst) and EPUBs into out/
 build/links.lua                Pandoc filter used by the build
 build/book.lua                 Pandoc filter for chapter numbers, part pages, title page, contents
 build/book.typ                 Typst page and heading styles
@@ -54,6 +54,7 @@ Needs only Python 3 and its standard library. It exits with an error if, for exa
 ```
 python3 build/build.py               # every Book 1 chapter written so far, to out/book1.pdf
 python3 build/build.py destination   # one chapter, to out/destination.pdf
+python3 build/build.py --epub        # the same as an EPUB for e-readers, to out/book1.epub
 ```
 
 Needs Pandoc 3.x and Typst on the PATH [D-015].

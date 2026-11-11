@@ -389,3 +389,21 @@ Editorial pass to make the chapters agree with each other; no sourced fact, quot
 - "dataset" to "data set" in prose (line 102); the other occurrences are inside quotations.
 - Not changed: "minibatch" first appears inside the speech-review quotation, which is followed by a forward link to `toolkit`.
 - Open item from the independent check (PDF versus printed pages): under the agreed convention (printed pages of the copy read; PDF pages only where the copy has none, noted in the bib), every listed key already has a bib note saying which pages are cited. No change. `hinton2006fast` without a page names the work only.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "ended in the reader's own era. In the decade around 2000," -> "ended in the decade around 2000. In those years,"
+- "## The pipeline the reader knows" -> "## The pipeline of the 2000s (no links to the old auto-ID found)"
+- "the bridge for a reader from the 2000s" -> "the bridge from the 2000s"
+- "the logistic regression the reader already knows" -> "ordinary logistic regression"
+- "the theoretical case for depth in terms the reader can place:" -> "the theoretical case for depth:"
+- "the reader's favorite tool sits in the shallow column" -> "kernel methods such as the support vector machine sit in the shallow column"
+- "a method the reader knows:" -> "an older method:"
+- "The reader can think of it as nonlinear PCA" -> "It can be thought of as nonlinear PCA"
+- "in a table a 2000s reader could have produced" -> "in a simple table"
+- "The reader knows the discipline of a held-out test set." -> "The held-out test set is a standard discipline of statistics."
+- "bootstrap confidence intervals, a method the reader knows" -> "bootstrap confidence intervals, a standard statistical method"
+- "the reader's own method" -> "the standard method of the 2000s"
+- "in a touch the reader will appreciate" -> "in an application of PCA"

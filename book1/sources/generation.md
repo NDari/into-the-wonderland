@@ -482,3 +482,11 @@ Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or
 - "beam search" and "context window" un-bolded (first bolded in `seq2seq` and `destination`; callbacks already there).
 - "key-value heads" at first use now points back to the anatomy chapter; the later "the grouping of the anatomy chapter" became "that grouping" to avoid a double link.
 - Link text "the chapter on instruction tuning" -> "the chapter on teaching models to follow instructions".
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "slow for a reason the reader may not expect:" -> "slow for an unexpected reason:"
+- "the reader's own logistic regression with its input divided by $T$" -> "an ordinary logistic regression with its input divided by $T$"
+- "the gradual cooling the reader may know from simulated annealing" -> "the gradual cooling behind the optimization method simulated annealing"

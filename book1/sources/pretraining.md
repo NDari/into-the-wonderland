@@ -546,3 +546,13 @@ Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or
 - "self-supervised learning" and "contextual embedding" un-bolded (first bolded in `destination` and `attention`; callbacks already in the sentences).
 - **masked language model** bolded outside the BERT quotation (glossary finding (e)).
 - Not changed: ELMo "In early 2018" (timeline discrepancy 8); it matches the arXiv and NAACL versions the chapter cites.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "The reader's working rule from the 2000s was simple:" -> "The working rule of the 2000s was simple:"
+- "That researcher was the reader." -> "(sentence removed)"
+- "Which to choose was a familiar trade-off:" -> "Which to choose was a standard trade-off:"
+- "The term the reader met in [the destination chapter](#destination)," -> "The term used in [the destination chapter](#destination),"
+- "That is the reader's own overfitting reasoning, applied at a new scale." -> "That is the old reasoning about overfitting, applied at a new scale."

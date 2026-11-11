@@ -22,7 +22,7 @@ end
 local APOS = "\u{2019}"
 
 local function apostrophes(el)
-  if not el.text:find("%d" .. APOS) then
+  if FORMAT ~= "typst" or not el.text:find("%d" .. APOS) then
     return nil
   end
   local out, rest = {}, el.text

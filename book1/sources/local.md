@@ -661,3 +661,14 @@ Every license, Hub count and gating status, runtime default, and bandwidth figur
 - "active parameters" no longer bold (bolded first in `since-2017`, which the paragraph already links).
 - **calibration data** keeps its bold with "(a different sense of calibration from the match between confidence and accuracy of the generation chapter)" (glossary finding (c)).
 - "base model" no longer bold; "as the destination chapter called it" added (bolded first in `destination`).
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "teaches the reader to read with care." -> "shows how to read with care."
+- "The reader has done something similar when binning a continuous variable, or saving a photograph as a lower-quality JPEG:" -> "Binning a continuous variable is similar, and so is saving a photograph as a lower-quality JPEG:"
+- "for the reason the reader standardized each column of a data table separately:" -> "for the same reason each column of a data table is standardized separately:"
+- "shaded against memory sizes a reader may own:" -> "shaded against common memory sizes:"
+- "A typical name the reader will meet, Llama-3.1-8B-Instruct-Q4_K_M," -> "A typical name, Llama-3.1-8B-Instruct-Q4_K_M,"
+- "For chatting, the reader wants the instruct version." -> "For chatting, the instruct version is the one to use."

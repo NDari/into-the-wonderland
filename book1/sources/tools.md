@@ -652,3 +652,14 @@ retrieval; tool (both in the introduction); knowledge cutoff; effective cutoff; 
 - **agent** keeps its bold with "(a looser sense than the reinforcement-learning agent of the chapter on following instructions)" (glossary finding (c)).
 - American spelling: neighbour/neighbours to neighbor/neighbors (five places, including the bold terms "nearest neighbor search" and "approximate nearest neighbor"), "grey" to "gray" (loop figure caption), "hand-labelled" to "hand-labeled", "defence" to "defense" (twice).
 - Not changed: indirect prompt injection was already unbolded by the independent check.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "from the keyword search the reader may have done in the 2000s," -> "from the keyword search of the 2000s,"
+- "A reader who built a document search in the 2000s did this:" -> "A document search built in the 2000s did this:"
+- "the reader's k-nearest-neighbors classifier without the vote." -> "the k-nearest-neighbors classifier without the vote."
+- "Their terms will be familiar to a statistician." -> "Their terms come from statistics."
+- "A reader who has used an interactive statistics package knows the shape:" -> "An interactive statistics package has the same shape:"
+- "Its keyword form is the reader's own: tf-idf" -> "Its keyword form predates neural networks: tf-idf"

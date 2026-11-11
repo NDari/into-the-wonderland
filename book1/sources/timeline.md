@@ -47,3 +47,9 @@ Events dated differently in two chapters, or in a chapter and its ledger or the 
 - Warnings acted on: Brants "up to 2 trillion tokens"; ResNet's 3.57% attributed to an ensemble; an ordering rule stated in the introduction (year-only entries first within their year) and the 2015, 2017, 2018, 2019, 2020, 2022, and 2023 entries reordered to it, keeping "1991 on" beside 2006; seven milestones the chapters treat as such added, each with the chapter's date, key, and page: He initialization 2015 (`depth.md:26`), Torch7 2011 (`toolkit.md:113`), ChatGPT plugins March 2023 (`tools.md:113`), Nye's scratchpad November 2021 (`prompting.md:60`), CLIP 2021 (`frontier.md:111`), SuperGLUE 2019 (`evaluation.md:23`), and Carlini and colleagues' extraction of training data 2021 (`training.md:91`); RMSProp left out (undated slides); Chinchilla and Llama 3.1 added to the discrepancy list; discrepancy 1 marked not an error and 5 possibly deliberate; the *Perceptrons* dispute added to the dispute list.
 - Not changed: Mistral 7B keeps the chapter's citation (`jiang2023mistral`) until `local` gains the announcement's (discrepancy 2).
 - Could not verify: the checker fetched no pre-1990 sources and checked no page numbers against the originals; it did not fetch the sources for the New York Times of 8 July 1958, Hochreiter's thesis of 15 June 1991, GPT (June 2018), the OSI definition (October 2024), computer use (October 2024), function calling (June 2023), Llama 4 (April 2025), Narayanan and Kapoor (April 2025), the retirement of SWE-bench Verified (February 2026), or Fable (November 2026). The dates not checked against their original sources rest on the chapters' own verification. The seven entries added after the check were copied from the chapters and were not re-checked by it.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+No changes needed.

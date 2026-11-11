@@ -546,3 +546,14 @@ Glossed in passing, not bolded: GUI grounding ("finding the right thing on scree
 - "data centres" and "data-centre" to "data centers" and "data-center" (four places in the text and the summary bullet); the IEA quotation keeps "Data centres".
 - Not changed: the logarithm base of METR's fit. The paper (FR25, p. 5) writes "log" without a base, and the chapter quotes no value of $\beta$, so no base is asserted (notation item 5).
 - Page convention: `iea2025energy` and `iea2026keyquestions` support specific numbers but have no page locators; both were read as HTML executive summaries with no printed pages (sources table), so none can be added.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "so that the reader can place a headline when it appears" -> "so that a headline can be placed in context when it appears"
+- "uses an idea the reader knows." -> "uses an old statistical idea."
+- ": the reader's old problem of tuning hard against a proxy metric." -> ": the old problem of tuning hard against a proxy metric."
+- "It is the reader's logistic regression, with" -> "It is ordinary logistic regression, with"
+- ": the reader's own tool, pointed inward." -> ": an old tool, pointed inward."
+- "for models a reader can run)" -> "for models that run on ordinary hardware)"

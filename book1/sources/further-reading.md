@@ -172,3 +172,14 @@ All fetched 2026-11-11 with curl into the scratchpad; text extracted with Python
 - Warnings acted on: "about fifty works in some forty entries"; Deep Learning has "an introduction and nineteen chapters in three parts"; "Many papers in this field appear first on arXiv"; "some PDFs print no page numbers, and proceedings PDFs often number from 1 rather than as in the bound volume"; "As of 2026-11" in place of "As of this writing"; full titles for `devlin2019bert`, `rafailov2023direct`, `greshake2023not`, `frantar2023gptq`, and `chiang2024chatbot`, taken from `references.bib`; stale notes about `keshav2007read` updated (it is now in `references.bib`).
 - Not changed: the optional April 2022 sentence (PaLM 540B at 58.1% in v2) was not added.
 - Could not verify: the checker did not re-fetch the descriptions that rest only on ledgers (Olazaran, Griewank, Hochreiter, Schmidhuber's content, Elhage, Lewis, Yao, Frantar, Grattafiori, Ouyang, Rafailov, Casper, Sutton and Brooks content, the International AI Safety Report and Narayanan quotes, the Hugging Face docs, and the Llama, Qwen, Mistral and Kimi cards); they agree with the verified chapters and ledgers. The GPT-4 report and SuperGLUE page numbers were checked against the chapters only.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "This appendix is for the reader who wants to go further." -> "This appendix is a guide to going further."
+- "whose main ideas this book has prepared you for;" -> "whose main ideas this book has covered;"
+- "The reference this book's reader may already own, cited here" -> "A reference text on statistical learning, cited here"
+- "Because of the code it suits a Book 2 reader best." -> "Because of the code it pairs best with Book 2."
+- "a glance at the references; after it you should know what kind of paper it is," -> "a glance at the references; it should establish what kind of paper it is,"
+- "For this book's reader, the first two passes are usually enough," -> "For the purposes of this book, the first two passes are usually enough,"

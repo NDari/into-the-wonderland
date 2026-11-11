@@ -4,7 +4,7 @@
 
 [The previous chapter](#neuron) ended with a network that could compute XOR: two neurons in a middle layer feeding a third. The weights in that network were set by hand. The perceptron rule could not have found them, because it needs to know the correct output of every neuron it adjusts, and nobody tells the middle neurons what their correct output is. In 1969 no one in neural-network research had a practical way to train such a network.
 
-This chapter is about the way that was found, called **backpropagation**. It is how the networks in the rest of this book are trained, LLMs included. The idea turns out to be a careful use of two things the reader already knows: fitting a model by minimizing a squared error, and the chain rule of calculus. The history of who found it first is tangled, and the chapter ends with what a network trained this way can and cannot be expected to do.
+This chapter is about the way that was found, called **backpropagation**. It is how the networks in the rest of this book are trained, LLMs included. The idea turns out to be a careful use of two older ideas: fitting a model by minimizing a squared error, and the chain rule of calculus. The history of who found it first is tangled, and the chapter ends with what a network trained this way can and cannot be expected to do.
 
 ## Who is to blame?
 
@@ -18,7 +18,7 @@ The answer comes in three steps. First, measure the error with a single number. 
 
 ## Step one: a number for how wrong
 
-A **loss function** is a single number that measures how wrong a model's outputs are on the training data. Learning becomes the task of making that number small. The reader has met the most common loss already: the squared error of least-squares regression. The 1986 paper used exactly this, a total error that adds up the squared differences between the actual and desired outputs over every training case and every output unit [@rumelhart1986learning, p. 534].
+A **loss function** is a single number that measures how wrong a model's outputs are on the training data. Learning becomes the task of making that number small. The most common loss is an old one: the squared error of least-squares regression. The 1986 paper used exactly this, a total error that adds up the squared differences between the actual and desired outputs over every training case and every output unit [@rumelhart1986learning, p. 534].
 
 Here is the smallest possible example. Fit the line $y = w x$, with one adjustable weight $w$ and no intercept, to three points: (1, 2), (2, 4), and (3, 7). The loss is the **mean squared error**: for each point, take the difference between the prediction $w x$ and the true $y$, square it, and average the three squares.
 
@@ -42,7 +42,7 @@ $$w \leftarrow w - \eta \, \frac{\partial L}{\partial w}$$
 
 where $w$ is a weight, $L$ is the loss, $\frac{\partial L}{\partial w}$ is the derivative of the loss with respect to that weight (its entry in the gradient), $\eta$ (the Greek letter eta) is the learning rate, and the arrow means "replace with". In a network with many weights, every weight takes its own step at once, each using its own entry in the gradient.
 
-This is the bridge from the reader's own toolkit: *training a network by gradient descent on a loss is the same idea as fitting a regression, with many more knobs and no closed-form answer.* For a single layer of linear units it is literally the same problem. The authors of the 1986 PDP chapter put it in terms of the error surface: "without hidden units, the error surface is shaped like a bowl with only one minimum, so gradient descent is guaranteed to find the best set of weights" [@rumelhart1986internal, p. 324]. The ADALINE of [the previous chapter](#neuron), minimizing a mean squared error, was doing this in 1960.
+This is the bridge to classical statistics: *training a network by gradient descent on a loss is the same idea as fitting a regression, with many more knobs and no closed-form answer.* For a single layer of linear units it is literally the same problem. The authors of the 1986 PDP chapter put it in terms of the error surface: "without hidden units, the error surface is shaped like a bowl with only one minimum, so gradient descent is guaranteed to find the best set of weights" [@rumelhart1986internal, p. 324]. The ADALINE of [the previous chapter](#neuron), minimizing a mean squared error, was doing this in 1960.
 
 ## Step three: passing the blame backward
 
@@ -149,7 +149,7 @@ A statistician has seen this pattern before. A polynomial of high enough degree 
 
 By 1989 the field had what it lacked in 1969: a way to train networks with hidden layers, and a theorem saying such networks can approximate essentially any function. It also had a list of practical troubles. Training could stall on plateaus or settle in poor solutions. It depended on the learning rate and the starting weights. And the theorem promised nothing about how big a network had to be.
 
-[The next chapter](#structure) follows what happened when researchers applied these networks to real data, images and sequences, and found that plain layered networks were not enough. Two structural ideas came out of that period, both about using the same weights in many places. A new obstacle also appeared, and it was severe enough that, by the reader's own era, much of machine learning had moved on to other methods.
+[The next chapter](#structure) follows what happened when researchers applied these networks to real data, images and sequences, and found that plain layered networks were not enough. Two structural ideas came out of that period, both about using the same weights in many places. A new obstacle also appeared, and it was severe enough that, by around 2000, much of machine learning had moved on to other methods.
 
 ## What to carry forward
 

@@ -369,3 +369,18 @@ full fine-tuning; catastrophic forgetting (catastrophic interference); elastic w
 - Not changed: "0.127 bits per weight" before `local` defines bits per weight (glossary (b)); the phrase is plain English in context and needs no gloss.
 - Not changed: `bucilua2006model` is cited without a page; the copy read is unpaginated (page convention, noted in the to-do as fine).
 - Not changed: LoRA's matrix-times-vector order (notation item 10, optional, "no change").
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "which rests on an idea the reader knows from PCA;" -> "which rests on the low-rank idea behind PCA;"
+- "with the kind of backpropagation network the reader may know from the 1990s" -> "with the backpropagation networks of the time"
+- "The obvious remedy is the one the reader would try: train on" -> "The obvious remedy is to train on"
+- "The reader will recognize ridge regression, with" -> "This is ridge regression, with"
+- "The reader has met the idea of approximating a matrix by a low-rank one before, under other names." -> "The idea of approximating a matrix by a low-rank one is old and has gone under other names."
+- "The idea comes from the reader's own era. In 2006," -> "The idea dates from the mid-2000s. In 2006,"
+- "has two meanings, and the reader will meet both." -> "has two meanings, and both are in common use."
+- "the reader's early stopping, with a new reason." -> "ordinary early stopping, with a new reason."
+- "supports a view the reader can carry forward:" -> "supports a view worth carrying forward:"
+- "A reader who wants to fine-tune a model today" -> "Anyone who wants to fine-tune a model today"

@@ -141,3 +141,12 @@ Editorial pass to make the chapters agree with each other; no sourced fact, quot
 - Bolded **vocabulary** at its definition (glossary finding (e)); `tokens` bolds it again and should drop that bold (reported to the coordinator).
 - Glossed "prompts" at their first use in the book ("the texts given to a model as input"), matching the definition in `prompting` (glossary finding (b)).
 - No other items concern this chapter: it is the first bold for every term it shares with later chapters, and it uses no British spellings outside quotations. The "position table" cross-reference is fixed in `attention`, not here. Page convention: no uncited-page keys in this chapter.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023, at the author's request after approval.
+
+- Heading "A classifier you already know" -> "An old classifier, used a new way".
+- "the bridge from what you know" -> "the bridge from classical statistics".
+- "If you know latent semantic analysis, this is the same move as replacing a word by its coordinates" -> "Latent semantic analysis made the same move, replacing a word by its coordinates", and "except that the coordinates" -> "the difference is that here the coordinates".
+- "If you have used the fit-then-predict workflow of a 2000s statistics package, this split is familiar:" -> "This is the fit-then-predict split of any statistics package:".

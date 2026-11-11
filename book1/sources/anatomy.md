@@ -360,3 +360,12 @@ Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or
 - "context window" un-bolded (first bolded in `destination`; callback link already there).
 - "warm-up" -> "warmup".
 - Not changed: "key-value caches" (line 92) is inside a quotation and already forward-links the generation chapter.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "By the end the reader should be able to name every part of a transformer language model, ..." -> "This chapter names every part of a transformer language model, says what each part does ..."
+- "is the reader's old friend the multilayer perceptron:" -> "is a plain multilayer perceptron:"
+- "the rule against leakage that the reader knows from validating forecasts:" -> "the rule against leakage from validating forecasts:"
+- "separates the three kinds of transformer the reader will meet." -> "separates the three kinds of transformer."

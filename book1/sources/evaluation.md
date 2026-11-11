@@ -511,3 +511,21 @@ Left out or changed from the ledger plan:
 - "Bradley-Terry model" no longer bold (bolded first in `instructions`, which the paragraph already names).
 - "model cards" no longer bold; "met in the chapter on local inference" added (`local` defines it first, with the same Mitchell et al. quotation).
 - Not changed: $d$ for the Arena-score difference (notation item 11, optional).
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "This chapter gives the reader enough vocabulary" -> "This chapter gives enough vocabulary"
+- "Most of it is familiar from the 2000s:" -> "Most of it was standard practice in the 2000s:"
+- "The private test labels are the reader's holdout discipline" -> "The private test labels are the old holdout discipline"
+- "The reader's binomial standard error applies directly." -> "The ordinary binomial standard error applies directly."
+- "The reader learned early never to test on training data." -> "A basic rule of evaluation is never to test on training data."
+- "stated the consequence in terms the reader will recognize:" -> "stated the consequence in terms of overfitting and model selection:"
+- "The cleanest test is the one the reader would design:" -> "The cleanest test is the classic one:"
+- "the reader's two-proportion z-test gives" -> "the ordinary two-proportion z-test gives"
+- "Turning votes into a ranking is a regression the reader has fitted many times." -> "Turning votes into a ranking is an ordinary regression."
+- ": the reader's inter-annotator agreement." -> ": plain inter-annotator agreement."
+- "which is the reader's multiple-comparisons problem:" -> "which is the classic multiple-comparisons problem:"
+- "As of 2026-11, the reader should hold both views." -> "As of 2026-11, both views have support."
+- "The reader will recognize the choice of loss function, and" -> "This is the old question of choosing a loss function, and"

@@ -577,3 +577,13 @@ Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or
 - "Parameters" and "FLOPs" un-bolded (first bolded in `destination` and `attention`); FLOPs now has a callback link to the attention chapter.
 - **scaling laws** defined and bolded after Kaplan's three power laws (glossary finding (e); before, only the section heading used the term).
 - **compute-optimal** and **emergent abilities** bolded at their definitions (the latter outside Wei et al.'s quotation).
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "The reader's own field knew that more data helps." -> "In the 2000s it was already known that more data helps."
+- "a story the reader knows from [the prediction chapter](#prediction)" -> "a story told in [the prediction chapter](#prediction)"
+- "the transform the reader has used on skewed data many times." -> "the usual transform for skewed data."
+- "The mechanism is arithmetic the reader can check." -> "The mechanism is simple arithmetic."
+- "The reader will recognize the underlying issue from choosing between a loss function and ..." -> "The underlying issue is the old one of choosing between a loss function and an evaluation ..."

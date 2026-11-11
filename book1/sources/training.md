@@ -424,3 +424,17 @@ For the glossary: Common Crawl, boilerplate, quality filter (rule, classifier), 
 Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or citation changed.
 
 - Link text "the chapter on instruction tuning" -> "the chapter on teaching models to follow instructions" (term used before its definition).
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "as a procedure the reader could describe to someone else:" -> "as a step-by-step procedure:"
+- "with a question the reader will have:" -> "with a natural question:"
+- "the filters are a set of tools the reader will recognize." -> "the filters come from the ordinary toolkit of text processing and classification."
+- "GPT-3's filter was the reader's own logistic regression." -> "GPT-3's filter was an ordinary logistic regression."
+- "The reader can think of it as stratified sampling" -> "It is stratified sampling"
+- "The reader may know the problem as record linkage." -> "Statisticians call the same problem record linkage."
+- "The reader's statistics software used 64-bit or 32-bit numbers." -> "Statistics software of the 2000s used 64-bit or 32-bit numbers."
+- "so the train/test check the reader would run showed" -> "so a standard train/test check showed"
+- "(including the reader's logistic regression)" -> "(including plain logistic regression)"

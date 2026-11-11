@@ -393,3 +393,18 @@ For the glossary: n-gram, unigram, bigram, trigram, bit, entropy, language model
 Editorial pass for cross-chapter consistency; no sourced fact, quote, number, or citation changed.
 
 - "language model" un-bolded (first bolded in `destination`, same meaning); the existing callback to the destination chapter stays. This reverses the independent check's choice to keep it bold, per the pass's one-bold-per-term rule.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "probabilities. The reader may well have built such a model. The chapter" -> "probabilities. The chapter"
+- "every sentence beginning a reader might write" -> "every sentence beginning someone might write"
+- "A reader who has trained a naive Bayes text classifier has done exactly this counting" -> "A naive Bayes text classifier does exactly this counting"
+- "The reader knows this as overfitting." -> "This is overfitting."
+- "The reader knows the pattern from Bayesian classification:" -> "This is the pattern of Bayesian classification:"
+- "The reader has met this problem in naive Bayes, where" -> "The same problem arises in naive Bayes, where"
+- "the Laplace correction the reader may have used in naive Bayes" -> "the Laplace correction used in naive Bayes"
+- "which the reader will recognize as shrinkage toward" -> "a form of shrinkage toward"
+- "a lesson in method the reader will appreciate:" -> "a lesson in method:"
+- "The reader knows this as the **curse of dimensionality**:" -> "This is the **curse of dimensionality**:"

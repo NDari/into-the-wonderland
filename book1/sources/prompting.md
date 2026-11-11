@@ -629,3 +629,11 @@ No `TODO-VERIFY` markers. No new bib keys.
 - Kalai et al.: "In May 2025, ... asked" to "In a 2025 paper, ... reported asking, in May 2025 (when the models were accessed)" (timeline discrepancy 1; PR43: paper of 4 Sep 2025, models accessed May 2025).
 - **prefill** (writing the start of the reply) keeps its bold and its note "(not the prefill phase of the chapter on generation)", which already links to `generation`; `generation` now bolds prefill for the prompt-reading phase, so no text change was needed (coordinator's request).
 - Cross-chapter notes from the independent check: `tools` no longer bolds knowledge cutoff (fixed in `tools` in this pass; indirect prompt injection was already unbolded there); "SQL injections" in `instructions` is glossed there.
+
+## Style pass (2026-11-11)
+
+Reader call-outs made generic per D-023.
+
+- "The reader may know the structure from topic models, and" -> "The structure is that of topic models, and"
+- "The reader will recognize the problem: an unreported" -> "The problem is an old one: an unreported"
+- "and the reader can now state why." -> "and the mechanism above shows why."
