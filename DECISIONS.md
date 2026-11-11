@@ -35,7 +35,7 @@ Entries are never rewritten or deleted. To change one, set its status and add a 
 - To revert: remove the code-fence check in `tools/check.py` and decide where code may appear.
 
 ## D-004 Book 1 scope: core plus modern practice
-- Status: active
+- Status: superseded by D-022
 - Date: 2026-11-10
 - Decision: Book 1 runs from the perceptron through the transformer and GPT-style pretraining, then instruction tuning and RLHF, inference, quantization and local models, LoRA, RAG, and one dated survey chapter on the frontier. Target roughly 300-400 pages.
 - Why: Enough to follow current LLM writing without becoming an encyclopedia.
@@ -153,6 +153,20 @@ Entries are never rewritten or deleted. To change one, set its status and add a 
 - Decision: In the book's own voice, a model whose trained weights can be downloaded is **open-weight**. "Open source" is used only as the Open Source Initiative's Open Source AI Definition 1.0 (2024-10) defines it, or inside a quotation (for example, a vendor calling its own model open source), with the disagreement stated where it matters.
 - Why: Vendors call models "open source" whose licenses restrict use or whose training data is not released; the OSI's validation lists some of them as failing its definition. A neutral term avoids taking a side silently and matches the term `adapting` already uses.
 - To revert: choose another term (for example "open" with a definition), and update every file that cites this decision.
+
+## D-021 Book layout
+- Status: provisional
+- Date: 2026-11-11
+- Decision: Every chapter, appendix and the reference list starts on a new page, under a "Chapter N" or "Appendix X" label taken from `OUTLINE.md`. Section headings have a blank line's worth of space below them and more above. A whole-book build adds a title page, a contents page (numbered i, ii, ...), a page for each part, and a running head with the chapter title. The page is 6 x 9 in (Typst's "us-trade") with 0.8 in side margins and 11 pt type, about 65 characters to a line. Tables are set ragged right in 9 pt and may continue on the next page; figures taller than 4.6 in are scaled down so their captions fit. The rules live in `build/book.typ` and `build/book.lua`.
+- Why: The author asked for chapters to start on new pages and for space between headings and text before reading the full draft. The rest is ordinary book structure that helps a reader find their place. The author chose readable line length over page count: at 6 x 9 in, Book 1 runs to about 550 pages instead of about 380 on US letter.
+- To revert: remove the `--include-in-header`, `--metadata-file` and `book.lua` lines from `build/build.py`, or edit `build/book.typ` for a different look.
+
+## D-022 Book 1 scope: core plus modern practice, no page limit
+- Status: active
+- Date: 2026-11-11
+- Decision: Book 1 keeps the scope of D-004: from the perceptron through the transformer and GPT-style pretraining, then instruction tuning and RLHF, inference, quantization and local models, LoRA, RAG, and one dated survey chapter on the frontier. There is no page target. Length follows content: material stays if it serves one of the reader outcomes in `AGENTS.md`, however long the book becomes. The page estimates in `OUTLINE.md` are rough guides for planning a chapter, not limits.
+- Why: The author does not mind length as long as the information is good. The old 300-400 page target was set for US letter pages; at 6 x 9 in [D-021] the same text is about 550 pages.
+- To revert: set a page target here and in `AGENTS.md` and `OUTLINE.md`, and decide which chapters to shorten.
 
 # Open questions
 

@@ -77,6 +77,6 @@ The script cannot judge prose. Terminology, notation, and tone are kept consiste
 
 ## Tools
 
-Plain text files in a git repository. Chapters are Pandoc Markdown with a shared bibliography [D-010]. The consistency check needs only Python 3. Figures are drawn by Python scripts with matplotlib, so each one can be regenerated [D-014]. PDFs are produced by Pandoc with Typst as the typesetting engine [D-015].
+Plain text files in a git repository. Chapters are Pandoc Markdown with a shared bibliography [D-010]. The consistency check needs only Python 3. Figures are drawn by Python scripts with matplotlib, so each one can be regenerated [D-014]. PDFs are produced by Pandoc with Typst as the typesetting engine [D-015]. The page layout (chapters on new pages, part pages, contents, running heads) is a small Typst style file and a Pandoc filter that reads chapter numbers and parts from the outline [D-021].
 
 The working rules for anyone contributing, human or AI, are in `AGENTS.md`. They do not depend on any particular tool or model.

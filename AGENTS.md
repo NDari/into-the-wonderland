@@ -67,7 +67,7 @@ Book 1:
 
 - Intuition only: diagrams, analogies, worked numeric examples; no derivations; formulas only in their standard form with every symbol explained [D-002].
 - No code, pseudocode, or shell commands anywhere in Book 1 [D-003].
-- Scope is core plus modern practice, roughly 300-400 pages [D-004], including a short chapter on measuring models [D-011].
+- Scope is core plus modern practice, with no page limit: length follows content [D-022]. It includes a short chapter on measuring models [D-011].
 - Structure: the destination first, then two parallel histories that meet at the transformer [D-008].
 
 Book 2:
