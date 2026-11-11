@@ -78,9 +78,9 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **History:** Fukushima's neocognitron (1980); LeCun's digit recognizers (1989, 1998); Elman (1990); Hochreiter (1991) and Bengio et al. (1994) on vanishing gradients; Hochreiter and Schmidhuber's LSTM (1997); Cortes and Vapnik's SVM (1995) and the 2000s consensus.
 - **Bridge:** this is the point where the reader's own knowledge of the field begins and ends.
 - **Key figure:** an RNN unrolled over a sentence, with the gradient signal fading as it travels back.
-- **Candidate sources:** LeCun et al. 1998; Elman 1990; Bengio, Simard, Frasconi 1994; Hochreiter and Schmidhuber 1997.
+- **Candidate sources:** Fukushima 1980; LeCun et al. 1989 and 1998; Elman 1990; Hochreiter 1991 (in German); Bengio, Simard, Frasconi 1994; Cortes and Vapnik 1995; Hochreiter and Schmidhuber 1997; Hochreiter et al. 2001; LeCun, Bengio, Hinton 2015; Schmidhuber 2014; Goodfellow et al. 2016.
 - **Depends on:** `backprop`
-- **Status:** outlined
+- **Status:** verified
 
 ### Part II - Deep learning starts working
 

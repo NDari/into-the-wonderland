@@ -9,7 +9,7 @@ Book 1 is the priority and stands on its own.
 
 ## Status
 
-As of 2026-11-11: `destination` (Book 1, chapter 1) is approved by the author, after research, drafting, and an independent check of every claim against its source. `neuron` (chapter 2) is verified and awaits the author's approval. `backprop` (chapter 3) is verified and awaits approval. `structure` (chapter 4) is being researched. `OUTLINE.md` lists every planned chapter and its current status.
+As of 2026-11-11: `destination` (Book 1, chapter 1) is approved by the author, after research, drafting, and an independent check of every claim against its source. `neuron`, `backprop`, and `structure` (chapters 2 to 4) are verified, each after an independent check of every claim, and await the author's approval. `OUTLINE.md` lists every planned chapter and its current status.
 
 ## Who made this
 
@@ -38,6 +38,10 @@ book1/chapters/backprop.md     draft of the backprop chapter
 book1/sources/backprop.md      claim ledger for the backprop chapter
 code/checks/backprop.py        computes the numbers in that chapter's worked examples
 figures/backprop.py            draws that chapter's three figures
+book1/chapters/structure.md    draft of the structure chapter
+book1/sources/structure.md     claim ledger for the structure chapter
+code/checks/structure.py       computes the numbers in that chapter's worked examples
+figures/structure.py           draws that chapter's three figures
 code/checks/destination.py     computes the numbers in that chapter's worked examples
 figures/pipeline.py            draws the pipeline figure (and figures/pipeline-destination.svg)
 build/build.py                 builds PDFs into out/ with Pandoc and Typst
