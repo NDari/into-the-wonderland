@@ -195,7 +195,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** masked prediction vs next-token prediction on the same sentence.
 - **Candidate sources:** Peters et al. 2018; Howard and Ruder 2018; Radford et al. 2018; Devlin et al. 2018.
 - **Depends on:** `anatomy`
-- **Status:** researched
+- **Status:** drafted
 
 #### 15. Scale (2019-2022) {#scale}
 

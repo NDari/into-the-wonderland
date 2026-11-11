@@ -1,7 +1,7 @@
 # Claim ledger: pretraining
 
 Chapter: `pretraining` (Book 1, "Pretraining: learn language first, tasks later (2015-2019)").
-Stage: researched, 2026-11-11 [D-005]. Research for this chapter was done by a helper agent; the writer spot-checks the key claims in the same sources before drafting, and records that here.
+Stage: drafted, 2026-11-11 [D-005]. Research by a helper agent. Before drafting, the writer re-ran the mechanism items used in `code/checks/pretraining.py` (all agree). Open questions decided by default: (1) `embeddings` is left unchanged and this chapter says contextual vectors came first from LSTMs (CoVe, ELMo) and transformers made them standard; (2) T5 gets about a page. Awaiting an independent check.
 Research for this chapter was done by a helper agent. Nothing has been drafted. The ledger covers the bridge from 2000s transfer learning and ImageNet feature reuse, the five NLP milestones in the outline (Dai and Le, ELMo, ULMFiT, GPT, BERT, T5), the first critiques of BERT (RoBERTa, ALBERT), the term "self-supervised", and the sources that state why masked (BERT-style) and causal (GPT-style) models went separate ways.
 
 All sources were fetched on 2026-11-11 and each claim below was located in the fetched text (pdftotext, plain and `-layout`, on publisher, proceedings, or arXiv PDFs, all with text layers; HTML pages stripped of markup). Tables were read in the `-layout` extraction; ULMFiT's Equation 3 was read on the page image. Page numbers are the printed page numbers of the copy read; the offset from PDF page to printed page is given in the table, and copies that print no numbers are cited by PDF page. Where a source prints an en-dash or em-dash it is written here as a hyphen; arrows in examples (for example "my dog is hairy -> my dog is [MASK]") are written as "to"; the multiplication sign is kept as "x".
@@ -496,3 +496,28 @@ Suggested script: `code/checks/pretraining.py` (standard library only), imported
 
 1. `embeddings` (line 115) says the fix for one-vector-per-word "arrives with the transformer" and sends the reader to `anatomy`. ELMo (LSTMs, early 2018) and CoVe (2017) gave contextual vectors before transformers were used for it. The `anatomy` ledger (researched in parallel) plans to keep that promise for the transformer. Options: (a) leave `embeddings` as is and have this chapter say "the first contextual vectors came from LSTMs; transformers made them standard"; (b) amend `embeddings` line 115 to point to both `pretraining` and `anatomy`. Either way the drafter should not contradict it silently. Suggested default: (a), since the sentence is not false about LLMs, with (b) as a one-clause change if the author prefers.
 2. The outline lists "T5 (2019)" under History; T5's systematic comparison is the strongest source for "masked vs causal", but the chapter budget is about 14 pages. Suggested default: keep T5 to about one page (text-to-text, C4 size, the architecture/objective comparison), leaving the model sizes to `scale`.
+
+## Worked examples used in the chapter [D-009]
+
+All computed by `code/checks/pretraining.py` (standard library only; inputs are printed numbers from the sources).
+
+- Example 1: "The cat sat on the sofa because it was warm" (10 words): 9 next-token predictions; masked "sat" and "sofa": 2 predictions. Used in the figure.
+- Example 2: BERT on 512 tokens: 76.8 positions chosen (about 77); 61.44 [MASK], 7.68 random, 7.68 unchanged; 512 predictions for a next-token model.
+- Example 3: 256 x 512 = 131,072 tokens per batch (not cited in the text).
+- Example 4: BERT-large pretraining 6,144 chip-hours vs at most 4 for a fine-tuning ("at least 1,500 times"); 3 x 768 = 2,304 new weights.
+- Example 5: ELMo SQuAD 81.1 to 85.8: 4.7 points, 24.9% relative error reduction; ULMFiT reductions against the previous best: 22.0%, 23.7%, 18.2%, 7.7%, 4.8%, 2.0%.
+- Example 6: GPT-1 without pretraining 74.7 to 59.9 (14.8 points, 19.8%); LSTM 5.6 points; BERT LTR vs MLM (both without NSP): SQuAD -10.1, MRPC -9.0; no NSP: QNLI -3.5, others -0.6 or less; masking recipes range 0.8 points.
+- Example 7: T5 span corruption on 512 tokens: target about 103 tokens.
+
+## Figures [D-014]
+
+- `figures/pretraining-objectives.svg`: (a) next-token and (b) masked prediction on Example 1's sentence.
+
+## Terms defined in the chapter
+
+For the glossary: transfer learning, pretrained, fine-tuning, frozen features, semi-supervised (as the period's term), self-supervised (reused from `destination`, with the term's history), contextual embedding (reused from `attention`), relative error reduction, catastrophic forgetting, masked language model (cloze), next-sentence prediction, GLUE (one line), text-to-text, span corruption (by description).
+
+## Drafting notes
+
+- Removed in self-review as not in the ledger: affiliations for Dai and Le, Peters et al., Raffel et al.; "news text" for ELMo's corpus; "better than chance" for GPT's zero-shot heuristics (replaced by the paper's "steadily increases over training"); a definition of TPU.
+- The two-stage figure (planned item 2) and the GLUE bar chart were not drawn.
