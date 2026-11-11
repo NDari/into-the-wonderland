@@ -287,7 +287,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** a table mapping model size and quantization level to memory needed, computed.
 - **Candidate sources:** project documentation and model cards (fetched at research time, date-stamped).
 - **Depends on:** `training`, `generation`, `adapting`
-- **Status:** drafted
+- **Status:** verified
 
 #### 24. Measuring models {#evaluation}
 

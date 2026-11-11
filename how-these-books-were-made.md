@@ -1,6 +1,6 @@
 # How these books were made
 
-This document describes the process as it stands on 2026-11-11. At this date one chapter (`destination`) has been approved by the author, eighteen more have been independently verified, and six are drafted and in verification. It is updated whenever practice changes, so that it stays a true account and not a plan.
+This document describes the process as it stands on 2026-11-11. At this date one chapter (`destination`) has been approved by the author, the other twenty-four chapters of Book 1 have been independently verified, and its four appendices are being drafted. It is updated whenever practice changes, so that it stays a true account and not a plan.
 
 ## Who does what
 

@@ -258,7 +258,14 @@ def example_bandwidth():
     for name, bw, mem in DEVICES:
         q4 = bw / m8["Q4_K_M"]
         f16 = bw / m8["F16"]
-        fits16 = "fits" if mem is None or m8["F16"] <= mem else "does not fit"
+        # Weights alone, against the stated memory; no hard verdict this close to the limit (the chapter says "nearly fill").
+        if mem is None:
+            fits16 = f"weights {m8['F16']:.2f} GB, memory not given"
+        else:
+            share = m8["F16"] / mem
+            fits16 = f"weights {m8['F16']:.2f} GB against {mem} GB, {share:.0%}"
+            if share >= 0.9:
+                fits16 += ": nearly fills it, leaving almost no room for the cache"
         b70 = bw / m70["Q4_K_M"]
         fits70 = "unknown memory" if mem is None else ("fits" if m70["Q4_K_M"] <= mem else "does not fit")
         print(f"  {name}: {bw} GB/s, memory {mem} GB; 8B Q4_K_M <= {q4:.0f} t/s; 8B F16 <= {f16:.1f} t/s ({fits16}); "
@@ -292,8 +299,8 @@ def example_measured():
     print(f"    1B file 1083/2358 = {1083 / 2358:.0%}; decode 50.2/19.2 = {50.2 / 19.2:.1f}x")
     ms = 61.41
     print(f"  llama.cpp's first run: {ms} ms per token = {1000 / ms:.1f} t/s")
-    print("  llama-bench offload (7B Q4_0, hardware unstated): 10 layers 13.45, 32 layers 54.78, all 35 131.66 t/s;"
-          f" all vs 32: {131.66 / 54.78:.1f}x")
+    print("  llama-bench offload (7B Q4_0, hardware unstated): GPU layers set to 10: 13.45, 32: 54.78, 35: 131.66 t/s;"
+          f" 35 vs 32: {131.66 / 54.78:.1f}x")
     print(f"  llama-bench CPU threads: 1 -> 4.05, 8 -> 16.71, 32 -> 16.41 t/s; 8 vs 1: {16.71 / 4.05:.1f}x")
     print()
 

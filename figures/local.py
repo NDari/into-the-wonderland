@@ -154,7 +154,7 @@ def bandwidth_figure():
         bound = bw / w
         ax.barh(row, bound, height=0.55, color=LIGHT, edgecolor=ACCENT, linewidth=0.6)
         ax.text(bound + 4, row, f"{bound:.0f} ({bw:g} GB/s)", va="center", fontsize=7.5, color=INK)
-    # The one measurement whose hardware is named: llama-bench's RTX 4080 example.
+    # llama-bench's CSV example, one of its example runs on a named RTX 4080.
     size = 4_677_120_000 / C.GB
     row = names.index("NVIDIA RTX 4080")
     ax.plot([119.92], [row + 0.42], marker="o", color=WARM, markersize=5, linestyle="none")
