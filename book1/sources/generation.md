@@ -1,7 +1,7 @@
 # Claim ledger: generation
 
 Chapter: `generation` (Book 1, "Generating text").
-Stage: researched, 2026-11-11 [D-005]. Research for this chapter was done by a helper agent; the writer spot-checks the key claims in the same sources before drafting, and records that here.
+Stage: drafted, 2026-11-11 [D-005]. Research by a helper agent. Before drafting, the writer re-ran the mechanism items used in `code/checks/generation.py` (all agree; the script imports the destination chapter's scores and draw). Open questions decided by default: speculative decoding and prompt caching get one paragraph each; min-p is left out; Anthropic's removal of sampling settings gets one dated sentence. Awaiting an independent check.
 Research for this chapter was done by a helper agent. Not drafted. Every source below was fetched on 2026-11-11 and each claim was located in the fetched text (pdftotext on publisher, ACL Anthology, or arXiv PDFs; all have text layers; HTML and Markdown for vendor pages). Equations and figures whose layout did not survive extraction were checked on the page image: Ackley et al. Eqs. (5) and (6) and Fig. 1 (pp. 151-152); Holtzman et al. Figs. 4 and 5 (p. 5) and Table 1 (p. 7, in the `-layout` extraction); Leviathan et al. Eq. (1) (p. 3). Page numbers are the printed page numbers of the source as read; the offset from PDF page to printed page is given in the table. Where a source prints an en-dash or em-dash, it is written here with a hyphen, noted where it matters. Numbers marked "checked" were recomputed in this session with a throwaway standard-library script (not in the repository); they must be reproduced by `code/checks/generation.py` at drafting [D-009].
 
 ## Sources and how they were read
@@ -435,3 +435,29 @@ Suggested script: `code/checks/generation.py` (standard library only), imported 
 - OpenAI's 2019 GPT-2 blog post "Better language models" (cited by Holtzman et al. p. 1 for "Ovid's Unicorn"): not fetched; the unicorn sample is cited from the GPT-2 paper's Table 13 instead.
 - The T5 paper ([RSR+19] in GPT-3) for the beam width 4 and length penalty 0.6 settings: not fetched; GPT-3 p. 10 is the source used.
 - Hugging Face Transformers and vLLM documentation for sampling defaults: not fetched; llama.cpp is the book's chosen runtime [D-007].
+
+## Worked examples used in the chapter [D-009]
+
+All computed by `code/checks/generation.py` (standard library only).
+
+- Example 1: temperature on the destination's scores: mat 0.831 / 0.571 / 0.375 at T = 0.5 / 1 / 2; entropy 0.86 / 1.70 / 2.23 bits (six-way uniform 2.58); 0.979 at T = 0.25; the 0.80 draw picks mat / sofa / roof.
+- Example 2: top-k 3 and top-p 0.9 both keep mat, floor, sofa (0.908), rescaled 0.629, 0.231, 0.140; with p = 0.9, temperature 0.5 first keeps 2 tokens, temperature 2 first keeps 4.
+- Example 3: constructed flat distribution (20 equal tokens plus 1,000 tail tokens 4 points lower): top-p 0.9 keeps 811 ("hundreds"); peaked (T = 0.5): top-p keeps 2.
+- Example 4: twenty draws all top at T = 1: 1.36e-5, about 1 in 74,000.
+- Example 5: KV cache: GPT-2 small 36,864 bytes per token, 37.7 MB at 1,024 tokens; Llama 3 8B 128 KiB per token, 17.2 GB at 131,072 tokens vs 16.1 GB of 16-bit weights; four times as much without grouping; 625,250 vs 1,500 positions for 500 tokens after a 1,000-token prompt.
+- Example 6: Shazeer 46 / 1.7 = 27.
+
+## Figures [D-014]
+
+- `figures/generation-temperature.svg`: Example 1 at T = 0.5, 1, 2, with entropy and the 0.80 draw.
+- `figures/generation-truncation.svg`: Example 2 before and after the cut.
+- Holtzman et al.'s Table 1 subset is a Markdown table in the chapter (printed numbers).
+
+## Terms defined in the chapter
+
+For the glossary: prefill, decode, time to first token, memory-bound, decoding strategy, greedy decoding, directed vs open-ended generation, degeneration, pure sampling, top-k, nucleus (top-p) sampling, temperature, stop sequence, context window (deepened), KV cache, prompt caching, speculative decoding, hallucination, exposure bias, calibration.
+
+## Drafting notes
+
+- Removed in self-review: "at Google" for Pope et al. (not in the ledger). Added: Shazeer's batch of 1,024 (GN4 note); the derivation of Llama 3's head size of 128 (GND9-style caution, GN27 note).
+- GPT-2 is not said to have used temperature 0.7 (GND4); no KV-cache inventor is named (GND8); Pope's 3 TB is not used (GND9).

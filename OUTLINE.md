@@ -224,7 +224,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** one next-token distribution reshaped by three temperature settings, with computed numbers.
 - **Candidate sources:** Holtzman et al. 2019; Radford et al. 2019.
 - **Depends on:** `anatomy`, `training`
-- **Status:** researched
+- **Status:** drafted
 
 ### Part VI - From LLM to assistant
 
