@@ -23,10 +23,14 @@ from datetime import date
 
 # ----------------------------------------------------------------------------
 # METR, 50% time horizons in minutes, 95% confidence intervals, and release
-# dates as given in the YAML file (frontier models only; GPT-2 has no interval
-# in the ledger). Name, release date, p50, (low, high).
+# dates as given in the YAML file (nine of the models it marks is_sota).
+# Name, release date, p50, (low, high).
+# GPT-2 corrected 2026-11-11 after the independent check: the YAML's
+# p50_horizon_length for gpt2 is estimate 0.053778, ci_low 0.009994,
+# ci_high 0.141825 (rounded here to 4 decimals); the earlier 0.1 was the
+# file's average_score (0.101046), not a horizon.
 METR = [
-    ("GPT-2", date(2019, 2, 14), 0.1, None),
+    ("GPT-2", date(2019, 2, 14), 0.0538, (0.0100, 0.1418)),
     ("GPT-4", date(2023, 3, 14), 4.0, (1.9, 8.0)),
     ("o1", date(2024, 12, 5), 38.8, (21.2, 65.0)),
     ("o3", date(2025, 4, 16), 119.7, (74.6, 190.9)),
@@ -129,8 +133,8 @@ def example_metr():
     for name, p80 in METR_P80.items():
         p50 = next(m[2] for m in METR if m[0] == name)
         print(f"  {name}: 50% {p50} min / 80% {p80} min = {p50 / p80:.2f}; 80% = {p80 / 60:.2f} h")
-    gpt2_s = 0.1 * 60
-    print(f"  GPT-2: 0.1 min = {gpt2_s:.0f} s (paper: 'only 2 seconds' under the earlier task suite)")
+    gpt2 = METR[0][2]
+    print(f"  GPT-2: {gpt2} min = {gpt2 * 60:.1f} s (paper: 'only 2 seconds' under the earlier task suite)")
     # Logistic fit read at the horizon: sigma(0).
     print(f"  logistic at t = h: sigma(0) = {1 / (1 + math.exp(0)):.2f}")
     # METR's own extrapolation threshold: one work month.

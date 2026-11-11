@@ -236,7 +236,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** the same prompt completed by a base model and by an instruction-tuned one.
 - **Candidate sources:** Christiano et al. 2017; Ouyang et al. 2022; Bai et al. 2022; Rafailov et al. 2023.
 - **Depends on:** `pretraining`, `generation`
-- **Status:** drafted
+- **Status:** verified
 
 #### 19. Prompting and context {#prompting}
 
@@ -305,7 +305,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Concepts:** reasoning models and test-time computation; agents and long-running tasks; multimodal models (images, audio) in outline; interpretability in outline; open problems (reliability, evaluation, cost, safety).
 - **Candidate sources:** gathered at research time; every claim carries an as-of date.
 - **Depends on:** `instructions`, `prompting`, `tools`
-- **Status:** drafted
+- **Status:** verified
 
 ### Appendices
 

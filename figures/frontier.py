@@ -104,7 +104,7 @@ def horizons_figure():
             ax.annotate(name, (d, p50), xytext=(dx, dy), textcoords="offset points",
                         ha=ha, va="center", fontsize=7, color=INK)
     ax.set_yscale("log")
-    ax.set_ylim(0.05, 1e4)
+    ax.set_ylim(0.006, 1e4)
     ticks = [0.1, 1, 10, 60, 8 * 60, limit]
     ax.set_yticks(ticks)
     ax.set_yticklabels(["6 s", "1 min", "10 min", "1 h", "8 h", "16 h"])
