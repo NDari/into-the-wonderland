@@ -112,7 +112,7 @@ def completions_figure():
     ax.text(3, 87.9, "(" + ENGLISH["prompt"] + ")", fontsize=6.8, color=MUTED, va="top", style="italic")
     cols = (
         (1, "GPT-3 175B, a base model", GREY, MUTED, GPT3, ENGLISH["gpt3"]),
-        (51, "InstructGPT 175B, the same network\nafter instruction tuning", LIGHT, ACCENT, INSTRUCT,
+        (51, "InstructGPT 175B, the same network\nafter post-training", LIGHT, ACCENT, INSTRUCT,
          ENGLISH["instruct"]),
     )
     for x, title, face, edge, paras, english in cols:
@@ -191,7 +191,7 @@ def chat_figure():
              ("the model writes here", "open")]
     token_row(ax, 0, 19, items)
     ax.text(0, 15.2, "The system text is folded into the first user message. Because \"[INST]\" and \"<<SYS>>\" "
-            "are plain text, Meta's code refuses user\nmessages that contain them.",
+            "are plain text,\nMeta's code refuses any message that contains them.",
             fontsize=6.8, color=MUTED, va="top")
     # legend
     lx, ly = 0, 2.5

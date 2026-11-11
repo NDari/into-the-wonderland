@@ -245,7 +245,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **History:** few-shot prompting in GPT-3 (2020); chain-of-thought (2022).
 - **Candidate sources:** Brown et al. 2020; Wei et al. 2022; Kojima et al. 2022.
 - **Depends on:** `generation`, `instructions`
-- **Status:** drafted
+- **Status:** verified
 
 #### 20. Adapting a model: fine-tuning and LoRA {#adapting}
 

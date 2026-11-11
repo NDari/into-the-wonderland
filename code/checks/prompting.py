@@ -71,8 +71,10 @@ ZHAO_PROMPT = ("Input: Subpar acting. Sentiment: Negative\n"
 WEI_Q = ("Q: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. "
          "Each can has 3 tennis balls. How many tennis balls does he have now?")
 WEI_STANDARD = WEI_Q + "\nA: The answer is 11."
-WEI_COT = WEI_Q + ("\nA: Roger started with 5 balls. 2 cans of 3 tennis balls each is "
-                   "6 tennis balls. 5 + 6 = 11. The answer is 11.")
+WEI_CHAIN = (" Roger started with 5 balls. 2 cans of 3 tennis balls each is "
+             "6 tennis balls. 5 + 6 = 11. The answer is 11.")
+WEI_COT = WEI_Q + "\nA:" + WEI_CHAIN
+# The chain alone (with its final answer sentence) is what a model writes after "A:".
 KOJIMA = " Let's think step by step."
 
 
@@ -83,13 +85,15 @@ def example_tokens():
     s = len(g.ids(WEI_STANDARD))
     c = len(g.ids(WEI_COT))
     k = len(g.ids(KOJIMA))
+    a = len(g.ids(WEI_CHAIN))
     print(f"  Zhao et al.'s two-shot prompt: {z} tokens")
     print(f"  Wei et al.'s exemplar: standard {s} tokens, with chain of thought {c} ({c / s:.2f} times)")
     print(f"  eight exemplars of these lengths: {8 * s} vs {8 * c} tokens")
+    print(f"  the chain alone, as written after 'A:' (with its answer sentence): {a} tokens")
     print(f"  Kojima et al.'s '{KOJIMA.strip()}': {k} tokens")
     print(f"  GPT-3's 2,048-token window holds at most {2048 // c} chain-of-thought exemplars of {c} tokens")
     print()
-    return c
+    return a
 
 
 def example_middle():
