@@ -1,6 +1,6 @@
 # How these books were made
 
-This document describes the process as it stands on 2026-11-11. At this date one chapter (`destination`) has been through every stage and was approved by the author on 2026-11-11. It is updated whenever practice changes, so that it stays a true account and not a plan.
+This document describes the process as it stands on 2026-11-11. At this date one chapter (`destination`) has been through every stage and was approved by the author on 2026-11-11. A second (`neuron`) has been researched, drafted, and independently verified. A third (`backprop`) has been researched and drafted. It is updated whenever practice changes, so that it stays a true account and not a plan.
 
 ## Who does what
 
@@ -34,7 +34,7 @@ The rule is research first, then draft, then an independent check [D-005].
 
 - **What needs a source:** who did what and when; any number (sizes, dates, results, costs); quotes and attributions; specifics of a named paper, model, or tool.
 - **What counts as a source:** first the original paper, official documentation, or a first-hand account. Then textbooks, surveys, and established histories. Blogs, Wikipedia, and forum posts are used only as leads, never as the sole citation.
-- **How sources are read:** papers are downloaded and converted to plain text, and each claim is located by searching that text, so the ledger quotes what the source actually says. When a publisher's site refuses automated access, the page is read from an Internet Archive snapshot, and the ledger says so.
+- **How sources are read:** papers are downloaded and converted to plain text, and each claim is located by searching that text, so the ledger quotes what the source actually says. When a publisher's site refuses automated access, the page is read from an Internet Archive snapshot, and the ledger says so. Scanned papers without a text layer are read as page images and run through OCR (Tesseract) so that quotes can be searched and cross-checked. When a primary source cannot be obtained at all (a paywalled newspaper archive, a book still in copyright), it is quoted through a published history that quotes it, and both the ledger and the text say so.
 - **What "verified" means:** the source was fetched during the working session and the specific claim was found in it. What the model remembers is not a source.
 - **Numbers in worked examples** are produced by scripts that can be re-run, not estimated [D-009].
 - **Disputed history** is presented as disputed, with each side cited.

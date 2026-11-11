@@ -56,9 +56,9 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **History:** McCulloch and Pitts (1943); Hebb (1949); Rosenblatt's perceptron (1958) and the press around it; Widrow and Hoff's ADALINE (1960); Minsky and Papert's *Perceptrons* (1969); the first winter.
 - **Bridge:** a neuron with a sigmoid is logistic regression.
 - **Key figure:** one neuron as a weighted vote; XOR points that no single line separates.
-- **Candidate sources:** McCulloch and Pitts 1943; Rosenblatt 1958; Minsky and Papert 1969; Olazaran 1996 (history of the perceptron controversy).
+- **Candidate sources:** McCulloch and Pitts 1943; Hebb 1949; Rosenblatt 1958; Widrow and Hoff 1960; Olazaran 1993 (history of the perceptron controversy; used in place of Olazaran 1996, which is paywalled); Goodfellow, Bengio, Courville 2016. Minsky and Papert 1969 and the 1958 press coverage are quoted through Olazaran 1993.
 - **Depends on:** `destination`
-- **Status:** outlined
+- **Status:** verified
 
 #### 3. Learning in layers (1970-1989) {#backprop}
 
@@ -67,9 +67,9 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **History:** Linnainmaa (1970) and Werbos (1974) as precursors; Rumelhart, Hinton, and Williams (1986); the PDP volumes; Cybenko (1989) and Hornik et al. (1989). The priority dispute is presented, not adjudicated.
 - **Bridge:** gradient descent on a loss is the same idea as fitting a regression, with more knobs.
 - **Key figure:** a tiny 2-2-1 network solving XOR, with one worked forward pass and one weight update in numbers.
-- **Candidate sources:** Rumelhart, Hinton, Williams 1986; Werbos 1974; Cybenko 1989; Schmidhuber 2015 (survey, for the priority history).
+- **Candidate sources:** Rumelhart, Hinton, Williams 1986 (Nature letter and PDP chapter); Cybenko 1989; Hornik, Stinchcombe, White 1989; Griewank 2012 and Schmidhuber 2014 (priority history); Olazaran 1993. Werbos 1974 and Linnainmaa 1970 are described through these.
 - **Depends on:** `neuron`
-- **Status:** outlined
+- **Status:** drafted
 
 #### 4. Networks with structure, and the second winter (1980-2005) {#structure}
 
