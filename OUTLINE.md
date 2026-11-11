@@ -69,12 +69,12 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** a tiny 2-2-1 network solving XOR, with one worked forward pass and one weight update in numbers.
 - **Candidate sources:** Rumelhart, Hinton, Williams 1986 (Nature letter and PDP chapter); Cybenko 1989; Hornik, Stinchcombe, White 1989; Griewank 2012 and Schmidhuber 2014 (priority history); Olazaran 1993. Werbos 1974 and Linnainmaa 1970 are described through these.
 - **Depends on:** `neuron`
-- **Status:** drafted
+- **Status:** verified
 
 #### 4. Networks with structure, and the second winter (1980-2005) {#structure}
 
 - **Goal:** Why plain layered networks were not enough, the two structural ideas that survived (sharing weights across space and across time), and why the field moved to SVMs in the reader's own era. (~14 pp)
-- **Concepts:** convolution and weight sharing (brief; images are not this book's subject); recurrent networks and hidden state; unrolling through time; vanishing and exploding gradients; LSTM gates as a memory cell.
+- **Concepts:** convolution and weight sharing (brief; images are not this book's subject [D-016]); recurrent networks and hidden state; unrolling through time; vanishing and exploding gradients; LSTM gates as a memory cell.
 - **History:** Fukushima's neocognitron (1980); LeCun's digit recognizers (1989, 1998); Elman (1990); Hochreiter (1991) and Bengio et al. (1994) on vanishing gradients; Hochreiter and Schmidhuber's LSTM (1997); Cortes and Vapnik's SVM (1995) and the 2000s consensus.
 - **Bridge:** this is the point where the reader's own knowledge of the field begins and ends.
 - **Key figure:** an RNN unrolled over a sentence, with the gradient signal fading as it travels back.

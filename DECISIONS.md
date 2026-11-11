@@ -119,6 +119,13 @@ Entries are never rewritten or deleted. To change one, set its status and add a 
 - Why: Typst is far smaller than a LaTeX installation and fast, and it reads the SVG figures directly [D-014]. Pandoc already handles the chapter format [D-010].
 - To revert: choose another engine, change the `--pdf-engine` line in `build/build.py`, and check that figures, tables, and formulas still render.
 
+## D-016 Computer vision in Book 1: brief
+- Status: provisional
+- Date: 2026-11-11
+- Decision: Book 1 covers convolution and weight sharing in a few pages of `structure`, and the ImageNet story in `deep-turn`, and no more. Images appear only where they explain an idea that LLMs use (weight sharing, learned features, the 2012 turn).
+- Why: The book's subject is language models. Convolution matters here mainly as the first example of weight sharing, the idea that recurrence and attention also rely on.
+- To revert: widen `structure` or add a vision chapter in `OUTLINE.md`, and re-check the "Depends on" lines.
+
 # Open questions
 
 Parked, not blocking. Each is raised only when its trigger arrives.
@@ -140,6 +147,7 @@ Parked, not blocking. Each is raised only when its trigger arrives.
 
 ## Q-05 How much computer vision in Book 1?
 - Decide when: researching `structure`. Currently a few pages there and the ImageNet story in `deep-turn`.
+- Resolved: 2026-11-11 by D-016 (provisional).
 
 ## Q-06 Book 2 framework and hardware target
 - Decide when: starting Book 2. NumPy, PyTorch, or both; CPU only or a consumer GPU.
