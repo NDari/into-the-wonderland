@@ -56,7 +56,7 @@ def loss_figure():
     bt = [t / 1e9 for t in tokens]
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.4, 3.2), gridspec_kw={"width_ratios": [1.5, 1]})
     # (a) the whole run; every 5th point keeps the SVG small without hiding the spike.
-    keep = [j for j in range(len(its)) if j % 5 == 0 or loss[j] > 3.0]
+    keep = [j for j in range(len(its)) if j % 5 == 0 or loss[j] > 2.5]
     ax1.plot([bt[j] for j in keep], [loss[j] for j in keep], color=ACCENT, linewidth=0.5)
     ax1.set_ylim(1.5, 6.0)
     ax1.set_xlim(0, 375)
