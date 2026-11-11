@@ -1,7 +1,7 @@
 # Claim ledger: training
 
 Chapter: `training` (Book 1, "How an LLM is trained").
-Stage: researched, 2026-11-11 [D-005]. Research for this chapter was done by a helper agent; the writer spot-checks the key claims in the same sources before drafting, and records that here.
+Stage: drafted, 2026-11-11 [D-005]. Research by a helper agent. Before drafting, the writer downloaded the BLOOM log (SHA-256 matched the pinned value) and re-ran every mechanism item in `code/checks/training.py` (all agree with the ledger). Open questions decided by default (provisional, for the author): the BLOOM-176B log is used for the real loss curve, downloaded under D-018 into `out/cache/` (369 MB, not committed or redistributed; the repository states no license, and only numbers derived from it are plotted). Awaiting an independent check.
 Research for this chapter was done by a helper agent. Nothing has been drafted. This ledger gathers the sources for the planned claims (corpus collection, filtering, deduplication, the training example, batches and steps, checkpoints, precision, hardware and parallelism, an annotated real loss curve, and memorization), with exact quotes, page numbers, and the arithmetic the drafter will need to re-run in `code/checks/training.py` [D-009].
 
 All sources were fetched on 2026-11-11 and each claim was located in the fetched text (pdftotext, with `-layout` for tables; every PDF has a text layer). Two tables were checked on the page image: Lee et al. Table 4 (p. 8430) and Llama 3 Table 5 (p. 13). Page numbers are the printed page numbers of the source as read; the offset from PDF page to printed page is given in the table. Where a source prints an en-dash or em-dash (for example "4D parallelism-a combination" in Llama 3, page ranges, "1-2 GPU failures" in BLOOM), it is written here with a hyphen. Model memory was used only to choose what to fetch.
@@ -381,3 +381,28 @@ Suggested script: `code/checks/training.py` (standard library plus numpy for the
 - The Weights & Biases public GraphQL API (queried for `ai2-llm/OLMo-1B`): confirmed anonymous access works; not used as a source.
 - Web search results for open training-loss releases (DMaS-LLaMa-Lite, quintic/rig-logs, the Step Law project): small models or W&B-only; not pursued.
 - The Common Crawl blog post of 1 April 2026 about reporting sizes "in nibbles" is an April Fools' post; ignore it.
+
+## Worked examples used in the chapter [D-009]
+
+All computed by `code/checks/training.py` (numpy for 16-bit floats). Example 8 reads the BLOOM log from `out/cache/` after checking its pinned SHA-256 [D-018].
+
+- Example 1: BLOOM full batch 2,048 x 2,048 = 4,194,304 predictions per step; LLaMA 1.4T / 4M = 350,000 steps; LLaMA wall clock 20.8 days (paper: about 21).
+- Example 3: 16 bytes per parameter; GPT-2 1.5B 24 GB; 405B 6,480 GB, at least 81 GPUs of 80 GB.
+- Example 4: float16 max 65,504; 1 + 1/4096 = 1 in float16; bfloat16 range to about 3e38; spacing near 1 about 0.001 (float16) and 0.008 (bfloat16).
+- Example 5: 419 unexpected interruptions in 54 days, about eight a day.
+- Example 6: 405B in 16-bit 810 GB; 15.6T x 3.94 characters about 61 trillion, about 76 times the weights.
+- Example 8: BLOOM log: 95,281 steps, 39 restarts; start 61.48; uniform guessing ln(250,680) = 12.43, crossed at step 16; learning-rate peak 6e-5 at 375M tokens; full batch from 20.0B tokens; loss 2.65 at 10B, 2.21 at 100B, 1.99 at 300B, 1.916 at 366.5B (2.76 bits); spike at 97.85B tokens from 2.35 to 5.10, grad norm 960.
+
+## Figures [D-014]
+
+- `figures/training-step.svg`: one step, end to end (diagram).
+- `figures/training-loss.svg`: BLOOM-176B's loss from the log: (a) whole run with annotations; (b) first 2B tokens on a log scale with the learning rate.
+
+## Terms defined in the chapter
+
+For the glossary: Common Crawl, boilerplate, quality filter (rule, classifier), data mixture, deduplication, MinHash (one line), packing, batch size in tokens, step, nat (with `scale`), float16, bfloat16, mixed precision, master weights, data / tensor / pipeline parallelism, job interruption, checkpoint, training loss vs validation loss, loss spike, memorization, extraction.
+
+## Drafting notes
+
+- Removed or softened in self-review: "in the open" for BLOOM (no page located), "much of whose text was machine-translated" (now the patent site's use of machine translation), "word counts" (Dodge et al. used TF-IDF vectors; now "word-frequency vectors").
+- Llama 3 Table 5's first row is not printed (TRD1); no Llama 3 step count (TRD2).

@@ -9,7 +9,7 @@ Book 1 is the priority and stands on its own.
 
 ## Status
 
-As of 2026-11-11: `destination` (Book 1, chapter 1) is approved by the author. Chapters 2 to 13 (`neuron` to `anatomy`) are verified, each after an independent check of every claim, and await approval. `pretraining` and `scale` (chapters 14 and 15) are drafted and in verification; `training` and `generation` (chapters 16 and 17) are researched. Some check scripts download public datasets on first run into `out/cache/` (not committed). `OUTLINE.md` lists every planned chapter and its current status.
+As of 2026-11-11: `destination` (Book 1, chapter 1) is approved by the author. Chapters 2 to 14 (`neuron` to `pretraining`) are verified, each after an independent check of every claim, and await approval. `scale` and `training` (chapters 15 and 16) are drafted and in verification; `generation` (chapter 17) is researched. Some check scripts download public datasets on first run into `out/cache/` (not committed). `OUTLINE.md` lists every planned chapter and its current status.
 
 ## Who made this
 

@@ -57,6 +57,12 @@ def objectives_figure():
         token(ax1, pos[i], 1.0, w, face=WARMFILL, edge=WARM)
         ax1.annotate("", xy=(pos[i], 0.76), xytext=(pos[i], 0.24),
                      arrowprops=dict(arrowstyle="-|>", color=MUTED, linewidth=0.7, mutation_scale=6))
+    # One sample target ("sofa"), with faint lines from every word it may use.
+    k = words.index("sofa") - 1
+    for i in range(k):
+        ax1.annotate("", xy=(pos[k] - 0.12, 0.8), xytext=(pos[i], 0.22),
+                     arrowprops=dict(arrowstyle="-", color=ACCENT, linewidth=0.4, alpha=0.35,
+                                     connectionstyle="arc3,rad=-0.15"))
     ax1.text(-0.65, 0, "input", ha="right", va="center", fontsize=7.5, color=MUTED)
     ax1.text(-0.65, 1.0, "predict", ha="right", va="center", fontsize=7.5, color=WARM)
     ax1.text(-0.65, 1.55, f"(a) next-token prediction: {n - 1} predictions, each using only the words to its left",

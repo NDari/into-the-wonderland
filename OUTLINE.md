@@ -195,7 +195,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** masked prediction vs next-token prediction on the same sentence.
 - **Candidate sources:** Peters et al. 2018; Howard and Ruder 2018; Radford et al. 2018; Devlin et al. 2018.
 - **Depends on:** `anatomy`
-- **Status:** drafted
+- **Status:** verified
 
 #### 15. Scale (2019-2022) {#scale}
 
@@ -214,7 +214,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** one training step drawn end to end; an annotated real loss curve.
 - **Candidate sources:** Brown et al. 2020 (training details); Touvron et al. 2023 (LLaMA); published model cards and data statements.
 - **Depends on:** `toolkit`, `depth`, `tokens`, `anatomy`, `scale`
-- **Status:** researched
+- **Status:** drafted
 
 #### 17. Generating text {#generation}
 

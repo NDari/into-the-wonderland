@@ -1,8 +1,8 @@
 # Claim ledger: pretraining
 
 Chapter: `pretraining` (Book 1, "Pretraining: learn language first, tasks later (2015-2019)").
-Stage: drafted, 2026-11-11 [D-005]. Research by a helper agent. Before drafting, the writer re-ran the mechanism items used in `code/checks/pretraining.py` (all agree). Open questions decided by default: (1) `embeddings` is left unchanged and this chapter says contextual vectors came first from LSTMs (CoVe, ELMo) and transformers made them standard; (2) T5 gets about a page. Awaiting an independent check.
-Research for this chapter was done by a helper agent. Nothing has been drafted. The ledger covers the bridge from 2000s transfer learning and ImageNet feature reuse, the five NLP milestones in the outline (Dai and Le, ELMo, ULMFiT, GPT, BERT, T5), the first critiques of BERT (RoBERTa, ALBERT), the term "self-supervised", and the sources that state why masked (BERT-style) and causal (GPT-style) models went separate ways.
+Stage: verified, 2026-11-11 [D-005]. Research by a helper agent; drafted by the writer; independent check recorded at the end. Defaults taken at drafting: `embeddings` unchanged (this chapter says contextual vectors came first from LSTMs); T5 about a page.
+Research for this chapter was done by a helper agent (before drafting). The ledger covers the bridge from 2000s transfer learning and ImageNet feature reuse, the five NLP milestones in the outline (Dai and Le, ELMo, ULMFiT, GPT, BERT, T5), the first critiques of BERT (RoBERTa, ALBERT), the term "self-supervised", and the sources that state why masked (BERT-style) and causal (GPT-style) models went separate ways.
 
 All sources were fetched on 2026-11-11 and each claim below was located in the fetched text (pdftotext, plain and `-layout`, on publisher, proceedings, or arXiv PDFs, all with text layers; HTML pages stripped of markup). Tables were read in the `-layout` extraction; ULMFiT's Equation 3 was read on the page image. Page numbers are the printed page numbers of the copy read; the offset from PDF page to printed page is given in the table, and copies that print no numbers are cited by PDF page. Where a source prints an en-dash or em-dash it is written here as a hyphen; arrows in examples (for example "my dog is hairy -> my dog is [MASK]") are written as "to"; the multiplication sign is kept as "x".
 
@@ -521,3 +521,19 @@ For the glossary: transfer learning, pretrained, fine-tuning, frozen features, s
 
 - Removed in self-review as not in the ledger: affiliations for Dai and Le, Peters et al., Raffel et al.; "news text" for ELMo's corpus; "better than chance" for GPT's zero-shot heuristics (replaced by the paper's "steadily increases over training"); a definition of TPU.
 - The two-stage figure (planned item 2) and the GLUE bar chart were not drawn.
+
+## Independent check (pretraining chapter)
+
+2026-11-11. A separate agent re-fetched every key source (and the Goodfellow web chapter and three blog snapshots), checked every quote and page, re-ran the script (all derived numbers match), and regenerated the figure (byte-identical). PTD1-PTD5 and PTD7 were judged handled within the ledger's guidance.
+
+- Errors found and fixed:
+  1. NSP ablation: removing NSP cost 3.5 points on QNLI and 0.6 or less elsewhere (SQuAD -0.6), not "half a point or less".
+  2. The left-to-right drops (10.1 and 9.0) compare "LTR & No NSP" with "No NSP"; the chapter now says so.
+  3. Goodfellow p. 533's "largely abandoned" restored.
+  4. "4,096 numbers" is in Razavian et al. (p. 806), not DeCAF; moved to the Razavian sentence as a quote.
+  5. Dai and Le's "breaks down very quickly" is conditional on more hidden units or longer backpropagation (p. 4); restored.
+  6. RTE is "one of the smaller datasets" (GPT-1 p. 5), not the smallest.
+  7. Citation pages: GLUE's "nine English sentence understanding tasks" is on p. 3; T5's "always results in better downstream task performance" runs pp. 19-20.
+- Warnings acted on: ALBERT pp. 4-5; caption "chooses about 15% of tokens to predict"; panel (a) of the figure now shows faint lines from every earlier word to one target ("sofa"), and the caption says so; ELMo "usually adapted"; ULMFiT "around the same time"; "ELMo improved every task it was tried on" (no implied contrast with CoVe); "closed its account of pretraining with" for `deep-turn`; "probably" for the quotation-mark inference; chip-hours labelled as derived (a Cloud TPU taken as four chips); T5's 103-token target explained against reconstructing the whole input, with p. 41's "more computationally efficient"; encoder-decoders named alongside the two families; "ablation" defined; J&M ch. 7 dated (2026-08 draft); takeaway "far fewer labeled examples"; "through its layers" for BERT's "see itself"; this ledger's header contradiction fixed.
+- Not changed: "F1" is left undefined (the reader's own metric); TPU is described only as Google's chips.
+- Could not verify: that BooksCorpus was chosen because of its long contiguous text; the chapter now says only that the authors noted it "contains long stretches of contiguous text".
