@@ -80,7 +80,7 @@ Book 2:
 Both books:
 
 - Verification is research, then draft, then an independent check [D-005]. See the policy below.
-- Every number in a worked example is produced by a script in `code/checks/` [D-009].
+- Every number in a worked example is produced by a script in `code/checks/` [D-009]. Public datasets the scripts need are downloaded into `out/cache/` and checked against a pinned hash, never committed [D-018].
 - Every figure is drawn by a matplotlib script in `figures/` that writes an SVG next to itself [D-014].
 - PDFs are built with `python3 build/build.py` (Pandoc with Typst) into `out/` [D-015].
 - Chapters are Pandoc Markdown with `[@key]` citations and a shared `references.bib` [D-010].

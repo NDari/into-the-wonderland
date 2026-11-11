@@ -1,6 +1,6 @@
 # How these books were made
 
-This document describes the process as it stands on 2026-11-11. At this date one chapter (`destination`) has been approved by the author, six more have been independently verified, one is in verification, and three have been researched. It is updated whenever practice changes, so that it stays a true account and not a plan.
+This document describes the process as it stands on 2026-11-11. At this date one chapter (`destination`) has been approved by the author, seven more have been independently verified, one is drafted and in verification, and two have been researched. It is updated whenever practice changes, so that it stays a true account and not a plan.
 
 ## Who does what
 
@@ -37,7 +37,7 @@ The rule is research first, then draft, then an independent check [D-005].
 - **What counts as a source:** first the original paper, official documentation, or a first-hand account. Then textbooks, surveys, and established histories. Blogs, Wikipedia, and forum posts are used only as leads, never as the sole citation.
 - **How sources are read:** papers are downloaded and converted to plain text, and each claim is located by searching that text, so the ledger quotes what the source actually says. When a publisher's site refuses automated access, the page is read from an Internet Archive snapshot, and the ledger says so. Scanned papers without a text layer are read as page images and run through OCR (Tesseract) so that quotes can be searched and cross-checked. When a primary source cannot be obtained at all (a paywalled newspaper archive, a book still in copyright), it is quoted through a published history that quotes it, and both the ledger and the text say so.
 - **What "verified" means:** the source was fetched during the working session and the specific claim was found in it. What the model remembers is not a source.
-- **Numbers in worked examples** are produced by scripts that can be re-run, not estimated [D-009].
+- **Numbers in worked examples** are produced by scripts that can be re-run, not estimated [D-009]. When a script needs a public dataset (so far a Project Gutenberg novel and the GloVe word vectors), it downloads the file on first run, checks it against a recorded hash, and stops if the hash differs. The data itself is not stored in the repository [D-018].
 - **Disputed history** is presented as disputed, with each side cited.
 - **Fast-moving facts** carry an explicit "as of" date and are re-checked before each PDF build, along with pinned software versions.
 

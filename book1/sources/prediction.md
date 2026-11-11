@@ -1,7 +1,7 @@
 # Claim ledger: prediction
 
 Chapter: `prediction` (Book 1, "Language as prediction (1948-2000)").
-Stage: drafted, 2026-11-11 [D-005]. Research was done by a helper agent. Before drafting, the writer spot-checked P8, P11, P12, P15, P17, and P23 in the same fetched copies.
+Stage: verified, 2026-11-11 [D-005]. Independent check recorded at the end. Research was done by a helper agent. Before drafting, the writer spot-checked P8, P11, P12, P15, P17, and P23 in the same fetched copies.
 
 All sources were fetched on 2026-11-11 and each claim was located in the fetched text or, for scanned sources, in the scan's text layer, with key numbers and quotes checked on the page image itself (said where it matters). Page numbers are the printed page numbers of the source as read; the offset from PDF page to printed page is given in the table. Quotes are given with line-break hyphens, dropped ligatures ("fi", "ff"), and OCR spacing repaired. Where a source prints an en-dash or em-dash, it is written here with a hyphen or a comma, and this is said.
 
@@ -360,3 +360,30 @@ All computed by `code/checks/prediction.py`. Example 7 downloads Project Gutenbe
 
 For the glossary: n-gram, unigram, bigram, trigram, bit, entropy, language model (general sense), Markov assumption, acoustic model, noisy channel (named), smoothing, add-one smoothing, back-off, Kneser-Ney smoothing, cross-entropy, perplexity, curse of dimensionality.
 
+## Independent check (prediction chapter)
+
+2026-11-11. A separate agent fetched every source the chapter cites (Shannon's samples and the guessing game read on page images), downloaded the Gutenberg file itself (its SHA-256 matched), re-ran the script, regenerated both figures (byte-identical), and checked each claim, quote, page, and number. All 16 bib entries matched the fetched copies.
+
+- Errors found and fixed:
+  1. "Once SH had been given, ED did too": every letter of SHED was missed in Shannon's sequence (8). Now the SH of SHABBY and the ABBY that followed.
+  2. The noisy channel: "the words that make the observed sounds most probable" described P(A|W) alone. Now "the words that are most probable given the observed sounds" (Jelinek p. 487).
+  3. "A group at IBM led by Jelinek began work in 1972": the group started in early 1972 under Joe Raviv, and Jelinek took over later that year (p. 484). Reworded.
+  4. "5.4% fewer word errors" read as a relative cut; Chen and Goodman say "about 5.4% absolute" for their data set. Now "about 5.4 percentage points lower, on their data".
+  5. "Practical models stopped at three to five words of context": Bengio et al. say n-grams up to n = 5, that is four words of context, and mostly much less. Reworded.
+  6. Crossword puzzles: Shannon says zero redundancy makes any array a crossword and too much makes large ones impossible; the draft had it backwards. Both halves now quoted.
+  7. "The previous five chapters": six since D-017. The count is dropped.
+- Warnings acted on:
+  - "LLMs are still ... judged by" perplexity now cites Jurafsky and Martin p. 9 with "as of 2026" (intro, end of the perplexity section, summary).
+  - "For forty years" is now "For decades".
+  - Shannon's 4.70/4.14/3.56/3.3 are now described as table-based values for a 26-letter alphabet, separate from the guessing-game bounds (27 letters, p. 64).
+  - Shannon's "apart from some statistical fluctuation" restored; the 100-letter result is now "a similar test" (pp. 57-58).
+  - Liberman's second cause (AI as "applied logic") added; Chomsky's broader claim noted from Jurafsky and Martin p. 22; "precise target" and Pereira's answer now limited to the two-sentence argument ("particular challenge").
+  - Chen and Goodman's earlier-studies point now quotes p. 6 ("one or two corpora and using a single training set size").
+  - The compression link to Shannon's twin is now stated as the book's own link.
+  - GPT-2's 35.76 now says it was zero-shot and that GPT-2 read bytes through de-tokenizers, so the comparison is less direct (pp. 4-5).
+  - Figure caption: "letters on blue / on red", "redrawn from his printed record".
+  - Nested double quotes in the Shannon 1948 quote changed to single quotes inside.
+  - Pride and Prejudice counts now say "counting lowercased words".
+  - "Add-one smoothing" and "Kneser-Ney smoothing" bolded at first use.
+- Not changed: "language model" stays bold here, because this chapter gives its formal definition (destination introduced it informally). Pereira spells "Colourless"; the chapter quotes Chomsky's spelling via Liberman and only describes Pereira's result.
+- Could not verify: Pereira's issue number (not on the fetched pages; bib note says so); the page range of Shannon 1948 Part II (not fetched; matches the footnote in Shannon 1951).

@@ -133,6 +133,13 @@ Entries are never rewritten or deleted. To change one, set its status and add a 
 - Why: The research for `toolkit` found at least 13 concepts that each need a definition, a mechanism, a short history, and a worked example, plus four disputes: 22-26 pages at the density of the drafted chapters, against a 16-page budget. The two halves answer different questions and share little vocabulary.
 - To revert: merge `depth` back into `toolkit` in `OUTLINE.md`, apply the cuts listed in the Q-04 notes of `book1/sources/toolkit.md`, and point every link to `#depth` back to `#toolkit`.
 
+## D-018 External data for worked examples: downloaded, hash-checked, not committed
+- Status: provisional
+- Date: 2026-11-11
+- Decision: When a worked example or figure needs a public dataset (so far *Pride and Prejudice* from Project Gutenberg for `prediction`, and the GloVe 6B word vectors for `embeddings`), the check script downloads it on first run into `out/cache/`, which is not committed. It verifies the file against a SHA-256 hash recorded in the script and in the chapter's ledger, and stops if the hash differs, so the printed numbers can never silently change. The data itself is never committed.
+- Why: The GloVe file is 171 MB (inside an 862 MB zip), far too big for the repository. Downloading with a pinned hash keeps every number reproducible [D-009] without bloating the history. The cost is that the first run needs network access and time.
+- To revert: commit small derived subsets instead (the GloVe vectors are PDDL-licensed, so this is allowed), and point the scripts at them.
+
 # Open questions
 
 Parked, not blocking. Each is raised only when its trigger arrives.

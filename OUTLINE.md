@@ -128,18 +128,18 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** Shannon's game on one sentence; a count table that is almost entirely zeros.
 - **Candidate sources:** Shannon 1948; Shannon 1951; Chen and Goodman 1998; Jurafsky and Martin (textbook).
 - **Depends on:** `destination`
-- **Status:** drafted
+- **Status:** verified
 
 #### 9. Words as vectors (1954-2014) {#embeddings}
 
 - **Goal:** The single most important new idea for the reader: meaning as position in a learned space. (~16 pp)
 - **Concepts:** one-hot vs dense representations; the distributional hypothesis; embeddings; similarity as closeness; the neural language model; learning embeddings as a side effect of prediction; analogies and their limits; one vector per word as a weakness.
 - **History:** Harris (1954) and Firth (1957); latent semantic analysis (1990); Bengio et al.'s neural probabilistic language model (2003); Collobert and Weston (2008); word2vec (2013); GloVe (2014).
-- **Bridge:** LSA is PCA on a word-document matrix; embeddings are the learned, predictive version.
+- **Bridge:** LSA is PCA on a word-document matrix; embeddings are the learned, predictive version, which later analysis showed to be closer to counting than it looked.
 - **Key figure:** a 2D projection of real word vectors, with the numbers computed, not drawn by hand.
 - **Candidate sources:** Deerwester et al. 1990; Bengio et al. 2003; Mikolov et al. 2013 (both papers); Pennington et al. 2014.
 - **Depends on:** `backprop`, `prediction`
-- **Status:** researched
+- **Status:** drafted
 
 #### 10. Reading and writing sequences (2010-2016) {#seq2seq}
 

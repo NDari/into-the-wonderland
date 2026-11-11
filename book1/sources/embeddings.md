@@ -1,7 +1,7 @@
 # Claim ledger: embeddings
 
 Chapter: `embeddings` (Book 1, "Words as vectors (1954-2014)").
-Stage: researched, 2026-11-11 [D-005]. Research for this chapter was done by a helper agent; the writer spot-checks the key claims in the same sources before drafting, and records that here. Research by a separate agent; the chapter has not been drafted.
+Stage: drafted, 2026-11-11 [D-005]. Research for this chapter was done by a helper agent. Before drafting, the writer re-ran the Deerwester and GloVe numbers (Examples 3 and 8 below reproduce the ledger's values) and re-located several quotes in the fetched texts; this corrected the page for LSA's "13% improvement" to p. 400 (journal PDF page 10, between footers 399 and 401). Awaiting an independent check.
 
 All sources were fetched on 2026-11-11 and each claim was located in the fetched text or, for scanned sources, in the scan's text layer, with the key quotes checked on the page image (Harris p. 156, Firth p. 11, Deerwester Table 2 p. 396, Rumelhart et al. p. 535). Page numbers are the printed page numbers of the source as read; the offset from PDF page to printed page is given in the table. Where a source prints an en-dash or em-dash it is written here with a hyphen, and the vector arithmetic arrows and minus signs of the sources are written with a plain hyphen. Quotes keep the sources' own spelling.
 
@@ -39,7 +39,7 @@ All sources were fetched on 2026-11-11 and each claim was located in the fetched
 Not fetched:
 - Joos (1950), Osgood et al. (1957), Rumelhart and Abrahamson (1973), Schutze (1992), Landauer and Dumais (1997), Hinton (1986, "Learning distributed representations of concepts"), Xu and Rudnicky (2000), Miikkulainen and Dyer (1991), Bengio et al. (2006), Turian et al. (2010), Mnih and Hinton (2007, 2009), Gladkova et al. (2016), Schluter (2018), Gonen and Goldberg (2019): known here only through the sources above. Say so if any is used.
 - Palmer (ed., 1968), the reprint of Firth's essay: not seen. Quote Investigator's page on the Firth quote (https://quoteinvestigator.com/2022/09/18/word-company/) was seen only as a search-result summary; it is a lead, not a source.
-- The full glove.6B.zip (862 MB) was not downloaded. One member, glove.6B.50d.txt, was streamed by range request into memory to check its format and to preview E22's numbers; nothing was saved.
+- During research the full glove.6B.zip (862 MB) was not downloaded. One member, glove.6B.50d.txt, was streamed by range request into memory to check its format and to preview E22's numbers; nothing was saved.
 
 ## Sourced claims
 
@@ -271,3 +271,38 @@ Suggested script: `code/checks/embeddings.py`, imported by `figures/embeddings.p
 - Quote Investigator, "You Shall Know a Word by the Company It Keeps" (2022): search summary only; says the earliest known match is Firth 1957 and that a reprint gives p. 179. Consistent with E2; not cited.
 - Wikipedia "Distributionalism" (search summary): attributes "difference of meaning correlates with difference of distribution" to Harris p. 156; confirmed in the primary (E1).
 - Language Log, "Back to Bacon" (search result title only): notes Firth's paragraph footnotes Wittgenstein; confirmed in the primary (E2).
+
+## Worked examples used in the chapter [D-009]
+
+All computed by `code/checks/embeddings.py`. Example 8 downloads glove.6B.zip once into `out/cache/` (not committed) and stops if the zip's or the 50d member's SHA-256 differs from the values in E22 [D-018]. The download on 2026-11-11 matched both.
+
+- Example 1: two one-hot vectors are 1.414 apart, cosine 0. The released 50d file has 400,001 lines (the paper says a 400,000-word vocabulary; every line has a word and 50 numbers, no duplicates), so the chapter says "about 400,000".
+- Example 2: made-up vectors cat (0.9, 0.8, 0.1), dog (0.8, 0.9, 0.2), car (0.1, 0.2, 0.9): cosine cat-dog 0.990, cat-car 0.303; doubling cat leaves 0.990.
+- Example 3: Deerwester's 12 x 9 table. Singular values 3.34, 2.54, 2.35, 1.64, 1.50, 1.31, 0.85, 0.56, 0.36 (match p. 406). Cosines, raw counts versus two factors: human-user 0.000 to 0.888, human-computer 0.500 to 0.874, human-trees 0.000 to -0.330, trees-graph 0.667 to 0.999. The two factors keep 57% of the sum of squares.
+- Example 4: made-up 2D vectors. Exact case: king - man + woman = (4, 3) = queen. Small offset (man (1, 1), woman (1, 1.4), king (4, 1), queen (4.4, 1.5)): the result (4, 1.4) is 0.40 from king and 0.41 from queen.
+- Example 5: embedding table sizes 400,000 x 50 = 20,000,000; 17,964 x 100 = 1,796,400; 16,383 x 30 = 491,490 (not used in the text).
+- Example 6: 1,181,041 words; 312/252 = 1.238 and 336/252 = 1.333; 117/109 = 1.073 (the chapter says "about 7%" beside the paper's "about 8%", D5); 8,869 + 10,675 = 19,544.
+- Example 7: invented environment counts; cosine oculist-eye-doctor 0.989, oculist-lawyer 0.137. Labelled in the text as invented.
+- Example 8: GloVe 6B 50d, cosine on raw vectors, nearest neighbours excluding the query word.
+  - Cosines: cat-dog 0.922, cat-car 0.364, king-queen 0.784, king-man 0.531.
+  - Nearest to frog: snake, ape, toad, monkey, spider, lizard. To bank: banks, securities, banking, investment, exchange, financial. To france: french, belgium, paris, spain, netherlands, italy.
+  - king - man + woman: overall king 0.886, queen 0.861, daughter 0.768; excluding inputs queen, daughter, prince.
+  - doctor - man + woman: overall doctor 0.896, nurse 0.842; excluding inputs nurse.
+  - paris - france + italy: rome 0.838 either way. bigger - big + small: larger 0.904 first even with inputs excluded (not used in the text).
+  - PCA of the 22 plotted words: first two components 30.5% and 20.0%.
+
+## Figures [D-014]
+
+- `figures/embeddings-lsa.svg`: Deerwester's 12 terms in the two-factor space from Example 3. "Response" and "time" have identical rows, so they share one point and one label.
+- `figures/embeddings-glove-pca.svg`: the 22 words of Example 8, PCA on those words only, axes labelled with their variance shares. People and animals share one region in this projection; the caption says so rather than claiming four clean groups. The planned offset arrows were dropped: in this projection they are too short to read, and the text covers the offset.
+
+## Terms defined in the chapter
+
+For the glossary: one-hot vector, dense vector, word embedding, cosine (similarity), distributional hypothesis (as a later label), collocation, latent semantic analysis (LSA, also latent semantic indexing), singular-value decomposition (named as the factorization behind PCA), distributed representation, embedding table (back-reference), skip-gram, CBOW, word2vec, negative sampling, GloVe, analogy (offset method), static embeddings.
+
+## Drafting notes
+
+- Bengio's 10^50 is not re-quoted; the chapter refers back to `prediction` for the curse of dimensionality.
+- Elman's noun and verb clusters are not retold; only the one-hot input is referred back to `structure`.
+- The outline's bridge was kept and refined in `OUTLINE.md` ("closer to counting than it looked"), per D3.
+- Removed during self-review as not in the ledger: affiliations (Google, Stanford) and "British" for Firth.
