@@ -9,7 +9,7 @@ Book 1 is the priority and stands on its own.
 
 ## Status
 
-As of 2026-11-11: `destination` (Book 1, chapter 1) is approved by the author, after research, drafting, and an independent check of every claim against its source. `neuron`, `backprop`, and `structure` (chapters 2 to 4) are verified, each after an independent check of every claim, and await the author's approval. `OUTLINE.md` lists every planned chapter and its current status.
+As of 2026-11-11: `destination` (Book 1, chapter 1) is approved by the author. `neuron`, `backprop`, `structure`, and `deep-turn` (chapters 2 to 5) are verified, each after an independent check of every claim, and await approval. `toolkit` and `depth` (chapters 6 and 7) are drafted and in verification. `prediction`, `embeddings`, `seq2seq`, and `tokens` (chapters 8 to 11) are researched. `OUTLINE.md` lists every planned chapter and its current status.
 
 ## Who made this
 
@@ -28,22 +28,10 @@ AGENTS.md                      working rules for AI agents and humans
 DECISIONS.md                   decision log and parked questions
 OUTLINE.md                     both books: chapters, IDs, order, status
 references.bib                 shared bibliography
-book1/chapters/destination.md  draft of the first Book 1 chapter
-book1/sources/destination.md   claim ledger for the destination chapter
-book1/chapters/neuron.md       draft of the neuron chapter
-book1/sources/neuron.md        claim ledger for the neuron chapter
-code/checks/neuron.py          computes the numbers in that chapter's worked examples
-figures/neuron.py              draws that chapter's two figures
-book1/chapters/backprop.md     draft of the backprop chapter
-book1/sources/backprop.md      claim ledger for the backprop chapter
-code/checks/backprop.py        computes the numbers in that chapter's worked examples
-figures/backprop.py            draws that chapter's three figures
-book1/chapters/structure.md    draft of the structure chapter
-book1/sources/structure.md     claim ledger for the structure chapter
-code/checks/structure.py       computes the numbers in that chapter's worked examples
-figures/structure.py           draws that chapter's three figures
-code/checks/destination.py     computes the numbers in that chapter's worked examples
-figures/pipeline.py            draws the pipeline figure (and figures/pipeline-destination.svg)
+book1/chapters/<id>.md         drafted Book 1 chapters, one file per chapter ID
+book1/sources/<id>.md          claim ledgers: sources, quotes, pages, checks
+code/checks/<id>.py            compute every number in a chapter's worked examples
+figures/<id>.py                draw a chapter's figures (SVGs alongside)
 build/build.py                 builds PDFs into out/ with Pandoc and Typst
 build/links.lua                Pandoc filter used by the build
 tools/check.py                 consistency checks

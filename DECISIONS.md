@@ -126,6 +126,13 @@ Entries are never rewritten or deleted. To change one, set its status and add a 
 - Why: The book's subject is language models. Convolution matters here mainly as the first example of weight sharing, the idea that recurrence and attention also rely on.
 - To revert: widen `structure` or add a vision chapter in `OUTLINE.md`, and re-check the "Depends on" lines.
 
+## D-017 Split the training toolkit into two chapters
+- Status: provisional
+- Date: 2026-11-11
+- Decision: The planned `toolkit` chapter becomes two chapters. `toolkit` ("The training loop") covers tensors, minibatches and stochastic gradient descent, momentum, RMSProp and Adam, learning-rate schedules and warmup, gradient clipping, hyperparameters, early stopping, loss curves, automatic differentiation, and frameworks. A new chapter, `depth` ("Making deep networks trainable"), covers initialization, dropout, batch and layer normalization, residual connections, and a closing section on reading a training recipe.
+- Why: The research for `toolkit` found at least 13 concepts that each need a definition, a mechanism, a short history, and a worked example, plus four disputes: 22-26 pages at the density of the drafted chapters, against a 16-page budget. The two halves answer different questions and share little vocabulary.
+- To revert: merge `depth` back into `toolkit` in `OUTLINE.md`, apply the cuts listed in the Q-04 notes of `book1/sources/toolkit.md`, and point every link to `#depth` back to `#toolkit`.
+
 # Open questions
 
 Parked, not blocking. Each is raised only when its trigger arrives.
@@ -144,6 +151,7 @@ Parked, not blocking. Each is raised only when its trigger arrives.
 
 ## Q-04 Split `toolkit` into two chapters?
 - Decide when: researching `toolkit`. It carries a lot of vocabulary for its size.
+- Resolved: 2026-11-11 by D-017 (provisional).
 
 ## Q-05 How much computer vision in Book 1?
 - Decide when: researching `structure`. Currently a few pages there and the ImageNet story in `deep-turn`.

@@ -142,7 +142,7 @@ The name points to a last distinction. A **chat product** is a model plus softwa
 
 The book does not walk through the pipeline from left to right. It follows the history, because each part was invented to solve a problem left by the parts before it. The history runs in two threads that meet in the middle. <!-- D-008 -->
 
-- **How networks learn.** [The artificial neuron](#neuron), [learning in layers](#backprop), [networks with structure](#structure), [the deep learning turn](#deep-turn), and [the training toolkit](#toolkit). These explain the shaded boxes: what a layer computes, and how training finds good parameters.
+- **How networks learn.** [The artificial neuron](#neuron), [learning in layers](#backprop), [networks with structure](#structure), [the deep learning turn](#deep-turn), [the training loop](#toolkit), and [making deep networks trainable](#depth). These explain the shaded boxes: what a layer computes, and how training finds good parameters.
 - **How language is modeled.** [Prediction](#prediction), [words as vectors](#embeddings), [reading and writing sequences](#seq2seq), and [tokens](#tokens). These explain the first boxes of the figure and the idea of next-token prediction itself. This thread steps back in time: it starts decades before the first thread ends.
 - **The threads meet.** [Attention](#attention) and [the anatomy of a transformer](#anatomy) open the "Layers" box.
 - **From transformer to LLM.** [Pretraining](#pretraining), [scale](#scale), [how an LLM is trained](#training), and [generating text](#generation).

@@ -93,22 +93,33 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** ImageNet error rate by year, with 2012 marked.
 - **Candidate sources:** Hinton et al. 2006; Deng et al. 2009; Krizhevsky, Sutskever, Hinton 2012; LeCun, Bengio, Hinton 2015 (Nature review).
 - **Depends on:** `backprop`, `structure`
-- **Status:** outlined
+- **Status:** verified
 
-#### 6. The training toolkit (2010-2016) {#toolkit}
+#### 6. The training loop (1951-2017) {#toolkit}
 
-- **Goal:** The vocabulary of modern training. After this chapter the reader can read a training recipe. (~16 pp)
-- **Concepts:** tensors and shapes; minibatches and stochastic gradient descent; momentum and Adam; learning-rate schedules and warmup; initialization; dropout; batch and layer normalization; residual (skip) connections; automatic differentiation; frameworks; reading a loss curve; hyperparameters.
-- **History:** Glorot and Bengio (2010); Nair and Hinton on ReLU (2010); dropout (2012-2014); Adam (2014); batch norm (2015); ResNet (2015); layer norm (2016); Theano, Torch, TensorFlow, PyTorch.
-- **Bridge:** regularization, early stopping, and validation sets carry over unchanged; what is new is scale and automation.
-- **Key figure:** a residual block as "a correction added to a running value" (this returns in `anatomy` as the residual stream).
-- **Candidate sources:** Kingma and Ba 2014; Srivastava et al. 2014; Ioffe and Szegedy 2015; He et al. 2015; Ba, Kiros, Hinton 2016.
+- **Goal:** How a modern network is trained step by step, so the reader can read the optimizer half of a training recipe. Split from a larger chapter [D-017]. (~13 pp)
+- **Concepts:** tensors and shapes; minibatches and stochastic gradient descent; momentum; RMSProp and Adam; learning-rate schedules and warmup; gradient clipping; hyperparameters and the validation set; early stopping; reading a loss curve; automatic differentiation; frameworks.
+- **History:** Robbins and Monro (1951); momentum (Polyak 1964; Rumelhart et al. 1986); RMSProp (2012) and Adam (2014); warmup (2015-2017); Theano, Torch, TensorFlow, PyTorch.
+- **Bridge:** SGD is a 1951 statistics idea run at scale; the validation set, early stopping, and weight decay are the reader's own tools.
+- **Key figure:** plain gradient descent against momentum in a narrow valley; an annotated loss curve.
+- **Candidate sources:** Robbins and Monro 1951; Bottou 2010; Sutskever et al. 2013; Kingma and Ba 2015; Goyal et al. 2017; Baydin et al. 2018.
 - **Depends on:** `backprop`, `deep-turn`
-- **Status:** outlined
+- **Status:** drafted
+
+#### 7. Making deep networks trainable (2010-2016) {#depth}
+
+- **Goal:** The architectural and regularizing parts that let networks go from a handful of layers to hundreds, so the reader can read the model half of a recipe and recognize the parts of a transformer block [D-017]. (~13 pp)
+- **Concepts:** initialization by layer size; dropout; batch normalization; layer normalization; residual (skip) connections and the degradation problem; reading a training recipe.
+- **History:** Glorot and Bengio (2010); He et al. on initialization (2015); dropout (2012-2014); batch norm (2015) and the dispute over why it works; highway networks and ResNet (2015); layer norm (2016).
+- **Bridge:** dropout on a linear model is ridge regression in expectation; the degradation problem is not overfitting.
+- **Key figure:** a residual block as "a correction added to a running value" (this returns in `anatomy` as the residual stream).
+- **Candidate sources:** Glorot and Bengio 2010; Srivastava et al. 2014; Ioffe and Szegedy 2015; Santurkar et al. 2018; He et al. 2015; Srivastava, Greff, Schmidhuber 2015; Ba, Kiros, Hinton 2016.
+- **Depends on:** `toolkit`
+- **Status:** drafted
 
 ### Part III - Teaching machines language
 
-#### 7. Language as prediction (1948-2000) {#prediction}
+#### 8. Language as prediction (1948-2000) {#prediction}
 
 - **Goal:** Establish that "predict the next word" is an old, well-defined statistical problem, and show exactly where the classical solution breaks. (~14 pp)
 - **Concepts:** language model; probability of a sequence; n-grams; sparsity and smoothing; entropy, cross-entropy, and perplexity (by intuition: "how surprised is the model"); the curse of dimensionality.
@@ -117,9 +128,9 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** Shannon's game on one sentence; a count table that is almost entirely zeros.
 - **Candidate sources:** Shannon 1948; Shannon 1951; Chen and Goodman 1998; Jurafsky and Martin (textbook).
 - **Depends on:** `destination`
-- **Status:** outlined
+- **Status:** researched
 
-#### 8. Words as vectors (1954-2014) {#embeddings}
+#### 9. Words as vectors (1954-2014) {#embeddings}
 
 - **Goal:** The single most important new idea for the reader: meaning as position in a learned space. (~16 pp)
 - **Concepts:** one-hot vs dense representations; the distributional hypothesis; embeddings; similarity as closeness; the neural language model; learning embeddings as a side effect of prediction; analogies and their limits; one vector per word as a weakness.
@@ -128,9 +139,9 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** a 2D projection of real word vectors, with the numbers computed, not drawn by hand.
 - **Candidate sources:** Deerwester et al. 1990; Bengio et al. 2003; Mikolov et al. 2013 (both papers); Pennington et al. 2014.
 - **Depends on:** `backprop`, `prediction`
-- **Status:** outlined
+- **Status:** researched
 
-#### 9. Reading and writing sequences (2010-2016) {#seq2seq}
+#### 10. Reading and writing sequences (2010-2016) {#seq2seq}
 
 - **Goal:** How networks came to process whole sentences, the bottleneck that limited them, and attention as the fix. This chapter sets up the transformer. (~16 pp)
 - **Concepts:** RNN language models; LSTM and GRU in use; encoder-decoder (seq2seq); the fixed-vector bottleneck; attention as "look back at the input and weight what matters"; alignment; why recurrence is slow to train.
@@ -139,9 +150,9 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** an attention heat map between a source and target sentence.
 - **Candidate sources:** Sutskever et al. 2014; Cho et al. 2014; Bahdanau et al. 2014; Wu et al. 2016.
 - **Depends on:** `structure`, `toolkit`, `embeddings`
-- **Status:** outlined
+- **Status:** researched
 
-#### 10. Tokens: what the model actually sees (1994-2018) {#tokens}
+#### 11. Tokens: what the model actually sees (1994-2018) {#tokens}
 
 - **Goal:** Why models read neither words nor characters, and what follows from that. (~12 pp)
 - **Concepts:** vocabulary; the out-of-vocabulary problem; character vs word vs subword; byte-pair encoding step by step; special tokens; token IDs; why token counts drive cost and limits; known oddities (spelling, arithmetic, non-English text).
@@ -149,11 +160,11 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** one sentence tokenized three ways; a BPE merge table built by hand on a toy corpus.
 - **Candidate sources:** Gage 1994; Sennrich et al. 2016; Kudo and Richardson 2018.
 - **Depends on:** `prediction`, `embeddings`
-- **Status:** outlined
+- **Status:** researched
 
 ### Part IV - The transformer
 
-#### 11. Attention without recurrence (2017) {#attention}
+#### 12. Attention without recurrence (2017) {#attention}
 
 - **Goal:** Self-attention, fully understood by intuition: every token gathers information from every other token, in parallel. (~18 pp)
 - **Concepts:** self-attention; queries, keys, and values as a soft lookup; attention weights via softmax; multiple heads as multiple questions asked at once; why order must be added back (positional information); why parallelism mattered for training on GPUs.
@@ -164,18 +175,18 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Depends on:** `toolkit`, `embeddings`, `seq2seq`, `tokens`
 - **Status:** outlined
 
-#### 12. Anatomy of a transformer {#anatomy}
+#### 13. Anatomy of a transformer {#anatomy}
 
 - **Goal:** Follow one token from input to output prediction through the whole model. After this chapter the reader can label every box in the `destination` diagram. (~18 pp)
 - **Concepts:** embedding table; the residual stream; the block (attention, then feed-forward network, each with normalization and a skip connection); stacking layers; the output layer, logits, and softmax; encoder, decoder, and encoder-decoder variants; causal masking; context window; where the parameters are and how to count them.
 - **Key figure:** the full annotated architecture; a parameter-count table for a small model.
 - **Candidate sources:** Vaswani et al. 2017; Radford et al. 2018 for the decoder-only form; Elhage et al. 2021 for the residual-stream framing.
-- **Depends on:** `toolkit`, `attention`
+- **Depends on:** `toolkit`, `depth`, `attention`
 - **Status:** outlined
 
 ### Part V - From transformer to LLM
 
-#### 13. Pretraining: learn language first, tasks later (2015-2019) {#pretraining}
+#### 14. Pretraining: learn language first, tasks later (2015-2019) {#pretraining}
 
 - **Goal:** The shift from one model per task to one pretrained model adapted to many. (~14 pp)
 - **Concepts:** transfer learning; self-supervised learning (labels for free from raw text); pretraining and fine-tuning; contextual embeddings; masked vs causal objectives; why BERT-style and GPT-style models diverged.
@@ -186,7 +197,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Depends on:** `anatomy`
 - **Status:** outlined
 
-#### 14. Scale (2019-2022) {#scale}
+#### 15. Scale (2019-2022) {#scale}
 
 - **Goal:** Why making the same model much larger changed what it could do, and what "large" means in numbers. (~14 pp)
 - **Concepts:** parameters, data, and compute as the three dials; in-context and few-shot learning; scaling laws; emergent abilities and the debate around the term; the cost of a training run; the general-methods argument.
@@ -196,16 +207,16 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Depends on:** `pretraining`
 - **Status:** outlined
 
-#### 15. How an LLM is trained {#training}
+#### 16. How an LLM is trained {#training}
 
 - **Goal:** The pretraining process from raw text to a finished set of weights, as a procedure the reader could describe to someone else. (~14 pp)
 - **Concepts:** corpus collection, filtering, and deduplication; tokenizing the corpus; the training example (a window of text, predict each next token); loss; the training loop at scale (batches, steps, checkpoints); precision and hardware; what the loss curve tells you; what the weights do and do not contain (memorization vs generalization).
 - **Key figure:** one training step drawn end to end; an annotated real loss curve.
 - **Candidate sources:** Brown et al. 2020 (training details); Touvron et al. 2023 (LLaMA); published model cards and data statements.
-- **Depends on:** `toolkit`, `tokens`, `anatomy`, `scale`
+- **Depends on:** `toolkit`, `depth`, `tokens`, `anatomy`, `scale`
 - **Status:** outlined
 
-#### 16. Generating text {#generation}
+#### 17. Generating text {#generation}
 
 - **Goal:** What happens when you press enter: inference, one token at a time. (~14 pp)
 - **Concepts:** autoregressive generation; logits to probabilities; greedy decoding, temperature, top-k, top-p; why the same prompt gives different answers; stop conditions; the context window as working memory; caching earlier computation; hallucination as a predictable property of sampling from a language model.
@@ -217,7 +228,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 
 ### Part VI - From LLM to assistant
 
-#### 17. Teaching models to follow instructions (2017-2023) {#instructions}
+#### 18. Teaching models to follow instructions (2017-2023) {#instructions}
 
 - **Goal:** How a text-completion engine becomes a chat assistant. (~16 pp)
 - **Concepts:** base model vs instruction-tuned model; supervised fine-tuning on demonstrations; chat format, roles, and the system prompt as plain tokens; reinforcement learning from human feedback (reward model, policy update) by intuition; preference-based alternatives; safety training and refusals; alignment as an open problem.
@@ -227,7 +238,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Depends on:** `pretraining`, `generation`
 - **Status:** outlined
 
-#### 18. Prompting and context {#prompting}
+#### 19. Prompting and context {#prompting}
 
 - **Goal:** Why the input text matters so much, explained from mechanism rather than folklore. (~14 pp)
 - **Concepts:** zero-shot and few-shot prompts; in-context learning revisited; chain-of-thought; structured output; the context window as the only short-term memory; context management; prompt injection; what prompting cannot fix.
@@ -236,7 +247,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Depends on:** `generation`, `instructions`
 - **Status:** outlined
 
-#### 19. Adapting a model: fine-tuning and LoRA {#adapting}
+#### 20. Adapting a model: fine-tuning and LoRA {#adapting}
 
 - **Goal:** How to change a model's behavior without training one from scratch, and when that is the right tool. (~14 pp)
 - **Concepts:** full fine-tuning; catastrophic forgetting; parameter-efficient methods; adapters; LoRA as a small low-rank correction to frozen weights; QLoRA; distillation; choosing between prompting, retrieval, and fine-tuning.
@@ -247,7 +258,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Depends on:** `pretraining`, `training`
 - **Status:** outlined
 
-#### 20. Giving models knowledge and tools {#tools}
+#### 21. Giving models knowledge and tools {#tools}
 
 - **Goal:** How systems get around what the weights do not know and cannot do. (~14 pp)
 - **Concepts:** knowledge cutoff; retrieval-augmented generation; embedding models and vector search; chunking; grounding and citations; tool (function) calling as structured text the surrounding program acts on; the loop that turns a model into an agent (introduced here, surveyed in `frontier`).
@@ -260,7 +271,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 
 ### Part VII - The working landscape
 
-#### 21. The transformer since 2017 {#since-2017}
+#### 22. The transformer since 2017 {#since-2017}
 
 - **Goal:** Reconcile the 2017 design with what current models use, so that a modern architecture description reads as familiar. (~12 pp)
 - **Concepts:** pre-normalization and RMSNorm; rotary and relative position schemes; newer activations in the feed-forward network; grouped-query attention; faster attention implementations; longer context windows; mixture-of-experts. Each as "what problem, what change", no more.
@@ -268,7 +279,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Depends on:** `anatomy`
 - **Status:** outlined
 
-#### 22. Small models and local inference {#local}
+#### 23. Small models and local inference {#local}
 
 - **Goal:** The knowledge needed to choose a model that will run on one's own machine and to read its name and file. Hands-on use is in Book 2. (~14 pp)
 - **Concepts:** open-weight vs closed models; licenses; reading a model name (size, variant, quantization); memory arithmetic (parameters times bits); quantization by intuition; model file formats; local runtimes; CPU vs GPU; throughput in tokens per second; what small models are and are not good at.
@@ -278,7 +289,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Depends on:** `training`, `generation`, `adapting`
 - **Status:** outlined
 
-#### 23. Measuring models {#evaluation}
+#### 24. Measuring models {#evaluation}
 
 - **Goal:** Enough evaluation vocabulary to read a model card or a leaderboard with appropriate skepticism. Short chapter, kept provisionally [D-011]. (~10 pp)
 - **Concepts:** perplexity revisited; benchmarks and what they measure; held-out data and contamination; human preference rankings; saturation; why a benchmark score is not a capability guarantee.
@@ -288,7 +299,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Depends on:** `prediction`, `scale`
 - **Status:** outlined
 
-#### 24. The frontier (as of the book's date) {#frontier}
+#### 25. The frontier (as of the book's date) {#frontier}
 
 - **Goal:** A dated survey so the reader can place current headlines. Explicitly the chapter that ages fastest. (~14 pp)
 - **Concepts:** reasoning models and test-time computation; agents and long-running tasks; multimodal models (images, audio) in outline; interpretability in outline; open problems (reliability, evaluation, cost, safety).
@@ -347,7 +358,7 @@ Three stages: build a tiny GPT and train it once [D-006]; run a real open-weight
 #### 3. A network that learns {#b2-learning}
 
 - **Goal:** Tensors, automatic differentiation, and a training loop on a tiny network, so the mechanics are familiar before the transformer.
-- **Builds on:** `backprop`, `toolkit`
+- **Builds on:** `backprop`, `toolkit`, `depth`
 - **Depends on:** `b2-setup`
 - **Status:** outlined
 
