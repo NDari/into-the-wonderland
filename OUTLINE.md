@@ -267,7 +267,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** a RAG request traced from question to retrieved passages to answer.
 - **Candidate sources:** Lewis et al. 2020; Karpukhin et al. 2020; Yao et al. 2022.
 - **Depends on:** `embeddings`, `generation`, `prompting`
-- **Status:** drafted
+- **Status:** verified
 
 ### Part VII - The working landscape
 
@@ -277,7 +277,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Concepts:** pre-normalization and RMSNorm; rotary and relative position schemes; newer activations in the feed-forward network; grouped-query attention; faster attention implementations; longer context windows; mixture-of-experts. Each as "what problem, what change", no more.
 - **Candidate sources:** Su et al. 2021 (rotary positions); Zhang and Sennrich 2019 (RMSNorm); Dao et al. 2022 (FlashAttention); Touvron et al. 2023.
 - **Depends on:** `anatomy`
-- **Status:** drafted
+- **Status:** verified
 
 #### 23. Small models and local inference {#local}
 
