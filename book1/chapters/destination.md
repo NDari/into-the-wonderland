@@ -49,7 +49,7 @@ Two things are worth noticing. The probability of any particular text is tiny an
 
 ## The pipeline, box by box
 
-![The pipeline of a large language model at low resolution. Text is cut into tokens, tokens become vectors, the layers update the vectors, the output layer scores every entry in the vocabulary, the scores become probabilities, and one token is picked and appended to the text. Shaded boxes contain learned parameters. The token IDs are illustrative. The probabilities match the worked example in this chapter, and the last box shows the most probable token; the text also shows a random draw.](../../figures/pipeline-destination.svg){#fig:destination-pipeline}
+![The pipeline of a large language model at low resolution. Text is cut into tokens, tokens become vectors, the layers update the vectors, the output layer scores every entry in the vocabulary, the scores become probabilities, and one token is picked and appended to the text. Shaded boxes contain learned parameters. The token IDs are the ones GPT-2's tokenizer gives this text. The probabilities match the worked example in this chapter, and the last box shows the most probable token; the text also shows a random draw.](../../figures/pipeline-destination.svg){#fig:destination-pipeline}
 
 This figure returns throughout the book, with one box enlarged at a time. Follow it from the top left.
 
@@ -57,7 +57,7 @@ This figure returns throughout the book, with one box enlarged at a time. Follow
 
 **Tokens.** The text is cut into tokens. A token is often a whole common word, and sometimes a piece of a rarer word, a punctuation mark, or a word with the space before it attached. The cutting is done by a separate procedure, the **tokenizer**, which is fixed before the model is trained. Why not use whole words? Because any fixed list of words eventually meets a word it does not contain, while pieces can spell anything. Why not single characters? Because texts would become very long sequences. Tokens are a compromise between the two, and the compromise has side effects. [The chapter on tokens](#tokens) covers how a vocabulary is built and what follows from it.
 
-**Token IDs.** Every token in the vocabulary has a number, its position in the list. From this point on, the model never sees text, only these numbers. (The IDs in the figure are illustrative.)
+**Token IDs.** Every token in the vocabulary has a number, its position in the list. From this point on, the model never sees text, only these numbers. (The IDs in the figure are the ones GPT-2's tokenizer gives "The cat sat on the"; [the chapter on tokens](#tokens) shows how they arise.)
 
 **Vectors.** Each token ID selects one row of a large table, the **embedding table**. A row is a **vector**: a list of numbers, from a few hundred to more than ten thousand long. OpenAI's 2018 GPT model turned each token into 768 numbers [@radford2018improving, p. 5]; the largest GPT-2 used 1,600 [@radford2019language, p. 4]; the largest Llama 3.1 uses 16,384 [@grattafiori2024llama, p. 7]. These vectors are called **embeddings**. Each token's vector is also combined with information about its position in the text, because the layers that follow would otherwise have no sense of word order; in the 2018 GPT model this is a second table, of position vectors [@radford2018improving, p. 3]. Before training, the vectors in these tables are random. Training moves them, and [the chapter on embeddings](#embeddings) shows how tokens that are used in similar ways end up with similar vectors.
 

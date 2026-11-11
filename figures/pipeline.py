@@ -7,7 +7,8 @@ Book 1; later chapters add a variant here (for example, one that highlights
 the box the chapter explains) so that every version shares this layout.
 
 The probabilities in the boxes are computed by code/checks/destination.py
-[D-009]. Token IDs are illustrative, not the output of a real tokenizer.
+[D-009]. The token IDs are GPT-2's for "The cat sat on the", as produced by
+code/checks/tokens.py (Example 4).
 """
 import importlib.util
 from pathlib import Path

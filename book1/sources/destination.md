@@ -95,7 +95,7 @@ All computed by `code/checks/destination.py`. The scores and probabilities are i
 - Example 2: the probability of a six-token text as a product of next-token probabilities. Its last factor reuses Example 1.
 - Example 3: storage for the parameter counts in C4 to C6, at 32 and 16 bits per parameter.
 
-The figure `figures/pipeline-destination.svg` is drawn by `figures/pipeline.py` [D-014]. It imports Example 1 from the check script, so its probabilities are computed, not typed in. Its token IDs are labelled illustrative.
+The figure `figures/pipeline-destination.svg` is drawn by `figures/pipeline.py` [D-014]. It imports Example 1 from the check script, so its probabilities are computed, not typed in. Its token IDs (464, 3797, 3332, 319, 262) were first labelled illustrative; the `tokens` research found they are GPT-2's real IDs for "The cat sat on the", reproduced by `code/checks/tokens.py` Example 4 and by the `tokens` verifier's independent tokenizer. At the author's request (2026-11-11) the caption and text now say so.
 
 ## Terms defined in this chapter
 
