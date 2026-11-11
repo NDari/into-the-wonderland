@@ -205,7 +205,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** model size and training-data size by year on a log scale.
 - **Candidate sources:** Radford et al. 2019; Brown et al. 2020; Kaplan et al. 2020; Hoffmann et al. 2022; Sutton 2019.
 - **Depends on:** `pretraining`
-- **Status:** drafted
+- **Status:** verified
 
 #### 16. How an LLM is trained {#training}
 

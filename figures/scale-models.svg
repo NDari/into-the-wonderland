@@ -1171,7 +1171,7 @@ z
    </g>
    <g id="text_16">
     <!-- Chinchilla -->
-    <g style="fill: #222222" transform="translate(87.978781 87.158409) scale(0.068 -0.068)">
+    <g style="fill: #222222" transform="translate(91.978781 80.158409) scale(0.068 -0.068)">
      <defs>
       <path id="DejaVuSans-26" d="M 4122 4306 
 L 4122 3641 
@@ -1308,7 +1308,7 @@ z
    </g>
    <g id="text_18">
     <!-- LLaMA-65B -->
-    <g style="fill: #222222" transform="translate(149.445941 91.384849) scale(0.068 -0.068)">
+    <g style="fill: #222222" transform="translate(163.445941 90.384849) scale(0.068 -0.068)">
      <defs>
       <path id="DejaVuSans-24" d="M 2188 4044 
 L 1331 1722 
@@ -1375,7 +1375,7 @@ z
    </g>
    <g id="text_19">
     <!-- Llama 2 70B -->
-    <g style="fill: #222222" transform="translate(176.138899 80.158409) scale(0.068 -0.068)">
+    <g style="fill: #222222" transform="translate(176.138899 74.158409) scale(0.068 -0.068)">
      <defs>
       <path id="DejaVuSans-50" d="M 3328 2828 
 Q 3544 3216 3844 3400 
@@ -1439,7 +1439,7 @@ z
    </g>
    <g id="text_20">
     <!-- Llama 3.1 405B -->
-    <g style="fill: #222222" transform="translate(149.666994 59.851387) scale(0.068 -0.068)">
+    <g style="fill: #222222" transform="translate(161.666994 59.851387) scale(0.068 -0.068)">
      <defs>
       <path id="DejaVuSans-11" d="M 684 794 
 L 1344 794 

@@ -1,7 +1,7 @@
 # Claim ledger: scale
 
 Chapter: `scale` (Book 1, "Scale (2019-2022)").
-Stage: drafted, 2026-11-11 [D-005]. Research by a helper agent. Before drafting, the writer re-ran the mechanism items used in `code/checks/scale.py` (all agree). Open questions decided by default: the GPT-2 release gets a short section (one paragraph); the key figure includes BERT and T5 (marked) and runs to 2024; the Brants et al. 2007 n-gram bridge is included. Awaiting an independent check.
+Stage: verified, 2026-11-11 [D-005]. Research by a helper agent; drafted by the writer; independent check recorded at the end.
 
 All sources were fetched on 2026-11-11. PDFs were read with `pdftotext` and `pdftotext -layout`; every PDF here has a text layer, so no OCR was needed. Page numbers are the printed page numbers of the version named; the offset from PDF page to printed page is given in the table. Quotes are verbatim except that en-dashes and em-dashes in sources are written here as hyphens or commas (for example GPT-3's "zero-, one-, and few-shot", Hoffmann et al.'s "the drive ... is clear-so far", page ranges). Superscripts that were lost in extraction are written out (for example "10^23"). Web pages were read as HTML converted to text; where a page changed after first publication, the version read is named.
 
@@ -557,3 +557,15 @@ For the glossary: parameters, training tokens, compute, FLOP, petaflop/s-day, po
 
 - Removed in self-review as not in the ledger: affiliations for Kaplan et al. and Hoffmann et al., "a founder of reinforcement learning" for Sutton, "DeepMind's" and "Google's" for Gopher and PaLM, "nearly every test" for Chinchilla, and "four times cheaper to run" (the paper says only that inference cost is smaller).
 - Gopher is introduced as "a 2021 model"; Reddit as "the social media site" (the paper's wording is "a social media platform").
+
+## Independent check (scale chapter)
+
+2026-11-11. A separate agent re-fetched all 23 key sources (plus Sutton's homepage, which gives his name as "Richard S. Sutton"; the essay's byline is "Rich Sutton"), checked every quote and printed page (confirming the offsets for Solaiman, Gopher, PaLM, Strubell, and Brants on the pages themselves), checked the script's model table against the primary sources, re-ran the script, and regenerated the three figures (byte-identical).
+
+- Errors found and fixed:
+  1. GPT-3's struggles were quoted as "including natural language inference tasks"; the source (p. 5) reads "This includes natural language inference tasks like the ANLI dataset". Now quotes only "natural language inference tasks".
+  2. Lipton names one researcher, Anima Anandkumar, for the "clickbait" charge, and never says where "too dangerous to release" came from; the chapter now says that, and that the words do not appear in OpenAI's announcement (checked in the 14 Feb 2019 snapshot).
+  3. Lipton's hedge restored: "possible that both sides have an element of truth".
+  4. Brants et al.'s 0.6 BLEU per doubling holds for the first segment; the web-scale model gained "0.15 BP per doubling" (p. 866). Both now given.
+- Warnings acted on: "had to be revised" instead of "turned out to be wrong"; "a small set of labeled examples" (matching `pretraining`); the 3.43-month doubling attributed to the post's chart, with the post's own "roughly a factor of 10 each year"; WebText's 45 million links vs the paper's preliminary 8 million documents explained; GPT-2's translation setup described as example pairs (p. 6); "quoted constantly" removed; the nat-to-bit conversion moved out of Kaplan's citation and marked as script arithmetic; "vocabulary size and the tokenizer" (Kaplan p. 5); "non-sparse", "closed-book", "compute-optimal", and "GPU-hour" glossed; "used many times"; the caption's unsourced claim about undisclosed numbers removed; "still argued" dated (years later; as of 2023 for emergence); the p^5 argument's independence assumption stated with Schaeffer et al.'s own caveat (p. 4); "16K H100 GPUs" as printed; the 88-fold revision limited to emissions for an energy-efficient data center (Patterson et al.), "widely cited" removed; the summary's Chinchilla bullet now "its table was later read as about 20 tokens per parameter"; D-009 markers added; figure labels in panel (a) moved next to their points.
+- Could not verify: Porian et al. beyond the abstract and introduction; whether Llama 3's "16K" means 16,000 or 16,384 (the chapter prints "16K").

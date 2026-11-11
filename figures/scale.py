@@ -50,8 +50,8 @@ def quiet(ax):
 # Hand-placed label offsets (points), so names do not collide.
 OFFSETS = {
     "GPT": (5, -3), "BERT-large": (5, -3), "GPT-2": (5, -3), "T5-11B": (-38, 4), "GPT-3": (-34, 2),
-    "Gopher": (-34, -3), "Chinchilla": (-50, -10), "PaLM": (5, 3), "LLaMA-65B": (-12, -13), "Llama 2 70B": (5, -3),
-    "Llama 3.1 405B": (-48, -13),
+    "Gopher": (-34, -3), "Chinchilla": (-46, -3), "PaLM": (5, 3), "LLaMA-65B": (2, -12), "Llama 2 70B": (5, 3),
+    "Llama 3.1 405B": (-36, -13),
 }
 TOKEN_OFFSETS = {
     "BERT-large": (5, -3), "T5-11B": (5, -3), "GPT-3": (5, -6), "Gopher": (5, 2), "Chinchilla": (-50, 6),
