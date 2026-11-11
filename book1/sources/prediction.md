@@ -1,7 +1,7 @@
 # Claim ledger: prediction
 
 Chapter: `prediction` (Book 1, "Language as prediction (1948-2000)").
-Stage: researched, 2026-11-11 [D-005]. Research for this chapter was done by a helper agent; the writer spot-checks the key claims in the same sources before drafting, and records that here. Research was done by a separate agent before drafting; nothing in this ledger has yet been used in a draft or checked by an independent verifier.
+Stage: drafted, 2026-11-11 [D-005]. Research was done by a helper agent. Before drafting, the writer spot-checked P8, P11, P12, P15, P17, and P23 in the same fetched copies.
 
 All sources were fetched on 2026-11-11 and each claim was located in the fetched text or, for scanned sources, in the scan's text layer, with key numbers and quotes checked on the page image itself (said where it matters). Page numbers are the printed page numbers of the source as read; the offset from PDF page to printed page is given in the table. Quotes are given with line-break hyphens, dropped ligatures ("fi", "ff"), and OCR spacing repaired. Where a source prints an en-dash or em-dash, it is written here with a hyphen or a comma, and this is said.
 
@@ -329,3 +329,34 @@ Suggested script: `code/checks/prediction.py` (standard library only), with the 
 - **Back-references to `destination`:** the chain-rule table (P1), the sampling "ruler" (P30), the promised loss (P26), the softmax "no token ever gets probability zero" remark (which is the zero-count problem solved by construction; worth one sentence).
 - **Hand-off to `embeddings`:** end on the two failures (P28): the table grows as V^n, and words are unrelated symbols. Bengio et al.'s cat/dog sentence and Pereira's class model (P14) point forward. Class-based n-grams (Brown et al. 1992) are a natural one-line precursor of word vectors; leave the clustering itself to `embeddings`.
 - **Out of scope:** hidden Markov models and acoustic modelling beyond one sentence; decision-tree and maximum-entropy language models; cache models; Witten-Bell and other smoothing methods beyond naming; the mathematics of Good-Turing; statistical MT beyond P16 (it returns in `seq2seq`); the later neural language models (Bengio 2003 onward belong to `embeddings`).
+
+## Worked examples used in the chapter [D-009]
+
+All computed by `code/checks/prediction.py`. Example 7 downloads Project Gutenberg #1342 once into `out/cache/` (not committed) and stops if its SHA-256 differs from the one recorded above.
+
+- Example 1: Jurafsky and Martin's corpus. P(I|<s>) = 0.667, P(am|I) = 0.667, P(do|I) = 0.333.
+- Example 2: Chen and Goodman's corpus.
+  - Unsmoothed: P(John read a book) = 0.0556, and P(Cher read a book) = 0.
+  - Add-one with V = 11 gives 0.000121 and 0.0000302; with V = 12 (the end marker counted; the chapter uses this) it gives 0.000084 and 0.0000209.
+  - "want to" goes from 0.656 to 0.257.
+- Example 3: model A gives 1.585 bits and perplexity 3.000; model B gives 0.922 bits and 1.895. The destination chapter's text gives 2.815 bits per token and perplexity 7.04.
+- Example 4: a fair die has 2.585 bits, the loaded die 2.161, a fair coin 1.000, and a 0.9/0.1 coin 0.469. Scoring the loaded die with a fair-die model costs 2.585 bits, 0.424 above the true entropy.
+- Example 5: Brown et al. 1992.
+  - V^2 = 6.799e10 and V^3 = 1.773e16.
+  - 0.021% of possible bigrams occur (1 in 4,691), and 4.3e-9 of possible trigrams.
+  - Unseen shares in new text: 14.7% of trigrams, 2.2% of bigrams.
+  - Other scales: Shakespeare V^2 = 844,832,356; 20,000^3 = 8e12; 100,000^10 = 1e50.
+- Example 6: Shannon. 89 of 129 letters (69%), and the transcription is consistent. 79/102 = 77.5%. log2 26 = 4.70.
+- Example 7: Pride and Prejudice.
+  - 128,565 words, a vocabulary of 6,729, and 56,767 distinct bigrams out of 45,279,441 possible (0.125%).
+  - 98 of 100 cells are zero for the words ranked 201-210.
+
+## Figures [D-014]
+
+- `figures/prediction-shannon-game.svg`: Shannon's sequence (8), with hits and misses.
+- `figures/prediction-sparse-counts.svg`: the 10 x 10 table from Example 7.
+
+## Terms defined in the chapter
+
+For the glossary: n-gram, unigram, bigram, trigram, bit, entropy, language model (general sense), Markov assumption, acoustic model, noisy channel (named), smoothing, add-one smoothing, back-off, Kneser-Ney smoothing, cross-entropy, perplexity, curse of dimensionality.
+

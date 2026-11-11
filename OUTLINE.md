@@ -104,7 +104,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** plain gradient descent against momentum in a narrow valley; an annotated loss curve.
 - **Candidate sources:** Robbins and Monro 1951; Bottou 2010; Sutskever et al. 2013; Kingma and Ba 2015; Goyal et al. 2017; Baydin et al. 2018.
 - **Depends on:** `backprop`, `deep-turn`
-- **Status:** drafted
+- **Status:** verified
 
 #### 7. Making deep networks trainable (2010-2016) {#depth}
 
@@ -115,7 +115,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** a residual block as "a correction added to a running value" (this returns in `anatomy` as the residual stream).
 - **Candidate sources:** Glorot and Bengio 2010; Srivastava et al. 2014; Ioffe and Szegedy 2015; Santurkar et al. 2018; He et al. 2015; Srivastava, Greff, Schmidhuber 2015; Ba, Kiros, Hinton 2016.
 - **Depends on:** `toolkit`
-- **Status:** drafted
+- **Status:** verified
 
 ### Part III - Teaching machines language
 
@@ -128,7 +128,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** Shannon's game on one sentence; a count table that is almost entirely zeros.
 - **Candidate sources:** Shannon 1948; Shannon 1951; Chen and Goodman 1998; Jurafsky and Martin (textbook).
 - **Depends on:** `destination`
-- **Status:** researched
+- **Status:** drafted
 
 #### 9. Words as vectors (1954-2014) {#embeddings}
 

@@ -1,7 +1,7 @@
 # Claim ledger: depth
 
 Chapter: `depth` (Book 1, "Making deep networks trainable (2010-2016)").
-Stage: drafted, 2026-11-11 [D-005].
+Stage: verified, 2026-11-11 [D-005].
 
 This chapter was split from the planned `toolkit` chapter by D-017, after its research was done. Its sources, claims, and disputes are logged in `book1/sources/toolkit.md` and are not repeated here:
 
@@ -38,3 +38,27 @@ All computed by `code/checks/depth.py` (standard library, fixed seeds).
 ## Terms defined in the chapter
 
 For the glossary: initialization (Glorot or Xavier; He), dropout, thinned network, batch normalization, internal covariate shift (the authors' term), layer normalization, degradation problem, residual (skip) connection, highway network, residual stream (named; defined in `anatomy`).
+
+## Independent check
+
+2026-11-11. A separate agent fetched every source itself (adding highway networks v1 and LLaMA v1) and checked each claim, quote, page, number, and figure. All numbers matched `code/checks/depth.py`, and dispute D1 (batch norm) was judged fair.
+
+- Errors found and fixed:
+  1. The degradation quote stopped mid-sentence, dropping "as reported in [11, 42]" (ref. 42 is the highway-network paper). The quote is now complete, with a lead-in.
+  2. "Every transformer" used post-norm LayerNorm(x + Sublayer(x)), but LLaMA normalizes sub-layer inputs with RMSNorm. The text now says "the 2017 transformer", with a pointer to `since-2017`, and the summary bullet is softened.
+  3. The Santurkar et al. quote is restored with "in a certain sense".
+  4. The highway sentence put a concession in He et al.'s mouth. It is now a statement of dates, with both papers building on older shortcuts.
+  5. The variance-versus-signal slip is fixed: the variance, not the signal, is multiplied by one third per layer.
+- Warnings acted on:
+  - Batch norm: "less than half the steps" for batch norm alone, and "14 times fewer" attributed to batch norm with its enabling changes (p. 454).
+  - The 2015 winner is described as an ensemble of networks of up to 152 layers.
+  - "In full" is dropped from the recipe.
+  - Goodfellow's batch norm hedge is restored, and the Transformer dropout rate is marked as the base model's.
+  - "Trained very rarely, if at all" for thinned networks, and the ridge check described as probability-weighted.
+  - He initialization: twice Glorot's variance, compared with Glorot's rule rather than the old rule.
+  - He 2016's sum form now states its identity condition, and He et al. p. 1 is cited for "tens of layers".
+  - Batch norm at inference now uses the authors' reason.
+  - The "8×" sign, the explanation of 19.4M, and the 0.95% qualifier.
+- Not changed: W11 (the Glorot paraphrase) was judged acceptable.
+- Re-checked after fixing: the writer located the new quotes in the same fetched texts (He et al. 2015 pp. 1 and 7; Ioffe and Szegedy, BN-Baseline and BN-x5; Santurkar et al. p. 2; Srivastava et al. p. 1931; Goodfellow et al. p. 420).
+

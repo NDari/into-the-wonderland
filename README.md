@@ -9,7 +9,7 @@ Book 1 is the priority and stands on its own.
 
 ## Status
 
-As of 2026-11-11: `destination` (Book 1, chapter 1) is approved by the author. `neuron`, `backprop`, `structure`, and `deep-turn` (chapters 2 to 5) are verified, each after an independent check of every claim, and await approval. `toolkit` and `depth` (chapters 6 and 7) are drafted and in verification. `prediction`, `embeddings`, `seq2seq`, and `tokens` (chapters 8 to 11) are researched. `OUTLINE.md` lists every planned chapter and its current status.
+As of 2026-11-11: `destination` (Book 1, chapter 1) is approved by the author. Chapters 2 to 7 (`neuron` to `depth`) are verified, each after an independent check of every claim, and await approval. `prediction` (chapter 8) is drafted and in verification; `embeddings`, `seq2seq`, and `tokens` (chapters 9 to 11) are researched. `OUTLINE.md` lists every planned chapter and its current status.
 
 ## Who made this
 

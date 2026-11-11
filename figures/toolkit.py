@@ -52,7 +52,7 @@ def valley_figure():
     ys = [j / 100 for j in range(-150, 151)]
     Z = [[C.valley_f(x, y) for x in xs] for y in ys]
     for ax, (rate, mom, title) in zip(axes, ((0.019, 0.0, "plain gradient descent, rate 0.019"),
-                                             (0.01, 0.9, "with momentum 0.9, rate 0.01"))):
+                                             (0.019, 0.5, "with momentum 0.5, rate 0.019"))):
         ax.contour(xs, ys, Z, levels=[0.5, 2, 8, 20, 50, 100], colors=GRID, linewidths=0.8)
         _, path = C.run_valley(rate, mom, limit=40, record=True)
         ax.plot([p[0] for p in path], [p[1] for p in path], "-o", color=ACCENT, markersize=2.5, linewidth=1)
@@ -70,19 +70,19 @@ def valley_figure():
 def schedules_figure():
     """Example 5: three learning-rate schedules, each scaled to its own peak."""
     fig, axes = plt.subplots(1, 3, figsize=(6.6, 2.0), sharey=True)
-    steps = list(range(1, 100001, 100))
-    tr = [C.transformer_lr(s) for s in steps]
-    peak = max(tr)
-    axes[0].plot(steps, [v / peak for v in tr], color=ACCENT, linewidth=1.8)
-    axes[0].set_title("warmup, then 1/sqrt(step)\n(Transformer, 2017)", fontsize=8, color=INK)
+    sx = [0, 0.3, 0.3, 0.6, 0.6, 0.9, 0.9, 1.0]
+    sy = [1, 1, 0.1, 0.1, 0.01, 0.01, 0.001, 0.001]
+    axes[0].plot(sx, sy, color=ACCENT, linewidth=1.8)
+    axes[0].set_title("divide by 10 in steps\n(ResNet, 2015; schematic)", fontsize=8, color=INK)
     frac = [i / 200 for i in range(201)]
     cos = [C.cosine_lr(f * 1000) for f in frac]
     axes[1].plot(frac, [v / max(cos) for v in cos], color=ACCENT, linewidth=1.8)
     axes[1].set_title("cosine, to 10% of peak\n(LLaMA, 2023)", fontsize=8, color=INK)
-    sx = [0, 0.3, 0.3, 0.6, 0.6, 0.9, 0.9, 1.0]
-    sy = [1, 1, 0.1, 0.1, 0.01, 0.01, 0.001, 0.001]
-    axes[2].plot(sx, sy, color=ACCENT, linewidth=1.8)
-    axes[2].set_title("divide by 10 in steps\n(ResNet, 2015)", fontsize=8, color=INK)
+    steps = list(range(1, 100001, 100))
+    tr = [C.transformer_lr(s) for s in steps]
+    peak = max(tr)
+    axes[2].plot(steps, [v / peak for v in tr], color=ACCENT, linewidth=1.8)
+    axes[2].set_title("warmup, then 1/sqrt(step)\n(Transformer, 2017)", fontsize=8, color=INK)
     for ax in axes:
         ax.set_xticks([])
         ax.set_xlabel("training time", color=MUTED)

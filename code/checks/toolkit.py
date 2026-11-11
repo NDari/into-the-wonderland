@@ -95,6 +95,14 @@ def example_valley():
         print(f"  {label}: {steps if steps else 'diverges'}")
     _, path = run_valley(0.021, 0.0, limit=4, record=True)
     print("  y with learning rate 0.021:", ", ".join(f"{p[1]:.3f}" for p in path))
+    # Same learning rate, with and without momentum: speed along the floor,
+    # and how far the path swings across the ravine.
+    for mom in (0.0, 0.5):
+        steps, _ = run_valley(0.019, mom)
+        _, path = run_valley(0.019, mom, limit=40, record=True)
+        swing = max(abs(p[1]) for p in path[10:21])
+        print(f"  learning rate 0.019, momentum {mom}: {steps} steps; largest swing across the ravine "
+              f"over steps 10-20: {swing:.3f}; position after 40 steps ({path[40][0]:.2f}, {path[40][1]:.3f})")
     print("  momentum 0.9 multiplies the top speed by 1 / (1 - 0.9) =", round(1 / (1 - 0.9), 1))
     print()
 

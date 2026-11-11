@@ -1,7 +1,7 @@
 # Claim ledger: toolkit
 
-Chapter: `toolkit` (Book 1, "The training toolkit (2010-2016)").
-Stage: drafted, 2026-11-11 [D-005]. Research was done by a helper agent for the whole former `toolkit` chapter, which D-017 split in two. This chapter (`toolkit`, the training loop) uses K1-K14 and K28-K31; `depth` uses K15-K27 and K30 (see `book1/sources/depth.md`). Before drafting, the writer spot-checked K4, K5, K6, K8, K9, K13, K28, and K29 in the same fetched copies.
+Chapter: `toolkit` (Book 1, "The training loop (1951-2017)"); split by D-017, see below.
+Stage: verified, 2026-11-11 [D-005]. Research was done by a helper agent for the whole former `toolkit` chapter, which D-017 split in two. This chapter (`toolkit`, the training loop) uses K1-K14 and K28-K31; `depth` uses K15-K27 and K30 (see `book1/sources/depth.md`). Before drafting, the writer spot-checked K4, K5, K6, K8, K9, K13, K28, and K29 in the same fetched copies.
 
 All sources were fetched on 2026-11-11 and each claim was located in the fetched text (pdftotext, with and without layout) or, where the text layer was garbled, on the rendered page image; this is said where it applies. Page numbers are the printed page numbers of the source as read; the offset from PDF page to printed page is given in the table. Where a PDF prints no page numbers, the page is given as "PDF p. N" or derived from the publisher's landing page, and this is said. Where a source prints an en-dash or em-dash, it is written here with a hyphen or a comma, and this is said. Symbols lost in extraction (for example epsilon in Adam's Algorithm 1) were restored from the page image.
 
@@ -402,4 +402,27 @@ All computed by `code/checks/toolkit.py` (standard library, fixed seeds). The va
 ## Terms defined in the chapter
 
 For the glossary: tensor, shape, activations, minibatch, batch size, stochastic gradient descent (SGD), step (iteration), momentum, RMSProp (named), Adam, weight decay, AdamW, learning-rate schedule, warmup, gradient clipping, hyperparameter, validation set (reminder), early stopping, loss curve, automatic differentiation, reverse mode, framework.
+
+## Independent check (toolkit chapter)
+
+2026-11-11. A separate agent fetched every source the chapter cites and checked each claim, quote, page, number, and figure. Every quote matched verbatim; the disputes on momentum, Adam, and warmup were judged fair.
+
+- Errors found and fixed:
+  1. The momentum explanation contradicted the chapter's own example. At learning rate 0.01, plain descent has no cross-ravine swing, and the momentum 0.9 path overshoots. The example now compares the same learning rate, 0.019, with and without momentum 0.5: 463 against 221 steps, and a largest swing between steps 10 and 20 of 0.349 against 0.039. `code/checks/toolkit.py` and the figure were updated to match.
+  2. "The first widely used one was never published": AdaGrad (a published 2011 paper) is earlier. This is now "One widely used method".
+  3. "Older than neural networks" contradicted `neuron` (1943). It is now "older than the perceptron".
+  4. Weight decay was cited to Goodfellow p. 118. The identification with the L2 penalty is on p. 227, and the definition now follows Loshchilov and Hutter p. 1.
+  5. "The losses ... past a million": only the training loss passes a million.
+  6. The LLaMA recipe was introduced as "quoted in full" but dropped "(see Table 2 for details)". The phrase is restored.
+- Warnings acted on:
+  - The Robbins-Monro conditions are worded as what "the standard convergence results ask for".
+  - The warmup mechanism is hedged, and "had become standard" is replaced by where warmup actually appeared.
+  - Adam's bias correction is mentioned.
+  - Theano's "symbolic differentiation" is reconciled through Goodfellow p. 210, and the automatic-differentiation description is scoped to reverse mode.
+  - The three unfamiliar words are now named, "powers of 2" is restored, and "recipes of the last decade" is dated.
+  - The schedule figure's panels are reordered to match the text, with the step schedule marked as schematic.
+  - The LLaMA clipping line no longer assumes norm clipping.
+  - Reddi et al. p. 5 is added.
+  - Smaller wording fixes.
+- Re-checked after fixing: the writer reran the script and the figures; the new momentum numbers are its output.
 
