@@ -1,7 +1,7 @@
 # Claim ledger: tokens
 
 Chapter: `tokens` (Book 1, "Tokens: what the model actually sees (1994-2018)").
-Stage: drafted, 2026-11-11 [D-005]. Research for this chapter was done by a helper agent. Before drafting, the writer recomputed every preliminary number in `code/checks/tokens.py` (all agreed) and re-located Edinburgh's use of BPE (`sennrich2016edinburgh` p. 371: "using BPE subword segmentation") and Nogueira et al.'s model (T5, p. 2). Awaiting an independent check.
+Stage: verified, 2026-11-11 [D-005]. Research by a helper agent; drafted by the writer; independent check recorded at the end.
 
 All sources were fetched on 2026-11-11 and each claim was located in the fetched text. For scanned or badly encoded sources (Schuster and Nakajima), the text is Tesseract OCR of the page images. Tables whose text layer is scrambled (Sennrich et al. Tables 1 and 2, Petrov et al. Table 1) were read on the rendered page image. Page numbers are the printed page numbers of the source as read; the offset from PDF page to printed page is given in the table. Where a source prints an en-dash or em-dash, it is written here with a hyphen or a comma, and this is said. Code and data files (GPT-2 release, tiktoken, Llama 3 tokenizer) are cited by repository path and the last commit that touched the file, as reported by the GitHub API on 2026-11-11.
 
@@ -343,3 +343,14 @@ For the glossary: token (and the older type/token sense), tokenizer, vocabulary,
 - The destination chapter's "illustrative" token IDs are GPT-2's real ones; this chapter says so. The destination chapter (approved) was not changed; the author may want to adjust its wording.
 - The Anthropic tokenizer note (30% more tokens) is used as the one concrete case of a tokenizer change altering cost, with no performance claim.
 - Prices are not printed; only the unit (per million tokens, input and output separate), as of 2026-11-11.
+
+## Independent check (tokens chapter)
+
+2026-11-11. A separate agent re-fetched every source (including the GPT-2 files, whose hashes matched, and the three vendor pages), wrote its own GPT-2 tokenizer using Unicode categories rather than the script's regex shortcut and reproduced every tokenization and count, regenerated both figures (byte-identical), and checked every quote, page, and number. All matched; TKD1 to TKD8 were judged fairly handled.
+
+- Errors found and fixed:
+  1. "Subword units first appeared in a pipeline the reader would recognize" was an unsourced priority claim contradicted by Sennrich et al. p. 1717 (earlier subword and morpheme work). Now "one early use of learned subword units".
+  2. Katz back-off (Schuster and Nakajima p. 5151) describes the recognizer's language models built after the inventory, not the model inside the WordPiece loop. Reworded.
+  3. Nogueira et al.'s split of "132" and "232" is their hedged explanation ("might be"), not an observation. Now quoted as "one explanation", with T5 explained and the five-digit failure and 1,000 examples per run stated (p. 4).
+- Warnings acted on: Korean has some spaces ("often written without spaces"); WordPiece "described in 2012"; character bigrams "as well or better on BLEU"; the second kind of unknown symbol (Sennrich fn. 3, "safeguar"); "in practice in the order they were learned"; "potentially translatable"; the source's gloss "sewage water treatment plant"; "the emoji 😀 takes 4"; SentencePiece restores text "after a standard normalization step"; " tokenizer" -> "␣token" | "izer" with the leading space; the type/token example lowercased; Llama 3 quote now names the Llama 2 comparison and uses single quotes inside; contractions added to the pre-split description; a third option (falling back on other spellings) added; "back-off dictionary" explained; "whose removal hurts the fit least"; Llama 3's added tokens no longer described as a response to Petrov et al.
+- Could not verify: Gage's printed journal pages (from Sennrich's reference list); the live cl100k_base and o200k_base vocabulary files were not re-downloaded (special-token IDs and patterns were checked in `openai_public.py`).

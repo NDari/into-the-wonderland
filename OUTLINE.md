@@ -160,7 +160,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** one sentence tokenized three ways; a BPE merge table built by hand on a toy corpus.
 - **Candidate sources:** Gage 1994; Sennrich et al. 2016; Kudo and Richardson 2018.
 - **Depends on:** `prediction`, `embeddings`
-- **Status:** drafted
+- **Status:** verified
 
 ### Part IV - The transformer
 
