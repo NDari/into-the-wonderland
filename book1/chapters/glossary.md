@@ -63,7 +63,7 @@ AND
 annotators
 :   See *labelers*.
 
-approximate nearest neighbour search
+approximate nearest neighbor search
 :   Search that finds most of the nearest vectors quickly and may miss a few, used because comparing a question with every stored vector is too slow. ([Giving models knowledge and tools](#tools))
 
 architecture
@@ -196,6 +196,9 @@ catastrophic forgetting
 causal mask
 :   In attention, setting every score from a position to a later position to minus infinity before the softmax, so each token sees only itself and earlier tokens. It lets one training pass make an honest prediction at every position. ([Anatomy of a transformer](#anatomy))
 
+CBOW
+:   See *continuous bag of words*.
+
 chain of command
 :   In OpenAI's Model Spec, a ranking of authorities whose instructions a model follows; quoted text, attachments, and tool outputs get no authority by default. ([Prompting and context](#prompting))
 
@@ -245,7 +248,7 @@ closed-book
 :   Of a model: answering from its parameters alone, without looking anything up. ([Giving models knowledge and tools](#tools))
 
 closed model
-:   A model reached only through its maker's service; its weights never leave the vendor's computers. ([Small models and local inference](#local))
+:   A model whose weights are not released; it is reached only through its maker's service, and its weights never leave the vendor's computers. ([Adapting a model: fine-tuning and LoRA](#adapting))
 
 collocation
 :   The words a word habitually appears next to. ([Words as vectors (1954-2014)](#embeddings))
@@ -272,7 +275,7 @@ confidence interval
 :   A range around a score; a 95% interval is about 1.96 standard errors either side. ([Measuring models](#evaluation))
 
 connectedness
-:   The problem of deciding whether a figure is in one piece; Minsky and Papert analysed what single-layer perceptrons can compute about it. ([The artificial neuron (1943-1969)](#neuron))
+:   The problem of deciding whether a figure is in one piece; Minsky and Papert analyzed what single-layer perceptrons can compute about it. ([The artificial neuron (1943-1969)](#neuron))
 
 Constitutional AI
 :   A method (2022) that replaces human labels for harmlessness with a model's judgments guided by a written list of principles. A model criticizes and rewrites its own answers and is fine-tuned on the revisions; then a model's comparisons train a reward model for RLAIF. ([Teaching models to follow instructions (2017-2023)](#instructions))
@@ -306,6 +309,9 @@ contextual embedding
 
 context window
 :   The largest number of tokens a model can take as input at once; in GPT-2, the 1,024 rows of the position table. It is the model's whole working memory while it generates. ([The destination: an LLM in one picture](#destination))
+
+continuous bag of words (CBOW)
+:   The word2vec method that predicts a word from the average of its neighbors' vectors; the partner of skip-gram. ([Words as vectors (1954-2014)](#embeddings))
 
 contrastive training
 :   Training two encoders so that the vectors of true pairs (an image and its caption) get high cosine similarity and those of every wrong pairing in the batch get low similarity. ([The frontier (as of the book's date)](#frontier))
@@ -364,7 +370,7 @@ deep
 :   Of a network: having many layers. ([Networks with structure, and the second winter (1980-2005)](#structure))
 
 demonstration
-:   (1) In instruction tuning, the response a labeler wrote for a prompt, as the answer the model should give ([Teaching models to follow instructions](#instructions)). (2) In a prompt, one worked example, such as a sentence followed by its label; also called an exemplar ([Prompting and context](#prompting)).
+:   \(1) In instruction tuning, the response a labeler wrote for a prompt, as the answer the model should give ([Teaching models to follow instructions (2017-2023)](#instructions)). (2) In a prompt, one worked example, such as a sentence followed by its label; also called an exemplar ([Prompting and context](#prompting)).
 
 dense
 :   Of a network: every parameter is used for every token. (A dense vector is a different idea; dense retrieval uses dense vectors.) ([The transformer since 2017](#since-2017))
@@ -497,7 +503,7 @@ filter
 :   The small set of weights that a convolution slides along its input. ([Networks with structure, and the second winter (1980-2005)](#structure))
 
 fine-tuning
-:   Further training of a pretrained network's weights on a new task or data. In the 2006 deep belief networks, the step after layer-by-layer pretraining in which all the weights were adjusted together. ([The turn: data, compute, and depth (2006-2012)](#deep-turn))
+:   \(1) In the 2006 deep belief networks, the step after layer-by-layer pretraining in which all the weights were adjusted together ([The turn: data, compute, and depth (2006-2012)](#deep-turn)). (2) In the wider, later sense, adjusting a pretrained network's weights on a new task ([Pretraining: learn language first, tasks later (2015-2019)](#pretraining)).
 
 FlashAttention
 :   An IO-aware way (2022) to compute exact attention by tiling, avoiding reading and writing the full attention matrix to and from main memory. ([The transformer since 2017](#since-2017))
@@ -513,6 +519,9 @@ forget gate
 
 forward pass
 :   Running a network on an input from the inputs to the output, recording every unit's value along the way. ([Learning in layers (1970-1989)](#backprop))
+
+framework
+:   Software that provides tensors on GPUs together with automatic differentiation, such as Theano, Torch, TensorFlow, or PyTorch. ([The training loop (1951-2017)](#toolkit))
 
 frontier safety framework
 :   A developer's if-then policy: if testing shows a model has crossed a named capability threshold, stronger safeguards come before release. ([The frontier (as of the book's date)](#frontier))
@@ -627,7 +636,7 @@ hidden unit
 :   A neuron that is neither an input nor an output. ([Learning in layers (1970-1989)](#backprop))
 
 hierarchical navigable small world graphs (HNSW)
-:   An approximate nearest neighbour method that builds a multi-layer structure of graphs, with few vectors in the top layers and all of them at the bottom, and searches from the top down. ([Giving models knowledge and tools](#tools))
+:   An approximate nearest neighbor method that builds a multi-layer structure of graphs, with few vectors in the top layers and all of them at the bottom, and searches from the top down. ([Giving models knowledge and tools](#tools))
 
 highway networks
 :   Networks (2015) that carry the input around each block through a learned gate; a predecessor of residual connections. ([Making deep networks trainable (2010-2016)](#depth))
@@ -788,7 +797,7 @@ license
 :   A model maker's terms for who may use the weights, for what, and on what conditions. ([Small models and local inference](#local))
 
 linearly separable
-:   Of a task: the examples labelled 1 and those labelled 0 can be separated by one straight cut. ([The artificial neuron (1943-1969)](#neuron))
+:   Of a task: the examples labeled 1 and those labeled 0 can be separated by one straight cut. ([The artificial neuron (1943-1969)](#neuron))
 
 linear probe
 :   A logistic regression trained on a model's internal activations. ([The frontier (as of the book's date)](#frontier))
@@ -844,13 +853,13 @@ majority label bias
 :   In few-shot prompting, a model's tendency to favor the answer that appears most often among the examples. ([Prompting and context](#prompting))
 
 majority vote
-:   Taking the most common final answer among many sampled answers; also called self-consistency. ([Prompting and context](#prompting))
+:   Taking the most common final answer among many sampled answers: the last step of self-consistency ([Prompting and context](#prompting)). [The frontier (as of the book's date)](#frontier) counts it, with best-of-N, among the ways of spending more computation at answer time.
 
 Markov assumption
 :   Predicting each word from only the last one or two words, forgetting the rest of the past. ([Language as prediction (1948-2000)](#prediction))
 
 masked language model (MLM)
-:   BERT's training task: hide some of the input tokens at random (about 15%) and predict them from the words on both sides. ([Pretraining: learn language first, tasks later (2015-2019)](#pretraining))
+:   BERT's training task: choose some of the input tokens at random (about 15%), mostly replace them with a mask token, and predict them from the words on both sides. ([Pretraining: learn language first, tasks later (2015-2019)](#pretraining))
 
 MCP
 :   See *Model Context Protocol*.
@@ -920,8 +929,8 @@ nats
 n-best list
 :   The list of candidate translations an older system proposes for a network to re-rank. ([Reading and writing sequences (2010-2016)](#seq2seq))
 
-nearest neighbour search
-:   Finding the stored vectors closest to a query's vector: the k-nearest-neighbours classifier without the vote. ([Giving models knowledge and tools](#tools))
+nearest neighbor search
+:   Finding the stored vectors closest to a query's vector: the k-nearest-neighbors classifier without the vote. ([Giving models knowledge and tools](#tools))
 
 needle in a haystack
 :   A test that hides one fact in a long irrelevant text and asks the model for it. ([Prompting and context](#prompting))
@@ -971,7 +980,7 @@ open-ended generation
 :   Generation with no single right output, such as continuing a story. ([Generating text](#generation))
 
 open-weight
-:   Of a model: its trained weights can be downloaded and run on one's own hardware. This book uses "open source" only in the Open Source Initiative's stricter sense or in quotations. ([Adapting a model: fine-tuning and LoRA](#adapting))
+:   Of a model: its trained weights can be downloaded and run on one's own hardware ([Adapting a model: fine-tuning and LoRA](#adapting)). [Small models and local inference](#local) states the book's policy: "open source" only in the Open Source Initiative's stricter sense or in quotations.
 
 OR
 :   The logic function that is true when at least one input is true; a neuron computes it if it fires when either input is on. ([The artificial neuron (1943-1969)](#neuron))
@@ -1000,7 +1009,7 @@ parametric memory
 :   What a model knows in its weights, as opposed to non-parametric memory, an index it searches. ([Giving models knowledge and tools](#tools))
 
 parity
-:   The problem of deciding whether an input contains an odd number of active points; Minsky and Papert analysed it for single-layer perceptrons. ([The artificial neuron (1943-1969)](#neuron))
+:   The problem of deciding whether an input contains an odd number of active points; Minsky and Papert analyzed it for single-layer perceptrons. ([The artificial neuron (1943-1969)](#neuron))
 
 pass@1
 :   The average accuracy of a single attempt. ([The frontier (as of the book's date)](#frontier))
@@ -1069,7 +1078,7 @@ PPO
 :   See *proximal policy optimization*.
 
 prefill
-:   (1) The first phase of producing a reply, in which every prompt token passes through the network in one forward pass ([Generating text](#generation)). (2) Writing the start of a model's reply, such as an opening brace, for the model to continue ([Prompting and context](#prompting)).
+:   \(1) The first phase of producing a reply, in which every prompt token passes through the network in one forward pass ([Generating text](#generation)). (2) Writing the start of a model's reply, such as an opening brace, for the model to continue ([Prompting and context](#prompting)).
 
 prefix tuning
 :   Training a short sequence of learned vectors that is prepended at every layer, while the model stays frozen. ([Adapting a model: fine-tuning and LoRA](#adapting))
@@ -1081,7 +1090,7 @@ pretrained
 :   Of a network: trained first on one task or on general data, so that what it learned can be reused for another. ([Pretraining: learn language first, tasks later (2015-2019)](#pretraining))
 
 pretraining
-:   The first, general phase of training an LLM on large amounts of text, whose result is a base model. In the 2006 deep belief networks, the layer-by-layer stage before fine-tuning. ([The destination: an LLM in one picture](#destination))
+:   \(1) The first, general phase of training an LLM on large amounts of text, whose result is a base model ([The destination: an LLM in one picture](#destination)). (2) In the 2006 deep belief networks, the layer-by-layer stage, mostly without labels, before fine-tuning ([The turn: data, compute, and depth (2006-2012)](#deep-turn)).
 
 previous-token head
 :   An attention head that copies information about each token into the position after it. ([Prompting and context](#prompting))
@@ -1125,7 +1134,7 @@ quantization-aware training
 :   Continuing training briefly with the rounding in the loop, so the model learns to tolerate it. ([Small models and local inference](#local))
 
 query
-:   (1) In attention, the vector that says what a token is looking for ([Attention without recurrence](#attention)). (2) In information retrieval, what the user asks, for which the system returns documents ([Giving models knowledge and tools](#tools)).
+:   \(1) In attention, the vector that says what a token is looking for ([Attention without recurrence (2017)](#attention)). (2) In information retrieval, what the user asks, for which the system returns documents ([Giving models knowledge and tools](#tools)).
 
 ### R
 
@@ -1185,6 +1194,9 @@ relative position bias
 
 ReLU
 :   See *rectified linear unit*.
+
+representation learning
+:   Methods that let a machine be fed raw data and discover for itself the representations needed for detection or classification; a deep network does this in stages, each layer building on the one below. ([The turn: data, compute, and depth (2006-2012)](#deep-turn))
 
 reranker
 :   A cross-encoder that reorders the top candidates from a cheap first retrieval pass. ([Giving models knowledge and tools](#tools))
@@ -1264,7 +1276,7 @@ saturated
 :   Of a unit: its slope is near zero, so it passes almost no blame backward. ([The turn: data, compute, and depth (2006-2012)](#deep-turn))
 
 saturation
-:   (1) In BM25, the cap on how much one term can add to a document's score however often it occurs ([Giving models knowledge and tools](#tools)). (2) Of a benchmark: models score so high that it can no longer tell them apart ([Measuring models](#evaluation)).
+:   \(1) In BM25, the cap on how much one term can add to a document's score however often it occurs ([Giving models knowledge and tools](#tools)). (2) Of a benchmark: models score so high that it can no longer tell them apart ([Measuring models](#evaluation)).
 
 scaffold
 :   See *agent harness*.
@@ -1276,7 +1288,7 @@ scaled dot-product attention
 :   Attention as the 2017 transformer computes it: dot products of a query with every key, divided by the square root of the key length, turned into weights by a softmax, which then average the values. ([Attention without recurrence (2017)](#attention))
 
 scaling law
-:   A measured relation, a power law, between a model's loss and its size, training data, or compute. ([Scale (2019-2022)](#scale))
+:   A fitted curve, a power law, of a model's loss against its size, training data, or compute. ([Scale (2019-2022)](#scale))
 
 scratchpad
 :   Intermediate results a model is trained to write before its answer. ([Prompting and context](#prompting))
@@ -1324,7 +1336,7 @@ skip connection
 :   See *residual connection*.
 
 skip-gram
-:   The word2vec method that uses a word's vector to predict the words around it. Its partner, CBOW (continuous bag of words), predicts a word from the average of its neighbors' vectors. ([Words as vectors (1954-2014)](#embeddings))
+:   The word2vec method that uses a word's vector to predict the words around it. Its partner is CBOW. ([Words as vectors (1954-2014)](#embeddings))
 
 sliding-window attention
 :   Attention in which each token attends only to a fixed number of tokens before it. ([The transformer since 2017](#since-2017))
@@ -1420,7 +1432,7 @@ SwiGLU
 :   The gated linear unit variant whose switch is the Swish function; used in LLaMA's feed-forward networks. ([The transformer since 2017](#since-2017))
 
 Swish
-:   The function $x \cdot \sigma(x)$, with $\sigma$ the logistic sigmoid; also called SiLU. ([The transformer since 2017](#since-2017))
+:   The function $x\,\sigma(x)$, with $\sigma$ the logistic sigmoid; also called SiLU. ([The transformer since 2017](#since-2017))
 
 sycophancy
 :   Telling users what they appear to want to hear. ([Teaching models to follow instructions (2017-2023)](#instructions))
@@ -1573,7 +1585,7 @@ vector
 :   A list of numbers. ([The destination: an LLM in one picture](#destination))
 
 vector database
-:   A product that stores vectors and searches them by approximate nearest neighbour search. Also called a vector store. ([Giving models knowledge and tools](#tools))
+:   A product that stores vectors and searches them by approximate nearest neighbor search. Also called a vector store. ([Giving models knowledge and tools](#tools))
 
 vector store
 :   See *vector database*.

@@ -313,13 +313,13 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 
 - **Goal:** Vectors, matrices, dot products, logarithms, probability distributions, softmax. Only what the chapters use. (~8 pp)
 - **Depends on:** none
-- **Status:** drafted
+- **Status:** verified
 
 #### B. Glossary {#glossary}
 
 - **Goal:** Every term defined in the book, with the chapter of first use. (~12 pp)
 - **Depends on:** none
-- **Status:** drafted
+- **Status:** verified
 
 #### C. Timeline {#timeline}
 

@@ -2,7 +2,7 @@
 
 <!-- D-002: intuition only; standard textbook formulas, every symbol explained, no derivations. D-003: no code. D-009: numbers from code/checks/notation.py, which imports the destination, generation, prediction, and neuron chapters' scripts and reads the embeddings chapter's toy vectors. D-010: chapters are referred to by ID. -->
 
-This appendix collects the mathematics the chapters use, in the order they need it, with one small worked example per idea. It is a refresher, not a course: the reader's undergraduate linear algebra, calculus, and probability cover everything here. What may be new is the notation, which the book takes from the papers it describes, and the handful of places where machine learning uses a familiar idea in an unfamiliar way. Each section ends with the chapters that rely on it. The last section is a table of every symbol in the book, with its meaning and the chapter where it first appears.
+This appendix collects the mathematics the chapters use, in the order they need it, with one small worked example per idea. It is a refresher, not a course: the reader's undergraduate linear algebra, calculus, and probability cover everything here. What may be new is the notation, which the book takes from the papers it describes, and the handful of places where machine learning uses a familiar idea in an unfamiliar way. Each section ends with the chapters that rely on it. The last section is a table of every letter, sign, and named function in the book's formulas, with its meaning and the chapter where it first appears.
 
 ## Reading the formulas
 
@@ -29,13 +29,13 @@ where $N$ is the number of parameters and $b$ the number of bits per parameter; 
 
 Table: Memory for 8 billion parameters at four precisions, in decimal gigabytes and binary gibibytes.
 
-**GB and GiB.** Memory is counted in two systems. In this book, following [the destination chapter](#destination), a **gigabyte** (GB) is a billion bytes, $10^9$, and likewise a kilobyte (kB) is 1,000 bytes and a megabyte (MB) a million. The binary units count in powers of two: a **kibibyte** (KiB) is $2^{10}$ = 1,024 bytes, a mebibyte (MiB) $2^{20}$ = 1,048,576, and a **gibibyte** (GiB) $2^{30}$ = 1,073,741,824 bytes. <!-- D-009: code/checks/notation.py, Example 1 --> A GiB is about 1.074 GB, so the same quantity is about 7% smaller in GiB. The key-value cache of [the generation chapter](#generation) for Llama 3 8B takes 131,072 bytes per token, which is exactly 128 KiB (or 131.1 kB); for a window of 131,072 tokens it is 17,179,869,184 bytes, which is 17.2 GB and exactly 16 GiB. Software differs in which units it reports, so check the label before comparing two figures.
+**GB and GiB.** Memory is counted in two systems. In this book, following [the destination chapter](#destination), a **gigabyte** (GB) is a billion bytes, $10^9$, and likewise a kilobyte (kB) is 1,000 bytes and a megabyte (MB) a million. The binary units count in powers of two: a **kibibyte** (KiB) is $2^{10}$ = 1,024 bytes, a mebibyte (MiB) $2^{20}$ = 1,048,576, and a **gibibyte** (GiB) $2^{30}$ = 1,073,741,824 bytes. <!-- D-009: code/checks/notation.py, Example 1 --> A GiB is about 1.074 GB, so the same amount of memory, given in GiB, is a number 6.9% smaller. The key-value cache of [the generation chapter](#generation) for Llama 3 8B takes 131,072 bytes per token, which is exactly 128 KiB (or 131.1 kB); for a window of 131,072 tokens it is 17,179,869,184 bytes, which is 17.2 GB and exactly 16 GiB. Software differs in which units it reports, so check the label before comparing two figures.
 
 Used in: [the destination chapter](#destination), [the chapter on training](#training), [the generation chapter](#generation), [the chapter on the transformer since 2017](#since-2017), and [the chapter on local inference](#local).
 
 ## Vectors and dot products
 
-A **vector** is an ordered list of numbers, such as the embedding of a word or the running value at one position of a transformer. The book writes a vector as a lowercase italic letter ($x$, $q$, $a$) and its $i$-th entry as $a_i$. The number of entries is the vector's **dimension**, often written $d$; the chapters also call it the vector's width or length in numbers. A vector of $d$ numbers can be pictured as an arrow in a space with $d$ axes. (One formula, in [the chapter on the transformer since 2017](#since-2017), prints a vector in bold, $\mathbf{a}$; it is the same kind of object.)
+A **vector** is an ordered list of numbers, such as the embedding of a word or the running value at one position of a transformer. The book writes a vector as a lowercase italic letter ($x$, $q$, $a$) and its $i$-th entry as $a_i$. The number of entries is the vector's **dimension**, often written $d$; the chapters also call it the vector's width, or the number of its entries. A vector of $d$ numbers can be pictured as an arrow in a space with $d$ axes.
 
 Two vectors of the same dimension are added entry by entry, which is what a residual connection does ([the chapter on depth](#depth)). The **dot product** multiplies matching entries and adds:
 
@@ -65,7 +65,7 @@ A **matrix** is a rectangular table of numbers. A $d \times k$ matrix ("$d$ by $
 
 Papers write this product in two orders. The LoRA paper, in [the chapter on adapting](#adapting), writes $W x$, with the vector on the right, as above. The transformer paper, followed in [the anatomy chapter](#anatomy), writes $x W$, with the vector on the left; then the matrix has one row per input entry and one column per output entry, the same table turned on its side. <!-- D-009: code/checks/notation.py, Example 3 --> Multiplying [3, 1, 2] by the 3 by 2 matrix with rows [1, 0], [0, 1], and [2, -1] gives the same [7, -1]. Both orders describe the same computation.
 
-**Matrix times matrix.** Two matrices can be multiplied when the inner sizes match: a $d \times r$ matrix times an $r \times k$ matrix is a $d \times k$ matrix. Multiplying a vector by the product $B A$ is the same as multiplying it by $A$ first and then by $B$.
+**Matrix times matrix.** Two matrices can be multiplied when the inner sizes match: a $d \times r$ matrix times an $r \times k$ matrix is a $d \times k$ matrix. With the vector on the right, as LoRA writes it, multiplying a vector by the product $B A$ is the same as multiplying it by $A$ first and then by $B$.
 
 **Counting parameters.** <!-- D-009: code/checks/notation.py, Example 3 --> The feed-forward network of GPT-2 small, in [the anatomy chapter](#anatomy), maps 768 numbers to 3,072 and back. The first matrix has 768 x 3,072 weights and 3,072 biases, 2,362,368 parameters; the second has 3,072 x 768 weights and 768 biases, 2,360,064; together 4,722,432 in each block.
 
@@ -107,7 +107,7 @@ where $p_i$ is the probability of outcome $i$ and the sum runs over all outcomes
 
 $$H(p, q) = -\sum_i p_i \log_2 q_i$$
 
-where $p_i$ is the true probability of outcome $i$ and $q_i$ the probability the model gives it. On a long text, the average of $-\log_2 q$ over the tokens that actually occur estimates it; that average is the cross-entropy of [the prediction chapter](#prediction) and the loss of [the chapter on training](#training) (there in nats). <!-- D-009: code/checks/notation.py, Example 5 --> Rolls of the loaded die, scored by a model that believes the die is fair, cost 2.585 bits each, 0.424 more than the true entropy of 2.161. That excess, cross-entropy minus entropy, is the **Kullback-Leibler (KL) divergence** of the model from the truth. It is never negative and is zero only when the two distributions agree. It is what the KL penalty of [the chapter on instructions](#instructions) keeps small.
+where $p_i$ is the true probability of outcome $i$ and $q_i$ the probability the model gives it. On a long text, the average of $-\log_2 q$ over the tokens that actually occur estimates it; that average is the cross-entropy of [the prediction chapter](#prediction) and the loss of [the chapter on training](#training) (there in nats). <!-- D-009: code/checks/notation.py, Example 5 --> Rolls of the loaded die, scored by a model that believes the die is fair, cost 2.585 bits each, 0.424 more than the true entropy of 2.161. That excess, cross-entropy minus entropy, is the **Kullback-Leibler (KL) divergence** of the model from the truth. It is never negative and is zero only when the two distributions agree. The KL penalty of [the chapter on instructions](#instructions) uses the same measure between two models, the one being trained and the one it started from, and keeps it small.
 
 **Perplexity** turns a cross-entropy back into a number of choices:
 
@@ -163,7 +163,7 @@ The **logistic function**, or **sigmoid**, squashes any number into the range be
 
 $$\sigma(z) = \frac{1}{1 + e^{-z}}$$
 
-where $z$ is any real number, $e$ is the base of the natural logarithm, and $\sigma(z)$ is the result. <!-- D-009: code/checks/notation.py, Example 7 --> Some values: $\sigma(-2)$ = 0.119, $\sigma(-1)$ = 0.269, $\sigma(0)$ = 0.5, $\sigma(1)$ = 0.731, $\sigma(2)$ = 0.881. It is symmetric: $\sigma(-z) = 1 - \sigma(z)$, so 1 - 0.731 = 0.269. It is the link function of the reader's logistic regression and the activation of [the neuron chapter](#neuron), where the vote's weighted sum of 0.1 gives 0.525.
+where $z$ is any real number, $e$ is the base of the natural logarithm, and $\sigma(z)$ is the result. <!-- D-009: code/checks/notation.py, Example 7 --> Some values: $\sigma(-2)$ = 0.119, $\sigma(-1)$ = 0.269, $\sigma(0)$ = 0.5, $\sigma(1)$ = 0.731, $\sigma(2)$ = 0.881. It is symmetric: $\sigma(-z) = 1 - \sigma(z)$, so 1 - 0.731 = 0.269. It is the curve that turns the weighted sum of the reader's logistic regression into a probability (the inverse of its logit link), and the activation of [the neuron chapter](#neuron), where the vote's weighted sum of 0.1 gives 0.525.
 
 Its inverse is the **log-odds**: a probability $p$ corresponds to $z = \ln\big(p / (1 - p)\big)$, where $\ln$ is the natural logarithm. <!-- D-009: code/checks/notation.py, Example 7 --> A probability of 0.731 has odds of 0.731 to 0.269, which is 2.718 to 1, and log-odds of 1.000.
 
@@ -171,142 +171,160 @@ The chapters use it in four more places:
 
 - **Comparing two scores.** The Bradley-Terry model of [the chapter on instructions](#instructions) gives the probability that response A is preferred to response B as $\sigma(r_A - r_B)$, the logistic function of the difference of their scores. Its training loss, the **log loss**, is minus the natural logarithm of the probability given to the response actually preferred. <!-- D-009: code/checks/notation.py, Example 7 --> With a score difference of 1 in the right direction it is $-\ln 0.731$ = 0.313; with no difference, 0.693.
 - **Elo ratings.** [The evaluation chapter](#evaluation)'s Arena scores use the same curve with powers of 10 and a scale of 400 points. <!-- D-009: code/checks/notation.py, Example 7 --> A 400-point gap gives a win probability of 0.909, odds of 10 to 1; one unit on the natural log-odds scale is 400 divided by the natural log of 10, or 173.7 Elo points.
-- **Gates.** The LSTM of [the chapter on networks with structure](#structure) and the SwiGLU layer of [the chapter on the transformer since 2017](#since-2017) use sigmoids as soft switches between 0 and 1. The **Swish** function there is $x\,\sigma(x)$, a number times its own sigmoid.
+- **Gates.** The LSTM of [the chapter on networks with structure](#structure) uses sigmoids as soft switches between 0 and 1. The SwiGLU layer of [the chapter on the transformer since 2017](#since-2017) uses as its switch the **Swish** function, $x\,\sigma(x)$, a number times its own sigmoid; unlike a sigmoid, its output is not limited to the range 0 to 1.
 - **Task horizons.** [The frontier chapter](#frontier) fits a logistic regression of success on the logarithm of task length.
 
-Two other activation functions appear alongside it. The **ReLU** of [the deep learning chapter](#deep-turn), $\max(0, z)$, keeps positive numbers and replaces negative ones with zero. The **tanh**, a stretched sigmoid, runs from -1 to 1.
+Two other activation functions appear alongside it. The **ReLU** of [the deep learning chapter](#deep-turn), $\max(0, z)$, keeps positive numbers and replaces negative ones with zero. The **tanh** (hyperbolic tangent) of the same chapter is a sigmoid stretched to run from -1 to 1.
+
+Used in: [the neuron chapter](#neuron), [the chapter on learning in layers](#backprop), [the chapter on networks with structure](#structure), [the deep learning chapter](#deep-turn), [the chapter on depth](#depth), [the embeddings chapter](#embeddings), [the generation chapter](#generation), [the chapter on instructions](#instructions), [the chapter on the transformer since 2017](#since-2017), [the evaluation chapter](#evaluation), and [the frontier chapter](#frontier).
 
 ## Symbols used in the book
 
-Each symbol is listed with each meaning it has in the book and the chapter where that meaning first appears, in reading order. The same letter often means different things in different chapters, because the book keeps each source's notation; the chapter text always says which meaning is in force.
+Each letter and sign is listed with each meaning it has in the book's formulas and the chapter where that meaning first appears, in reading order; named functions written as words come last. The same letter often means different things in different chapters, because the book keeps each source's notation; the chapter text always says which meaning is in force.
 
 | Symbol | Meaning | First used |
-|----------|------------------------------|--------|
-| $A$ | the sounds a speech recognizer observes | [prediction](#prediction) |
-| $A$ | LoRA's small $r \times k$ matrix | [adapting](#adapting) |
-| $A_i$ | advantage: answer $i$'s reward as a z-score within its group | [frontier](#frontier) |
-| $a$, $b$ | two vectors being compared | [embeddings](#embeddings) |
-| $a_i$, $\bar{a}_i$ | entry $i$ of a vector, before and after normalization | [since-2017](#since-2017) |
-| $B$ | LoRA's tall $d \times r$ matrix | [adapting](#adapting) |
-| $B$ | memory bandwidth, in bytes per second | [local](#local) |
-| $b$ | bias of a neuron ($b_1$, $b_2$: bias vectors of a layer) | [neuron](#neuron) |
-| $b$, $k_1$ | the two settings of BM25 | [tools](#tools) |
-| $b$ | bits stored per parameter | [local](#local) |
-| $C$ | training compute, in floating-point operations | [scale](#scale) |
-| $D$ | number of training tokens | [scale](#scale) |
-| $d$ | dimension of a vector (model width; size of an attention head) | [attention](#attention) |
-| $d_k$ | number of numbers in each key | [attention](#attention) |
-| $d_{\text{model}}$ | width of the residual stream | [anatomy](#anatomy) |
-| $d$ | number of rows of a weight matrix | [adapting](#adapting) |
-| $d$ | a document | [tools](#tools) |
-| $d$ | difference between two Arena scores | [evaluation](#evaluation) |
-| $d$ | elapsed time in days | [frontier](#frontier) |
-| $\text{df}_t$ | number of documents containing word $t$ | [tools](#tools) |
-| $dl$, $avdl$ | a document's length, and the average length | [tools](#tools) |
-| $E_i(x)$ | output of expert $i$ | [since-2017](#since-2017) |
-| $e$ | base of the natural logarithm, about 2.718 | [destination](#destination) |
-| $F(x)$ | the correction a residual block adds | [depth](#depth) |
-| $f(z)$ | output of a ReLU | [deep-turn](#deep-turn) |
-| $G$ | number of answers in a group | [frontier](#frontier) |
-| $G(x)_i$ | the router's weight on expert $i$ | [since-2017](#since-2017) |
-| $g(t)$ | new value offered to an LSTM cell at step $t$ | [structure](#structure) |
-| $g_i$ | learned gain in RMS normalization | [since-2017](#since-2017) |
+|:-------|:--------------------------|:----------------|
+| $A$ | the sounds a speech recognizer observes | [Language as prediction](#prediction) |
+| $A$ | LoRA's small $r \times k$ matrix | [Adapting](#adapting) |
+| $A_i$ | advantage: answer $i$'s reward as a z-score within its group | [Frontier](#frontier) |
+| $a$, $b$ | two vectors being compared | [Words as vectors](#embeddings) |
+| $a$; $a_i$, $\bar{a}_i$ | a vector; its entry $i$, before and after normalization | [Since 2017](#since-2017) |
+| $B$ | LoRA's tall $d \times r$ matrix | [Adapting](#adapting) |
+| $B$ | memory bandwidth, in bytes per second | [Local inference](#local) |
+| $b$ | bias of a neuron ($b_1$, $b_2$: bias vectors of a layer) | [Artificial neuron](#neuron) |
+| $b$, $k_1$ | the two settings of BM25 | [Knowledge and tools](#tools) |
+| $b$ | bits stored per parameter | [Local inference](#local) |
+| $C$ | training compute, in floating-point operations | [Scale](#scale) |
+| $D$ | number of training tokens | [Scale](#scale) |
+| $d$ | dimension of a vector: the number of its entries (the model's width) | [Attention](#attention) |
+| $d_k$ | number of numbers in each key: the size of one attention head | [Attention](#attention) |
+| $d_{\text{model}}$ | width of the residual stream | [Anatomy](#anatomy) |
+| $d$ | number of rows of a weight matrix | [Adapting](#adapting) |
+| $d$ | a document | [Knowledge and tools](#tools) |
+| $d$ | difference between two Arena scores | [Measuring models](#evaluation) |
+| $d$ | elapsed time in days | [Frontier](#frontier) |
+| $\text{df}_t$ | number of documents containing word $t$ | [Knowledge and tools](#tools) |
+| $dl$, $avdl$ | a document's length, and the average length | [Knowledge and tools](#tools) |
 
-Table: Symbols, Latin letters A to G.
+Table: Symbols, Latin letters A to D.
 
 | Symbol | Meaning | First used |
-|----------|------------------------------|--------|
-| $H$ | entropy, or cross-entropy, in bits | [prediction](#prediction) |
-| $H$, $H_0$ | time horizon after $d$ days, and at the start | [frontier](#frontier) |
-| $h$ | a layer's output vector | [adapting](#adapting) |
-| $h$ | a model's time horizon | [frontier](#frontier) |
-| $i$, $j$ | index counting tokens, outcomes, or entries | [destination](#destination) |
-| $i(t)$ | input gate of an LSTM cell at step $t$ | [structure](#structure) |
-| $k_j$ | key of token $j$ | [attention](#attention) |
-| $k$ | number of columns of a weight matrix | [adapting](#adapting) |
-| $k$, $k!$ | number of examples, and its factorial | [prompting](#prompting) |
-| $L$ | loss; $L(N)$, loss as a function of model size | [backprop](#backprop) |
-| $L$ | largest integer allowed in quantization | [local](#local) |
-| $M$ | bytes read per generated token | [local](#local) |
-| $m$ | ALiBi's slope for one attention head | [since-2017](#since-2017) |
-| $N$ | number of words or tokens in a text | [prediction](#prediction) |
-| $N$ | number of parameters | [anatomy](#anatomy) |
-| $N_c$, $\alpha_N$ | fitted constants of a scaling law | [scale](#scale) |
-| $N$ | number of documents in a collection | [tools](#tools) |
-| $N$ | number of disks in the Tower of Hanoi | [frontier](#frontier) |
-| $n$ | number of inputs to a neuron | [neuron](#neuron) |
-| $n$ | number of samples (later, of benchmark questions) | [toolkit](#toolkit) |
-| $n$ | number of units that dropout can remove | [depth](#depth) |
-| $n$ | the $n$ of n-gram | [prediction](#prediction) |
-| $n$ | number of tokens in a sequence | [attention](#attention) |
-| $n$ | length of a vector; number of experts | [since-2017](#since-2017) |
-| $n_{\text{layer}}$ | number of transformer blocks | [anatomy](#anatomy) |
-| $P(\ldots)$ | probability of what is in the brackets | [prediction](#prediction) |
-| $P$ | probability that the higher-rated model wins | [evaluation](#evaluation) |
-| $PP$ | perplexity | [prediction](#prediction) |
-| $p_i$ | probability of token or outcome $i$ | [destination](#destination) |
-| $p$ | a probability: of keeping or dropping a unit; a softmax weight; a true accuracy; a chance of success | [depth](#depth) |
+|:-------|:--------------------------|:----------------|
+| $E_i(x)$ | output of expert $i$ | [Since 2017](#since-2017) |
+| $e$ | base of the natural logarithm, about 2.718 | [Destination](#destination) |
+| $F(x)$ | the correction a residual block adds | [Deep networks](#depth) |
+| $f(z)$ | output of a ReLU | [The turn](#deep-turn) |
+| $G$ | number of answers in a group | [Frontier](#frontier) |
+| $G(x)_i$ | the router's weight on expert $i$ | [Since 2017](#since-2017) |
+| $g(t)$ | new value offered to an LSTM cell at step $t$ | [Networks with structure](#structure) |
+| $g_i$ | learned gain in RMS normalization | [Since 2017](#since-2017) |
+| $H$ | entropy, or cross-entropy, in bits | [Language as prediction](#prediction) |
+| $h$ | a layer's output vector | [Adapting](#adapting) |
+| $h$, $h_0$ | a model's time horizon, and the horizon at the start | [Frontier](#frontier) |
+| $i$, $j$ | index counting tokens, outcomes, or entries | [Destination](#destination) |
+| $i(t)$ | input gate of an LSTM cell at step $t$ | [Networks with structure](#structure) |
+| $k_j$ | key of token $j$ | [Attention](#attention) |
+| $k$ | number of columns of a weight matrix | [Adapting](#adapting) |
+| $k$, $k!$ | number of examples, and its factorial | [Prompting](#prompting) |
+| $L$ | loss; $L(N)$, loss as a function of model size | [Learning in layers](#backprop) |
+| $L$ | largest integer allowed in quantization | [Local inference](#local) |
+| $M$ | bytes read per generated token | [Local inference](#local) |
+| $m$ | ALiBi's slope for one attention head | [Since 2017](#since-2017) |
+| $N$ | number of words or tokens in a text | [Language as prediction](#prediction) |
+| $N$ | number of parameters | [Anatomy](#anatomy) |
+| $N_c$, $\alpha_N$ | fitted constants of a scaling law | [Scale](#scale) |
+| $N$ | number of documents in a collection | [Knowledge and tools](#tools) |
+| $N$ | number of disks in the Tower of Hanoi | [Frontier](#frontier) |
 
-Table: Symbols, Latin letters H to P.
+Table: Symbols, Latin letters E to N.
 
 | Symbol | Meaning | First used |
-|----------|------------------------------|--------|
-| $q$ | query vector | [attention](#attention) |
-| $q_i$ | integer stored for weight $i$ | [local](#local) |
-| $R(x, y)$ | reward after the KL penalty | [instructions](#instructions) |
-| $r(x, y)$; $r_A$, $r_B$, $r_w$, $r_l$ | reward model's scores | [instructions](#instructions) |
-| $r$ | rank of a LoRA update | [adapting](#adapting) |
-| $r_i$ | reward of answer $i$ | [frontier](#frontier) |
-| $\text{RMS}(\mathbf{a})$ | root mean square of a vector's entries | [since-2017](#since-2017) |
-| $s(t)$ | value stored in an LSTM cell at step $t$ | [structure](#structure) |
-| $s$ | scale shared by a group of quantized weights | [local](#local) |
-| $\text{SE}$ | standard error | [evaluation](#evaluation) |
-| $T$ | temperature | [generation](#generation) |
-| $T$ | doubling time in days | [frontier](#frontier) |
-| $t$ | time step | [structure](#structure) |
-| $t$ | confidence threshold | [prompting](#prompting) |
-| $t$ | a word (term) | [tools](#tools) |
-| $t$ | time a task takes a skilled human | [frontier](#frontier) |
-| $\text{tf}_{t,d}$, $tf$ | term frequency | [tools](#tools) |
-| $V$ | second input matrix of a SwiGLU layer | [since-2017](#since-2017) |
-| $v_j$ | value of token $j$ | [attention](#attention) |
-| $W$ | the words a speaker chooses (with $A$) | [prediction](#prediction) |
-| $W$, $W_1$, $W_2$ | weight matrices | [anatomy](#anatomy) |
-| $W_0$, $\Delta W$ | a pretrained matrix, and a change to it | [adapting](#adapting) |
-| $W_g$ | the router's weights | [since-2017](#since-2017) |
-| $w$, $w_i$ | a weight; weight $i$ | [neuron](#neuron) |
-| $w_1 \ldots w_N$ | the words of a text | [prediction](#prediction) |
-| $w_i$, $w_i^{\text{RSJ}}$ | BM25 weight of query word $i$, and its inverse-document-frequency part | [tools](#tools) |
+|:-------|:--------------------------|:----------------|
+| $n$ | number of inputs to a neuron | [Artificial neuron](#neuron) |
+| $n$ | number of samples (later, of benchmark questions) | [Training loop](#toolkit) |
+| $n$ | number of units that dropout can remove | [Deep networks](#depth) |
+| $n$ | the $n$ of n-gram | [Language as prediction](#prediction) |
+| $n$ | number of tokens in a sequence | [Attention](#attention) |
+| $n$ | number of experts | [Since 2017](#since-2017) |
+| $n_{\text{layer}}$ | number of transformer blocks | [Anatomy](#anatomy) |
+| $P(\ldots)$ | probability of what is in the brackets | [Language as prediction](#prediction) |
+| $P$ | probability that the higher-rated model wins | [Measuring models](#evaluation) |
+| $PP$ | perplexity | [Language as prediction](#prediction) |
+| $p_i$ | probability of token or outcome $i$ | [Destination](#destination) |
+| $p$ | a probability: of keeping or dropping a unit; a softmax weight; a true accuracy; a chance of success | [Deep networks](#depth) |
+| $q$ | query vector | [Attention](#attention) |
+| $q_i$ | integer stored for weight $i$ | [Local inference](#local) |
+| $R(x, y)$ | reward after the KL penalty | [Instructions](#instructions) |
+| $r(x, y)$; $r_A$, $r_B$, $r_w$, $r_l$ | reward model's scores | [Instructions](#instructions) |
+| $r$ | rank of a LoRA update | [Adapting](#adapting) |
+| $r_i$ | reward of answer $i$ | [Frontier](#frontier) |
+| $\text{RMS}(a)$ | root mean square of a vector's entries | [Since 2017](#since-2017) |
+| $s(t)$ | value stored in an LSTM cell at step $t$ | [Networks with structure](#structure) |
+| $s$ | scale shared by a group of quantized weights | [Local inference](#local) |
+| $\text{SE}$ | standard error | [Measuring models](#evaluation) |
 
-Table: Symbols, Latin letters Q to W.
+Table: Symbols, Latin letters n to S.
 
 | Symbol | Meaning | First used |
-|----------|------------------------------|--------|
-| $x$, $x_i$ | input; input $i$; one position's vector | [neuron](#neuron) |
-| $x$, $y$ | a prompt and a response | [instructions](#instructions) |
-| $y$ | output | [backprop](#backprop) |
-| $z$ | weighted sum of a neuron | [neuron](#neuron) |
-| $z_i$ | score (logit) of token $i$ | [destination](#destination) |
-| $\alpha$ | momentum setting | [toolkit](#toolkit) |
-| $\beta$ | strength of the KL penalty | [instructions](#instructions) |
-| $\beta$ | fitted slope of a logistic regression | [frontier](#frontier) |
-| $\Delta$ | a change in a quantity | [instructions](#instructions) |
-| $\eta$ | learning rate | [backprop](#backprop) |
-| $\theta_i$ | rotation per position of pair $i$ in RoPE | [since-2017](#since-2017) |
-| $\pi(y \mid x)$ | a model's probability of response $y$ to prompt $x$ | [instructions](#instructions) |
-| $\sigma(z)$ | logistic function | [neuron](#neuron) |
-| $\sigma$ | standard deviation | [toolkit](#toolkit) |
-| $\sum_j$ | sum over $j$ | [destination](#destination) |
-| $a \cdot b$ | dot product (in two chapters, plain multiplication) | [embeddings](#embeddings) |
-| $\lVert a \rVert$ | length of a vector | [embeddings](#embeddings) |
-| $\otimes$ | entry-by-entry product | [since-2017](#since-2017) |
-| $\log_2$, $\log_{10}$ | logarithm to base 2, to base 10 | [prediction](#prediction), [tools](#tools) |
-| $\log$ | natural logarithm | [instructions](#instructions) |
-| $\partial L / \partial w$ | derivative of the loss with respect to $w$ | [backprop](#backprop) |
-| $\leftarrow$ | "replace with" | [backprop](#backprop) |
-| $\max(0, z)$ | ReLU | [deep-turn](#deep-turn) |
-| $\mid$ | "given" | [instructions](#instructions) |
-| $\approx$ | approximately equal | [anatomy](#anatomy) |
-| $\lvert w \rvert$; round | absolute value; nearest integer | [local](#local) |
+|:-------|:--------------------------|:----------------|
+| $T$ | temperature | [Generating text](#generation) |
+| $T$ | doubling time in days | [Frontier](#frontier) |
+| $t$ | time step | [Networks with structure](#structure) |
+| $t$ | confidence threshold | [Prompting](#prompting) |
+| $t$ | a word (term) | [Knowledge and tools](#tools) |
+| $t$ | time a task takes a skilled human | [Frontier](#frontier) |
+| $\text{tf}_{t,d}$, $tf$ | term frequency | [Knowledge and tools](#tools) |
+| $V$ | second input matrix of a SwiGLU layer | [Since 2017](#since-2017) |
+| $v_j$ | value of token $j$ | [Attention](#attention) |
+| $W$ | the words a speaker chooses (with $A$) | [Language as prediction](#prediction) |
+| $W$, $W_1$, $W_2$ | weight matrices | [Anatomy](#anatomy) |
+| $W_0$, $\Delta W$ | a pretrained matrix, and a change to it | [Adapting](#adapting) |
+| $W_g$ | the router's weights | [Since 2017](#since-2017) |
+| $w$, $w_i$ | a weight; weight $i$ | [Artificial neuron](#neuron) |
+| $w_1 \ldots w_N$ | the words of a text | [Language as prediction](#prediction) |
+| $w_i$, $w_i^{\text{RSJ}}$ | BM25 weight of query word $i$, and its idf part | [Knowledge and tools](#tools) |
+| $x$, $x_i$ | input; input $i$; one position's vector | [Artificial neuron](#neuron) |
+| $x$, $y$ | a prompt and a response | [Instructions](#instructions) |
+| $y$ | output | [Learning in layers](#backprop) |
+| $z$ | weighted sum of a neuron | [Artificial neuron](#neuron) |
+| $z_i$ | score (logit) of token $i$ | [Destination](#destination) |
+| $\alpha$ | momentum setting | [Training loop](#toolkit) |
+| $\beta$ | strength of the KL penalty | [Instructions](#instructions) |
+| $\beta$ | fitted slope of a logistic regression | [Frontier](#frontier) |
+| $\eta$ | learning rate | [Learning in layers](#backprop) |
+| $\theta_i$ | rotation per position of pair $i$ in RoPE | [Since 2017](#since-2017) |
+| $\pi(y \mid x)$ | a model's probability of response $y$ to prompt $x$ | [Instructions](#instructions) |
+| $\sigma(z)$ | logistic function | [Artificial neuron](#neuron) |
+| $\sigma$ | standard deviation | [Training loop](#toolkit) |
 
-Table: Symbols, Latin letters X to Z, Greek letters, and operators.
+Table: Symbols, Latin letters T to Z, and Greek letters.
+
+| Symbol | Meaning | First used |
+|:-------|:--------------------------|:----------------|
+| $\sum_j$ | sum over $j$ | [Destination](#destination) |
+| $\ldots$ | "and so on" | [Artificial neuron](#neuron) |
+| $\sqrt{n}$ | square root | [Training loop](#toolkit) |
+| $\times$ | multiplication | [Deep networks](#depth) |
+| $a \cdot b$ | dot product | [Words as vectors](#embeddings) |
+| $\lVert a \rVert$ | length of a vector | [Words as vectors](#embeddings) |
+| $\otimes$ | entry-by-entry product | [Since 2017](#since-2017) |
+| $\log_2$ | logarithm to base 2 | [Language as prediction](#prediction) |
+| $\log_{10}$ | logarithm to base 10 | [Knowledge and tools](#tools) |
+| $\log$ | natural logarithm | [Instructions](#instructions) |
+| $\partial L / \partial w$ | derivative of the loss with respect to $w$ | [Learning in layers](#backprop) |
+| $\leftarrow$ | "replace with" | [Learning in layers](#backprop) |
+| $\mid$ | "given" | [Instructions](#instructions) |
+| $\approx$ | approximately equal | [Anatomy](#anatomy) |
+| $\lvert w \rvert$ | absolute value | [Local inference](#local) |
+| $\max(0, z)$ | ReLU | [The turn](#deep-turn) |
+| $\max_j$ | the largest value over $j$ | [Local inference](#local) |
+| $\text{softmax}$ | scores to probabilities | [Destination](#destination) |
+| $\cos(a, b)$ | cosine similarity | [Words as vectors](#embeddings) |
+| $\text{FFN}(x)$ | a block's feed-forward network | [Anatomy](#anatomy) |
+| $\text{tf-idf}(t, d)$ | term frequency times inverse document frequency | [Knowledge and tools](#tools) |
+| $\text{Swish}(x)$ | $x\,\sigma(x)$ | [Since 2017](#since-2017) |
+| $\text{TopK}$ | keep the $k$ largest scores | [Since 2017](#since-2017) |
+| round | nearest integer | [Local inference](#local) |
+| $\mathrm{mean}$, $\mathrm{std}$ | average and standard deviation | [Frontier](#frontier) |
+
+Table: Signs and named functions.

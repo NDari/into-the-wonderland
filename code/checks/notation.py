@@ -48,6 +48,7 @@ def example_units():
     print("Example 1: big numbers, bytes, GB and GiB")
     print(f"  2^10 = {2 ** 10:,}; 2^20 = {2 ** 20:,}; 2^30 = {2 ** 30:,}")
     print(f"  1 GiB / 1 GB = {GIB / GB:.3f}; 1 KiB / 1 kB = {1024 / 1000:.3f}")
+    print(f"  the same memory in GiB is a number {1 - GB / GIB:.1%} smaller than in GB")
     print(f"  2^100 = {2.0 ** 100:.3g}")
     print(f"  10^-8 = {10 ** -8:.8f}; pi = {math.pi:.5f}")
     c = 6 * 174.6e9 * 300e9

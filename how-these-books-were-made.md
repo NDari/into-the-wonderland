@@ -1,6 +1,6 @@
 # How these books were made
 
-This document describes the process as it stands on 2026-11-11. At this date one chapter (`destination`) has been approved by the author, the other twenty-four chapters of Book 1 have been independently verified, and its four appendices are drafted and in verification. The appendices are compiled from the verified chapters by drafting agents and checked against the chapters by separate agents. It is updated whenever practice changes, so that it stays a true account and not a plan.
+This document describes the process as it stands on 2026-11-11. At this date one chapter (`destination`) has been approved by the author, the other twenty-four chapters of Book 1 have been independently verified, and so have its four appendices. The appendices are compiled from the verified chapters by drafting agents and checked against the chapters by separate agents. It is updated whenever practice changes, so that it stays a true account and not a plan.
 
 ## Who does what
 
@@ -73,7 +73,7 @@ A script, `tools/check.py`, is run after every change. It checks, among other th
 
 Chapters have stable IDs and refer to each other by ID, never by number [D-010]. Numbers are assigned from the outline when the PDF is built, so a chapter can be split or moved without breaking references.
 
-The script cannot judge prose. Terminology, notation, and tone are kept consistent by a read-through: when a chapter is verified, after any decision change that touches drafted chapters, and before any PDF build.
+The script cannot judge prose. Terminology, notation, and tone are kept consistent by a read-through: when a chapter is verified, after any decision change that touches drafted chapters, and before any PDF build. When Book 1 was complete, the read-through was done in two steps: the agents that compiled the glossary, the notation appendix, and the timeline reported every term defined twice, symbol used two ways, and date given differently; then three agents, each owning a different set of chapters, made the chapters agree, recording each change in the chapter's ledger. Spelling follows American usage outside quotations.
 
 ## Tools
 
