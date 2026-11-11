@@ -1,7 +1,7 @@
 # Claim ledger: destination
 
 Chapter: `destination` (Book 1, "The destination: an LLM in one picture").
-Stage: drafted, 2026-11-11 [D-005]. Claims C10 to C12 were added while drafting; their sources were fetched and located the same day.
+Stage: approved by the author, 2026-11-11 (verified the same day) [D-005]. Locations added while drafting are logged as "Also used" under the claim they belong to, and C10 to C12 were added after the independent check. See "Independent check" at the end.
 
 The chapter is mostly mechanism, which needs no citation per sentence. The claims below are the ones the draft is planned to make that need a source: a few named models used as concrete anchors, and the numbers attached to them. All sources were fetched on 2026-11-11 and each claim was located in the fetched text. Page numbers are PDF page numbers of the version named in the URL.
 
@@ -21,6 +21,7 @@ The chapter is mostly mechanism, which needs no citation per sentence. The claim
 - Quote: "we use a multi-layer Transformer decoder [34] for the language model, which is a variant of the transformer [62]. This model applies a multi-headed self-attention operation over the input context tokens followed by position-wise feedforward layers to produce an output distribution over target tokens", then h_0 = U W_e + W_p; h_l = transformer_block(h_{l-1}); P(u) = softmax(h_n W_e^T), "where U = (u_{-k}, ..., u_{-1}) is the context vector of tokens, n is the number of layers, W_e is the token embedding matrix, and W_p is the position embedding matrix."
 - Note: Book 1 has no formulas beyond standard forms [D-002]. The equation is the source for the diagram's boxes, not something to print.
 - Also used: "multi-layer Transformer decoder" (p. 3) as the source for "OpenAI's GPT models use transformer blocks". The GPT-2 paper calls this 2018 model "the OpenAI GPT model (Radford et al., 2018)" (section 2.3, p. 4), which is the source for naming it "OpenAI's 2018 GPT model". Year confirmed by the PDF's creation date, 2018-06-08.
+- Also used: "768 dimensional states" (section 4.1, p. 5), the source for "turned each token into 768 numbers". The W_p term in equation (2), "the position embedding matrix" (p. 3), is the source for "a second table, of position vectors".
 
 ### C3. The transformer was introduced in 2017, built on attention, replacing recurrence
 - Use in chapter: one sentence naming what the "layers" box is and pointing to `attention`.
@@ -47,6 +48,9 @@ The chapter is mostly mechanism, which needs no citation per sentence. The claim
 - Location: section 1, pp. 2-3 (sizes, tokens, context); section 3.2, p. 7 (vocabulary).
 - Quotes: "a herd of three multilingual language models with 8B, 70B, and 405B parameters"; "we pre-train a model with 405B parameters on 15.6T tokens using a context window of 8K tokens. This standard pre-training stage is followed by a continued pre-training stage that increases the supported context window to 128K tokens."; "We use a vocabulary with 128K tokens." Table 3 (p. 7) gives the vocabulary size as 128,000, the figure the chapter prints.
 - Also used: "Our largest model is a dense Transformer with 405B parameters" (abstract, p. 1), as the source for Llama 3.1 using transformer blocks.
+- Also used: Table 1 (p. 2) gives the release of the Llama 3.1 models as "July 2024", the source for "published in 2024".
+- Also used: Table 3 (p. 7) gives "Model Dimension" 4,096, 8,192, and 16,384 for 8B, 70B, and 405B, the source for "the largest Llama 3.1 uses 16,384".
+- Also used: Table 4 (p. 10) gives the long-context stage of 405B pretraining a sequence length of 131,072, the source for "128K, where K means 1,024, so 131,072 tokens". The paper itself writes "128K".
 - Note: the paper says its results are for Llama 3.1 models, "which we will refer to as Llama 3 throughout". The chapter should say "Llama 3.1" or follow the paper's convention explicitly.
 
 ### C7. A pretrained model is not yet an assistant
@@ -68,6 +72,21 @@ The chapter is mostly mechanism, which needs no citation per sentence. The claim
 - Quotes: "November 30, 2022"; "ChatGPT is a sibling model to InstructGPT"; "We trained this model using Reinforcement Learning from Human Feedback (RLHF), using the same methods as InstructGPT, but with slight differences in the data collection setup."; "ChatGPT is fine-tuned from a model in the GPT-3.5 series, which finished training in early 2022."
 - Note: a company blog post is a primary source for what the company released and when. It is not independent evidence for capability claims, and the chapter makes none from it.
 
+### C10. An instruction-tuned model has the same architecture as its base model
+- Use in chapter: "still the same pipeline. Only its parameters have changed."
+- Source: `ouyang2022training` (URL above)
+- Location: section 1, p. 3.
+- Quote: "These models have the same architecture, and differ only by the fact that InstructGPT is fine-tuned on our human data."
+
+### C11. A conversation is laid out as one text with markers for who is speaking
+- Use in chapter: the sentence on chat turns as one document.
+- Source: `grattafiori2024llama` (URL above)
+- Location: section 4.1.1, p. 16.
+- Quote: "we design a new multi-message chat protocol which uses various special header and termination tokens. The header tokens are used to indicate the source and destination of each message in a conversation."
+
+### C12. Correction: the Llama 3.1 context window
+- The draft printed "128,000" for the context window. The source says "128K", and its Table 4 (p. 10) shows the length is 131,072. Fixed as logged under C6.
+
 ## Worked examples [D-009]
 
 All computed by `code/checks/destination.py`. The scores and probabilities are invented; the arithmetic on them is exact.
@@ -76,7 +95,7 @@ All computed by `code/checks/destination.py`. The scores and probabilities are i
 - Example 2: the probability of a six-token text as a product of next-token probabilities. Its last factor reuses Example 1.
 - Example 3: storage for the parameter counts in C4 to C6, at 32 and 16 bits per parameter.
 
-The figure `figures/pipeline-destination.svg` is drawn by `figures/pipeline.py` [D-014]; its probabilities match Example 1 and its token IDs are labelled illustrative.
+The figure `figures/pipeline-destination.svg` is drawn by `figures/pipeline.py` [D-014]. It imports Example 1 from the check script, so its probabilities are computed, not typed in. Its token IDs are labelled illustrative.
 
 ## Terms defined in this chapter
 
@@ -86,3 +105,30 @@ For the glossary, when it is drafted: large language model (LLM), token, vocabul
 
 - Any parameter count or training cost for current closed frontier models: most are not disclosed by their makers, and a guess is not a source. If the chapter needs a "today" figure, it uses a disclosed open-weight model with an "as of" date.
 - History of each component: each later chapter carries its own.
+
+## Notes for later chapters
+
+- `generation`: this chapter says the whole pipeline "runs again" for each new token. That is right conceptually, but in practice the work already done on earlier tokens is cached and reused. `generation` should present the cache as an optimization of the same loop, so it doesn't seem to contradict this chapter.
+- `tokens`: not checked here, from the verifier's memory only: the released Llama 3.1 tokenizer may have 128,256 entries once special tokens are counted. The paper's 128,000 is what this chapter cites.
+
+## Independent check
+
+2026-11-11. A separate agent that did not write the chapter fetched all seven sources itself, in the versions named above, and checked every claim, quote, page number, worked-example number, and bibliography entry.
+
+- Confirmed: C1 to C9 as logged, all quotes verbatim and all pages correct. All numbers in the three tables and the prose match `code/checks/destination.py`. The figure regenerates byte-identically. `tools/check.py` passes.
+- Errors found and fixed: the Llama 3.1 context window was printed as 128,000 instead of 128K (131,072) (C12). "From a few hundred to several thousand" understated vector lengths, since Llama 3.1 405B uses 16,384.
+- Warnings acted on:
+  - "Tens of thousands" of classes now allows for larger vocabularies.
+  - The GPT-2 paper is now said to "cite" the 1980 and 2003 work, not to "credit the idea" to it.
+  - Attention now includes the token's own position.
+  - Position information is now named.
+  - The figure computes its numbers and says it shows the most probable pick.
+  - "Most expensive step" was removed as unsourced, and "once" was replaced.
+  - The knowledge-cutoff sentence now refers to the parameters.
+  - The reply counts toward the context window.
+  - "Often used interchangeably".
+  - Reinforcement learning and fine-tuning are glossed.
+  - C10 and C11 are cited.
+  - "Successors" was reworded.
+  - The thread sentence was rephrased.
+- Re-checked after fixing: every new location (Table 1 p. 2, Table 3 p. 7, Table 4 p. 10, p. 16; ouyang2022training p. 3; radford2018improving pp. 3 and 5) was located again by the writer in the same fetched texts.

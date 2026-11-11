@@ -6,9 +6,10 @@ Writes one SVG per variant next to this script. The diagram recurs across
 Book 1; later chapters add a variant here (for example, one that highlights
 the box the chapter explains) so that every version shares this layout.
 
-The example values in the boxes match code/checks/destination.py [D-009].
-Token IDs are illustrative, not the output of a real tokenizer.
+The probabilities in the boxes are computed by code/checks/destination.py
+[D-009]. Token IDs are illustrative, not the output of a real tokenizer.
 """
+import importlib.util
 from pathlib import Path
 
 import matplotlib
@@ -18,6 +19,16 @@ import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch  # noqa: E402
 
 OUT = Path(__file__).parent
+
+# Load the worked example so the figure shows the same computed numbers.
+_spec = importlib.util.spec_from_file_location(
+    "destination_checks", OUT.parent / "code" / "checks" / "destination.py")
+_checks = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_checks)
+_probs = _checks.softmax([s for _, s in _checks.LOGITS])[0]
+_ranked = sorted(zip((t.strip() for t, _ in _checks.LOGITS), _probs), key=lambda x: -x[1])
+PROBS_TEXT = f"{_ranked[0][0]} {_ranked[0][1]:.3f}\n{_ranked[1][0]} {_ranked[1][1]:.3f}  ..."
+PICKED = _ranked[0][0]  # the box shows the most probable token
 
 # Reproducible SVG output: fixed hash salt, no timestamp.
 plt.rcParams["svg.hashsalt"] = "into-the-wonderland"
@@ -38,10 +49,10 @@ TOP = [
     ("vectors", "Vectors", "embedding table", "one list of numbers\nper token", True),
 ]
 BOTTOM = [
-    ("layers", "Layers", "transformer blocks,\nstacked", "each vector updated\nusing the others", True),
+    ("layers", "Layers", "transformer blocks,\nstacked", "updated using its own\nand earlier vectors", True),
     ("scores", "Scores", "output layer", "one score per\nvocabulary entry", True),
-    ("probs", "Probabilities", "softmax", "mat 0.571\nfloor 0.210  ...", False),
-    ("pick", "Pick one", "sampling", "“ mat”", False),
+    ("probs", "Probabilities", "softmax", PROBS_TEXT, False),
+    ("pick", "Pick one", "sampling", f"“{PICKED}”", False),
 ]
 
 BOX_W, BOX_H = 2.5, 1.7

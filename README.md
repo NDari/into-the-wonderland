@@ -9,7 +9,7 @@ Book 1 is the priority and stands on its own.
 
 ## Status
 
-As of 2026-11-11: `destination` (Book 1, chapter 1) is drafted and awaits its independent verification pass. No other chapter has been started. `OUTLINE.md` lists every planned chapter and its current status.
+As of 2026-11-11: `destination` (Book 1, chapter 1) is approved by the author, after research, drafting, and an independent check of every claim against its source. No other chapter has been started. `OUTLINE.md` lists every planned chapter and its current status.
 
 ## Who made this
 

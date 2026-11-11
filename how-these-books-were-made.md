@@ -1,6 +1,6 @@
 # How these books were made
 
-This document describes the process as it stands on 2026-11-11. At this date one chapter (`destination`) has been researched and drafted; none has been through independent verification yet. It is updated whenever practice changes, so that it stays a true account and not a plan.
+This document describes the process as it stands on 2026-11-11. At this date one chapter (`destination`) has been through every stage and was approved by the author on 2026-11-11. It is updated whenever practice changes, so that it stays a true account and not a plan.
 
 ## Who does what
 
@@ -25,7 +25,7 @@ Each chapter moves through five stages. Its current stage is recorded in `OUTLIN
 1. **Outlined.** The chapter has a goal, a list of concepts, the history it covers, candidate sources, and the earlier chapters it depends on.
 2. **Researched.** The sources for its planned claims have been fetched and read, and each claim is logged in the chapter's ledger with where it was found.
 3. **Drafted.** The chapter is written against those sources. Any claim not yet checked carries a visible `TODO-VERIFY` marker.
-4. **Verified.** A separate pass, by an agent that did not write the chapter, checks every historical and quantitative claim against its source. No markers remain.
+4. **Verified.** A separate pass, by an agent that did not write the chapter, fetches the sources again on its own and checks every historical and quantitative claim, quote, page number, and worked-example number against them. The writer fixes what it finds, and the check and the fixes are recorded in the chapter's ledger. No markers remain.
 5. **Approved.** The author has read it, edited it, and signed off.
 
 ## How sources are handled
