@@ -313,25 +313,25 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 
 - **Goal:** Vectors, matrices, dot products, logarithms, probability distributions, softmax. Only what the chapters use. (~8 pp)
 - **Depends on:** none
-- **Status:** outlined
+- **Status:** drafted
 
 #### B. Glossary {#glossary}
 
 - **Goal:** Every term defined in the book, with the chapter of first use. (~12 pp)
 - **Depends on:** none
-- **Status:** outlined
+- **Status:** drafted
 
 #### C. Timeline {#timeline}
 
 - **Goal:** A chronology of the events in the book, with citations. (~4 pp)
 - **Depends on:** none
-- **Status:** outlined
+- **Status:** drafted
 
 #### D. Further reading {#further-reading}
 
 - **Goal:** An annotated reading list; how to read an ML paper and a model card; a pointer to Book 2. (~4 pp)
 - **Depends on:** none
-- **Status:** outlined
+- **Status:** drafted
 
 ## Book 2 - Building and running
 
