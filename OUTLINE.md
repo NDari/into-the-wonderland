@@ -236,7 +236,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** the same prompt completed by a base model and by an instruction-tuned one.
 - **Candidate sources:** Christiano et al. 2017; Ouyang et al. 2022; Bai et al. 2022; Rafailov et al. 2023.
 - **Depends on:** `pretraining`, `generation`
-- **Status:** outlined
+- **Status:** drafted
 
 #### 19. Prompting and context {#prompting}
 
@@ -245,7 +245,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **History:** few-shot prompting in GPT-3 (2020); chain-of-thought (2022).
 - **Candidate sources:** Brown et al. 2020; Wei et al. 2022; Kojima et al. 2022.
 - **Depends on:** `generation`, `instructions`
-- **Status:** outlined
+- **Status:** drafted
 
 #### 20. Adapting a model: fine-tuning and LoRA {#adapting}
 
@@ -256,7 +256,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** a frozen weight matrix plus a thin low-rank update, with parameter counts.
 - **Candidate sources:** Houlsby et al. 2019; Hu et al. 2021; Dettmers et al. 2023; Hinton, Vinyals, Dean 2015.
 - **Depends on:** `pretraining`, `training`
-- **Status:** outlined
+- **Status:** verified
 
 #### 21. Giving models knowledge and tools {#tools}
 
@@ -267,7 +267,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Key figure:** a RAG request traced from question to retrieved passages to answer.
 - **Candidate sources:** Lewis et al. 2020; Karpukhin et al. 2020; Yao et al. 2022.
 - **Depends on:** `embeddings`, `generation`, `prompting`
-- **Status:** outlined
+- **Status:** drafted
 
 ### Part VII - The working landscape
 
@@ -277,17 +277,17 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Concepts:** pre-normalization and RMSNorm; rotary and relative position schemes; newer activations in the feed-forward network; grouped-query attention; faster attention implementations; longer context windows; mixture-of-experts. Each as "what problem, what change", no more.
 - **Candidate sources:** Su et al. 2021 (rotary positions); Zhang and Sennrich 2019 (RMSNorm); Dao et al. 2022 (FlashAttention); Touvron et al. 2023.
 - **Depends on:** `anatomy`
-- **Status:** outlined
+- **Status:** drafted
 
 #### 23. Small models and local inference {#local}
 
 - **Goal:** The knowledge needed to choose a model that will run on one's own machine and to read its name and file. Hands-on use is in Book 2. (~14 pp)
-- **Concepts:** open-weight vs closed models; licenses; reading a model name (size, variant, quantization); memory arithmetic (parameters times bits); quantization by intuition; model file formats; local runtimes; CPU vs GPU; throughput in tokens per second; what small models are and are not good at.
+- **Concepts:** open-weight vs closed models [D-020]; licenses; reading a model name (size, variant, quantization); memory arithmetic (parameters times bits); quantization by intuition; model file formats; local runtimes; CPU vs GPU; throughput in tokens per second; what small models are and are not good at.
 - **History:** the open-weight lineage from 2023 onward; the Hugging Face hub; llama.cpp.
 - **Key figure:** a table mapping model size and quantization level to memory needed, computed.
 - **Candidate sources:** project documentation and model cards (fetched at research time, date-stamped).
 - **Depends on:** `training`, `generation`, `adapting`
-- **Status:** outlined
+- **Status:** drafted
 
 #### 24. Measuring models {#evaluation}
 
@@ -297,7 +297,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Bridge:** train/test leakage, a familiar sin, at internet scale.
 - **Candidate sources:** Wang et al. 2018; Hendrycks et al. 2020.
 - **Depends on:** `prediction`, `scale`
-- **Status:** outlined
+- **Status:** verified
 
 #### 25. The frontier (as of the book's date) {#frontier}
 
@@ -305,7 +305,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Concepts:** reasoning models and test-time computation; agents and long-running tasks; multimodal models (images, audio) in outline; interpretability in outline; open problems (reliability, evaluation, cost, safety).
 - **Candidate sources:** gathered at research time; every claim carries an as-of date.
 - **Depends on:** `instructions`, `prompting`, `tools`
-- **Status:** outlined
+- **Status:** drafted
 
 ### Appendices
 

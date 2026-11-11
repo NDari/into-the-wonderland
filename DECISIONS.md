@@ -147,6 +147,13 @@ Entries are never rewritten or deleted. To change one, set its status and add a 
 - Why: One name for one thing across chapters (`anatomy`, `training`, `generation`, later chapters, and Book 2). Interpretability writing uses "residual stream" and explains why reusing "embedding" misleads; `depth` already promised the term.
 - To revert: choose "hidden state" instead, and replace "residual stream" in every file that cites this decision.
 
+## D-020 "Open-weight", not "open source", for downloadable models
+- Status: provisional
+- Date: 2026-11-11
+- Decision: In the book's own voice, a model whose trained weights can be downloaded is **open-weight**. "Open source" is used only as the Open Source Initiative's Open Source AI Definition 1.0 (2024-10) defines it, or inside a quotation (for example, a vendor calling its own model open source), with the disagreement stated where it matters.
+- Why: Vendors call models "open source" whose licenses restrict use or whose training data is not released; the OSI's validation lists some of them as failing its definition. A neutral term avoids taking a side silently and matches the term `adapting` already uses.
+- To revert: choose another term (for example "open" with a definition), and update every file that cites this decision.
+
 # Open questions
 
 Parked, not blocking. Each is raised only when its trigger arrives.

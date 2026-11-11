@@ -1,10 +1,10 @@
 # How these books were made
 
-This document describes the process as it stands on 2026-11-11. At this date one chapter (`destination`) has been approved by the author, sixteen more have been independently verified. It is updated whenever practice changes, so that it stays a true account and not a plan.
+This document describes the process as it stands on 2026-11-11. At this date one chapter (`destination`) has been approved by the author, eighteen more have been independently verified, and six are drafted and in verification. It is updated whenever practice changes, so that it stays a true account and not a plan.
 
 ## Who does what
 
-- **Claude** (Anthropic's AI model) researches and writes the text, keeps the outline and decision log, and runs the checks. The first sessions used Claude Fable 5.2; the first four chapters were researched, drafted, and verified with Claude Opus 5.5. Claude works with helper agents: separate instances that research a chapter's sources or check a draft independently.
+- **Claude** (Anthropic's AI model) researches and writes the text, keeps the outline and decision log, and runs the checks. The first sessions used Claude Fable 5.2; the first four chapters were researched, drafted, and verified with Claude Opus 5.5. Claude works with helper agents: separate instances that research a chapter's sources, draft a chapter from its ledger, apply a check's corrections, or check a draft independently.
 - **Naseer Dari** (the author) sets the direction, makes the decisions, reads every chapter, edits the prose, double-checks the content, and is the only one who can mark a chapter approved. The author directs version control: commits and pushes are made by Claude only when the author asks.
 
 The author is the first reader and is learning parts of the field while the books are written [D-012]. If a draft confuses the author, the draft is at fault.
@@ -24,9 +24,9 @@ In small steps, like a session at an interactive prompt: do one thing, look at t
 Each chapter moves through five stages. Its current stage is recorded in `OUTLINE.md`.
 
 1. **Outlined.** The chapter has a goal, a list of concepts, the history it covers, candidate sources, and the earlier chapters it depends on.
-2. **Researched.** The sources for its planned claims have been fetched and read, and each claim is logged in the chapter's ledger with where it was found. Research may be done by a helper agent; the writer then spot-checks the key claims in the same sources before drafting, and the ledger says who did what.
-3. **Drafted.** The chapter is written against those sources. Any claim not yet checked carries a visible `TODO-VERIFY` marker.
-4. **Verified.** A separate pass, by an agent that did not write the chapter, fetches the sources again on its own and checks every historical and quantitative claim, quote, page number, and worked-example number against them. The writer fixes what it finds, and the check and the fixes are recorded in the chapter's ledger. No markers remain.
+2. **Researched.** The sources for its planned claims have been fetched and read, and each claim is logged in the chapter's ledger with where it was found. Research may be done by a helper agent; the ledger says who did what. For the earlier chapters the writer spot-checked the key claims in the same sources before drafting; from Part VI on, that check is left to the verification stage.
+3. **Drafted.** The chapter is written against those sources. Any claim not yet checked carries a visible `TODO-VERIFY` marker. Most chapters were drafted by Claude in the main session; from Part VI on, several were drafted in parallel by drafting agents working only from the ledger, each recorded in its ledger.
+4. **Verified.** A separate pass, by an agent that did not write the chapter, fetches the sources again on its own and checks every historical and quantitative claim, quote, page number, and worked-example number against them. The writer, or a helper agent given the report, fixes what it finds, and the check and the fixes are recorded in the chapter's ledger. No markers remain.
 5. **Approved.** The author has read it, edited it, and signed off.
 
 ## How sources are handled
