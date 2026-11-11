@@ -90,16 +90,19 @@ def network_figure():
         ax.add_patch(FancyArrowPatch((xa + r, ya), (xb - r, yb), arrowstyle="-|>",
                                      mutation_scale=9, color=MUTED, linewidth=0.9))
         # Place each weight label by hand: straight edges get a label at the
-        # middle (top above, bottom below); crossing edges get one near their
-        # start, on the side away from the straight edge beside them.
+        # middle (top above, bottom below); crossing edges get one to the
+        # left of the line, clear of both diagonals.
         place = {("x1", "h1"): (0.5, "above"), ("x2", "h2"): (0.5, "below"),
-                 ("x1", "h2"): (0.18, "below"), ("x2", "h1"): (0.18, "above"),
+                 ("x1", "h2"): (0.3, "left"), ("x2", "h1"): (0.3, "left"),
                  ("h1", "y"): (0.5, "above"), ("h2", "y"): (0.5, "below")}
         t, side = place[(a, b)]
         lx, ly = xa + r + (xb - xa - 2 * r) * t, ya + (yb - ya) * t
-        dy = 0.12 if side == "above" else -0.12
-        ax.text(lx, ly + dy, f"{w:+.1f}", ha="center", va="bottom" if dy > 0 else "top",
-                fontsize=7.5, color=INK)
+        if side == "left":
+            ax.text(lx - 0.3, ly, f"{w:+.1f}", ha="right", va="center", fontsize=7.5, color=INK)
+        else:
+            dy = 0.12 if side == "above" else -0.12
+            ax.text(lx, ly + dy, f"{w:+.1f}", ha="center", va="bottom" if dy > 0 else "top",
+                    fontsize=7.5, color=INK)
     values = {"x1": (f"{x[0]}", None), "x2": (f"{x[1]}", None),
               "h1": (f"{h1:.3f}", d1), "h2": (f"{h2:.3f}", d2), "y": (f"{y:.3f}", do)}
     for k, (val, blame) in values.items():

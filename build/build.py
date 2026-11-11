@@ -60,6 +60,7 @@ def main(args):
         "--citeproc", "--bibliography", str(ROOT / "references.bib"),
         "--resource-path", str(files[0].parent),
         "-M", "link-citations=true",
+        "-M", "reference-section-title=References",
         "--pdf-engine", "typst",
         "-o", str(target),
     ]
