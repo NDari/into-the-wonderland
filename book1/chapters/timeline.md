@@ -2,7 +2,7 @@
 
 <!-- D-005: compiled from the verified chapters, using their dates and citations; independent check recorded in the ledger. D-010: citations by bib key and page, chapters linked by ID. D-008: periods follow the book's parts. D-003: no code. -->
 
-This appendix lists, in order, the main dated events that the chapters describe. Each entry gives the date as the chapter gives it, one line on what happened, the source the chapter cites, and, in italics, the chapter that tells the story. Nothing here goes beyond the chapters: an event appears only if a chapter states it, with the chapter's own citation.
+This appendix lists, in order, the main dated events that the chapters describe. Each entry gives the date as the chapter gives it, one line on what happened, the source the chapter cites, and, in italics, the chapter that tells the story, or the credit appendix where a question of who was first now lives. Nothing here goes beyond the chapters: an event appears only if a chapter states it, with the chapter's own citation.
 
 A paper is dated as the chapter dates it, usually when it first appeared, which can be earlier than the journal or conference version the citation names. Where a chapter gives two dates, such as a preprint and a publication, both are shown. Within a year, entries dated only by the year come first, then the entries with a month, in order; the one exception is Schmidhuber's "1991 on", placed beside the 2006 entry it answers. Where the chapters present a disagreement over who was first, each claimant's event is listed as the chapter gives it, and the timeline does not choose between them. The book's date is November 2026; the later entries describe a field that was still moving.
 
@@ -42,7 +42,7 @@ A paper is dated as the chapter dates it, usually when it first appeared, which 
 :   Widrow and Hoff's ADALINE reduces a squared error [@widrow1960adaptive, pp. 98-99]. *[The artificial neuron](#neuron)*
 
 1964
-:   Polyak's momentum method, as later authors credit it [@sutskever2013importance, p. 1140; @goodfellow2016deep, p. 292]. *[The training loop](#toolkit)*
+:   Polyak's momentum method, as later authors credit it [@sutskever2013importance, p. 1140; @goodfellow2016deep, p. 292]. *[The training loop](#toolkit); [Who did what first](#credit-toolkit)*
 
 1969
 :   Minsky and Papert's *Perceptrons* [@minsky1969perceptrons]; interest in neural networks falls away, and the book's part in that is disputed [@goodfellow2016deep, p. 14; @olazaran1993sociological, p. 358]. *[The artificial neuron](#neuron)*
@@ -133,13 +133,13 @@ Until 2007
 
 ## 2006-2016: deep learning starts working
 
-Two accounts of where deep learning began appear in [the turn](#deep-turn); both are listed.
+Two accounts of where deep learning began appear in [the credit appendix](#credit-deep-turn); both are listed.
 
 1991 on
-:   Schmidhuber: deep learning results "at least since 1991", the term "coined around 2006" [@schmidhuber2014deep, p. 21]. *[The turn](#deep-turn)*
+:   Schmidhuber: deep learning results "at least since 1991", the term "coined around 2006" [@schmidhuber2014deep, p. 21]. *[Who did what first](#credit-deep-turn)*
 
 2006
-:   Hinton, Osindero, and Teh train deep networks one layer at a time [@hinton2006fast], the textbook's "breakthrough in 2006" [@goodfellow2016deep, p. 18]. *[The turn](#deep-turn)*
+:   Hinton, Osindero, and Teh train deep networks one layer at a time [@hinton2006fast], the textbook's "breakthrough in 2006" [@goodfellow2016deep, p. 18]. *[The turn](#deep-turn); [Who did what first](#credit-deep-turn)*
 
 2007
 :   "Large Language Models in Machine Translation": n-grams on up to 2 trillion tokens [@brants2007large, p. 858]. *[Scale](#scale)*
@@ -169,7 +169,7 @@ Two accounts of where deep learning began appear in [the turn](#deep-turn); both
 :   Mikolov and colleagues' recurrent language model [@mikolov2010recurrent, p. 1045]. *[Reading and writing sequences](#seq2seq)*
 
 2011
-:   GPU convolutional networks from Schmidhuber's laboratory win image contests, in his account of the credit [@schmidhuber2014deep, pp. 23-24]. *[The turn](#deep-turn)*
+:   GPU convolutional networks from Schmidhuber's laboratory win image contests, in his account of the credit [@schmidhuber2014deep, pp. 23-24]. *[Who did what first](#credit-deep-turn)*
 
 2011
 :   Torch7, built on the Lua language [@collobert2011torch7, p. 1]. *[The training loop](#toolkit)*
@@ -223,7 +223,7 @@ November 2015
 :   Google open-sources TensorFlow [@abadi2015tensorflow, p. 1]. *[The training loop](#toolkit)*
 
 December 2015
-:   ResNet wins ImageNet, and an ensemble reaches 3.57% top-5 error [@he2015deep, pp. 1-2]; Schmidhuber calls it a version of the highway network [@schmidhuber2022annotated, p. 12]. *[Making deep networks trainable](#depth)*
+:   ResNet wins ImageNet, and an ensemble reaches 3.57% top-5 error [@he2015deep, pp. 1-2]; Schmidhuber calls it a version of the highway network [@schmidhuber2022annotated, p. 12]. *[Making deep networks trainable](#depth); [Who did what first](#credit-depth)*
 
 2016
 :   Ba, Kiros, and Hinton's layer normalization [@ba2016layer, p. 1]. *[Making deep networks trainable](#depth)*

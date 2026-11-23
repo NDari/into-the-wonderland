@@ -53,3 +53,7 @@ Events dated differently in two chapters, or in a chapter and its ledger or the 
 Reader call-outs made generic per D-023.
 
 No changes needed.
+
+## Story pass follow-up (2026-11-22)
+
+- Six entries whose material moved from a chapter to the `credit` appendix [D-026] now link to the appendix section, alone or beside the chapter: Polyak 1964 (`credit-toolkit`); Schmidhuber 1991 on, 2006 (textbook), 2011 GPU contests, and the "two accounts" note (`credit-deep-turn`); ResNet and the highway-network remark (`credit-depth`). Found by a script listing entries whose citation no longer appears in the linked chapter; the remaining hits were page-merging artifacts (the same pages cited separately in the chapter). The intro sentence on the italic links now mentions the appendix.
