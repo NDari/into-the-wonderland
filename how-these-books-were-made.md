@@ -1,6 +1,6 @@
 # How these books were made
 
-This document describes the process as it stands on 2026-11-22. At this date one chapter (`destination`) has been approved by the author (it changed slightly since and awaits re-approval), the other twenty-four chapters of Book 1 have been independently verified, and so have four of its five appendices; the fifth, on credit, is drafted. The appendices are compiled from the verified chapters by drafting agents and checked against the chapters by separate agents. It is updated whenever practice changes, so that it stays a true account and not a plan.
+This document describes the process as it stands on 2026-11-22. At this date one chapter (`destination`) has been approved by the author (and re-approved it after the story pass), the other twenty-four chapters of Book 1 have been independently verified, and so have four of its five appendices; the fifth, on credit, is drafted. The appendices are compiled from the verified chapters by drafting agents and checked against the chapters by separate agents. It is updated whenever practice changes, so that it stays a true account and not a plan.
 
 ## Who does what
 

@@ -173,3 +173,7 @@ A separate agent that did not write the story pass checked it against the ledger
 - Fixed: "The work started from the observation" had an unclear subject after the cross-chapter link; now "The InstructGPT work started from the observation".
 - Ledger accuracy: the "Story pass" entry is accurate, except that the word count is now 3,721 after the two fixes above, and C5's note on "the chapter's quoted phrase" now refers to a paraphrase.
 - No credit or priority discussion remains in the chapter. `tools/check.py`: 0 errors. `build/build.py destination`: builds.
+
+## Re-approval (2026-11-22)
+
+- The author re-approved the chapter after the story pass [D-025]; status stays `approved`.
