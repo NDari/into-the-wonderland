@@ -9,7 +9,7 @@ Book 1 is the priority and stands on its own.
 
 ## Status
 
-As of 2026-11-11: `destination` (Book 1, chapter 1) is approved by the author. Chapters 2 to 25 (`neuron` to `frontier`, through the end of Part VII) are verified, each after an independent check of every claim, and await approval. The four appendices (`notation`, `glossary`, `timeline`, `further-reading`) are verified as well. A consistency pass over the whole of Book 1 (terms, notation, dates, spelling, and page citations) followed. `python3 build/build.py` builds the whole of Book 1, about 550 book-size (6 x 9 in) pages with title page, contents, part pages, and references. Some check scripts download public datasets on first run into `out/cache/` (not committed). `OUTLINE.md` lists every planned chapter and its current status.
+As of 2026-11-11: `destination` (Book 1, chapter 1) is approved by the author. Chapters 2 to 25 (`neuron` to `frontier`, through the end of Part VII) are verified, each after an independent check of every claim, and await approval. The four appendices (`notation`, `glossary`, `timeline`, `further-reading`) are verified as well. A consistency pass over the whole of Book 1 (terms, notation, dates, spelling, and page citations) followed. `python3 build/build.py` builds the whole of Book 1, about 610 book-size (6 x 9 in) pages with title page, contents, part pages, and numbered citations with a reference list at the end of each chapter. Earlier builds are kept by hand in `out/archive/<date>-<commit>/` (not committed). Some check scripts download public datasets on first run into `out/cache/` (not committed). `OUTLINE.md` lists every planned chapter and its current status.
 
 ## Who made this
 
@@ -33,6 +33,8 @@ book1/sources/<id>.md          claim ledgers: sources, quotes, pages, checks
 code/checks/<id>.py            compute every number in a chapter's worked examples
 figures/<id>.py                draw a chapter's figures (SVGs alongside)
 build/build.py                 builds PDFs (Pandoc and Typst) and EPUBs into out/
+build/cites.lua                Pandoc filter: numbered citations, a reference list per chapter
+build/numeric.csl              citation style used by cites.lua
 build/links.lua                Pandoc filter used by the build
 build/book.lua                 Pandoc filter for chapter numbers, part pages, title page, contents
 build/book.typ                 Typst page and heading styles

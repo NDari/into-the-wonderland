@@ -175,6 +175,27 @@ Entries are never rewritten or deleted. To change one, set its status and add a 
 - Why: The author found the call-outs distracting when reading the full draft on an e-reader. Naming the concept carries the bridge without addressing the reader.
 - To revert: allow the phrasing again; the edits are listed in each chapter's ledger under "Style pass (2026-11-11)".
 
+## D-024 Numbered citations, one reference list per chapter
+- Status: active
+- Date: 2026-11-22
+- Decision: Citations print as numbers in square brackets, [3] or [3, p. 334], instead of author and year. Numbering starts at [1] in each chapter and appendix, and each one ends with its own reference list, in order of first citation. Chapter sources keep the `[@key]` form [D-010]; `build/cites.lua` runs citeproc once per chapter with the style in `build/numeric.csl`. The build writes plain hyphens in page ranges.
+- Why: The author found author names and titles in every few lines hard to read, often the same names several times in one paragraph. A number keeps the source one click or one page away. Per-chapter lists keep the numbers small (the book cites about 530 works) and put the sources next to the chapter that uses them.
+- To revert: in `build/build.py`, drop `cites.lua` and the `cites-` settings, and put back `--citeproc`, `--bibliography`, `link-citations` and `reference-section-title=References`.
+
+## D-025 Concepts first, history as story
+- Status: active
+- Date: 2026-11-22
+- Decision: The concepts are the substance of each chapter; history frames them and is told as a sequence of events, not as what each source says about them ("In 2014, two groups built ...", not "The textbook says ..."). A person is named in the prose only if they recur in the story or the field names the work after them; otherwise the citation number carries the attribution, and an institution is named only when it matters. Sources are paraphrased by default and quoted only when the wording itself matters: a definition that stuck, a famous line. Dates stay where they move the story. Every claim keeps its citation, and the ledger keeps the supporting quote, so verification is unchanged [D-005]. The reading list, the timeline and the glossary keep author names, which are their content.
+- Why: The author found the names, quotations and source-by-source accounts slowed reading. A reader wants an accurate, concise history of how the ideas developed, told so it reads as a story; the concepts are the meat and the history is the spice.
+- To revert: allow the old style again; the edits are logged in each chapter's ledger under "Story pass (2026-11)".
+
+## D-026 Credit and priority questions go in an appendix
+- Status: active
+- Date: 2026-11-22
+- Decision: Questions of who was first, who deserves credit, and whose account to trust move out of the chapters into one appendix, `credit`, arranged by chapter. Each question there presents every side with its citations and does not pick a winner. Where a chapter touches such a question, it says so in one neutral sentence and links to the appendix entry.
+- Why: The author wants the chapters to read as the story of the ideas; priority disputes are of interest to some readers but interrupt it. The appendix keeps the disputes accurate and cited.
+- To revert: move each entry back to its chapter, mark the appendix for removal in `OUTLINE.md`, and restore the old wording of "Disputed history" in `AGENTS.md`.
+
 # Open questions
 
 Parked, not blocking. Each is raised only when its trigger arrives.

@@ -131,12 +131,15 @@ def main(args):
         "pandoc", *map(str, files),
         "--metadata-file", str(meta),
         *fmt,
+        # Numbered citations, one reference list per chapter [D-024]. The
+        # filter runs citeproc itself; under Pandoc's own names these
+        # settings would also make the Typst template emit a bibliography.
+        "-M", f"cites-bibliography={ROOT / 'references.bib'}",
+        "-M", f"cites-csl={ROOT / 'build' / 'numeric.csl'}",
+        "--lua-filter", str(ROOT / "build" / "cites.lua"),
         "--lua-filter", str(ROOT / "build" / "links.lua"),
         "--lua-filter", str(ROOT / "build" / "book.lua"),
-        "--citeproc", "--bibliography", str(ROOT / "references.bib"),
         "--resource-path", str(files[0].parent),
-        "-M", "link-citations=true",
-        "-M", "reference-section-title=References",
         "-o", str(target),
     ]
     subprocess.run(cmd, check=True)

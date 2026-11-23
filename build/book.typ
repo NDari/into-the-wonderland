@@ -23,7 +23,7 @@
   if natural.height > 4.6in { image(it.source, height: 4.6in, alt: it.alt) } else { it }
 })
 
-// Chapters, parts and the reference list each start on a new page.
+// Chapters and parts each start on a new page.
 #show heading.where(level: 1): it => {
   pagebreak(weak: true)
   if it.supplement == [Part] {

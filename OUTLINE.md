@@ -15,7 +15,7 @@ Two books [D-001]. Book 1 is the priority.
 
 ## Book 1 - Concepts and history
 
-Intuition only [D-002], no code [D-003], no call-outs to the reader [D-023]. Scope: core plus modern practice, with no page limit [D-022]. Page counts are rough planning guides, not limits.
+Intuition only [D-002], no code [D-003], no call-outs to the reader [D-023]. Concepts first, history told as a story [D-025]; credit and priority questions in an appendix [D-026]. Scope: core plus modern practice, with no page limit [D-022]. Page counts are rough planning guides, not limits.
 
 Structure [D-008]: the destination first, then two parallel histories (how networks learn, Parts I-II; how language is modeled, Part III) that meet at the transformer in Part IV.
 
@@ -64,7 +64,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 
 - **Goal:** How a network with hidden layers learns: the credit assignment problem and backpropagation as its answer. (~16 pp)
 - **Concepts:** hidden layers, forward pass, loss function, gradient descent as "walking downhill", backpropagation as passing blame backward, learning rate, epochs, local minima, universal approximation (what it does and does not promise).
-- **History:** Linnainmaa (1970) and Werbos (1974) as precursors; Rumelhart, Hinton, and Williams (1986); the PDP volumes; Cybenko (1989) and Hornik et al. (1989). The priority dispute is presented, not adjudicated.
+- **History:** Linnainmaa (1970) and Werbos (1974) as precursors; Rumelhart, Hinton, and Williams (1986); the PDP volumes; Cybenko (1989) and Hornik et al. (1989). The priority dispute is presented, not adjudicated, in the `credit` appendix [D-026].
 - **Bridge:** gradient descent on a loss is the same idea as fitting a regression, with more knobs.
 - **Key figure:** a tiny 2-2-1 network solving XOR, with one worked forward pass and one weight update in numbers.
 - **Candidate sources:** Rumelhart, Hinton, Williams 1986 (Nature letter and PDP chapter); Cybenko 1989; Hornik, Stinchcombe, White 1989; Griewank 2012 and Schmidhuber 2014 (priority history); Olazaran 1993. Werbos 1974 and Linnainmaa 1970 are described through these.
@@ -327,7 +327,13 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 - **Depends on:** none
 - **Status:** verified
 
-#### D. Further reading {#further-reading}
+#### D. Who did what first {#credit}
+
+- **Goal:** The priority and credit questions the chapters leave out, arranged by chapter: who was first, how much a predecessor deserves, whose account to trust. Each side is presented and cited; no winner is picked [D-026]. (~6 pp)
+- **Depends on:** none
+- **Status:** outlined
+
+#### E. Further reading {#further-reading}
 
 - **Goal:** An annotated reading list; how to read an ML paper and a model card; a pointer to Book 2. (~4 pp)
 - **Depends on:** none

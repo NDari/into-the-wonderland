@@ -52,7 +52,7 @@ Every chapter must serve at least one of these. Material that serves none is out
 
 ## Editorial principles
 
-- **History serves understanding.** Introduce each idea through the problem it solved and what came before it.
+- **History serves understanding.** Introduce each idea through the problem it solved and what came before it. The concepts are the substance; the history is told as a story of events, with few names and few quotations [D-025].
 - **Bridge from what the reader knows.** Anchor new ideas in 2000s concepts where an honest link exists (logistic regression to a neuron, n-grams to neural language models, PCA/LSA to embeddings).
 - **Define every term at first use** and add it to the glossary. Never use jargon before it is introduced.
 - **No hype.** State what a technique does, what it cost, and where it fails.
@@ -84,6 +84,7 @@ Both books:
 - Every figure is drawn by a matplotlib script in `figures/` that writes an SVG next to itself [D-014].
 - PDFs are built with `python3 build/build.py` (Pandoc with Typst) into `out/` [D-015].
 - Chapters are Pandoc Markdown with `[@key]` citations and a shared `references.bib` [D-010].
+- Citations print as numbers, [3] or [3, p. 334], numbered per chapter, with a reference list at the end of each chapter [D-024].
 - Chapters refer to each other by ID, never by a hard-coded number. Order and numbers come from `OUTLINE.md` [D-010].
 
 ## Decisions and consistency
@@ -150,7 +151,7 @@ Explanations of mechanisms do not need a citation per sentence, but the math mus
 3. After drafting (`verified`): an independent pass, by an agent that did not write the chapter, checks each claim against its source.
 4. Before a PDF build: re-check all "as of" claims and all pinned versions.
 
-**Disputed history** (for example, priority for backpropagation): present the dispute and cite each side. Do not pick a winner silently.
+**Disputed history** (for example, priority for backpropagation): the dispute goes in the `credit` appendix, which presents and cites each side; the chapter gives one neutral sentence and a link [D-026]. Do not pick a winner silently.
 
 ## Repository layout
 
