@@ -158,3 +158,7 @@ The links were re-derived from the chapters as they now stand: every bold span o
 Reader call-outs made generic per D-023.
 
 No changes needed.
+
+## Story pass follow-up (2026-11-22)
+
+- "highway networks": "a predecessor of residual connections" -> "an earlier, gated relative of residual connections", matching `depth` after D-026 (how much credit highway networks deserve is in the `credit` appendix).

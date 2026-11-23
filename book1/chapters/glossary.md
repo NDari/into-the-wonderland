@@ -639,7 +639,7 @@ hierarchical navigable small world graphs (HNSW)
 :   An approximate nearest neighbor method that builds a multi-layer structure of graphs, with few vectors in the top layers and all of them at the bottom, and searches from the top down. ([Giving models knowledge and tools](#tools))
 
 highway networks
-:   Networks (2015) that carry the input around each block through a learned gate; a predecessor of residual connections. ([Making deep networks trainable (2010-2016)](#depth))
+:   Networks (2015) that carry the input around each block through a learned gate; an earlier, gated relative of residual connections. ([Making deep networks trainable (2010-2016)](#depth))
 
 HLE
 :   See *Humanity's Last Exam*.
