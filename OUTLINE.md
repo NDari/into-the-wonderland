@@ -331,7 +331,7 @@ Structure [D-008]: the destination first, then two parallel histories (how netwo
 
 - **Goal:** The priority and credit questions the chapters leave out, arranged by chapter: who was first, how much a predecessor deserves, whose account to trust. Each side is presented and cited; no winner is picked [D-026]. (~6 pp)
 - **Depends on:** none
-- **Status:** outlined
+- **Status:** drafted
 
 #### E. Further reading {#further-reading}
 
