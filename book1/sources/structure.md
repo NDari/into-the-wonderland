@@ -290,3 +290,11 @@ Reader call-outs made generic per D-023.
 - "a theory of generalization the reader learned in school" -> "a well-developed theory of generalization"
 - "the point where the reader's own knowledge of the field begins and ends" -> "where the field stood in the early 2000s"
 - "the reader's starting point for the rest of the book" -> "the starting point for the rest of the book"
+
+## Author feedback (2026-11-11)
+
+The author, reading the draft, did not see the connection between a filter and weight sharing. Fix, in "Sharing weights across space: convolution":
+
+- New paragraph: the convolution as a layer of seven neurons, each seeing three inputs (21 connections); separate weights would be 21 parameters, the shared filter is 3. The filter is the shared set of weights. Numbers from code/checks/structure.py, Example 3 ("as a layer" line).
+- New sentences after "That is weight sharing": with learned weights, every position's examples adjust the same weights, so a pattern learned at one position is recognized at every other; separate weights would have to learn it at each position. Mechanism explanation, no new sourced claim.
+

@@ -78,6 +78,10 @@ def example_conv():
     print(f"  edge filter {EDGE} on A: {slide(A, EDGE)}")
     print(f"  edge filter {EDGE} on B: {slide(B, EDGE)}")
     print(f"  parameters used, at any signal length: {len(RUN)} (run filter), {len(EDGE)} (edge filter)")
+    units = len(ra)
+    print(f"  as a layer: {units} neurons (one per output), each with {len(RUN)} incoming connections, "
+          f"{units * len(RUN)} connections; separate weights per neuron would be {units * len(RUN)} "
+          f"parameters, shared weights are {len(RUN)}")
     print()
 
 
